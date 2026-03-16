@@ -3,7 +3,7 @@ export const loginHtml = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Narrenfreunde Bergfelden</title>
+  <title>Login</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -161,8 +161,8 @@ export const loginHtml = `<!DOCTYPE html>
           <path d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.25C17.25 21.15 21 16.25 21 11V5L12 1z"/>
         </svg>
       </div>
-      <div class="logo-title">Narrenfreunde</div>
-      <div class="logo-sub">Bergfelden</div>
+      <div class="logo-title">WPL</div>
+      <div class="logo-sub">Prüfen | Beraten | Steuern</div>
     </div>
 
     <h1>Willkommen</h1>
