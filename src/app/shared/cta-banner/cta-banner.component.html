@@ -1,0 +1,32 @@
+<section [class]="isDark() ? 'relative overflow-hidden bg-secondary' : 'relative overflow-hidden bg-background-warm'">
+  <!-- Decorative blob -->
+  <div
+    [class]="'blob-decoration w-96 h-96 -top-48 -right-48 ' + (isDark() ? 'bg-white' : 'bg-primary')"
+    aria-hidden="true">
+  </div>
+
+  <div class="container-page section-padding relative z-10">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+
+      <!-- Text -->
+      <div class="max-w-xl">
+        <h2 [class]="isDark()
+          ? 'font-sans text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4'
+          : 'font-sans text-2xl md:text-3xl lg:text-4xl font-bold text-secondary mb-4'">
+          {{ content().headline }}
+        </h2>
+        <p [class]="isDark() ? 'font-serif text-lg text-white/70' : 'font-serif text-lg text-text-light'">
+          {{ content().text }}
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="flex-shrink-0">
+        <a [routerLink]="content().ctaLink" [class]="isDark() ? 'btn-light' : 'btn-primary'">
+          {{ content().ctaText }}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

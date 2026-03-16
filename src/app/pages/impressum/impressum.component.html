@@ -1,0 +1,106 @@
+<section class="section-padding bg-white">
+  <div class="container-narrow">
+
+    <h1 class="heading-1 mb-12">Impressum</h1>
+
+    <div class="space-y-10">
+
+      <!-- Angaben gem. § 5 DDG -->
+      <div>
+        <h2 class="heading-2 mb-4">Angaben gemäß § 5 DDG</h2>
+        <p class="body-text">{{ contact.companyName }}</p>
+        <p class="body-text">{{ contact.owner }}</p>
+        <address class="not-italic body-text mt-2">
+          <p>{{ contact.street }}</p>
+          <p>{{ contact.zip }} {{ contact.city }}</p>
+        </address>
+      </div>
+
+      <!-- Kontakt -->
+      <div>
+        <h2 class="heading-2 mb-4">Kontakt</h2>
+        <p class="body-text">
+          Telefon:
+          <a [href]="'tel:' + contact.phone" class="text-primary hover:text-primary-dark transition-colors duration-200">
+            {{ contact.phone }}
+          </a>
+        </p>
+        <p class="body-text mt-1">
+          E-Mail:
+          <a [href]="'mailto:' + contact.email" class="text-primary hover:text-primary-dark transition-colors duration-200">
+            {{ contact.email }}
+          </a>
+        </p>
+      </div>
+
+      <!-- Berufsbezeichnung -->
+      <div>
+        <h2 class="heading-2 mb-4">Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+        <p class="body-text">
+          Berufsbezeichnung: Wirtschaftsprüferin (verliehen in der Bundesrepublik Deutschland)
+        </p>
+        <p class="body-text mt-3">
+          Zuständige Aufsichtsbehörde:<br />
+          Wirtschaftsprüferkammer (WPK)<br />
+          Rauchstraße 26, 10787 Berlin<br />
+          <a
+            href="https://www.wpk.de"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary hover:text-primary-dark transition-colors duration-200"
+          >www.wpk.de</a>
+        </p>
+        <p class="body-text mt-3">
+          Es gelten folgende berufsrechtliche Regelungen:
+        </p>
+        <ul class="body-text mt-2 space-y-1 list-disc list-inside">
+          <li>Wirtschaftsprüferordnung (WPO)</li>
+          <li>Berufssatzung WP/vBP (BS WP/vBP)</li>
+        </ul>
+        <p class="body-text mt-2">
+          Die Regelungen sind einsehbar unter
+          <a
+            href="https://www.wpk.de/wpk/organisation/rechtsgrundlagen/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary hover:text-primary-dark transition-colors duration-200"
+          >www.wpk.de/wpk/organisation/rechtsgrundlagen/</a>.
+        </p>
+      </div>
+
+      <!-- USt-IdNr -->
+      <div>
+        <h2 class="heading-2 mb-4">Umsatzsteuer-Identifikationsnummer</h2>
+        <p class="body-text">
+          Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+          [USt-IdNr. folgt]
+        </p>
+      </div>
+
+      <!-- Haftungsausschluss -->
+      <div>
+        <h2 class="heading-2 mb-4">Haftungsausschluss</h2>
+        <h3 class="heading-3 mb-2">Haftung für Inhalte</h3>
+        <p class="body-text">
+          Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den
+          allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht
+          verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+          zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+        </p>
+        <h3 class="heading-3 mb-2 mt-6">Haftung für Links</h3>
+        <p class="body-text">
+          Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
+          Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
+          verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+        </p>
+        <h3 class="heading-3 mb-2 mt-6">Urheberrecht</h3>
+        <p class="body-text">
+          Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+          Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
+          Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

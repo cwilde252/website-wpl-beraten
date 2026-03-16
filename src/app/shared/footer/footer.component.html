@@ -1,0 +1,60 @@
+<footer class="bg-secondary text-white">
+  <div class="container-page py-16 md:py-24">
+
+    <!-- Main grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+
+      <!-- Col 1: Brand + address (5 cols) -->
+      <div class="md:col-span-5">
+        <p class="font-sans font-bold text-white text-lg leading-tight">Wirtschaftsprüfungsgesellschaft<br>Lefevre</p>
+        <p class="font-serif text-sm text-white/50 mt-2">Prüfen · Beraten · Steuern</p>
+        <address class="not-italic mt-6 font-serif text-sm text-white/50 leading-relaxed">
+          {{ contact.street }}<br>
+          {{ contact.zip }} {{ contact.city }}<br><br>
+          <a [href]="'tel:' + contact.phone" class="hover:text-white/80 transition-colors duration-300">{{ contact.phone }}</a><br>
+          <a [href]="'mailto:' + contact.email" class="hover:text-white/80 transition-colors duration-300">{{ contact.email }}</a>
+        </address>
+      </div>
+
+      <!-- Col 2: Leistungen (3 cols, start at col 7) -->
+      <div class="md:col-span-3 md:col-start-7">
+        <p class="font-sans text-xs uppercase tracking-widest text-white/30 mb-4">Leistungen</p>
+        <ul class="space-y-3">
+          @for (link of links.leistungen; track link.path) {
+            <li>
+              <a [routerLink]="link.path" class="font-sans text-sm text-white/60 hover:text-white transition-colors duration-300">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Col 3: Weiteres (3 cols) -->
+      <div class="md:col-span-3">
+        <p class="font-sans text-xs uppercase tracking-widest text-white/30 mb-4">Weiteres</p>
+        <ul class="space-y-3">
+          @for (link of links.weiteres; track link.path) {
+            <li>
+              <a [routerLink]="link.path" class="font-sans text-sm text-white/60 hover:text-white transition-colors duration-300">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright bar -->
+    <div class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <p class="font-sans text-xs text-white/30">
+        © {{ currentYear }} Wirtschaftsprüfungsgesellschaft Lefevre. Alle Rechte vorbehalten.
+      </p>
+      <div class="flex items-center gap-6">
+        <a routerLink="/impressum" class="font-sans text-xs text-white/30 hover:text-white/60 transition-colors duration-300">Impressum</a>
+        <a routerLink="/datenschutz" class="font-sans text-xs text-white/30 hover:text-white/60 transition-colors duration-300">Datenschutz</a>
+      </div>
+    </div>
+
+  </div>
+</footer>

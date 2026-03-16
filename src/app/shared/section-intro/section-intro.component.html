@@ -1,0 +1,9 @@
+<div [class]="containerClass()">
+  @if (label()) {
+    <p [class]="'label-text mb-3 ' + labelColor()">{{ label() }}</p>
+  }
+  <h2 class="heading-1 mb-4">{{ title() }}</h2>
+  @if (body()) {
+    <p class="body-text text-lg">{{ body() }}</p>
+  }
+</div>

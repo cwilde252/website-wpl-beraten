@@ -1,0 +1,112 @@
+<section class="section-padding bg-background-warm">
+  <div class="container-page">
+
+    <!-- Header -->
+    <div class="mb-16">
+      <p class="label-text text-primary mb-4">Kontakt</p>
+      <h1 class="heading-display mb-6">Schreiben Sie mir.</h1>
+      <p class="body-text max-w-xl">
+        Ob Pflichtprüfung, Beratungsbedarf oder eine Frage zur Steuerplanung — ich freue mich auf Ihre Nachricht.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- Formular (8 cols) -->
+      <div class="lg:col-span-8">
+        <div class="card">
+          @if (submitted()) {
+            <div class="text-center py-12">
+              <div class="w-16 h-16 bg-accent-green-light rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                  stroke="currentColor" class="w-8 h-8 text-accent-green" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+              <h2 class="heading-2 mb-4">Vielen Dank!</h2>
+              <p class="body-text">Ihre Nachricht ist angekommen. Ich melde mich bald bei Ihnen.</p>
+            </div>
+          } @else {
+            <form (ngSubmit)="onSubmit()" #contactForm="ngForm" novalidate>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                @for (field of fields; track field.name) {
+                  <div [class]="(field.type === 'textarea' || field.type === 'select') ? 'md:col-span-2' : ''">
+                    <label [for]="field.name" class="block font-sans text-sm font-semibold text-secondary mb-2">
+                      {{ field.label }}
+                      @if (field.required) {
+                        <span class="text-primary ml-0.5" aria-hidden="true">*</span>
+                      }
+                    </label>
+
+                    @if (field.type === 'textarea') {
+                      <textarea
+                        [id]="field.name"
+                        [name]="field.name"
+                        [(ngModel)]="formData[field.name]"
+                        [required]="field.required"
+                        [placeholder]="field.placeholder ?? ''"
+                        rows="5"
+                        class="w-full px-5 py-3.5 border border-border rounded-xl font-serif text-text focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all duration-200 placeholder:text-text-muted resize-none"
+                      ></textarea>
+                    } @else if (field.type === 'select') {
+                      <select
+                        [id]="field.name"
+                        [name]="field.name"
+                        [(ngModel)]="formData[field.name]"
+                        [required]="field.required"
+                        class="w-full px-5 py-3.5 border border-border rounded-xl font-sans bg-white text-text focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all duration-200"
+                      >
+                        <option value="" disabled>Bitte wählen</option>
+                        @for (option of field.options; track option) {
+                          <option [value]="option">{{ option }}</option>
+                        }
+                      </select>
+                    } @else {
+                      <input
+                        [id]="field.name"
+                        [name]="field.name"
+                        [type]="field.type"
+                        [(ngModel)]="formData[field.name]"
+                        [required]="field.required"
+                        [placeholder]="field.placeholder ?? ''"
+                        class="w-full px-5 py-3.5 border border-border rounded-xl font-serif text-text focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all duration-200 placeholder:text-text-muted"
+                      />
+                    }
+                  </div>
+                }
+              </div>
+              <button type="submit" class="btn-primary w-full mt-8">
+                Nachricht senden
+              </button>
+            </form>
+          }
+        </div>
+      </div>
+
+      <!-- Kontaktdaten (4 cols) -->
+      <div class="lg:col-span-4">
+        <div class="card">
+          <h2 class="font-sans text-lg font-semibold text-secondary mb-1">{{ contact.companyName }}</h2>
+          <p class="body-text-sm mb-4">{{ contact.owner }}</p>
+          <div class="w-12 h-px bg-border mb-4" aria-hidden="true"></div>
+          <address class="not-italic body-text-sm mb-4">
+            <p>{{ contact.street }}</p>
+            <p>{{ contact.zip }} {{ contact.city }}</p>
+          </address>
+          <div class="w-12 h-px bg-border mb-4" aria-hidden="true"></div>
+          <div class="space-y-2">
+            <a
+              [href]="'tel:' + contact.phone"
+              class="block body-text-sm text-primary hover:text-primary-dark transition-colors duration-200"
+            >{{ contact.phone }}</a>
+            <a
+              [href]="'mailto:' + contact.email"
+              class="block body-text-sm text-primary hover:text-primary-dark transition-colors duration-200"
+            >{{ contact.email }}</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

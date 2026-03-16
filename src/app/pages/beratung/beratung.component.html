@@ -1,0 +1,49 @@
+<!-- Hero -->
+<section class="relative overflow-hidden bg-accent-blue-light section-padding">
+  <div class="blob-decoration w-[500px] h-[500px] bg-accent-blue -top-64 -right-32" aria-hidden="true"></div>
+  <div class="container-page relative z-10">
+    <p class="label-text text-accent-blue mb-4">Beraten</p>
+    <h1 class="heading-display mb-6">{{ page.heroTitle }}</h1>
+    <p class="font-serif text-xl md:text-2xl text-text-light max-w-2xl">{{ page.heroSubtitle }}</p>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="section-padding bg-white">
+  <div class="container-narrow">
+    <p class="font-serif text-xl md:text-2xl text-text-light leading-relaxed text-center">{{ page.intro }}</p>
+  </div>
+</section>
+
+<!-- Sections -->
+@for (section of page.sections; track section.title; let odd = $odd) {
+  <section [class]="odd ? 'section-padding bg-white' : 'section-padding bg-background-warm'">
+    <div class="container-page">
+      <div
+        class="max-w-3xl"
+        [class]="section.highlighted ? 'border-l-4 border-accent-blue pl-8 md:pl-12' : ''"
+      >
+        <h2 class="heading-2 mb-6">{{ section.title }}</h2>
+        @for (paragraph of section.content.split('\n\n'); track $index) {
+          <p class="body-text mb-4 last:mb-0">{{ paragraph }}</p>
+        }
+        @if (section.bulletPoints && section.bulletPoints.length > 0) {
+          <ul class="mt-6 space-y-3" role="list">
+            @for (point of section.bulletPoints; track $index) {
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                  class="w-5 h-5 text-accent-blue flex-shrink-0 mt-0.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span class="body-text-sm">{{ point }}</span>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- CTA -->
+<app-cta-banner [content]="cta" />

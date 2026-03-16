@@ -1,0 +1,144 @@
+<section class="section-padding bg-white">
+  <div class="container-narrow">
+
+    <h1 class="heading-1 mb-12">Datenschutzerklärung</h1>
+
+    <div class="space-y-10">
+
+      <!-- 1. Verantwortliche Stelle -->
+      <div>
+        <h2 class="heading-2 mb-4">1. Verantwortliche Stelle</h2>
+        <p class="body-text">
+          Verantwortliche Stelle im Sinne der Datenschutzgesetze ist:
+        </p>
+        <address class="not-italic body-text mt-3">
+          <p class="font-sans font-semibold text-secondary">{{ contact.companyName }}</p>
+          <p>{{ contact.owner }}</p>
+          <p>{{ contact.street }}</p>
+          <p>{{ contact.zip }} {{ contact.city }}</p>
+          <p class="mt-2">
+            E-Mail:
+            <a [href]="'mailto:' + contact.email" class="text-primary hover:text-primary-dark transition-colors duration-200">
+              {{ contact.email }}
+            </a>
+          </p>
+        </address>
+      </div>
+
+      <!-- 2. Erhebung personenbezogener Daten -->
+      <div>
+        <h2 class="heading-2 mb-4">2. Erhebung und Speicherung personenbezogener Daten</h2>
+        <h3 class="heading-3 mb-2">Server-Logfiles</h3>
+        <p class="body-text">
+          Der Provider dieser Website erhebt und speichert automatisch Informationen in sogenannten
+          Server-Logfiles, die Ihr Browser automatisch übermittelt. Dies sind:
+        </p>
+        <ul class="body-text mt-3 space-y-1 list-disc list-inside">
+          <li>Browsertyp und Browserversion</li>
+          <li>Verwendetes Betriebssystem</li>
+          <li>Referrer-URL</li>
+          <li>Hostname des zugreifenden Rechners</li>
+          <li>Uhrzeit der Serveranfrage</li>
+          <li>IP-Adresse</li>
+        </ul>
+        <p class="body-text mt-3">
+          Diese Daten sind nicht bestimmten Personen zuordenbar. Eine Zusammenführung dieser Daten mit anderen
+          Datenquellen wird nicht vorgenommen. Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f
+          DSGVO (berechtigtes Interesse am sicheren und störungsfreien Betrieb dieser Website).
+        </p>
+      </div>
+
+      <!-- 3. Kontaktformular -->
+      <div>
+        <h2 class="heading-2 mb-4">3. Kontaktformular</h2>
+        <p class="body-text">
+          Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem
+          Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der
+          Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht
+          ohne Ihre Einwilligung weiter.
+        </p>
+        <p class="body-text mt-3">
+          Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt somit ausschließlich auf
+          Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. b DSGVO). Sie können diese Einwilligung
+          jederzeit widerrufen. Hierzu reicht eine formlose Mitteilung per E-Mail an uns. Die Rechtmäßigkeit
+          der bis zum Widerruf erfolgten Datenverarbeitungsvorgänge bleibt vom Widerruf unberührt.
+        </p>
+        <p class="body-text mt-3">
+          Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung
+          auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung
+          entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen —
+          insbesondere Aufbewahrungsfristen — bleiben unberührt.
+        </p>
+      </div>
+
+      <!-- 4. Hosting -->
+      <div>
+        <h2 class="heading-2 mb-4">4. Hosting</h2>
+        <p class="body-text">
+          Diese Website wird bei [Hosting-Anbieter folgt] gehostet. Der Anbieter ist:
+        </p>
+        <p class="body-text mt-3">
+          [Anbieter-Adresse folgt]
+        </p>
+        <p class="body-text mt-3">
+          Details entnehmen Sie der Datenschutzerklärung des Anbieters. Die Nutzung des Hosters erfolgt zum
+          Zwecke der Vertragserfüllung gegenüber potenziellen und bestehenden Mandanten (Art. 6 Abs. 1 lit. b
+          DSGVO) und im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres
+          Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).
+        </p>
+        <p class="body-text mt-3">
+          Der Hoster wird Ihre Daten nur insoweit verarbeiten, wie dies zur Erfüllung seiner Leistungspflichten
+          erforderlich ist, und unsere Weisungen in Bezug auf diese Daten befolgen. Wir haben mit dem Hoster
+          einen Vertrag über Auftragsverarbeitung (AVV) abgeschlossen.
+        </p>
+      </div>
+
+      <!-- 5. Ihre Rechte -->
+      <div>
+        <h2 class="heading-2 mb-4">5. Ihre Rechte</h2>
+        <p class="body-text">
+          Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:
+        </p>
+        <ul class="body-text mt-3 space-y-2 list-disc list-inside">
+          <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
+          <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
+          <li>Recht auf Löschung (Art. 17 DSGVO)</li>
+          <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+          <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
+          <li>Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+        </ul>
+        <p class="body-text mt-3">
+          Sie haben zudem das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer
+          personenbezogenen Daten durch uns zu beschweren. Zuständige Aufsichtsbehörde ist der
+          Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg.
+        </p>
+      </div>
+
+      <!-- 6. SSL/TLS -->
+      <div>
+        <h2 class="heading-2 mb-4">6. SSL- bzw. TLS-Verschlüsselung</h2>
+        <p class="body-text">
+          Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine
+          SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die
+          Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in
+          Ihrer Browserzeile.
+        </p>
+        <p class="body-text mt-3">
+          Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln,
+          nicht von Dritten mitgelesen werden.
+        </p>
+      </div>
+
+      <!-- 7. Analyse-Tools -->
+      <div>
+        <h2 class="heading-2 mb-4">7. Analyse-Tools und Werbung</h2>
+        <p class="body-text">
+          Diese Website verwendet derzeit keine Analyse-Tools oder Tracking-Dienste Dritter.
+          [Platzhalter: Sofern künftig Analyse-Tools eingesetzt werden, wird diese Erklärung entsprechend
+          aktualisiert.]
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
