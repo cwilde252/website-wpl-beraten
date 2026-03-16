@@ -6,9 +6,15 @@ const PASSWORD = Deno.env.get("SITE_PASSWORD") ?? "fallback";
 export default async (request: Request, context: Context) => {
   const url = new URL(request.url);
   
-  // Cookie prüfen
   const cookie = request.headers.get("cookie") || "";
-  if (cookie.includes("auth=ok")) return context.next();
+  if (cookie.includes("auth=ok")) {
+    // SPA-Fallback selbst übernehmen
+    const response = await context.next();
+    if (response.status === 404) {
+      return context.rewrite("/index.html");
+    }
+    return response;
+  }
 
   // POST: Passwort-Check
   if (request.method === "POST") {
@@ -24,8 +30,5 @@ export default async (request: Request, context: Context) => {
     }
   }
 
-  // Login-Formular anzeigen
   return new Response(loginHtml, { headers: { "Content-Type": "text/html" } });
 };
-
-export const config = { path: "/*" };
