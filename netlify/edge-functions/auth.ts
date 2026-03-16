@@ -16,16 +16,9 @@ export default async (request: Request, context: Context) => {
   }
 
   if (request.method === "POST") {
-    let password: string | null = null;
-
-    try {
-      const body = await request.formData();
-      password = body.get("password") as string | null;
-    } catch {
-      const text = await request.text();
-      const params = new URLSearchParams(text);
-      password = params.get("password");
-    }
+    const text = await request.text();
+    const params = new URLSearchParams(text);
+    const password = params.get("password");
 
     if (password === PASSWORD) {
       return new Response(null, {
