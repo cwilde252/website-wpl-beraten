@@ -1,6 +1,6 @@
 [build]
   command = "ng build"
-  publish = "dist/narrenfreunde-bergfelden/browser"
+  publish = "dist/wpl-beraten/browser"
 
 [build.environment]
   NODE_VERSION = "22"
