@@ -8,7 +8,6 @@ export default async (request: Request, context: Context) => {
   
   const cookie = request.headers.get("cookie") || "";
   if (cookie.includes("auth=ok")) {
-    // SPA-Fallback selbst übernehmen
     const response = await context.next();
     if (response.status === 404) {
       return context.rewrite("/index.html");
@@ -16,10 +15,19 @@ export default async (request: Request, context: Context) => {
     return response;
   }
 
-  // POST: Passwort-Check
   if (request.method === "POST") {
-    const body = await request.formData();
-    if (body.get("password") === PASSWORD) {
+    let password: string | null = null;
+
+    try {
+      const body = await request.formData();
+      password = body.get("password") as string | null;
+    } catch {
+      const text = await request.text();
+      const params = new URLSearchParams(text);
+      password = params.get("password");
+    }
+
+    if (password === PASSWORD) {
       return new Response(null, {
         status: 302,
         headers: {
@@ -30,5 +38,8 @@ export default async (request: Request, context: Context) => {
     }
   }
 
+  // ← das fehlte
   return new Response(loginHtml, { headers: { "Content-Type": "text/html" } });
 };
+
+export const config = { path: "/*" };
