@@ -1,16 +1,10 @@
 [build]
   command = "ng build"
-  publish = "dist/wpl-beraten/browser"
+  publish = "dist/narrenfreunde-bergfelden/browser"
+
 [build.environment]
   NODE_VERSION = "22"
-[[plugins]]
-  package = "@netlify/angular-runtime"
-  
+
 [[edge_functions]]
   path = "/*"
   function = "auth"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
