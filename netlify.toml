@@ -1,9 +1,29 @@
 [build]
-  command = "ng build"
+  command = "npm run build"
   publish = "dist/wpl-beraten/browser"
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Die drei alten Leistungsrouten leiten dauerhaft auf das jeweilige Tab-Fragment.
+# force = true greift vor der statisch vorgerenderten Datei.
+[[redirects]]
+  from = "/wirtschaftspruefung"
+  to = "/leistungen#wirtschaftspruefung"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/beratung"
+  to = "/leistungen#beratung"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/steuern"
+  to = "/leistungen#steuern"
+  status = 301
+  force = true
 
 [[edge_functions]]
   path = "/*"

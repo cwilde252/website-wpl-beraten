@@ -1,60 +1,81 @@
-<footer class="bg-secondary text-white">
-  <div class="container-page py-16 md:py-24">
-
-    <!-- Main grid -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-
-      <!-- Col 1: Brand + address (5 cols) -->
+<footer class="bg-graphite-deep text-linen on-graphite py-16 md:py-20">
+  <div class="sheet">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
       <div class="md:col-span-5">
-        <p class="font-sans font-bold text-white text-lg leading-tight">Wirtschaftsprüfungsgesellschaft<br>Lefevre</p>
-        <p class="font-serif text-sm text-white/50 mt-2">Prüfen · Beraten · Steuern</p>
-        <address class="not-italic mt-6 font-serif text-sm text-white/50 leading-relaxed">
-          {{ contact.street }}<br>
-          {{ contact.zip }} {{ contact.city }}<br><br>
-          <a [href]="'tel:' + contact.phone" class="hover:text-white/80 transition-colors duration-300">{{ contact.phone }}</a><br>
-          <a [href]="'mailto:' + contact.email" class="hover:text-white/80 transition-colors duration-300">{{ contact.email }}</a>
-        </address>
+        <span class="double-rule mb-4" aria-hidden="true"></span>
+        <p class="type-headline">
+          <span class="display-line">Prüfen. Beraten.</span>
+          <span class="display-line">Steuern.</span>
+        </p>
+        <p class="type-body mt-6 text-sm">{{ contact.legalName }}</p>
       </div>
 
-      <!-- Col 2: Leistungen (3 cols, start at col 7) -->
-      <div class="md:col-span-3 md:col-start-7">
-        <p class="font-sans text-xs uppercase tracking-widest text-white/30 mb-4">Leistungen</p>
-        <ul class="space-y-3">
-          @for (link of links.leistungen; track link.path) {
-            <li>
-              <a [routerLink]="link.path" class="font-sans text-sm text-white/60 hover:text-white transition-colors duration-300">
-                {{ link.label }}
-              </a>
-            </li>
-          }
-        </ul>
-      </div>
+      <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6">
+        <nav aria-label="Leistungen">
+          <p class="type-label mb-4">Leistungen</p>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2">
+            @for (link of serviceLinks; track link.label) {
+              <li>
+                <a
+                  [routerLink]="link.path"
+                  [fragment]="link.fragment"
+                  class="type-body text-sm no-underline text-linen hover:text-white transition-colors duration-200"
+                  >{{ link.label }}</a
+                >
+              </li>
+            }
+          </ul>
+        </nav>
 
-      <!-- Col 3: Weiteres (3 cols) -->
-      <div class="md:col-span-3">
-        <p class="font-sans text-xs uppercase tracking-widest text-white/30 mb-4">Weiteres</p>
-        <ul class="space-y-3">
-          @for (link of links.weiteres; track link.path) {
-            <li>
-              <a [routerLink]="link.path" class="font-sans text-sm text-white/60 hover:text-white transition-colors duration-300">
-                {{ link.label }}
-              </a>
-            </li>
+        <div>
+          <p class="type-label mb-4">Kontakt</p>
+          @if (hasAddress) {
+            <address class="not-italic type-body text-sm">
+              <span class="block">{{ contact.street }}</span>
+              <span class="block">{{ contact.postalCode }} {{ contact.city }}</span>
+            </address>
+          } @else {
+            <p class="type-body text-sm">{{ contact.city }}</p>
           }
-        </ul>
+          <div class="flex flex-col gap-1 mt-3">
+            @if (contact.phone) {
+              <a
+                [href]="'tel:' + contact.phone"
+                class="type-body text-sm no-underline text-linen hover:text-white transition-colors duration-200"
+                >{{ contact.phoneDisplay }}</a
+              >
+            }
+            @if (contact.email) {
+              <a
+                [href]="'mailto:' + contact.email"
+                class="type-body text-sm no-underline text-linen hover:text-white transition-colors duration-200"
+                >{{ contact.email }}</a
+              >
+            } @else {
+              <a
+                routerLink="/kontakt"
+                class="type-body text-sm no-underline text-linen hover:text-white transition-colors duration-200"
+                >Zur Kontaktseite</a
+              >
+            }
+          </div>
+        </div>
+
+        <nav aria-label="Rechtliches">
+          <p class="type-label mb-4">Rechtliches</p>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2">
+            @for (link of legalLinks; track link.path) {
+              <li>
+                <a
+                  [routerLink]="link.path"
+                  class="type-body text-sm no-underline text-linen hover:text-white transition-colors duration-200"
+                  >{{ link.label }}</a
+                >
+              </li>
+            }
+          </ul>
+        </nav>
       </div>
     </div>
-
-    <!-- Copyright bar -->
-    <div class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-      <p class="font-sans text-xs text-white/30">
-        © {{ currentYear }} Wirtschaftsprüfungsgesellschaft Lefevre. Alle Rechte vorbehalten.
-      </p>
-      <div class="flex items-center gap-6">
-        <a routerLink="/impressum" class="font-sans text-xs text-white/30 hover:text-white/60 transition-colors duration-300">Impressum</a>
-        <a routerLink="/datenschutz" class="font-sans text-xs text-white/30 hover:text-white/60 transition-colors duration-300">Datenschutz</a>
-      </div>
-    </div>
-
   </div>
 </footer>

@@ -1,0 +1,20 @@
+<dl
+  class="grid grid-cols-1 gap-x-10"
+  [class.md:grid-cols-2]="columns() === 2"
+  [attr.aria-label]="ariaLabel() || null"
+>
+  @for (item of items(); track $index) {
+    <!-- dt und dd müssen direkte Kinder dieses div bleiben (HTML-Definitionslisten-Regel). -->
+    <div class="rule-row py-5 def-row">
+      @if (item.reference) {
+        <span class="def-ref type-figure text-sm accent-text" aria-hidden="true">{{
+          item.reference
+        }}</span>
+      }
+      <dt class="type-subhead">{{ item.term }}</dt>
+      @if (item.description) {
+        <dd class="type-body">{{ item.description }}</dd>
+      }
+    </div>
+  }
+</dl>

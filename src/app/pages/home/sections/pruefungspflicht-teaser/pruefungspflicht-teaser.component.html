@@ -1,0 +1,25 @@
+<app-section-wrapper theme="graphite" padding="large" accent="check">
+  <app-section-mark label="Prüfungspflicht" reference="§ 267" />
+  <div class="sheet-grid">
+    <div class="sheet-body--slim sheet-body">
+      <h2 class="type-headline mb-8">Müssen Sie prüfen lassen?</h2>
+      <p class="type-body mb-6">
+        Die Antwort hängt an drei Zahlen: Bilanzsumme, Umsatzerlöse und Arbeitnehmerzahl. Wer
+        mindestens zwei der Schwellen
+        <span class="type-figure">{{ format(small.balanceSheetTotal) }}&nbsp;&euro;</span>,
+        <span class="type-figure">{{ format(small.revenue) }}&nbsp;&euro;</span> und
+        <span class="type-figure">{{ small.employees }}</span> überschreitet, ist nicht mehr klein
+        im Sinne des § 267 Abs. 1 HGB — und damit prüfungspflichtig.
+      </p>
+      <p class="type-body mb-10">
+        Der Check rechnet das für Sie durch, inklusive der Regel zu zwei aufeinanderfolgenden
+        Abschlussstichtagen.
+      </p>
+      <app-rule-link
+        href="/leistungen"
+        fragment="pruefungspflicht"
+        label="Prüfungspflicht prüfen"
+      />
+    </div>
+  </div>
+</app-section-wrapper>

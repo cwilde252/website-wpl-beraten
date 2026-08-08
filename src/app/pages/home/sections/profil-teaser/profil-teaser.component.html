@@ -1,0 +1,15 @@
+<app-section-wrapper theme="paper" padding="large">
+  <app-section-mark label="Über mich" />
+  <div class="sheet-grid">
+    <div class="margin-note">
+      <p class="type-figure text-sm text-muted">{{ profile.role }}</p>
+    </div>
+    <div class="sheet-body--slim sheet-body">
+      <h2 class="type-headline mb-8">{{ profile.name }}</h2>
+      <p class="type-body mb-6">{{ profile.statement[0] }}</p>
+      <div class="mt-10">
+        <app-rule-link href="/ueber-mich" label="Werdegang ansehen" />
+      </div>
+    </div>
+  </div>
+</app-section-wrapper>

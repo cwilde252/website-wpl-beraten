@@ -1,0 +1,13 @@
+@if (level() === 1) {
+  <h1 [class]="size() === 'display' ? 'type-display' : 'type-headline'">
+    @for (line of content().lines; track $index) {
+      <span class="display-line">{{ line }}</span>
+    }
+  </h1>
+} @else {
+  <h2 [class]="size() === 'display' ? 'type-display' : 'type-headline'">
+    @for (line of content().lines; track $index) {
+      <span class="display-line">{{ line }}</span>
+    }
+  </h2>
+}

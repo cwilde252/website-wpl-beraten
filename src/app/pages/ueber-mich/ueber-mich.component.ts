@@ -1,22 +1,30 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { ContentService } from '../../core/services/content.service';
-import { CtaBannerComponent } from '../../shared/cta-banner/cta-banner.component';
-import { CtaBanner, PersonProfile } from '../../core/models/content.model';
+import { SeoService } from '../../core/services/seo.service';
+import { DisplayHeadlineComponent } from '../../shared/display-headline/display-headline.component';
+import { RuleLinkComponent } from '../../shared/rule-link/rule-link.component';
+import { SectionMarkComponent } from '../../shared/section-mark/section-mark.component';
+import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wrapper.component';
 
 @Component({
   selector: 'app-ueber-mich',
+  imports: [
+    SectionWrapperComponent,
+    SectionMarkComponent,
+    DisplayHeadlineComponent,
+    RuleLinkComponent,
+  ],
+  templateUrl: './ueber-mich.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CtaBannerComponent, NgOptimizedImage],
-  templateUrl: './ueber-mich.component.html'
 })
-export class UeberMichComponent {
-  protected readonly profile: PersonProfile = inject(ContentService).getProfile();
-  protected readonly cta: CtaBanner = {
-    headline: 'Lassen Sie uns ins Gespräch kommen.',
-    text: 'Persönliche Beratung auf Augenhöhe — ich freue mich auf Ihre Nachricht.',
-    ctaText: 'Kontakt aufnehmen',
-    ctaLink: '/kontakt',
-    variant: 'dark'
-  };
+export class UeberMichComponent implements OnInit {
+  private readonly seo = inject(SeoService);
+  private readonly content = inject(ContentService);
+
+  readonly headline = this.content.getUeberMichHeadline();
+  readonly profile = this.content.getProfile();
+
+  ngOnInit(): void {
+    this.seo.setMeta(this.content.getSeoMeta('ueber-mich'));
+  }
 }
