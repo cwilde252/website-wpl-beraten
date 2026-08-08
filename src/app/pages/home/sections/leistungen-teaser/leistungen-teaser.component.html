@@ -1,0 +1,29 @@
+<app-section-wrapper theme="shade" padding="large">
+  <app-section-mark label="Leistungen" />
+  <div class="sheet-grid">
+    <div class="sheet-body">
+      <h2 class="type-headline mb-10">Drei Perspektiven auf dasselbe Unternehmen.</h2>
+
+      <ul class="list-none m-0 p-0 grid grid-cols-1 md:grid-cols-3 gap-x-8">
+        @for (area of areas; track area.slug) {
+          <li class="rule-row py-6" [style.--accent-on-surface]="accentFor(area)">
+            <span class="type-figure text-sm accent-text" aria-hidden="true">{{ area.ref }}</span>
+            <h3 class="type-subhead mt-3 mb-3">
+              <a
+                routerLink="/leistungen"
+                [fragment]="area.slug"
+                class="no-underline text-graphite hover:text-muted transition-colors duration-200"
+                >{{ area.title }}</a
+              >
+            </h3>
+            <p class="type-body text-base">{{ area.claim }}</p>
+          </li>
+        }
+      </ul>
+
+      <div class="mt-12">
+        <app-rule-link href="/leistungen" label="Alle Leistungen" />
+      </div>
+    </div>
+  </div>
+</app-section-wrapper>

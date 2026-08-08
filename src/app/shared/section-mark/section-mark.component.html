@@ -1,0 +1,9 @@
+<div class="mb-8 md:mb-12 flex items-baseline gap-4">
+  @if (reference()) {
+    <span class="type-figure text-sm accent-text" aria-hidden="true">{{ reference() }}</span>
+  }
+  <div>
+    <span class="double-rule mb-3" aria-hidden="true"></span>
+    <p class="type-label">{{ label() }}</p>
+  </div>
+</div>

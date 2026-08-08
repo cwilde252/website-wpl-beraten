@@ -1,0 +1,280 @@
+<div class="sheet-grid">
+  <div class="margin-note">
+    <span class="double-rule mb-3" aria-hidden="true"></span>
+    <p class="type-label">Größenklassen</p>
+  </div>
+
+  <div class="sheet-body">
+    <p class="type-lead mb-10">{{ intro }}</p>
+
+    <!-- Steht bewusst über dem Formular: der volle Informationswert auch ohne JavaScript. -->
+    <div class="overflow-x-auto mb-14">
+      <table class="w-full border-collapse text-left">
+        <caption class="type-label text-left mb-4">
+          Schwellenwerte nach §§ 267, 267a HGB
+        </caption>
+        <thead>
+          <tr class="rule-row">
+            <th scope="col" class="type-label py-3 pr-6 font-medium">Größenklasse</th>
+            <th scope="col" class="type-label py-3 pr-6 font-medium text-right">Bilanzsumme</th>
+            <th scope="col" class="type-label py-3 pr-6 font-medium text-right">Umsatzerlöse</th>
+            <th scope="col" class="type-label py-3 font-medium text-right">Arbeitnehmer</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of thresholdRows; track row.norm) {
+            <tr class="rule-row">
+              <th scope="row" class="py-4 pr-6 type-body font-normal">
+                {{ row.sizeClass }}
+                <span class="block type-figure text-xs text-muted">{{ row.norm }}</span>
+              </th>
+              <td class="py-4 pr-6 type-figure text-right">
+                {{ formatEuro(row.balanceSheetTotal) }} &euro;
+              </td>
+              <td class="py-4 pr-6 type-figure text-right">{{ formatEuro(row.revenue) }} &euro;</td>
+              <td class="py-4 type-figure text-right">{{ row.employees }}</td>
+            </tr>
+          }
+          <tr class="rule-row">
+            <th scope="row" class="py-4 pr-6 type-body font-normal">
+              groß
+              <span class="block type-figure text-xs text-muted">§ 267 Abs. 3 Satz 1 HGB</span>
+            </th>
+            <td class="py-4 pr-6 type-body text-right" colspan="3">
+              mindestens zwei Merkmale der Klasse „mittelgroß“ überschritten
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="type-body mb-10">
+      Eine Gesellschaft gehört zu einer Klasse, wenn sie mindestens zwei der drei Merkmale
+      <strong>nicht</strong> überschreitet. Ein Wert genau auf der Schwelle überschreitet sie nicht.
+      Die Rechtsfolge tritt erst ein, wenn die Merkmale an zwei aufeinanderfolgenden
+      Abschlussstichtagen über- oder unterschritten werden (§ 267 Abs. 4 Satz 1 HGB).
+    </p>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="submit()"
+      novalidate
+      [attr.aria-labelledby]="headingId()"
+      aria-describedby="audit-check-disclaimer"
+    >
+      <fieldset class="border-0 p-0 m-0 mb-10">
+        <legend class="type-label mb-5">Laufendes Geschäftsjahr</legend>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label class="type-label block mb-2" for="current-balance">Bilanzsumme in Euro</label>
+            <input
+              id="current-balance"
+              class="field"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              formControlName="currentBalanceSheetTotal"
+              [attr.aria-invalid]="showError('currentBalanceSheetTotal') ? 'true' : null"
+              [attr.aria-describedby]="
+                showError('currentBalanceSheetTotal')
+                  ? 'current-balance-error current-balance-hint'
+                  : 'current-balance-hint'
+              "
+            />
+            <p id="current-balance-hint" class="type-figure text-xs text-muted mt-2">
+              Punkte als Tausendertrenner sind erlaubt.
+            </p>
+            @if (showError('currentBalanceSheetTotal')) {
+              <p id="current-balance-error" class="type-body text-sm mt-2 accent-text" role="alert">
+                Bitte eine Zahl ab 0 eintragen.
+              </p>
+            }
+          </div>
+
+          <div>
+            <label class="type-label block mb-2" for="current-revenue">Umsatzerlöse in Euro</label>
+            <input
+              id="current-revenue"
+              class="field"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              formControlName="currentRevenue"
+              [attr.aria-invalid]="showError('currentRevenue') ? 'true' : null"
+              [attr.aria-describedby]="showError('currentRevenue') ? 'current-revenue-error' : null"
+            />
+            @if (showError('currentRevenue')) {
+              <p id="current-revenue-error" class="type-body text-sm mt-2 accent-text" role="alert">
+                Bitte eine Zahl ab 0 eintragen.
+              </p>
+            }
+          </div>
+
+          <div>
+            <label class="type-label block mb-2" for="current-employees"
+              >Arbeitnehmer im Jahresdurchschnitt</label
+            >
+            <input
+              id="current-employees"
+              class="field"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              formControlName="currentEmployees"
+              [attr.aria-invalid]="showError('currentEmployees') ? 'true' : null"
+              [attr.aria-describedby]="
+                showError('currentEmployees') ? 'current-employees-error' : null
+              "
+            />
+            @if (showError('currentEmployees')) {
+              <p
+                id="current-employees-error"
+                class="type-body text-sm mt-2 accent-text"
+                role="alert"
+              >
+                Bitte eine Zahl ab 0 eintragen.
+              </p>
+            }
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="border-0 p-0 m-0 mb-10">
+        <legend class="type-label mb-2">Vorangegangenes Geschäftsjahr</legend>
+        <p class="type-body text-sm text-muted mb-5">
+          Optional, aber nötig für eine belastbare Aussage — die Rechtsfolge hängt an zwei
+          aufeinanderfolgenden Stichtagen. Entweder alle drei Werte oder keinen.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label class="type-label block mb-2" for="previous-balance">Bilanzsumme in Euro</label>
+            <input
+              id="previous-balance"
+              class="field"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              formControlName="previousBalanceSheetTotal"
+            />
+          </div>
+          <div>
+            <label class="type-label block mb-2" for="previous-revenue">Umsatzerlöse in Euro</label>
+            <input
+              id="previous-revenue"
+              class="field"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              formControlName="previousRevenue"
+            />
+          </div>
+          <div>
+            <label class="type-label block mb-2" for="previous-employees"
+              >Arbeitnehmer im Jahresdurchschnitt</label
+            >
+            <input
+              id="previous-employees"
+              class="field"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              formControlName="previousEmployees"
+            />
+          </div>
+        </div>
+        @if (submitAttempted() && form.hasError('previousYearIncomplete')) {
+          <p class="type-body text-sm mt-3 accent-text" role="alert">
+            Bitte alle drei Werte des Vorjahres eintragen oder alle drei leer lassen.
+          </p>
+        }
+      </fieldset>
+
+      <fieldset class="border-0 p-0 m-0 mb-10">
+        <legend class="type-label mb-5">Besonderheiten</legend>
+        <div class="flex flex-col gap-4">
+          <label class="type-body flex items-start gap-3" for="newly-formed">
+            <input id="newly-formed" type="checkbox" formControlName="newlyFormed" class="mt-1.5" />
+            <span>Neugründung oder Umwandlung (§ 267 Abs. 4 Satz 2 HGB)</span>
+          </label>
+          <label class="type-body flex items-start gap-3" for="capital-market">
+            <input
+              id="capital-market"
+              type="checkbox"
+              formControlName="capitalMarketOriented"
+              class="mt-1.5"
+            />
+            <span>Kapitalmarktorientiert im Sinne des § 264d HGB</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="button-solid">Größenklasse bestimmen</button>
+    </form>
+
+    <div role="status" aria-live="polite" aria-atomic="true">
+      @if (result(); as res) {
+        <div class="mt-12 pt-8 rule-row">
+          <h3 #resultHeading tabindex="-1" class="type-headline mb-5">{{ verdict(res) }}</h3>
+
+          @if (!res.indeterminate) {
+            <p class="type-lead mb-6">
+              Einordnung: <span class="type-figure">{{ sizeClassName(res) }}</span>
+            </p>
+          }
+
+          @for (reason of res.reasons; track $index) {
+            <p class="type-body mb-4">{{ reason }}</p>
+          }
+
+          <div class="overflow-x-auto mt-10">
+            <table class="w-full border-collapse text-left">
+              <caption class="type-label text-left mb-4">
+                Merkmalsprüfung gegen
+                {{
+                  decisiveNorm(res)
+                }}
+              </caption>
+              <thead>
+                <tr class="rule-row">
+                  <th scope="col" class="type-label py-3 pr-6 font-medium">Merkmal</th>
+                  <th scope="col" class="type-label py-3 pr-6 font-medium text-right">Ihr Wert</th>
+                  <th scope="col" class="type-label py-3 pr-6 font-medium text-right">Schwelle</th>
+                  <th scope="col" class="type-label py-3 font-medium">Ergebnis</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (criterion of decisiveCriteria(res); track criterion.key) {
+                  <tr class="rule-row" [class.criterion-exceeded]="criterion.exceeded">
+                    <th scope="row" class="py-4 pr-6 type-body font-normal">
+                      {{ criterion.label }}
+                    </th>
+                    <td class="py-4 pr-6 type-figure text-right">
+                      {{ formatEuro(criterion.value) }}
+                    </td>
+                    <td class="py-4 pr-6 type-figure text-right">
+                      {{ formatEuro(criterion.threshold) }}
+                    </td>
+                    <td class="py-4 type-body">
+                      {{ criterion.exceeded ? 'überschritten' : 'nicht überschritten' }}
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      }
+    </div>
+
+    <noscript>
+      <p class="type-body mt-8">
+        Der Check benötigt JavaScript. Die Schwellenwerte finden Sie in der Tabelle oben.
+      </p>
+    </noscript>
+
+    <p id="audit-check-disclaimer" class="type-body text-sm text-muted mt-12 pt-8 rule-row">
+      {{ disclaimer }}
+      <span class="block mt-3 type-figure text-xs">Stand der Schwellenwerte: {{ validFrom }}.</span>
+    </p>
+  </div>
+</div>

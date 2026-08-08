@@ -1,19 +1,19 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NavigationService } from '../../core/services/navigation.service';
 import { ContentService } from '../../core/services/content.service';
+import { NavigationService } from '../../core/services/navigation.service';
 
 @Component({
   selector: 'app-footer',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink],
-  templateUrl: './footer.component.html'
+  templateUrl: './footer.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
-  private readonly navService = inject(NavigationService);
-  private readonly contentService = inject(ContentService);
+  private readonly navigation = inject(NavigationService);
 
-  readonly links = this.navService.getFooterLinks();
-  readonly contact = this.contentService.getContactInfo();
-  readonly currentYear = new Date().getFullYear();
+  readonly contact = inject(ContentService).getContactInfo();
+  readonly serviceLinks = this.navigation.getServiceLinks();
+  readonly legalLinks = this.navigation.getLegalLinks();
+  readonly hasAddress = !!(this.contact.street && this.contact.postalCode);
 }

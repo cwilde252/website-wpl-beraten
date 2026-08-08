@@ -1,38 +1,29 @@
 import { Injectable } from '@angular/core';
-import { NavItem } from '../models/navigation.model';
+import { NavItem } from '../models/nav-item.model';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
-
   getMainNavigation(): NavItem[] {
     return [
-      {
-        label: 'Leistungen',
-        path: '/wirtschaftspruefung',
-        children: [
-          { label: 'Wirtschaftsprüfung', path: '/wirtschaftspruefung' },
-          { label: 'Beratung', path: '/beratung' },
-          { label: 'Steuern', path: '/steuern' }
-        ]
-      },
+      { label: 'Leistungen', path: '/leistungen' },
       { label: 'Über mich', path: '/ueber-mich' },
-      { label: 'Kontakt', path: '/kontakt' }
+      { label: 'Kontakt', path: '/kontakt' },
     ];
   }
 
-  getFooterLinks(): { leistungen: NavItem[]; weiteres: NavItem[] } {
-    return {
-      leistungen: [
-        { label: 'Wirtschaftsprüfung', path: '/wirtschaftspruefung' },
-        { label: 'Beratung', path: '/beratung' },
-        { label: 'Steuern', path: '/steuern' }
-      ],
-      weiteres: [
-        { label: 'Über mich', path: '/ueber-mich' },
-        { label: 'Kontakt', path: '/kontakt' },
-        { label: 'Impressum', path: '/impressum' },
-        { label: 'Datenschutz', path: '/datenschutz' }
-      ]
-    };
+  getServiceLinks(): NavItem[] {
+    return [
+      { label: 'Wirtschaftsprüfung', path: '/leistungen', fragment: 'wirtschaftspruefung' },
+      { label: 'Beratung', path: '/leistungen', fragment: 'beratung' },
+      { label: 'Steuern', path: '/leistungen', fragment: 'steuern' },
+      { label: 'Prüfungspflicht-Check', path: '/leistungen', fragment: 'pruefungspflicht' },
+    ];
+  }
+
+  getLegalLinks(): NavItem[] {
+    return [
+      { label: 'Impressum', path: '/impressum' },
+      { label: 'Datenschutz', path: '/datenschutz' },
+    ];
   }
 }

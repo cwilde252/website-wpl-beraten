@@ -1,0 +1,98 @@
+.selector-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid color-mix(in oklab, var(--color-graphite) 20%, transparent);
+}
+
+.selector-tab {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem 1.25rem 1.25rem;
+  text-align: left;
+  background: transparent;
+  color: var(--color-graphite);
+  border: 0;
+  border-inline-end: 1px solid color-mix(in oklab, var(--color-graphite) 20%, transparent);
+  cursor: pointer;
+  min-height: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: background-color 160ms var(--ease-precise);
+}
+
+.selector-tab:last-child {
+  border-inline-end: 0;
+}
+
+/* Die aktive Markierung ist eine 2-px-Linie in der Bereichsfarbe — nie eine Fläche. */
+.selector-tab::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  height: 2px;
+  background: var(--accent-on-surface, var(--color-graphite));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition:
+    transform 240ms var(--ease-precise),
+    opacity 160ms var(--ease-precise);
+  pointer-events: none;
+}
+
+.selector-tab:hover:not(.selected)::after {
+  transform: scaleX(1);
+  opacity: 0.5;
+}
+
+.selector-tab.selected::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.selector-tab:hover:not(.selected) {
+  background: color-mix(in oklab, var(--color-graphite) 6%, transparent);
+}
+
+.selector-tab.selected {
+  background: var(--color-linen-bright);
+}
+
+.selector-tab:focus-visible {
+  outline: 2px solid var(--accent-on-surface, var(--color-graphite));
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.tab-panel {
+  padding-block-start: 3rem;
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tab-panel {
+    animation: panel-in 160ms var(--ease-precise) both;
+  }
+}
+
+@media (max-width: 640px) {
+  .selector-tab {
+    padding: 1rem 0.75rem 0.875rem;
+    min-height: 5.5rem;
+  }
+
+  .tab-panel {
+    padding-block-start: 2rem;
+  }
+}

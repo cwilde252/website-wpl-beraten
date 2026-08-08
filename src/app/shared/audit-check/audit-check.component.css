@@ -1,0 +1,13 @@
+/* Farbe ist hier nie alleiniger Bedeutungsträger: die Zeile trägt zusätzlich das
+   Wort „überschritten“, die Kante markiert sie nur redundant (WCAG 1.4.1). */
+.criterion-exceeded th {
+  border-inline-start: 2px solid var(--accent-on-surface, var(--color-graphite));
+  padding-inline-start: 0.75rem;
+}
+
+input[type='checkbox'] {
+  accent-color: var(--color-graphite);
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}

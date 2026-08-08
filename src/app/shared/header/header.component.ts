@@ -1,51 +1,62 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, afterNextRender, inject, signal, computed } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  signal,
+} from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { filter, map } from 'rxjs';
+import { ContentService } from '../../core/services/content.service';
 import { NavigationService } from '../../core/services/navigation.service';
-import { NavItem } from '../../core/models/navigation.model';
 
 @Component({
   selector: 'app-header',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  private readonly navService = inject(NavigationService);
+  private readonly doc = inject(DOCUMENT);
+  private readonly router = inject(Router);
 
-  readonly navItems: NavItem[] = this.navService.getMainNavigation();
+  readonly navItems = inject(NavigationService).getMainNavigation();
+  readonly contact = inject(ContentService).getContactInfo();
+
   readonly mobileMenuOpen = signal(false);
-  readonly dropdownOpen = signal(false);
   readonly scrolled = signal(false);
 
-  readonly headerClass = computed(() =>
-    `fixed top-0 left-0 right-0 z-50 bg-secondary transition-all duration-300 ${this.scrolled() ? 'shadow-lg' : ''}`
+  private readonly currentUrl = toSignal(
+    this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+      map((event) => event.urlAfterRedirects),
+    ),
+    { initialValue: this.router.url },
   );
 
-  private readonly onScroll = () => {
-    this.scrolled.set(window.scrollY > 20);
-  };
+  readonly onDarkPage = computed(() => this.currentUrl() === '/');
 
   constructor() {
     const destroyRef = inject(DestroyRef);
     afterNextRender(() => {
-      window.addEventListener('scroll', this.onScroll, { passive: true });
-      destroyRef.onDestroy(() => window.removeEventListener('scroll', this.onScroll));
+      const view = this.doc.defaultView;
+      if (!view) return;
+      const onScroll = () => this.scrolled.set(view.scrollY > 40);
+      onScroll();
+      view.addEventListener('scroll', onScroll, { passive: true });
+      destroyRef.onDestroy(() => view.removeEventListener('scroll', onScroll));
     });
   }
 
   toggleMobileMenu(): void {
-    this.mobileMenuOpen.update(v => !v);
-    if (!this.mobileMenuOpen()) {
-      this.dropdownOpen.set(false);
-    }
-  }
-
-  toggleDropdown(): void {
-    this.dropdownOpen.update(v => !v);
+    this.mobileMenuOpen.update((open) => !open);
   }
 
   closeMobileMenu(): void {
     this.mobileMenuOpen.set(false);
-    this.dropdownOpen.set(false);
   }
 }

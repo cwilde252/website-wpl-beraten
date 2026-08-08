@@ -1,0 +1,49 @@
+<app-section-indicator [sections]="sections" ariaLabel="Abschnitte der Leistungsseite" />
+
+<section
+  id="leistungen-start"
+  class="bg-graphite text-linen on-graphite py-20 md:py-28"
+  aria-label="Leistungen"
+>
+  <div class="sheet">
+    <div class="sheet-grid">
+      <div class="margin-note">
+        <span class="double-rule mb-3" aria-hidden="true"></span>
+        <p class="type-label">Leistungen</p>
+      </div>
+      <div class="sheet-body">
+        <app-display-headline [content]="headline" [level]="1" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-section-wrapper theme="paper" padding="large">
+  <div id="bereiche">
+    <app-service-tabs
+      [areas]="areas"
+      [initialSlug]="initialSlug()"
+      (activated)="onAreaActivated($event)"
+    />
+  </div>
+</app-section-wrapper>
+
+<app-section-wrapper theme="shade" padding="large" accent="check">
+  <div id="pruefungspflicht">
+    <h2 id="pruefungspflicht-check" class="type-headline mb-10">Prüfungspflicht-Check</h2>
+    <app-audit-check headingId="pruefungspflicht-check" />
+  </div>
+</app-section-wrapper>
+
+<app-section-wrapper theme="paper" padding="large">
+  <div id="fragen">
+    <app-section-mark label="Häufige Fragen" />
+    <div class="sheet-grid">
+      <div class="sheet-body--slim sheet-body">
+        <app-faq-accordion [items]="faq" exclusiveGroup="wpl-faq" />
+        <p class="type-body mt-12 mb-6">Ihre Frage ist nicht dabei? Fragen Sie mich direkt.</p>
+        <app-rule-link href="/kontakt" label="Frage stellen" />
+      </div>
+    </div>
+  </div>
+</app-section-wrapper>

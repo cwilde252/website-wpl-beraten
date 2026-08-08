@@ -1,0 +1,21 @@
+<div>
+  @for (item of items(); track item.question) {
+    <details class="group rule-row" [attr.name]="exclusiveGroup()">
+      <summary class="flex items-baseline justify-between gap-6 py-5">
+        <h3 class="type-subhead">{{ item.question }}</h3>
+        <span
+          class="type-figure text-xl leading-none shrink-0 accent-text group-open:hidden"
+          aria-hidden="true"
+          >+</span
+        >
+        <span
+          class="type-figure text-xl leading-none shrink-0 accent-text hidden group-open:inline"
+          aria-hidden="true"
+          >&minus;</span
+        >
+      </summary>
+      <p class="type-body pb-6">{{ item.answer }}</p>
+    </details>
+  }
+  <hr class="rule-row border-0" aria-hidden="true" />
+</div>

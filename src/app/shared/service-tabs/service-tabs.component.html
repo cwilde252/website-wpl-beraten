@@ -1,0 +1,75 @@
+<div
+  class="selector-strip"
+  role="tablist"
+  aria-label="Leistungsbereiche"
+  aria-orientation="horizontal"
+>
+  @for (area of areas(); track area.slug; let i = $index) {
+    <button
+      #tabButton
+      type="button"
+      role="tab"
+      class="selector-tab"
+      [id]="'tab-' + area.slug"
+      [attr.aria-selected]="activeSlug() === area.slug"
+      [attr.aria-controls]="'panel-' + area.slug"
+      [tabindex]="activeSlug() === area.slug ? 0 : -1"
+      [class.selected]="activeSlug() === area.slug"
+      [style.--accent-on-surface]="accentFor(area)"
+      (click)="select(area.slug)"
+      (keydown)="onKeydown($event, i)"
+    >
+      <span class="type-figure text-sm accent-text" aria-hidden="true">{{ area.ref }}</span>
+      <h2 class="type-subhead mt-2">{{ area.title }}</h2>
+    </button>
+  }
+</div>
+
+@for (area of [activeArea()]; track area?.slug) {
+  @if (area) {
+    <div
+      role="tabpanel"
+      class="tab-panel"
+      [id]="'panel-' + area.slug"
+      [attr.aria-labelledby]="'tab-' + area.slug"
+      [style.--accent-on-surface]="accentColor()"
+    >
+      <div class="sheet-grid">
+        <div class="margin-note">
+          <span class="double-rule mb-3" aria-hidden="true"></span>
+          <p class="type-label">{{ area.title }}</p>
+        </div>
+
+        <div class="sheet-body">
+          <p class="type-lead mb-8">{{ area.claim }}</p>
+          <p class="type-body mb-12">{{ area.intro }}</p>
+
+          @for (block of area.blocks; track block.title) {
+            <div class="rule-row pt-8 mb-8 last:mb-0">
+              <h3 class="type-headline mb-5">{{ block.title }}</h3>
+              @for (paragraph of block.paragraphs; track $index) {
+                <p class="type-body mb-4 last:mb-0">{{ paragraph }}</p>
+              }
+              @if (block.points?.length) {
+                <ul class="list-none m-0 p-0 mt-6 grid grid-cols-1 md:grid-cols-2 gap-x-10">
+                  @for (point of block.points; track point) {
+                    <li class="rule-row py-3 type-body flex gap-3">
+                      <span class="type-figure accent-text shrink-0" aria-hidden="true"
+                        >&mdash;</span
+                      >
+                      <span>{{ point }}</span>
+                    </li>
+                  }
+                </ul>
+              }
+            </div>
+          }
+
+          <div class="mt-12">
+            <app-rule-link href="/kontakt" [label]="area.ctaLabel" />
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+}

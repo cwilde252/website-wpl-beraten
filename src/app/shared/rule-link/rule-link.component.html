@@ -1,0 +1,11 @@
+@if (external()) {
+  <a [href]="href()" class="rule-link" [attr.aria-label]="ariaLabel() || null">{{ label() }}</a>
+} @else {
+  <a
+    [routerLink]="href()"
+    [fragment]="fragment()"
+    class="rule-link"
+    [attr.aria-label]="ariaLabel() || null"
+    >{{ label() }}</a
+  >
+}
