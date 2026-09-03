@@ -21,7 +21,6 @@
     >
       <span class="selector-dot" aria-hidden="true"></span>
       <span class="selector-title type-subhead">{{ area.title }}</span>
-      <span class="selector-claim">{{ area.claim }}</span>
     </button>
   }
 </div>
@@ -36,10 +35,11 @@
       [attr.aria-labelledby]="'tab-' + area.slug"
     >
       <!-- Die h2 schließt die Überschriftenkette: Ohne sie folgte auf die h1
-           der Seite direkt die h3 eines Blocktitels. Der Claim steht dagegen
-           nur auf dem Reiter — ihn hier zu wiederholen wäre derselbe Anspruch
-           an zwei Orten (PRODUCT.md, Voice-Regel 2). -->
-      <h2 class="type-headline mb-5">{{ area.title }}</h2>
+           der Seite direkt die h3 eines Blocktitels. Sie trägt den Claim und
+           nicht den Bereichsnamen — der steht bereits auf dem Reiter direkt
+           darüber, und zweimal dasselbe Wort untereinander ist keine
+           Hierarchie, sondern ein Echo. -->
+      <h2 class="type-headline mb-6 max-w-4xl">{{ area.claim }}</h2>
       <p class="type-lead mb-12">{{ area.intro }}</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">

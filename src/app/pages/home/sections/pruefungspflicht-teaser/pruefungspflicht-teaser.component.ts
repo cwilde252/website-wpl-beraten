@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HGB_THRESHOLDS } from '../../../../core/domain/hgb-thresholds';
 import { CtaLinkComponent } from '../../../../shared/cta-link/cta-link.component';
-import { SectionMarkComponent } from '../../../../shared/section-mark/section-mark.component';
 import { SectionWrapperComponent } from '../../../../shared/section-wrapper/section-wrapper.component';
 
 @Component({
   selector: 'app-pruefungspflicht-teaser',
-  imports: [SectionWrapperComponent, SectionMarkComponent, CtaLinkComponent],
+  imports: [SectionWrapperComponent, CtaLinkComponent],
   templateUrl: './pruefungspflicht-teaser.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { id: 'pruefungspflicht' },

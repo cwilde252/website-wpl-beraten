@@ -27,7 +27,8 @@
      in den vier Bereichsfarben als Flächen, in Fraunces und in der Stimme.
      Vor einer beinahe neutralen Fläche werden die Farbflächen zu Ereignissen,
      statt im Beige mitzuschwimmen. */
-  --color-ink: #241c17; /* Text und dunkle Fläche — 15,9:1 auf Creme */
+  --color-ink: #241c17; /* Text und dunkle Fläche — 16,1:1 auf Papier */
+  --color-ink-lift: #3a2c22; /* aufgehellte Tinte, nur als Hover gefüllter Flächen */
   --color-ink-soft: #57493f; /* Sekundärtext auf hell — 8,2:1 auf Creme */
   --color-paper: #fbfaf8; /* primäre helle Fläche */
   --color-mist: #f2f0eb; /* zweite helle Fläche für den Flächenwechsel */
@@ -309,35 +310,6 @@
   letter-spacing: -0.01em;
 }
 
-/* ---- Pill: ersetzt das Versal-Label ----------------------------------
-   Kleines Etikett in der Bereichsfarbe. Gemischtschreibung, nicht versal —
-   ein Etikett soll man lesen, nicht entziffern. */
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4375rem;
-  font-family: var(--font-sans);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  line-height: 1;
-  padding: 0.4375rem 0.75rem;
-  border-radius: var(--radius-pill);
-  background: var(--area-tint);
-  color: var(--area-deep);
-}
-.on-ink .pill {
-  background: color-mix(in oklab, var(--color-paper) 14%, transparent);
-  color: var(--area-text);
-}
-.pill::before {
-  content: '';
-  width: 0.4375rem;
-  height: 0.4375rem;
-  border-radius: 50%;
-  background: currentColor;
-  flex: none;
-}
-
 /* ---- Sprechblase: die Formsignatur -----------------------------------
    Drei weiche Ecken, eine scharfe. `--bubble-corner` bestimmt, welche —
    Standard ist unten links, gespiegelte Blasen setzen sie um. */
@@ -419,6 +391,11 @@
 }
 .btn-primary:hover {
   background: var(--area-deep);
+}
+/* In der Kopfleiste bleibt die Pille tintenfarben: Ihr Hover dürfte nicht in
+   die Bereichsfarbe wechseln, weil die Leiste selbst schon orange ist. */
+.site-header .btn-primary:hover {
+  background: var(--color-ink-lift);
 }
 .on-ink .btn-primary {
   background: var(--color-paper);

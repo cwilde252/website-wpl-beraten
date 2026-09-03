@@ -48,6 +48,7 @@ describe('Design-System: Farbe', () => {
       ['gedämpfte Tinte auf Nebel', 'ink-soft', 'mist'],
       ['gedämpfte Tinte auf Stein', 'ink-soft', 'stone'],
       ['Papier auf Tinte', 'paper', 'ink'],
+      ['Papier auf aufgehellter Tinte', 'paper', 'ink-lift'],
       ['gedämpftes Papier auf Tinte', 'paper-soft', 'ink'],
     ];
 

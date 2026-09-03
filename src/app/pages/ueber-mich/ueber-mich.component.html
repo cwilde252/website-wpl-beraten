@@ -18,7 +18,6 @@
     </div>
 
     <div class="lg:col-span-7">
-      <app-section-mark label="Haltung" />
       @for (paragraph of profile.statement; track $index) {
         <p class="type-lead mb-6 last:mb-0 max-w-none">{{ paragraph }}</p>
       }
@@ -27,7 +26,6 @@
 </app-section-wrapper>
 
 <app-section-wrapper theme="sand" padding="large">
-  <app-section-mark label="Werdegang" />
   <h2 class="type-headline mb-10">Woher ich komme.</h2>
 
   <ol class="career list-none m-0 p-0">

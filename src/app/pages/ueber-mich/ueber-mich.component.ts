@@ -5,14 +5,12 @@ import { CtaLinkComponent } from '../../shared/cta-link/cta-link.component';
 import { DisplayHeadlineComponent } from '../../shared/display-headline/display-headline.component';
 import { PortraitComponent } from '../../shared/portrait/portrait.component';
 import { RevealDirective } from '../../shared/reveal.directive';
-import { SectionMarkComponent } from '../../shared/section-mark/section-mark.component';
 import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wrapper.component';
 
 @Component({
   selector: 'app-ueber-mich',
   imports: [
     SectionWrapperComponent,
-    SectionMarkComponent,
     DisplayHeadlineComponent,
     CtaLinkComponent,
     PortraitComponent,

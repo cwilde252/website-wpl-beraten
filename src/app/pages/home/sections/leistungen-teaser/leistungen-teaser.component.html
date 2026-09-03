@@ -1,6 +1,4 @@
 <app-section-wrapper theme="sand" padding="large">
-  <app-section-mark label="Leistungen" />
-
   <h2 class="type-headline mb-8 max-w-3xl">Drei Blickwinkel auf dasselbe Unternehmen.</h2>
 
   <ul class="list-none m-0 p-0 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
@@ -11,9 +9,8 @@
           [fragment]="area.slug"
           class="card card-interactive area-card no-underline text-ink h-full flex flex-col p-7 md:p-8"
         >
-          <span class="pill self-start mb-6">{{ area.title }}</span>
-          <p class="type-subhead mb-4">{{ area.claim }}</p>
-          <p class="type-body text-ink-soft text-base grow">{{ area.intro }}</p>
+          <h3 class="type-subhead mb-3">{{ area.title }}</h3>
+          <p class="type-body grow">{{ area.claim }}</p>
           <span
             class="area-text type-body text-base font-medium mt-6 inline-flex items-center gap-2"
           >

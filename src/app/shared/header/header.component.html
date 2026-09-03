@@ -1,8 +1,4 @@
-<header
-  class="site-header sticky top-0 z-40"
-  [class.is-solid]="scrolled() || mobileMenuOpen()"
-  [class.on-ink]="!scrolled() && !mobileMenuOpen()"
->
+<header class="site-header z-40" [class.is-solid]="scrolled() || mobileMenuOpen()">
   <div class="sheet flex items-center justify-between py-4 md:py-5">
     <a
       routerLink="/"
@@ -10,7 +6,7 @@
       (click)="closeMobileMenu()"
       aria-label="Startseite"
     >
-      <app-signet [size]="34" />
+      <app-signet [size]="34" [mono]="true" />
       <span class="leading-tight">
         <span class="block type-subhead text-lg">{{ contact.personName }}</span>
         <span class="header-role block text-sm">{{ contact.role }}</span>
@@ -26,7 +22,7 @@
           >{{ item.label }}</a
         >
       }
-      <app-cta-link href="/kontakt" label="Erstgespräch" variant="ghost" class="ml-3" />
+      <app-cta-link href="/kontakt" label="Erstgespräch" variant="primary" class="ml-3" />
     </nav>
 
     <button

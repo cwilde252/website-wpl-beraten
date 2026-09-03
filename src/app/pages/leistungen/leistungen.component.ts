@@ -17,7 +17,6 @@ import { FaqAccordionComponent } from '../../shared/faq-accordion/faq-accordion.
 import { CtaLinkComponent } from '../../shared/cta-link/cta-link.component';
 import { FristenTimelineComponent } from '../../shared/fristen-timeline/fristen-timeline.component';
 import { SectionIndicatorComponent } from '../../shared/section-indicator/section-indicator.component';
-import { SectionMarkComponent } from '../../shared/section-mark/section-mark.component';
 import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wrapper.component';
 import { ServiceTabsComponent } from '../../shared/service-tabs/service-tabs.component';
 
@@ -34,7 +33,6 @@ const LEISTUNGEN_SECTIONS: SectionRef[] = [
   imports: [
     SectionIndicatorComponent,
     SectionWrapperComponent,
-    SectionMarkComponent,
     DisplayHeadlineComponent,
     ServiceTabsComponent,
     AuditCheckComponent,

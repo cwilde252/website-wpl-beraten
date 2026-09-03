@@ -71,20 +71,6 @@
   box-shadow: 0 0 0 4px color-mix(in oklab, currentColor 25%, transparent);
 }
 
-.selector-claim {
-  font-size: var(--text-sm);
-  line-height: 1.45;
-  /* Gedämpft über eine eigene Farbe, nicht über Deckkraft: `opacity` senkt den
-     Kontrast gegen den tatsächlichen Hintergrund und zieht ihn auf der
-     gefüllten Kachel unter 4,5:1. Auf der gewählten Kachel steht der Text
-     deshalb in voller Deckkraft der Flächen-Textfarbe. */
-  color: var(--color-ink-soft);
-}
-
-.selector-tab.selected .selector-claim {
-  color: currentColor;
-}
-
 .tab-panel {
   padding-block-start: 3rem;
 }

@@ -74,10 +74,10 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
         stroke-width="2.5"
         stroke-linejoin="round"
       />
-      <circle class="dot" cx="11" cy="16.5" r="2.6" fill="#D4780A" />
-      <circle class="dot" cx="17.7" cy="16.5" r="2.6" fill="#2E7DB8" />
-      <circle class="dot" cx="24.4" cy="16.5" r="2.6" fill="#2D8B57" />
-      <circle class="dot" cx="31.1" cy="16.5" r="2.6" fill="#D4A917" />
+      <circle class="dot" cx="11" cy="16.5" r="2.6" [attr.fill]="dotFill('#D4780A')" />
+      <circle class="dot" cx="17.7" cy="16.5" r="2.6" [attr.fill]="dotFill('#2E7DB8')" />
+      <circle class="dot" cx="24.4" cy="16.5" r="2.6" [attr.fill]="dotFill('#2D8B57')" />
+      <circle class="dot" cx="31.1" cy="16.5" r="2.6" [attr.fill]="dotFill('#D4A917')" />
     </svg>
   `,
 })
@@ -90,6 +90,20 @@ export class SignetComponent {
    * Signet die Information allein trägt.
    */
   readonly label = input('');
-  /** Farbe der Blasenkontur — auf dunklem Grund Creme, sonst Tinte. */
+  /** Farbe der Blasenkontur — auf dunklem Grund Papier, sonst Tinte. */
   readonly outline = input('currentColor');
+
+  /**
+   * Einfarbige Fassung für farbige Untergründe.
+   *
+   * Auf der orangefarbenen Kopfleiste verschwindet der orange Punkt der
+   * Vierfarbfassung schlicht — gleiche Farbe auf gleicher Farbe. Wie jedes
+   * Logo hat diese Marke deshalb eine Mono-Variante; sie übernimmt die
+   * Textfarbe der Fläche, auf der sie steht.
+   */
+  readonly mono = input(false);
+
+  dotFill(color: string): string {
+    return this.mono() ? 'currentColor' : color;
+  }
 }

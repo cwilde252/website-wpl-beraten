@@ -4,6 +4,7 @@ description: Ein Gesprächssystem für eine selbständige Wirtschaftsprüferin i
 colors:
   ink: "#241C17"
   ink-soft: "#57493F"
+  ink-lift: "#3A2C22"
   paper: "#FBFAF8"
   mist: "#F2F0EB"
   stone: "#ECE9E3"
@@ -144,6 +145,7 @@ Ampel-Regel (siehe 2.4).
 |---|---|---|
 | `--color-ink` | `#241C17` | Fließtext und dunkle Fläche |
 | `--color-ink-soft` | `#57493F` | Sekundärtext auf hell |
+| `--color-ink-lift` | `#3A2C22` | aufgehellte Tinte, nur als Hover gefüllter Flächen |
 | `--color-paper` | `#FBFAF8` | primäre helle Fläche |
 | `--color-mist` | `#F2F0EB` | zweite helle Fläche für den Flächenwechsel |
 | `--color-stone` | `#ECE9E3` | dritte Stufe, eingebettete Panels |
@@ -187,15 +189,28 @@ Vorgängersystem, und sie ist der Grund, warum es drei Tokens je Farbe gibt.
 entscheidet selbst über Kontrast; `.on-ink` dreht die Zuordnung für dunkle Flächen um.
 
 **Die Bereichsfarben-Regel.** Orange gehört der Wirtschaftsprüfung, Blau der Beratung, Grün den
-Steuern, Gelb dem Prüfungspflicht-Check. Zwei Bereichsfarben treffen sich an genau zwei Orten: im
-Signet und in der Farbwäsche des Heros. Die vier Haltungskarten auf der Startseite tragen die
-Farben reihum als Rhythmus, nicht als Bedeutung — dort erscheinen sie nur als Ziffer und
-Hover-Kante.
+Steuern, Gelb dem Prüfungspflicht-Check. Innerhalb der Sektionen ist diese Zuordnung unverhandelbar.
 
-**Die Deckkraft-Regel.** Textfarben werden **nie** über `opacity` gedämpft, sondern über eine
-eigene Farbe (`--color-ink-soft`, `--color-paper-soft`). `opacity` mischt den Text mit dem
-tatsächlichen Hintergrund und senkt den Kontrast unkontrolliert — auf der orangefarbenen
-Reiterfläche hat genau das AA gerissen (3,88:1 statt 5,18:1), gefunden vom AXE-Test.
+Zwei Farben treffen sich nur dort, wo nichts zugeordnet wird: im Signet und in der Farbwäsche des
+Heros. Dazu kommt eine dritte, ausdrücklich beschlossene Ausnahme — die **Kopfleiste ist orange**.
+Sie ist kein Inhalt, sondern Rahmen: Sie beansprucht keinen Leistungsbereich, sondern trägt die
+Leitfarbe der Marke, so wie das Signet alle vier Farben führt, ohne für alle vier Bereiche zu
+stehen. Wer über die Seite scrollt, sieht Orange deshalb an zwei Orten mit zwei Bedeutungen — als
+Marke oben und als Bereichsmarke in der Wirtschaftsprüfung. Das ist der Preis dieser Entscheidung
+und war bewusst.
+
+Die vier Haltungskarten auf der Startseite tragen die Farben reihum als Rhythmus, nicht als
+Bedeutung — dort erscheinen sie nur als Kante beim Zeigen.
+
+**Die Deckkraft-Regel.** Textfarben werden **nie** gedämpft, indem man sie durchsichtig macht,
+sondern über eine eigene deckende Farbe (`--color-ink-soft`, `--color-paper-soft`). Das gilt für
+`opacity` genauso wie für `color-mix(…, transparent)` — beide mischen den Text mit dem
+tatsächlichen Hintergrund und senken den Kontrast unkontrolliert.
+
+Die Regel hat sich zweimal gerächt, beide Male von AXE gefunden: auf der orangefarbenen
+Reiterfläche (3,88:1 statt 5,18:1) und später an der Rolle „Wirtschaftsprüferin" in der ebenfalls
+orangefarbenen Kopfleiste (3,74:1). Auf einer Fläche mit nur 5,2:1 Spielraum ist für eine
+gedämpfte Zweitfarbe schlicht kein Platz — dort trägt die Hierarchie Größe und Schriftschnitt.
 
 **Die Ampel-Regel.** Farbe transportiert nie allein eine Aussage. Das Ergebnis des
 Prüfungspflicht-Checks steht als vollständiger Satz und in einer Tabelle mit den Worten
@@ -240,10 +255,18 @@ Geldbeträge, Tabellenwerte, Datumsangaben, Normzitate. Das Kernmaterial dieser 
 **Die Mono-Regel.** Mono nur für Zahlen in Spalten, Datumsangaben und Normzitate. Nie für
 Fließtext, nie für Überschriften, nie länger als eine Zeile.
 
-**Keine Versal-Labels.** Die Mono-Versal-Labels des Vorgängersystems sind ersatzlos entfallen — sie
-waren der Hauptgrund, warum die Seite kühl wirkte. An ihre Stelle tritt die **Pille**: kleines
-Etikett in der Bereichsfarbe, Gemischtschreibung, Sans. Ein Etikett soll man lesen, nicht
-entziffern.
+**Keine Etiketten über Überschriften.** Das Vorgängersystem öffnete jede Sektion mit einem
+Mono-Versal-Label. Die erste Fassung dieses Systems ersetzte es durch eine farbige Pille — also
+dasselbe Muster in freundlich. Beides ist ein *Eyebrow*: eine kleine Kategoriezeile über der
+Überschrift, die das Rezept „Label → Headline → Text" auf jeder Sektion wiederholt und dabei
+nichts sagt, was die Überschrift nicht schon sagt.
+
+Beides ist ersatzlos entfallen. Eine Sektion beginnt mit ihrer Überschrift. Die Normzitate, die in
+den Etiketten mitliefen (`§§ 267, 267a HGB` und so weiter), standen ohnehin doppelt — im Fließtext,
+in den Tabellen und an jeder Frist des Zeitstrahls.
+
+Datumsangaben über einem Titel sind kein Eyebrow: Im Werdegang und im Fristen-Zeitstrahl ist das
+Datum der eigentliche Inhalt der Zeile, nicht eine Kategorie darüber.
 
 **Headlines sind Daten, kein Markup.** `DisplayHeadlineComponent` rendert ein `lines: string[]` aus
 dem `ContentService`. Zeilenumbrüche in einer großen Headline sind Gestaltung und gehören deshalb
@@ -295,9 +318,14 @@ Kopf oben transparent mit hellem Text liegen kann und keine Fallunterscheidung n
 
 ### Kopf
 
-Fest über dem Inhalt (`position: fixed`), oben transparent, ab 40 px gescrollt eine Papierfläche mit
-Rückenunschärfe und Tintentext. Weil er fest liegt, bekommt **alles mit `id` global
-`scroll-margin-block-start: 6.5rem`** — sonst verschwindet jedes Sprungziel hinter ihm.
+Ein durchgehend orangefarbenes Band, fest über dem Inhalt (`position: fixed`), mit Tintentext
+(5,2:1). Es wechselt seine Farbe nie — beim Scrollen setzt es sich nur über eine dunklere Kante und
+den einzigen Schatten des Systems vom Inhalt ab. Die Begründung für das Orange steht bei der
+Bereichsfarben-Regel.
+
+Weil er fest liegt, bekommt **alles mit `id` global `scroll-margin-block-start: 6.5rem`** — sonst
+verschwindet jedes Sprungziel hinter ihm. Die Fläche ist volldeckend und verlässt sich nicht auf
+`backdrop-filter`: Wo der nicht greift, stünde der Seitentext lesbar hinter dem Kopf.
 
 ### Einstiegsdialog
 
@@ -329,6 +357,10 @@ Tippindikator. Der einzige Ort, an dem die vier Farben zusammen auftreten, die M
 Logodatei vorliegt, und die Herleitung der Formsignatur. **Standardmäßig dekorativ** — an jeder
 Stelle steht der Name schon als Text daneben, ein zweiter gleichlautender Bildname wäre für
 Screenreader nur Rauschen.
+
+**Mono-Variante.** Auf farbigen Flächen verschwindet der gleichfarbige Punkt der Vierfarbfassung —
+auf der orangefarbenen Kopfleiste wären es sichtbar nur noch drei. Wie jedes Logo hat diese Marke
+deshalb eine einfarbige Fassung (`[mono]="true"`), die die Textfarbe ihrer Fläche übernimmt.
 
 ### Porträt
 
@@ -397,7 +429,7 @@ einziges Element so. Der URL-Durchgang prüft dieselbe Regel gegen die echten We
 - **Do** die Sprechblasenform für alles verwenden, was ein Angebot ist: Karten, Panels, Reiter.
 - **Do** Zahlen, Datumsangaben und Normzitate in IBM Plex Mono setzen.
 - **Do** Normzitate mit Absatz und Satz angeben und gegen den Primärtext prüfen.
-- **Do** jede Sektion mit genau einer Pille öffnen.
+- **Do** jede Sektion mit ihrer Überschrift öffnen.
 - **Do** alles linksbündig setzen.
 - **Do** `prefers-reduced-motion` in jeder animierenden Datei respektieren.
 - **Do** sämtliche Texte und ARIA-Attribute auf Deutsch halten.
@@ -409,7 +441,8 @@ einziges Element so. Der URL-Durchgang prüft dieselbe Regel gegen die echten We
 - **Don't** Textfarben über `opacity` dämpfen — siehe die Deckkraft-Regel.
 - **Don't** eine Logofarbe als Fläche einsetzen, ohne die Textfarbe der Flächen-Regel mitzunehmen.
 - **Don't** zwei Bereichsfarben nebeneinander zeigen, außer im Signet und in der Hero-Farbwäsche.
-- **Don't** Mono-Versal-Labels wieder einführen.
+- **Don't** ein Etikett über eine Überschrift setzen — weder als Versal-Label noch als Pille.
+- **Don't** die Vierfarbfassung des Signets auf eine farbige Fläche setzen.
 - **Don't** Fließtext in Mono setzen.
 - **Don't** Überschriften oder Textblöcke zentrieren.
 - **Don't** Kursiv verwenden.
