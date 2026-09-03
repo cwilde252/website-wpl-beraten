@@ -1,57 +1,81 @@
 @import 'tailwindcss';
 
 /* Schriften selbst gehostet — DSGVO: kein Google-Fonts-CDN, keine Verbindung zu Dritten.
-   Libre Franklin liefert nur `wght.css` (variabel, Subsets über unicode-range).
-   IBM Plex Mono wird auf das Latin-Subset begrenzt — deckt Umlaute und ß ab. */
-@import '@fontsource-variable/libre-franklin/wght.css';
+
+   Fraunces trägt die Stimme. `full.css` liefert alle Achsen, weil das System die
+   SOFT- und WONK-Achse tatsächlich benutzt (siehe DESIGN.md, Abschnitt Typografie) —
+   ohne sie wäre Fraunces nur eine weitere Serif.
+   Instrument Sans trägt den Fließtext, IBM Plex Mono die Zahlenkolonnen. */
+@import '@fontsource-variable/fraunces/full.css';
+@import '@fontsource-variable/instrument-sans/wght.css';
 @import '@fontsource/ibm-plex-mono/latin-400.css';
 @import '@fontsource/ibm-plex-mono/latin-500.css';
 
 /* `static`: Tailwind gibt sonst nur die Variablen aus, die es als Utility-Klasse im
-   Quelltext findet. Die Bereichsfarben werden zur Laufzeit über --accent-on-surface
-   gesetzt und wären damit still aus dem Build gefallen. */
+   Quelltext findet. Die Bereichsfarben werden zur Laufzeit über --area-* gesetzt und
+   wären damit still aus dem Build gefallen. */
 @theme static {
-  /* ---- Grundton ------------------------------------------------------- */
-  --color-graphite: #23262a; /* dunkle Fläche + Fließtext auf hell (12,8:1 auf Leinen) */
-  --color-graphite-deep: #16181b; /* Footer, Hover auf dunkel. Keine eigenständige Fläche. */
-  --color-linen: #efede7; /* primäre helle Fläche */
-  --color-linen-bright: #f9f8f5; /* zweite helle Fläche für den Sektionswechsel */
-  --color-muted: #5e5a54; /* Sekundärtext auf hell (5,8:1) */
-  --color-rule: #7e786c; /* Ränder von Steuerelementen (3,9:1, SC 1.4.11) */
-  --color-muted-on-graphite: #a8b0ad; /* Sekundärtext auf Graphit (6,6:1) */
+  /* ==== Grundton =========================================================
+     Warm statt neutral. Kein reines Schwarz, kein reines Weiß — die ganze
+     Skala liegt auf der warmen Seite, damit auch die unbunten Flächen
+     freundlich wirken. */
+  --color-ink: #241c17; /* Text und dunkle Fläche — 15,9:1 auf Creme */
+  --color-ink-soft: #57493f; /* Sekundärtext auf hell — 8,2:1 auf Creme */
+  --color-cream: #fdf8f0; /* primäre helle Fläche */
+  --color-sand: #f5ede0; /* zweite helle Fläche für den Flächenwechsel */
+  --color-shell: #ebdfcd; /* dritte Stufe, für eingebettete Panels auf Sand */
+  --color-edge: #e0d3c0; /* dekorative Trennlinien — bewusst unter 3:1 */
+  --color-edge-strong: #96826a; /* Ränder von Steuerelementen — 3,5:1, SC 1.4.11 */
+  --color-cream-soft: #c6b6a4; /* Sekundärtext auf Tinte — 8,5:1 */
 
-  /* ---- Logofarben: Signet und Markierung auf dunklem Grund -------------
-     Keine dieser vier Farben erreicht auf Leinen die 4,5:1 für Fließtext;
-     Orange verfehlt dort sogar die 3:1 für nicht-textliche Elemente.
-     Auf hellem Grund gilt deshalb ausnahmslos die -on-paper-Variante. */
-  --color-pruefung: #d4780a; /* Orange — 4,70:1 auf Graphit */
-  --color-beratung: #2e7db8; /* Blau   — 3,43:1 auf Graphit, nur Signet/Fläche */
-  --color-steuern: #2d8b57; /* Grün   — 3,57:1 auf Graphit, nur Signet/Fläche */
-  --color-check: #d4a917; /* Gelb   — 6,83:1 auf Graphit */
+  /* ==== Bereichsfarben ===================================================
+     Die vier Logofarben, jede in drei Rollen:
 
-  /* ---- Textvarianten auf Leinen und Leinen-hell ------------------------ */
-  --color-pruefung-on-paper: #a55700; /* 4,51:1 */
-  --color-beratung-on-paper: #24709f; /* 4,58:1 */
-  --color-steuern-on-paper: #247347; /* 4,90:1 */
-  --color-check-on-paper: #82640a; /* 4,75:1 */
+       --color-X        Signet und Fläche, wo der Kontrast trägt
+       --color-X-deep   Text auf hell UND dunkle Fläche mit Creme-Text
+       --color-X-tint   helle Fläche mit Tinten-Text
 
-  /* ---- Textvarianten auf Graphit, wo die Logofarbe nicht trägt --------- */
-  --color-beratung-on-graphite: #5aa3d6; /* 5,45:1 */
-  --color-steuern-on-graphite: #4fb37d; /* 5,80:1 */
+     Anders als im Vorgängersystem sind das echte Flächenfarben. Welcher Text
+     auf welcher Fläche steht, regelt die Flächen-Regel in DESIGN.md. */
 
-  /* ---- Schrift --------------------------------------------------------- */
-  --font-sans: 'Libre Franklin Variable', 'Libre Franklin', system-ui, -apple-system, sans-serif;
+  /* Wirtschaftsprüfung — Orange trägt Tintentext (5,2:1) */
+  --color-pruefung: #d4780a;
+  --color-pruefung-deep: #9c5200; /* 5,5:1 auf Creme */
+  --color-pruefung-tint: #fbe7cf;
+
+  /* Beratung — Blau ist als Logoton zu hell für Text, die deep-Variante trägt beidseitig */
+  --color-beratung: #2e7db8;
+  --color-beratung-deep: #1f5f8f; /* 6,4:1 auf Creme, 6,4:1 mit Creme-Text */
+  --color-beratung-tint: #e2eff9;
+
+  /* Steuern — dieselbe Konstruktion wie Blau */
+  --color-steuern: #2d8b57;
+  --color-steuern-deep: #1e6b41; /* 6,1:1 auf Creme, 6,1:1 mit Creme-Text */
+  --color-steuern-tint: #dff0e6;
+
+  /* Prüfungspflicht-Check — Gelb ist hell genug für Tintentext (7,6:1) */
+  --color-check: #d4a917;
+  --color-check-deep: #7a5f09; /* 5,7:1 auf Creme */
+  --color-check-tint: #faefcc;
+
+  /* ==== Schrift ========================================================== */
+  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --font-sans: 'Instrument Sans Variable', 'Instrument Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --tracking-display: -0.02em;
-  --tracking-tight: -0.012em;
-  --tracking-label: 0.08em;
+  /* ==== Form ============================================================
+     Die Sprechblase ist die Signatur: drei weiche Ecken, eine scharfe.
+     Sie zitiert das Gespräch, nicht das Formular. */
+  --radius-bubble: 1.75rem;
+  --radius-soft: 1rem;
+  --radius-control: 0.625rem;
+  --radius-pill: 999px;
 
-  /* ---- Radius: Flächen scharf, Steuerelemente minimal weich ------------ */
-  --radius-sheet: 0px;
-  --radius-control: 2px;
-
-  --ease-precise: cubic-bezier(0.32, 0.72, 0, 1);
+  /* ==== Bewegung ========================================================
+     Zwei Kurven: `soft` für Zustände, `spring` für alles, was auf eine
+     Handlung antwortet. Der leichte Überschwung ist Absicht. */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
 /* ======================================================================
@@ -59,7 +83,82 @@
    4 kB budgetiert ist. Component-CSS nur für echt Lokales.
    ====================================================================== */
 
-/* ---- Struktur -------------------------------------------------------- */
+/* ---- Bereichsfarbe als Kontext ---------------------------------------
+   Jede Sektion setzt --area-* einmal; alle Kinder lesen daraus. Damit steht
+   die Kontrast-Regel an genau einer Stelle statt in jedem Template. */
+:root {
+  --area-solid: var(--color-ink);
+  --area-deep: var(--color-ink);
+  --area-tint: var(--color-sand);
+  --area-on-solid: var(--color-cream);
+  --area-text: var(--color-ink);
+}
+
+.area-pruefung {
+  --area-solid: var(--color-pruefung);
+  --area-deep: var(--color-pruefung-deep);
+  --area-tint: var(--color-pruefung-tint);
+  --area-on-solid: var(--color-ink); /* Orange ist hell: Tintentext, 5,2:1 */
+  --area-text: var(--color-pruefung-deep);
+}
+.area-beratung {
+  --area-solid: var(--color-beratung-deep);
+  --area-deep: var(--color-beratung-deep);
+  --area-tint: var(--color-beratung-tint);
+  --area-on-solid: var(--color-cream);
+  --area-text: var(--color-beratung-deep);
+}
+.area-steuern {
+  --area-solid: var(--color-steuern-deep);
+  --area-deep: var(--color-steuern-deep);
+  --area-tint: var(--color-steuern-tint);
+  --area-on-solid: var(--color-cream);
+  --area-text: var(--color-steuern-deep);
+}
+.area-check {
+  --area-solid: var(--color-check);
+  --area-deep: var(--color-check-deep);
+  --area-tint: var(--color-check-tint);
+  --area-on-solid: var(--color-ink); /* Gelb ist hell: Tintentext, 7,6:1 */
+  --area-text: var(--color-check-deep);
+}
+
+/* Auf dunklem Grund kehren sich Text- und Flächenrolle um. */
+.on-ink {
+  --area-text: var(--color-cream);
+}
+.on-ink.area-pruefung {
+  --area-text: var(--color-pruefung); /* 4,7:1 auf Tinte */
+}
+.on-ink.area-beratung {
+  --area-text: #7fb8e0; /* 7,0:1 auf Tinte — das Logoblau trägt hier nicht */
+}
+.on-ink.area-steuern {
+  --area-text: #6ec795; /* 7,6:1 auf Tinte */
+}
+.on-ink.area-check {
+  --area-text: var(--color-check); /* 6,8:1 auf Tinte */
+}
+
+.area-text {
+  color: var(--area-text);
+}
+
+/* Sekundärtext dreht auf dunkler Fläche mit. Ohne diese Regel müsste jedes
+   Template den Fall selbst kennen — oder es wird über `opacity` gedämpft, was
+   den Kontrast gegen die tatsächliche Fläche senkt und AA reißt. */
+.on-ink .text-ink-soft {
+  color: var(--color-cream-soft);
+}
+
+/* Der Kopf liegt fest über dem Inhalt. Ohne diesen Abstand verschwindet jedes
+   Sprungziel — Ankerlinks, Skip-Link, der Weg aus dem Einstiegsdialog — hinter
+   ihm. Gilt für alles mit id, weil genau das die möglichen Ziele sind. */
+[id] {
+  scroll-margin-block-start: 6.5rem;
+}
+
+/* ---- Struktur --------------------------------------------------------- */
 .sheet {
   max-width: 78rem;
   margin-inline: auto;
@@ -75,173 +174,289 @@
     padding-inline: 4rem;
   }
 }
-
-/* Randspalten-Regel: 2 Spalten Marginalie, 10 Spalten Inhalt — erst ab lg. */
-.sheet-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+.sheet-narrow {
+  max-width: 46rem;
 }
 
-/* Grid-Kinder dürfen unter ihre Inhaltsbreite schrumpfen — sonst sprengen breite
-   Tabellen ihren overflow-x-Container und die ganze Seite scrollt horizontal. */
-.sheet-grid > * {
-  min-width: 0;
-}
-@media (min-width: 1024px) {
-  .sheet-grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 2rem 2.5rem;
-  }
-  .sheet-grid > .margin-note {
-    grid-column: 1 / span 2;
-  }
-  .sheet-grid > .sheet-body {
-    grid-column: 3 / span 10;
-  }
-  .sheet-grid > .sheet-body--slim {
-    grid-column: 3 / span 7;
-  }
-}
-
-/* ---- Akzent-Default -----------------------------------------------------
-   Sektionen ohne <app-section-wrapper> (Hero, Rechtstexte) bekommen hier ihren
-   Ausgangswert; der Wrapper überschreibt ihn per Inline-Style. */
-:root {
-  --accent-on-surface: var(--color-graphite);
-}
-.on-graphite {
-  --accent-on-surface: var(--color-linen);
-}
-
-/* ---- Doppelstrich: der Abschlussstrich unter der geprüften Endsumme --- */
-.double-rule {
-  display: block;
-  width: 2.5rem;
-}
-.double-rule::before,
-.double-rule::after {
-  content: '';
-  display: block;
-  width: 100%;
-}
-.double-rule::before {
-  height: 2px;
-  background: var(--color-graphite);
-}
-.double-rule::after {
-  height: 1px;
-  margin-top: 3px;
-  background: var(--accent-on-surface, var(--color-graphite));
-}
-.on-graphite .double-rule::before {
-  background: var(--color-linen);
-}
-
-/* ---- Typografie ------------------------------------------------------ */
+/* ---- Typografie ------------------------------------------------------
+   Fraunces mit SOFT und WONK: die weichen Terminals und das schräge `g`
+   sind der Grund, diese Schrift zu nehmen. Ohne die Achsen wäre sie
+   austauschbar. */
 .type-display {
-  font-family: var(--font-sans);
-  font-size: clamp(2.25rem, 5.2vw, 4.5rem);
-  font-weight: 500;
-  line-height: 1.06;
-  letter-spacing: var(--tracking-display);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  font-variation-settings:
+    'SOFT' 60,
+    'WONK' 1,
+    'opsz' 100;
 }
 .type-headline {
-  font-family: var(--font-sans);
-  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
-  font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: var(--tracking-tight);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+  font-variation-settings:
+    'SOFT' 50,
+    'WONK' 1,
+    'opsz' 40;
 }
 .type-subhead {
-  font-family: var(--font-sans);
-  font-size: 1.125rem;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  font-variation-settings:
+    'SOFT' 40,
+    'WONK' 1,
+    'opsz' 20;
 }
 .type-lead {
   font-family: var(--font-sans);
-  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
   font-weight: 400;
   line-height: 1.55;
+  max-width: 40ch;
 }
 .type-body {
   font-family: var(--font-sans);
   font-size: 1.0625rem;
   font-weight: 400;
   line-height: 1.65;
-}
-.type-body,
-.type-lead {
-  max-width: 68ch;
-}
-.display-line {
-  display: block;
+  max-width: 66ch;
 }
 
-/* Mono-Regel: nur Labels, Normzitate, Jahreszahlen, Beträge. Nie Fließtext. */
-.type-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-}
+/* Mono trägt nur noch, was in Spalten steht oder ein Aktenzeichen ist.
+   Die Mono-Versal-Labels des Vorgängersystems sind ersatzlos weg — sie waren
+   der Hauptgrund, warum die Seite kühl wirkte. */
 .type-figure {
   font-family: var(--font-mono);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   font-feature-settings: 'tnum' 1;
 }
-
-/* ---- Bereichsakzent --------------------------------------------------
-   Sektionen setzen --accent-on-surface; Kontrast-Regel ist damit an genau
-   einer Stelle kodiert statt in jedem Template wiederholt. */
-.accent-text {
-  color: var(--accent-on-surface, var(--color-graphite));
-}
-
-/* ---- Link mit Linie: der einzige CTA-Typ ----------------------------- */
-.rule-link {
-  display: inline-block;
+.type-norm {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Pill: ersetzt das Versal-Label ----------------------------------
+   Kleines Etikett in der Bereichsfarbe. Gemischtschreibung, nicht versal —
+   ein Etikett soll man lesen, nicht entziffern. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--color-graphite);
-  padding-block-end: 0.375rem;
-  border-block-end: 1px solid var(--color-rule);
+  line-height: 1;
+  padding: 0.4375rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--area-tint);
+  color: var(--area-deep);
+}
+.on-ink .pill {
+  background: color-mix(in oklab, var(--color-cream) 14%, transparent);
+  color: var(--area-text);
+}
+.pill::before {
+  content: '';
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
+/* ---- Sprechblase: die Formsignatur -----------------------------------
+   Drei weiche Ecken, eine scharfe. `--bubble-corner` bestimmt, welche —
+   Standard ist unten links, gespiegelte Blasen setzen sie um. */
+.bubble {
+  border-radius: var(--radius-bubble) var(--radius-bubble) var(--radius-bubble) 0.25rem;
+}
+.bubble-mirror {
+  border-radius: var(--radius-bubble) var(--radius-bubble) 0.25rem var(--radius-bubble);
+}
+.bubble-top {
+  border-radius: 0.25rem var(--radius-bubble) var(--radius-bubble) var(--radius-bubble);
+}
+
+/* ---- Karte -----------------------------------------------------------
+   Ja, Karten. Das Vorgängersystem verbot sie und hatte dafür ein reines
+   Linienraster — das las sich wie ein Kontoauszug. Eine Karte mit weicher
+   Kante und warmem Schatten ist ein Angebot, kein Formular. */
+.card {
+  background: var(--color-cream);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-bubble) var(--radius-bubble) var(--radius-bubble) 0.25rem;
+  box-shadow:
+    0 1px 2px rgba(70, 46, 24, 0.04),
+    0 10px 24px -14px rgba(70, 46, 24, 0.18);
   transition:
-    color 160ms var(--ease-precise),
-    border-color 160ms var(--ease-precise);
+    transform 260ms var(--ease-soft),
+    box-shadow 260ms var(--ease-soft),
+    border-color 260ms var(--ease-soft);
 }
-.rule-link:hover {
-  color: var(--accent-on-surface, var(--color-graphite));
-  border-block-end-color: var(--accent-on-surface, var(--color-graphite));
+.card-interactive:hover,
+.card-interactive:focus-within {
+  transform: translateY(-3px);
+  border-color: var(--area-solid);
+  box-shadow:
+    0 2px 4px rgba(70, 46, 24, 0.05),
+    0 20px 40px -18px rgba(70, 46, 24, 0.3);
 }
-.on-graphite .rule-link {
-  color: var(--color-linen);
-  border-block-end-color: var(--color-muted-on-graphite);
+.on-ink .card {
+  background: color-mix(in oklab, var(--color-cream) 8%, transparent);
+  border-color: color-mix(in oklab, var(--color-cream) 18%, transparent);
+  box-shadow: none;
 }
 
-/* ---- Fokus: nie unsichtbar ------------------------------------------- */
+/* ---- Buttons ---------------------------------------------------------
+   Zwei Stufen. Der Vorgänger kannte nur einen unterstrichenen Textlink —
+   korrekt, aber unfreundlich: man musste raten, ob etwas anklickbar ist. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  padding: 0.875rem 1.375rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    background-color 200ms var(--ease-soft),
+    color 200ms var(--ease-soft),
+    border-color 200ms var(--ease-soft),
+    transform 200ms var(--ease-spring);
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+.btn-primary:hover {
+  background: var(--area-deep);
+}
+.on-ink .btn-primary {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+.on-ink .btn-primary:hover {
+  background: var(--color-cream-soft);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-edge-strong);
+}
+.btn-ghost:hover {
+  background: var(--area-tint);
+  border-color: var(--area-deep);
+  color: var(--area-deep);
+}
+.on-ink .btn-ghost {
+  color: var(--color-cream);
+  border-color: color-mix(in oklab, var(--color-cream) 40%, transparent);
+}
+.on-ink .btn-ghost:hover {
+  background: color-mix(in oklab, var(--color-cream) 12%, transparent);
+  color: var(--color-cream);
+  border-color: var(--color-cream);
+}
+
+/* Der Pfeil rückt beim Hover nach — die kleinste Bewegung, die eine
+   Richtung zeigt. */
+.btn .btn-arrow {
+  transition: transform 200ms var(--ease-spring);
+}
+.btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Der Pfeil auf einer verlinkten Karte rückt mit, wenn die Karte angesteuert
+   wird — dieselbe Geste wie beim Button, nur ausgelöst von der ganzen Fläche. */
+.area-arrow {
+  transition: transform 200ms var(--ease-spring);
+}
+.area-card:hover .area-arrow,
+.area-card:focus-visible .area-arrow {
+  transform: translateX(3px);
+}
+
+/* ---- Textlink --------------------------------------------------------- */
+.link-plain {
+  color: inherit;
+  text-decoration-color: var(--color-edge-strong);
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+  transition:
+    color 200ms var(--ease-soft),
+    text-decoration-color 200ms var(--ease-soft);
+}
+.link-plain:hover {
+  color: var(--area-text);
+  text-decoration-color: currentColor;
+}
+
+/* ---- Fokus: nie unsichtbar -------------------------------------------
+   Zwei Ringe, damit der Fokus auf jeder der vielen Flächenfarben steht:
+   innen die Fläche, außen die Tinte. */
 :focus-visible {
-  outline: 2px solid var(--accent-on-surface, var(--color-graphite));
+  outline: 2px solid var(--color-ink);
   outline-offset: 3px;
+  border-radius: 0.25rem;
 }
-.on-graphite :focus-visible {
-  outline-color: var(--accent-on-surface, var(--color-linen));
+.on-ink :focus-visible,
+.on-solid :focus-visible {
+  outline-color: currentColor;
 }
 
-/* ---- Zeilenraster statt Karten --------------------------------------- */
-.rule-row {
-  border-block-start: 1px solid color-mix(in oklab, var(--color-graphite) 16%, transparent);
+/* ---- Formular --------------------------------------------------------- */
+.field {
+  width: 100%;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 1rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid var(--color-edge-strong);
+  border-radius: var(--radius-control);
+  transition:
+    border-color 180ms var(--ease-soft),
+    box-shadow 180ms var(--ease-soft);
 }
-.on-graphite .rule-row {
-  border-block-start-color: color-mix(in oklab, var(--color-linen) 22%, transparent);
+.field:hover {
+  border-color: var(--area-deep);
+}
+.field:focus-visible {
+  outline: 2px solid var(--area-deep);
+  outline-offset: 1px;
+  border-color: var(--area-deep);
+}
+/* Fehler zusätzlich über die Randstärke, nicht nur über Farbe (WCAG 1.4.1). */
+.field[aria-invalid='true'] {
+  border-color: var(--color-pruefung-deep);
+  border-inline-start-width: 4px;
 }
 
 /* ---- Natives Accordion ------------------------------------------------ */
@@ -253,77 +468,72 @@ summary::-webkit-details-marker {
   display: none;
 }
 
-/* ---- Formular: nur im Prüfungspflicht-Check --------------------------- */
-.field {
-  width: 100%;
-  background: var(--color-linen-bright);
-  color: var(--color-graphite);
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
-  font-size: 1rem;
-  padding: 0.625rem 0.75rem;
-  border: 1px solid var(--color-rule);
-  border-radius: var(--radius-control);
+/* ---- Trennlinie ------------------------------------------------------- */
+.hairline {
+  border-block-start: 1px solid var(--color-edge);
 }
-.field:focus-visible {
-  outline: 2px solid var(--accent-on-surface, var(--color-graphite));
-  outline-offset: 1px;
-  border-color: var(--accent-on-surface, var(--color-graphite));
-}
-/* Fehler zusätzlich über die Randstärke, nicht nur über Farbe (WCAG 1.4.1). */
-.field[aria-invalid='true'] {
-  border-color: var(--accent-on-surface, var(--color-graphite));
-  border-inline-start-width: 3px;
-}
-
-.button-solid {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: var(--color-graphite);
-  color: var(--color-linen);
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  padding: 0.875rem 1.5rem;
-  border: 0;
-  border-radius: var(--radius-control);
-  cursor: pointer;
-  transition: background-color 160ms var(--ease-precise);
-}
-.button-solid:hover {
-  background: var(--color-graphite-deep);
+.on-ink .hairline {
+  border-block-start-color: color-mix(in oklab, var(--color-cream) 18%, transparent);
 }
 
 /* ---- Skip-Link -------------------------------------------------------- */
 .skip-link {
   position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: 0;
+  inset-block-start: 0.5rem;
+  inset-inline-start: 0.5rem;
   z-index: 100;
-  transform: translateY(-120%);
-  background: var(--color-graphite);
-  color: var(--color-linen);
+  transform: translateY(-150%);
+  background: var(--color-ink);
+  color: var(--color-cream);
   padding: 0.75rem 1.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  border-radius: var(--radius-control);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  transition: transform 200ms var(--ease-spring);
 }
 .skip-link:focus {
   transform: translateY(0);
 }
 
+/* ---- Scroll-Reveal ---------------------------------------------------
+   Sektionen steigen beim Eintreten leicht auf. Bewusst klein gehalten:
+   14 px und 560 ms, keine Staffelung über mehr als drei Elemente.
+   Ohne JavaScript bleibt `.reveal` unberührt sichtbar — der Ausgangszustand
+   wird erst von der Direktive gesetzt. */
+.reveal-armed {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 560ms var(--ease-soft),
+    transform 560ms var(--ease-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
 /* ---- Basis ------------------------------------------------------------ */
 body {
   font-family: var(--font-sans);
-  color: var(--color-graphite);
-  background-color: var(--color-linen);
+  color: var(--color-ink);
+  background-color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* Beim Drucken gibt es kein Scrollen und keinen Viewport, in den etwas
+   hineinfahren könnte — der Einblend-Ausgangszustand muss hier weg, sonst
+   fehlen im Ausdruck ganze Abschnitte. */
+@media print {
+  .reveal-armed {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
@@ -335,5 +545,13 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .reveal-armed {
+    opacity: 1;
+    transform: none;
+  }
+  .btn:hover,
+  .card-interactive:hover {
+    transform: none;
   }
 }

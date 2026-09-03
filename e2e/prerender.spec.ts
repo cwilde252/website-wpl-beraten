@@ -24,6 +24,21 @@ test('die FAQ lässt sich ohne JavaScript aufklappen', async ({ page }) => {
   await expect(first).toHaveAttribute('open', '');
 });
 
+test('der Einstiegsdialog lässt sich ohne JavaScript aufklappen', async ({ page }) => {
+  await page.goto('/');
+  const first = page.locator('details.dialog').first();
+  await first.locator('summary').click();
+  await expect(first).toHaveAttribute('open', '');
+  await expect(first.getByRole('link')).toBeVisible();
+});
+
+test('der Fristen-Zeitstrahl steht ohne JavaScript im HTML', async ({ page }) => {
+  await page.goto('/leistungen');
+  const timeline = page.locator('app-fristen-timeline');
+  await expect(timeline).toContainText('§ 264 Abs. 1 Satz 3 HGB');
+  await expect(timeline).toContainText('§ 325 Abs. 1a Satz 1 HGB');
+});
+
 test('nirgends steht ein Platzhalter in eckigen Klammern', async ({ page }) => {
   for (const route of ROUTES) {
     await page.goto(route);

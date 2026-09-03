@@ -1,25 +1,46 @@
-<app-section-wrapper theme="graphite" padding="large" accent="check">
-  <app-section-mark label="Prüfungspflicht" reference="§ 267" />
-  <div class="sheet-grid">
-    <div class="sheet-body--slim sheet-body">
-      <h2 class="type-headline mb-8">Müssen Sie prüfen lassen?</h2>
-      <p class="type-body mb-6">
-        Die Antwort hängt an drei Zahlen: Bilanzsumme, Umsatzerlöse und Arbeitnehmerzahl. Wer
-        mindestens zwei der Schwellen
-        <span class="type-figure">{{ format(small.balanceSheetTotal) }}&nbsp;&euro;</span>,
-        <span class="type-figure">{{ format(small.revenue) }}&nbsp;&euro;</span> und
-        <span class="type-figure">{{ small.employees }}</span> überschreitet, ist nicht mehr klein
-        im Sinne des § 267 Abs. 1 HGB — und damit prüfungspflichtig.
+<app-section-wrapper theme="cream" padding="large" accent="check">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-10 items-center">
+    <div class="lg:col-span-6">
+      <app-section-mark label="Prüfungspflicht-Check" reference="§§ 267, 267a HGB" />
+
+      <h2 class="type-headline mb-6">Müssen Sie prüfen lassen?</h2>
+
+      <p class="type-body mb-5">
+        Das hängt an drei Zahlen. Wer mindestens zwei der drei Schwellen überschreitet, ist nicht
+        mehr klein im Sinne des § 267 Abs. 1 HGB — und damit prüfungspflichtig.
       </p>
-      <p class="type-body mb-10">
-        Der Check rechnet das für Sie durch, inklusive der Regel zu zwei aufeinanderfolgenden
-        Abschlussstichtagen.
+      <p class="type-body mb-9 text-ink-soft">
+        Der Check rechnet es Ihnen durch, inklusive der Regel zu zwei aufeinanderfolgenden
+        Abschlussstichtagen. Dauert zwei Minuten und kostet Sie keine Anfrage.
       </p>
-      <app-rule-link
+
+      <app-cta-link
         href="/leistungen"
         fragment="pruefungspflicht"
-        label="Prüfungspflicht prüfen"
+        label="Jetzt durchrechnen"
+        variant="primary"
       />
+    </div>
+
+    <!-- Die Schwellenwerte stehen als Zahl da, nicht als Fließtext: Wer sie
+         kennt, hat den Nutzen schon hier — auch ohne den Check zu öffnen. -->
+    <div class="lg:col-span-6 lg:pl-4">
+      <ul class="list-none m-0 p-0 flex flex-col gap-3">
+        @for (tile of tiles; track tile.label) {
+          <li class="bubble bg-check-tint px-6 py-5 flex items-baseline justify-between gap-6">
+            <span class="type-body text-base">{{ tile.label }}</span>
+            <span class="type-figure text-xl md:text-2xl whitespace-nowrap">
+              {{ tile.value }}
+              @if (tile.unit) {
+                <span>{{ tile.unit }}</span>
+              }
+            </span>
+          </li>
+        }
+      </ul>
+      <p class="type-norm mt-4 text-ink-soft">
+        Schwellen der kleinen Kapitalgesellschaft, § 267 Abs. 1 HGB
+      </p>
     </div>
   </div>
 </app-section-wrapper>

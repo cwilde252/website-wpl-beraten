@@ -33,11 +33,22 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
    Auftragsverarbeitungsvertrag vorliegt. (Aktuell deutet die Konfiguration auf Netlify hin — bitte
    bestätigen.)
 
-9. **Freigabe des Prüfungspflicht-Checks.** Ein Rechner auf der Seite einer Wirtschaftsprüferin wird
-   als fachliche Aussage gelesen. Bitte prüfen und freigeben:
-   - die Formulierung der drei Ergebnissätze,
-   - den Haftungshinweis,
-   - ob der Check berufsrechtlich unbedenklich ist (§ 52 WPO, § 33 BS WP/vBP).
+9. **Freigabe der beiden Rechner.** Ein Rechner auf der Seite einer Wirtschaftsprüferin wird als
+   fachliche Aussage gelesen. Bitte prüfen und freigeben:
+   - **Prüfungspflicht-Check:** die Formulierung der drei Ergebnissätze und den Haftungshinweis,
+   - **Fristen-Zeitstrahl** (neu): die vier Termine und ihre Herleitung. Verwendet werden
+     § 264 Abs. 1 Satz 3 HGB (Aufstellung, drei Monate), § 264 Abs. 1 Satz 4 HGB (kleine
+     Gesellschaften, sechs Monate), § 42a Abs. 2 Satz 1 GmbHG (Feststellung, acht beziehungsweise
+     elf Monate) und § 325 Abs. 1a Satz 1 HGB (Offenlegung, ein Jahr). Alle vier wurden am
+     03.09.2026 gegen den Primärtext auf gesetze-im-internet.de geprüft. Der Zeitstrahl weist den
+     Feststellungsbeschluss ausdrücklich als GmbH-Regel aus und nennt im Hinweis, was er nicht
+     abbildet (§ 326 HGB, kapitalmarktorientierte Gesellschaften, steuerliche Erklärungsfristen,
+     abweichende Satzungsregelungen).
+   - ob beide Rechner berufsrechtlich unbedenklich sind (§ 52 WPO, § 33 BS WP/vBP).
+
+   **Bewusst nicht enthalten:** wie lange eine Prüfung dauert und wann man dich ansprechen sollte.
+   Beides wären erfundene Zahlen. Wenn du belastbare Angaben dazu machen kannst, kommen sie gerne
+   in den Zeitstrahl — das wäre die stärkste Stelle der ganzen Seite.
 
 10. **Logo.** Im Repository liegt keine Logodatei; `public/favicon.ico` ist noch das
     Angular-Standard-Icon. Bitte das Logo als SVG liefern — es kommt dann in Kopf- und Fußzeile und
@@ -50,21 +61,56 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
     je drei. Gibt es zwei oder drei konkrete Punkte zum Ergänzen? Wenn nicht, bleibt der Bereich
     bewusst knapp; erfunden wird nichts.
 
-12. **Häufige Fragen.** Belegbar sind derzeit drei Fragen. Diese vier brauchen deine eigene Antwort:
+12. **Häufige Fragen.** Belegbar sind derzeit drei Fragen. Diese vier brauchen deine eigene Antwort
+    — die erste ist inhaltlich die wichtigste der ganzen Seite:
     - Können Sie prüfen und gleichzeitig beraten? (Unabhängigkeit, § 319 HGB) — die inhaltlich wichtigste.
     - Was kostet eine Jahresabschlussprüfung, und wonach richtet sich das Honorar?
     - Wie lange dauert eine Prüfung, und wann sollte man Sie ansprechen?
     - In welchem Umkreis arbeiten Sie?
 
-13. **Porträtfoto.** Das Design kommt ohne aus — das ist so entworfen, kein Notbehelf. Falls doch
-    eines kommen soll, ist die Stelle vorgesehen: `/ueber-mich`, Randspaltenlayout, Graustufen.
+13. **Porträtfoto — jetzt eingeplant, fehlt aber noch.** Anders als in der Vorfassung ist das
+    Design nicht mehr auf Bildlosigkeit hin gebaut: Es gibt zwei feste Plätze für dein Porträt,
+    auf `/ueber-mich` (groß, mitlaufend) und auf der Startseite im Profil-Teaser. Solange kein
+    Foto vorliegt, steht dort eine gestaltete Farbfläche mit dem Signet — kein Platzhalter und
+    kein Loch, aber eben auch kein Gesicht.
+
+    Gebraucht wird ein Hochformat im Seitenverhältnis 4:5, mindestens 720 × 900 px. Sobald es da
+    ist, wird es unter `public/` abgelegt und `portraitSrc` im `ContentService` gesetzt; sonst
+    ändert sich nichts.
+
+    Das ist die Stelle mit dem größten Hebel für „offen und freundlich". Eine Seite, die mit
+    „Hallo, ich bin Wiebke" beginnt und kein Gesicht zeigt, lässt ein Versprechen offen.
 
 14. **Vorschaubild für geteilte Links** (Open Graph, 1200 × 630). Fehlt. Kann aus Wortmarke und
-    Doppelstrich erzeugt werden, sobald das Logo vorliegt.
+    Signet erzeugt werden, sobald das Logo vorliegt.
+
+15. **Reihenfolge der Leistungsbereiche.** Die Reiter stehen als Wirtschaftsprüfung, Beratung,
+    Steuern. Falls die Beratung geschäftlich wichtiger ist als die Prüfung, sollte sie vorn stehen
+    — das ist eine Zeile im ContentService.
+
+## Neu mit dem Redesign
+
+16. **Tonalität.** Die Texte sind deutlich persönlicher geworden und sprechen konsequent in der
+    Ich-Form, beim „Sie" für die Lesenden. Beispiele, die eine Freigabe brauchen, weil sie eine
+    Haltung behaupten: „Ich sage Ihnen, was ich sehe, auch wenn es unbequem ist — und ich erwarte
+    dasselbe zurück." (Über mich), „Wenn ich für Ihr Anliegen die Falsche bin, sage ich Ihnen das —
+    und meistens weiß ich, wer die Richtige wäre." (Kontakt), „Ich antworte auch auf Fragen, aus
+    denen kein Auftrag wird." (Leistungen). Alles davon ist streichbar, aber es trägt einen
+    großen Teil der Wärme.
+
+17. **Einstiegsdialog auf der Startseite.** Statt einer Überschrift mit Button beginnt die Seite
+    mit „Was führt Sie her?" und drei Antworten in der Stimme der Lesenden. Die dritte lautet „Ich
+    schaue erst mal, wer Sie eigentlich sind." — bitte prüfen, ob dir das zu direkt ist.
+
+18. **Firmierung im Signet.** Die Marke ist derzeit eine Sprechblase mit vier Punkten in deinen
+    Logofarben. Sie ist ein Platzhalter für dein echtes Logo, aber ein gestalteter: Sie taucht in
+    Kopf, Fuß, Hero und auf der Kontaktseite auf und liefert die Formsprache der ganzen Seite. Wenn
+    dein Logo kommt, ersetzt es sie — dann sollten wir kurz schauen, ob die Sprechblasenform
+    weiterhin trägt.
 
 ## Technisch, ohne Rückfrage entscheidbar — nur zur Kenntnis
 
-15. **Passwortschutz.** Die Netlify-Edge-Function `netlify/edge-functions/auth.ts` sperrt die Seite
+19. **Passwortschutz.** Die Netlify-Edge-Function `netlify/edge-functions/auth.ts` sperrt die Seite
     hinter ein Passwort. Sie fällt auf den fest eingebauten Wert `"fallback"` zurück, wenn die
     Umgebungsvariable `SITE_PASSWORD` nicht gesetzt ist, und das gesetzte Cookie ist ein statischer,
     ungeschützter Wert — der Schutz ist praktisch wirkungslos. Vor dem Livegang sollte der Block

@@ -1,17 +1,74 @@
 <section
-  class="bg-graphite text-linen on-graphite min-h-[70vh] flex flex-col justify-center py-20 md:py-28"
+  class="bg-ink text-cream on-ink relative overflow-hidden pt-28 md:pt-36 pb-14 md:pb-20"
   aria-label="Wiebke Lefevre, Wirtschaftsprüferin in Rottweil"
 >
-  <div class="sheet w-full">
-    <div class="sheet-grid">
-      <div class="margin-note">
-        <span class="double-rule mb-3" aria-hidden="true"></span>
-        <p class="type-label">Rottweil</p>
-      </div>
-      <div class="sheet-body">
+  <!-- Vier weiche Farbfelder, die sich hinter dem Text überlagern. Das ist der
+       einzige Ort neben dem Signet, an dem die vier Bereichsfarben zusammen
+       auftreten — und der sichtbarste Bruch mit dem Vorgängersystem, in dem
+       Farbe niemals Fläche sein durfte. -->
+  <div class="hero-wash" aria-hidden="true"></div>
+
+  <div class="sheet relative">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-14 items-start">
+      <div class="lg:col-span-6">
+        <app-signet [size]="52" class="mb-8 text-cream" />
+
         <app-display-headline [content]="headline" [level]="1" />
-        <p class="type-lead mt-10 mb-12">{{ lead }}</p>
-        <app-rule-link href="/leistungen" label="Leistungen ansehen" />
+
+        <p class="type-lead mt-7 text-cream-soft">{{ lead }}</p>
+
+        <p class="type-body mt-10 text-cream-soft flex items-start gap-3">
+          <span
+            class="mt-2.5 inline-block w-2 h-2 rounded-full bg-steuern shrink-0"
+            aria-hidden="true"
+          >
+          </span>
+          Erstgespräch unverbindlich, Region Rottweil und Schwarzwald-Baar
+        </p>
+      </div>
+
+      <!-- Der Dialog. Die Fragen stehen in der Ich-Form der Besucherin: man
+           wählt seinen eigenen Satz, nicht einen Menüpunkt. -->
+      <div class="lg:col-span-6 lg:pl-6">
+        <p class="type-subhead mb-5 text-cream">{{ prompt }}</p>
+
+        <ul class="list-none m-0 p-0 flex flex-col gap-3">
+          @for (option of options; track option.id) {
+            <li [class]="areaClass(option)">
+              <details class="dialog group" name="hero-dialog">
+                <summary class="dialog-question bubble">
+                  <span class="type-body max-w-none">{{ option.question }}</span>
+                  <svg
+                    class="dialog-chevron shrink-0"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M4.5 7 9 11.5 13.5 7" />
+                  </svg>
+                </summary>
+
+                <div class="dialog-answer bubble-mirror on-solid">
+                  <p class="type-body">{{ option.answer }}</p>
+                  <div class="mt-5">
+                    <app-cta-link
+                      [href]="option.ctaPath"
+                      [fragment]="option.ctaFragment"
+                      [label]="option.ctaLabel"
+                      variant="primary"
+                    />
+                  </div>
+                </div>
+              </details>
+            </li>
+          }
+        </ul>
       </div>
     </div>
   </div>

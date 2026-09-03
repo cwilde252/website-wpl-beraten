@@ -1,13 +1,22 @@
-<app-section-wrapper theme="paper" padding="large">
+<app-section-wrapper theme="cream" padding="large">
   <app-section-mark label="Zusammenarbeit" />
-  <div class="sheet-grid">
-    <div class="sheet-body">
-      <h2 class="type-headline mb-10">Wie ich arbeite.</h2>
-      <app-definition-list
-        [items]="items()"
-        [columns]="2"
-        ariaLabel="Grundsätze der Zusammenarbeit"
-      />
-    </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-8 mb-12">
+    <h2 class="type-headline lg:col-span-7">Wie das bei mir läuft.</h2>
+    <p class="type-body lg:col-span-5 lg:pt-2 text-ink-soft">{{ intro }}</p>
   </div>
+
+  <ul class="list-none m-0 p-0 grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+    @for (item of positions; track item.ref; let i = $index) {
+      <li
+        class="card card-interactive p-7 md:p-8 flex flex-col"
+        [class]="accentClasses[i % accentClasses.length]"
+        [appReveal]="i * 70"
+      >
+        <span class="type-figure text-sm area-text mb-4" aria-hidden="true">{{ item.ref }}</span>
+        <h3 class="type-subhead mb-3">{{ item.title }}</h3>
+        <p class="type-body text-ink-soft">{{ item.description }}</p>
+      </li>
+    }
+  </ul>
 </app-section-wrapper>

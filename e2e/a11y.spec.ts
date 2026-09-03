@@ -1,5 +1,21 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+import { expect, Page, test } from '@playwright/test';
+
+/** Dauer der Reiter-Überblendung in `service-tabs.component.css`, plus Puffer. */
+const UEBERBLENDUNG_MS = 240 + 160;
+
+/**
+ * Sitzt die Überblendung eines Reiters aus.
+ *
+ * Fläche und Textfarbe wechseln über 240 ms. AXE misst sonst ein Bild mitten in
+ * dieser Überblendung und meldet einen Kontrast, den es im Ruhezustand nie gibt
+ * — geprüft gehört der Zustand, den man liest. Eine feste Wartezeit ist hier
+ * das richtige Mittel: Die Dauer ist bekannt und steht im Stylesheet, und es
+ * gibt kein Ereignis, das das Ende *aller* beteiligten Übergänge meldet.
+ */
+async function warteBisFarbeSteht(page: Page): Promise<void> {
+  await page.waitForTimeout(UEBERBLENDUNG_MS);
+}
 
 const ROUTES = ['/', '/leistungen', '/ueber-mich', '/kontakt', '/impressum', '/datenschutz'];
 
@@ -17,6 +33,7 @@ test('jeder Tab-Zustand der Leistungsseite ist barrierefrei', async ({ page }) =
   await page.goto('/leistungen');
   for (const slug of ['wirtschaftspruefung', 'beratung', 'steuern']) {
     await page.locator(`#tab-${slug}`).click();
+    await warteBisFarbeSteht(page);
     const results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
       .analyze();

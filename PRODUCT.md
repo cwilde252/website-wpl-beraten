@@ -29,9 +29,11 @@ Entscheidungen).
 Primäre Konversion: ein Erstgespräch per E-Mail. Es gibt bewusst kein Kontaktformular — solange kein
 Backend existiert, wäre es eine Attrappe.
 
-Der Prüfungspflicht-Check ist das inhaltliche Angebot der Seite: Er beantwortet die Frage, mit der
-die meisten Besucher überhaupt erst hier landen, und beantwortet sie fachlich sauber, ohne etwas zu
-verkaufen.
+Zwei Werkzeuge sind das inhaltliche Angebot der Seite. Der **Prüfungspflicht-Check** beantwortet
+die Frage, mit der die meisten Besucher überhaupt erst hier landen. Der **Fristen-Zeitstrahl**
+beantwortet die, die danach kommt — bis wann? — und zeigt dabei aus dem Gesetz heraus, warum die
+Prüfung zwischen Aufstellung und Feststellung liegen muss. Beide rechnen im Browser, beide
+verkaufen nichts, beide sagen, was sie nicht abbilden.
 
 Erfolg heißt: Jemand liest die Seite und denkt „Die versteht mein Unternehmen, und ich weiß nach
 zwei Minuten mehr als vorher."
@@ -75,37 +77,46 @@ untergräbt, um das es hier geht.
 
 - **Große-Kanzlei-Auftritt** (Dunkelblau, Gold, Säulen, Waage, Handschlag-Stockfotos): signalisiert
   Größe, die hier nicht da ist — und genau das Anonyme, von dem sich diese Kanzlei abgrenzt.
-- **SaaS-Landingpage** (Hero-Kennzahlen, Verlaufskarten, Badge-Wand, „Jetzt starten"): Prüfung ist
+- **SaaS-Landingpage** (Hero-Kennzahlen, Badge-Wand, Preistabelle, „Jetzt starten"): Prüfung ist
   kein Produkt mit Testphase.
 - **Magazin-Editorial** (zentrierte Display-Headlines, Kursiv-Emphase, großzügige Bedeutungsleere):
   eine Wirtschaftsprüferin verkauft keine Stimmung.
-- **AI-Slop-Templates** (Scroll-Reveal auf jeder Sektion, Blur-Blobs, dekorative Icon-Kreise, überall
-  dasselbe Label-Linie-Grid-Rezept): Bewegung ist hier auf Interaktionsfeedback beschränkt, alles
-  andere steht still.
-- **Der bisherige Auftritt dieser Seite**: vollflächig oranger Hero, vier konkurrierende
-  Akzentfarben, runde Karten mit Schatten, Pill-Buttons.
+- **Swiss-Minimalismus von der Stange** (Graphit auf Beige, Mono-Versal-Labels, Linienraster,
+  Randspalte, Doppelstrich): die Bildsprache, die diese Seite bis zum Redesign vom
+  September 2026 trug. Sauber gebaut, fachlich stimmig — und identisch mit hunderten
+  Agentur-, Studio- und Fintech-Auftritten. Als Abgrenzung von der Großkanzlei gedacht, als
+  Vorlage gelesen. Siehe `DESIGN.md`, Abschnitt 1.
+- **Freundlichkeit von der Stange** (Terracotta-Blobs, abgerundete Icon-Kreise, drei lachende
+  Stockfotos, „Lass uns reden!"): der naheliegende Gegenentwurf ist genauso austauschbar. Wärme
+  entsteht hier aus Stimme, Farbe und Form — nicht aus Dekoration.
 
 ## Design Principles
 
-1. **Fachlichkeit zeigen, nicht behaupten.** Die Schwellenwerttabelle und der Prüfungspflicht-Check
-   sind das visuelle Zentrum der Leistungsseite. Wer sie liest, hat einen Nutzen — auch ohne Anfrage.
-2. **Farbe ist Markierung, nicht Fläche.** Die vier Logofarben bleiben, aber sie kennzeichnen
-   Bereiche als Linie, Label und Marke. Keine einzige Fläche über 4 px trägt eine Logofarbe.
-3. **Struktur statt Bild.** Es gibt keine Fotografie. Linienraster, Randspalte, Typografie-Skala und
-   Flächenwechsel tragen die Seite. Das ist der Entwurf, nicht ein Notbehelf.
-4. **Zahlen sind Belege.** Alles Prüfbare steht in Mono mit Tabellenziffern — Beträge, Jahreszahlen,
-   Normzitate. Typografie macht sichtbar, was Beleg ist und was Text.
+1. **Fachlichkeit zeigen, nicht behaupten.** Die beiden Werkzeuge — Prüfungspflicht-Check und
+   Fristen-Zeitstrahl — sind das Zentrum der Leistungsseite. Wer sie benutzt, hat einen Nutzen,
+   auch ohne je eine Anfrage zu schreiben.
+2. **Erst fragen, dann erzählen.** Die Startseite beginnt mit einer Frage an die Besucherin und
+   drei Antworten in ihrer eigenen Stimme, nicht mit einer Behauptung über Wiebke.
+3. **Farbe ist Fläche.** Die vier Logofarben füllen Panels, Kacheln und Reiter. Jede bringt ihre
+   eigene Textfarbe mit, weil sie unterschiedlich hell sind — die Regel steht an einer Stelle im
+   Stylesheet und wird von einem Test nachgerechnet.
+4. **Zahlen sind Belege.** Alles Prüfbare steht in Mono mit Tabellenziffern — Beträge, Datums-
+   angaben, Normzitate. Typografie macht sichtbar, was Beleg ist und was Text.
 5. **Erreichbarkeit vor Konversion.** Ein Weg zum Erstgespräch pro Sektion, keine Pop-ups, keine
    Dringlichkeitsmuster. Wirtschaftsprüfung ist eine Mehrjahresbeziehung.
-6. **Ohne JavaScript nutzbar.** Die Seite wird statisch vorgerendert. Schwellenwerte, FAQ,
-   Navigation und alle Inhalte funktionieren auch dann, wenn nichts geladen wird.
+6. **Ohne JavaScript nutzbar.** Die Seite wird statisch vorgerendert. Einstiegsdialog,
+   Schwellenwerte, Fristen, FAQ und Navigation funktionieren auch dann, wenn nichts geladen wird.
+   Eine eigene Testsuite fährt jede Route mit abgeschaltetem JavaScript.
+7. **Bewegung darf nichts verstecken.** Animation ist Antwort auf eine Handlung. Wo doch etwas beim
+   Scrollen erscheint, gibt es einen Sicherheits-Timeout — Inhalt, der auf ein Ereignis wartet, das
+   nie eintritt, ist verlorener Inhalt.
 
 ## Pages
 
 | Route | Titel | Zweck |
 |---|---|---|
-| `/` | Start | Einstieg: Hero, Haltung, die drei Bereiche, Prüfungspflicht-Teaser, Profil-Teaser, Erstgespräch. |
-| `/leistungen` | Leistungen | Die drei Bereiche als Tabs, Schwellenwerttabelle, Prüfungspflicht-Check, FAQ. |
+| `/` | Start | Einstiegsdialog, Haltung, die drei Bereiche, Prüfungspflicht-Teaser, Profil-Teaser, Erstgespräch. |
+| `/leistungen` | Leistungen | Die drei Bereiche als Reiter, Prüfungspflicht-Check, Fristen-Zeitstrahl, FAQ. |
 | `/ueber-mich` | Über mich | Werdegang und Haltung. |
 | `/kontakt` | Kontakt | E-Mail-first, Kontaktdaten. |
 | `/impressum` | Impressum | Rechtstext. |
@@ -117,6 +128,8 @@ Tab-Fragment bestehen.
 ## Accessibility & Inclusion
 
 WCAG AA. Deutschsprachig, auch in ARIA. Tastaturbedienung vollständig, inklusive Pfeiltasten-
-Navigation im Tab-Strip und sichtbarem Fokus auf jedem interaktiven Element. `prefers-reduced-motion`
-wird überall respektiert. Kontrastverhältnisse sind für jede Farbkombination nachgerechnet und in
-`DESIGN.md` dokumentiert; Farbe ist nie alleiniger Bedeutungsträger.
+Navigation im Reiter-Strip, erreichbaren scrollbaren Tabellen und sichtbarem Fokus auf jedem
+interaktiven Element. `prefers-reduced-motion`
+wird überall respektiert. Kontrastverhältnisse werden nicht dokumentiert, sondern von
+`src/design-system.spec.ts` aus den Tokens nachgerechnet; eine AXE-Suite prüft zusätzlich jede
+Route und jeden Reiterzustand im Browser. Farbe ist nie alleiniger Bedeutungsträger.

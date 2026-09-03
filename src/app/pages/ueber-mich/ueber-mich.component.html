@@ -1,61 +1,60 @@
-<section class="bg-graphite text-linen on-graphite py-20 md:py-28" aria-label="Über mich">
+<section class="bg-ink text-cream on-ink pt-28 md:pt-36 pb-14 md:pb-20" aria-label="Über mich">
   <div class="sheet">
-    <div class="sheet-grid">
-      <div class="margin-note">
-        <span class="double-rule mb-3" aria-hidden="true"></span>
-        <p class="type-label">Über mich</p>
-      </div>
-      <div class="sheet-body">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-10 items-end">
+      <div class="lg:col-span-7">
         <app-display-headline [content]="headline" [level]="1" />
+        <p class="type-lead mt-7 text-cream-soft">
+          {{ profile.name }}, {{ profile.role }} in Rottweil.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<app-section-wrapper theme="paper" padding="large">
-  <div class="sheet-grid">
-    <div class="margin-note">
-      <p class="type-figure text-sm text-muted">{{ profile.role }}</p>
+<app-section-wrapper theme="cream" padding="large">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-14 gap-y-10 items-start">
+    <div class="lg:col-span-5 lg:sticky lg:top-28">
+      <app-portrait [src]="profile.portraitSrc" [alt]="profile.portraitAlt" />
     </div>
-    <div class="sheet-body--slim sheet-body">
+
+    <div class="lg:col-span-7">
+      <app-section-mark label="Haltung" />
       @for (paragraph of profile.statement; track $index) {
-        <p class="type-lead mb-6 last:mb-0">{{ paragraph }}</p>
+        <p class="type-lead mb-6 last:mb-0 max-w-none">{{ paragraph }}</p>
       }
     </div>
   </div>
 </app-section-wrapper>
 
-<app-section-wrapper theme="shade" padding="large">
+<app-section-wrapper theme="sand" padding="large">
   <app-section-mark label="Werdegang" />
-  <div class="sheet-grid">
-    <div class="sheet-body">
-      <ol class="list-none m-0 p-0">
-        @for (entry of profile.career; track entry.title) {
-          <li class="rule-row py-6 grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-8">
-            <span class="type-figure text-sm text-muted md:col-span-3">{{ entry.period }}</span>
-            <div class="md:col-span-9">
-              <h2 class="type-subhead">{{ entry.title }}</h2>
-              @if (entry.description) {
-                <p class="type-body mt-2">{{ entry.description }}</p>
-              }
-            </div>
-          </li>
-        }
-      </ol>
-    </div>
-  </div>
+  <h2 class="type-headline mb-10">Woher ich komme.</h2>
+
+  <ol class="career list-none m-0 p-0">
+    @for (entry of profile.career; track entry.title; let i = $index) {
+      <li class="career-step" [appReveal]="i * 60">
+        <span class="career-marker" aria-hidden="true"></span>
+        <div class="career-body">
+          <span class="type-figure text-sm text-ink-soft block mb-1.5">{{ entry.period }}</span>
+          <h3 class="type-subhead">{{ entry.title }}</h3>
+          @if (entry.description) {
+            <p class="type-body text-base text-ink-soft mt-2">{{ entry.description }}</p>
+          }
+        </div>
+      </li>
+    }
+  </ol>
 </app-section-wrapper>
 
-<app-section-wrapper theme="paper" padding="large">
-  <app-section-mark label="Erstgespräch" />
-  <div class="sheet-grid">
-    <div class="sheet-body--slim sheet-body">
-      <h2 class="type-headline mb-8">Klingt passend?</h2>
-      <p class="type-body mb-10">
+<app-section-wrapper theme="ink" padding="large">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-8 items-end">
+    <h2 class="type-headline lg:col-span-6">Klingt, als könnten wir zusammenarbeiten?</h2>
+    <div class="lg:col-span-6 lg:pb-2">
+      <p class="type-body text-cream-soft mb-8">
         Dann lassen Sie uns sprechen. Im Erstgespräch klären wir, worum es geht und ob ich die
         Richtige dafür bin.
       </p>
-      <app-rule-link href="/kontakt" label="Kontakt aufnehmen" />
+      <app-cta-link href="/kontakt" label="Kontakt aufnehmen" variant="primary" />
     </div>
   </div>
 </app-section-wrapper>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CareerEntry } from '../models/career-entry.model';
 import { ContactInfo } from '../models/contact-info.model';
+import { DialogOption } from '../models/dialog-option.model';
 import { DisplayHeadline } from '../models/display-headline.model';
 import { FaqItem } from '../models/faq-item.model';
 import { LegalSection } from '../models/legal-section.model';
@@ -35,55 +36,107 @@ export class ContentService {
     };
   }
 
-  // ===== Headlines ========================================================
+  // ===== Startseite =======================================================
 
   getHomeHeadline(): DisplayHeadline {
-    return { lines: ['Prüfen.', 'Beraten.', 'Steuern.'] };
+    return { lines: ['Hallo, ich bin', 'Wiebke.'] };
   }
 
   getHomeLead(): string {
-    return 'Wirtschaftsprüfung und Beratung für den Mittelstand — persönlich, pragmatisch und auf Augenhöhe.';
+    return 'Ich prüfe Jahresabschlüsse und berate mittelständische Unternehmen in und um Rottweil. Seit 2026 mit eigener Praxis, davor zehn Jahre im Rottweiler Mittelstand.';
+  }
+
+  /** Die Frage, die den Einstiegsdialog öffnet. */
+  getDialogPrompt(): string {
+    return 'Was führt Sie her?';
+  }
+
+  /**
+   * Die drei Wege in die Seite. Jede Antwort bleibt bei dem, was belegbar ist —
+   * Werdegang, Schwellenwerte, Leistungsbeschreibung. Kein Versprechen, das
+   * nirgends eingelöst wird.
+   */
+  getDialogOptions(): DialogOption[] {
+    return [
+      {
+        id: 'pruefungspflicht',
+        question: 'Wir wachsen gerade in die Prüfungspflicht hinein.',
+        answer:
+          'Dann klären wir das zuerst — und zwar ohne, dass Sie mir dafür schreiben müssen. Der Check rechnet Ihre drei Zahlen gegen die Größenklassen der §§ 267, 267a HGB durch, inklusive der Regel zu zwei aufeinanderfolgenden Stichtagen.',
+        accent: 'check',
+        ctaLabel: 'Zum Prüfungspflicht-Check',
+        ctaPath: '/leistungen',
+        ctaFragment: 'pruefungspflicht',
+      },
+      {
+        id: 'organisation',
+        question: 'Bei uns läuft zu viel über meinen Schreibtisch.',
+        answer:
+          'Das höre ich oft, und meistens fehlt nicht die Arbeitskraft, sondern eine Struktur, in der auch Entscheidungen ohne Sie funktionieren. Wer nur Arbeit delegiert und nicht auch Entscheidungen, steht bald wieder am selben Punkt.',
+        accent: 'beratung',
+        ctaLabel: 'Was ich dafür mache',
+        ctaPath: '/leistungen',
+        ctaFragment: 'beratung',
+      },
+      {
+        id: 'kennenlernen',
+        question: 'Ich schaue erst mal, wer Sie eigentlich sind.',
+        answer:
+          'Völlig richtig so. Wirtschaftsprüfung ist eine Mehrjahresbeziehung — da sollten Sie wissen, mit wem Sie es zu tun haben, bevor Sie irgendwas anfragen.',
+        accent: 'pruefung',
+        ctaLabel: 'Mein Werdegang',
+        ctaPath: '/ueber-mich',
+      },
+    ];
   }
 
   getLeistungenHeadline(): DisplayHeadline {
-    return { lines: ['Drei Perspektiven', 'auf dasselbe', 'Unternehmen.'] };
+    return { lines: ['Drei Blickwinkel', 'auf dasselbe', 'Unternehmen.'] };
+  }
+
+  getLeistungenLead(): string {
+    return 'Prüfung, Beratung und Steuern hängen zusammen — sie schauen nur von verschiedenen Seiten auf dieselben Zahlen. Suchen Sie sich aus, was gerade ansteht.';
   }
 
   getUeberMichHeadline(): DisplayHeadline {
-    return { lines: ['Wiebke Lefevre,', 'Wirtschaftsprüferin', 'in Rottweil.'] };
+    return { lines: ['Wer hier', 'prüft.'] };
   }
 
   getKontaktHeadline(): DisplayHeadline {
-    return { lines: ['Reden wir', 'über Ihr Unternehmen.'] };
+    return { lines: ['Erzählen Sie mir', 'von Ihrem', 'Unternehmen.'] };
   }
 
   // ===== Haltung ==========================================================
+
+  getPositionsIntro(): string {
+    return 'Vier Dinge, die Sie vorher wissen sollten — damit Sie einschätzen können, ob das zu Ihnen passt.';
+  }
 
   getPositions(): Position[] {
     return [
       {
         ref: '01',
-        title: 'Persönlich',
+        title: 'Sie bekommen mich',
         description:
-          'Sie arbeiten direkt mit mir — nicht mit wechselnden Ansprechpartnern und nicht mit einem Team, das Sie nie zu Gesicht bekommen.',
+          'Keine wechselnden Ansprechpartner, keine Weiterreichung an Berufseinsteiger, keine Nummer im System. Wenn Sie anrufen, bin ich dran, und im Zweifel weiß ich auswendig, worüber wir letztes Jahr gesprochen haben.',
       },
       {
         ref: '02',
-        title: 'Pragmatisch',
+        title: 'Kein Schema F',
         description:
-          'Den Prüfungsansatz schneide ich auf Größe und Komplexität Ihres Unternehmens zu. Kein Schema F, sondern echtes Hineindenken.',
+          'Den Prüfungsansatz schneide ich auf Größe und Komplexität Ihres Unternehmens zu. Eine GmbH mit dreißig Leuten braucht keine Checkliste, die für einen Konzern geschrieben wurde.',
       },
       {
         ref: '03',
-        title: 'Auf Augenhöhe',
+        title: 'Fragen sind erlaubt',
         description:
-          'Ich bin Sparringspartnerin für betriebswirtschaftliche Entwicklung und strategische Entscheidungen, nicht nur Prüferin.',
+          'Die Prüfung ist der Anlass, das Gespräch ist der Nutzen. Wenn Ihnen an Ihren Zahlen etwas auffällt oder eine Entscheidung ansteht, reden Sie mit mir darüber — genau dafür sitze ich ohnehin an Ihren Unterlagen.',
       },
       {
         ref: '04',
-        title: 'Im Mittelstand zu Hause',
+        title: 'Ich kenne die Gegend',
         description:
-          'Ich kenne die Strukturen, Herausforderungen und Chancen mittelständischer Unternehmen in der Region.',
+          'Zehn Jahre Prüfung und Beratung im regionalen Mittelstand. Ich weiß, wie hier gewirtschaftet wird, wie die Strukturen gewachsen sind — und wie wenig Zeit Sie tatsächlich haben.',
       },
     ];
   }
@@ -97,14 +150,14 @@ export class ContentService {
         slug: 'wirtschaftspruefung',
         accent: 'pruefung',
         title: 'Wirtschaftsprüfung',
-        claim: 'Prüfen mit Verstand — nicht nach Schema F.',
+        claim: 'Ich prüfe Ihr Unternehmen, nicht meine Checkliste.',
         intro:
-          'Ob gesetzliche Pflichtprüfung oder freiwillige Prüfung des Jahresabschlusses: Mein Prüfungsansatz ist auf die Größe und Komplexität Ihres Unternehmens zugeschnitten. Keine überdimensionierten Checklisten, sondern echtes Reindenken in Ihr Unternehmen.',
+          'Ob gesetzliche Pflichtprüfung oder freiwillige Prüfung des Jahresabschlusses: Der Fokus liegt auf dem Wesentlichen, angepasst an die Besonderheiten und Umstände Ihres Hauses. Als kleine Praxis kann ich mir diesen Zuschnitt leisten — größere Häuser können das oft nicht.',
         blocks: [
           {
             title: 'Jahresabschlussprüfung',
             paragraphs: [
-              'Als kleine Kanzlei biete ich Ihnen einen unkomplizierten, pragmatischen Prüfungsansatz. Der Fokus liegt auf dem Wesentlichen, angepasst an die Besonderheiten und Umstände Ihres Unternehmens.',
+              'Sie bekommen einen unkomplizierten, pragmatischen Prüfungsansatz und eine Ansprechpartnerin, die Ihre Zahlen tatsächlich selbst gesehen hat.',
             ],
             points: [
               'Gesetzliche Pflichtprüfung und freiwillige Prüfung',
@@ -115,7 +168,7 @@ export class ContentService {
           {
             title: 'Prozesse und Kontrollen',
             paragraphs: [
-              'Ein unabhängiger Review der Prozesse rund um Ihre Buchhaltung und Jahresabschlusserstellung gibt Ihnen Sicherheit. Ich schaue auf Funktionalität und Ausgestaltung Ihres internen Kontrollsystems und zeige Ihnen, wo Verbesserungspotenzial liegt.',
+              'Ein unabhängiger Review der Prozesse rund um Buchhaltung und Abschlusserstellung gibt Ihnen Sicherheit. Ich schaue auf Funktionalität und Ausgestaltung Ihres internen Kontrollsystems und sage Ihnen konkret, wo etwas fehlt.',
             ],
             points: [
               'Review der Buchhaltungsprozesse',
@@ -126,7 +179,7 @@ export class ContentService {
           {
             title: 'Sparringspartnerin auf Augenhöhe',
             paragraphs: [
-              'Die Jahresabschlussprüfung ist mehr als Pflichterfüllung. Nutzen Sie den Dialog mit Ihrer Prüferin, um über die betriebswirtschaftliche Entwicklung und anstehende Entscheidungen zu sprechen.',
+              'Ich sitze ohnehin ein paar Tage in Ihren Unterlagen. Nutzen Sie das: über die betriebswirtschaftliche Entwicklung sprechen, eine anstehende Entscheidung durchdenken, eine zweite Meinung einholen.',
             ],
           },
         ],
@@ -138,14 +191,14 @@ export class ContentService {
         slug: 'beratung',
         accent: 'beratung',
         title: 'Beratung',
-        claim: 'Gute Entscheidungen sind kein Zufall — sie sind gut vorbereitet.',
+        claim: 'Ihre Buchhaltung weiß mehr, als sie Ihnen erzählt.',
         intro:
-          'Eine Buchhaltung ist kein Zahlenfriedhof, sondern eine wertvolle Informationsquelle. Machen wir sie gemeinsam nutzbar.',
+          'Eine Buchhaltung ist kein Zahlenfriedhof, sondern die vollständigste Informationsquelle, die Ihr Unternehmen besitzt. Machen wir sie nutzbar.',
         blocks: [
           {
             title: 'Controlling und Informationsmanagement',
             paragraphs: [
-              'Ich arbeite mit Ihnen ein Konzept für Ihr internes Controlling und Ihr Informationsmanagement aus. Das Ziel: Sie bekommen immer die Informationen, die Sie für Ihre Entscheidungen brauchen — aufbereitet, aktuell, auf den Punkt.',
+              'Wir arbeiten ein Konzept für Ihr internes Controlling aus, das zu Ihrem Haus passt und nicht zu einem Lehrbuch. Ziel ist, dass Sie die Information vor der Entscheidung haben und nicht danach.',
             ],
             points: [
               'Individuelle Controlling-Konzepte',
@@ -156,8 +209,8 @@ export class ContentService {
           {
             title: 'Organisationsoptimierung',
             paragraphs: [
-              'Läuft bei Ihnen noch alles über den Schreibtisch des Chefs? Gerade bei erfolgreich wachsenden Unternehmen wird das schnell zur Belastung: Die Stunden im Büro werden mehr, man wird zum begrenzenden Faktor der eigenen Unternehmung, und dazu kommt das Gefühl, den Überblick zu verlieren.',
-              'Wer nur Arbeit delegiert und nicht auch Entscheidungen, steht bald wieder am selben Punkt. Ich helfe Ihnen, belastbare Systeme aufzubauen, die Sie wirklich voranbringen.',
+              'Gerade bei erfolgreich wachsenden Unternehmen wird der eigene Schreibtisch zum Nadelöhr: Die Stunden im Büro werden mehr, man wird zum begrenzenden Faktor der eigenen Unternehmung, und dazu kommt das Gefühl, den Überblick zu verlieren.',
+              'Ich helfe Ihnen, belastbare Systeme aufzubauen — mit klaren Zuständigkeiten und Kontrollen an den Stellen, wo sie wirklich gebraucht werden.',
             ],
             points: [
               'Digitale Workflows und Kompetenzstrukturen',
@@ -169,8 +222,8 @@ export class ContentService {
           {
             title: 'Coaching für die Buchhaltung',
             paragraphs: [
-              'Sie haben ein eigenes Buchhaltungsteam, aber der Jahresabschluss wird noch vom Steuerberater erstellt? Spätestens wenn die Gesellschaft die Grenzen zur Prüfungspflicht erreicht, bedeutet das zusätzliche Kosten, Verzögerungen und längere Wege bei Rückfragen.',
-              'Dabei wäre Ihr Team technisch und fachlich in der Lage, die Abschlussbuchungen selbst zu bearbeiten. Ich coache Ihre Buchhaltung auf Abschlussniveau.',
+              'Sie haben ein eigenes Buchhaltungsteam, aber der Jahresabschluss wird noch vom Steuerberater erstellt? Spätestens an der Grenze zur Prüfungspflicht bedeutet das zusätzliche Kosten, Verzögerungen und lange Wege bei Rückfragen.',
+              'Dabei wäre Ihr Team fachlich meist längst in der Lage, die Abschlussbuchungen selbst zu bearbeiten. Es fehlt nur jemand, der es einmal in Ruhe zeigt. Das mache ich.',
             ],
             points: [
               'Abstimmungen und Abschlussbuchungen',
@@ -190,14 +243,14 @@ export class ContentService {
         slug: 'steuern',
         accent: 'steuern',
         title: 'Steuern',
-        claim: 'Steuern mitdenken — nicht nur zahlen.',
+        claim: 'Was Sie zahlen, entscheidet sich lange vor dem Bescheid.',
         intro:
-          'Unternehmenssteuerung heißt: Informationen gewinnen und aufbereiten, Entscheidungen vorbereiten, planen und reflektieren. Steuern sind Teil des Unternehmens und gehören in diese Steuerung hinein.',
+          'Unternehmenssteuerung heißt: Informationen gewinnen, Entscheidungen vorbereiten, planen und reflektieren. Die Steuerbelastung gehört in diese Steuerung hinein und nicht ans Ende des Jahres.',
         blocks: [
           {
             title: 'Steuern in der Unternehmenssteuerung',
             paragraphs: [
-              'Ob Liquiditätsplanung, Investitionsentscheidung oder täglicher Geschäftsbetrieb — die Steuerbelastung gehört in Planungen und Entscheidungen einbezogen. Vorauszahlungen und Termine lassen sich so managen, dass der Steuerbescheid keine bösen Überraschungen bereithält.',
+              'Ob Liquiditätsplanung, Investitionsentscheidung oder täglicher Geschäftsbetrieb: Wer die steuerliche Wirkung vorher kennt, entscheidet anders. Vorauszahlungen und Termine lassen sich so managen, dass der Bescheid nichts Neues mehr erzählt.',
             ],
             points: [
               'Steuerbelastungen in Planungen und Entscheidungen einbeziehen',
@@ -219,10 +272,15 @@ export class ContentService {
       name: 'Wiebke Lefevre',
       role: 'Wirtschaftsprüferin',
       statement: [
-        'Aufgewachsen bin ich fachlich in der Prozessprüfung und in der Begleitung mittelständischer Unternehmen. Meine Leidenschaft liegt darin, unterschiedliche Geschäfts- und Organisationsmodelle im regionalen Mittelstand zu verstehen.',
-        'Wichtig sind mir der persönliche Kontakt und die Zusammenarbeit auf Augenhöhe. Genau deshalb passe ich den Prüfungsansatz an die Besonderheiten, die Größe und die jeweiligen Umstände meiner Mandanten an.',
+        'Fachlich aufgewachsen bin ich in der Prozessprüfung und in der Begleitung mittelständischer Unternehmen. Was mich daran bis heute interessiert: Jedes Haus hat sich seine eigene Art ausgedacht, Dinge zu organisieren — und in dieser Logik steckt fast immer eine Geschichte.',
+        'Deshalb kommt bei mir auch kein Standardprogramm zum Einsatz. Ich passe den Prüfungsansatz an die Besonderheiten, die Größe und die Umstände meiner Mandanten an. Das dauert am Anfang länger und spart hinten heraus Zeit.',
+        'Wichtig sind mir der persönliche Kontakt und die Zusammenarbeit auf Augenhöhe. Ich sage Ihnen, was ich sehe, auch wenn es unbequem ist — und ich erwarte dasselbe zurück.',
       ],
       career: this.getCareer(),
+      // Es liegt noch kein Porträt vor (siehe FRAGEN-AN-WIEBKE.md). Bis dahin
+      // zeigt der Bildbereich das Signet statt eines Platzhalterbildes.
+      portraitSrc: '',
+      portraitAlt: '',
     };
   }
 
@@ -259,19 +317,19 @@ export class ContentService {
   getFaq(): FaqItem[] {
     return [
       {
-        question: 'Ab wann ist mein Jahresabschluss prüfungspflichtig?',
+        question: 'Ab wann muss ich meinen Jahresabschluss prüfen lassen?',
         answer:
-          'Prüfungspflichtig sind Kapitalgesellschaften, die nicht klein im Sinne des § 267 Abs. 1 HGB sind, also mittelgroße und große. Maßgeblich sind Bilanzsumme, Umsatzerlöse und Arbeitnehmerzahl, wobei jeweils mindestens zwei der drei Merkmale überschritten sein müssen, und zwar an zwei aufeinanderfolgenden Abschlussstichtagen. Der Check auf dieser Seite rechnet das für Sie durch.',
+          'Prüfungspflichtig sind Kapitalgesellschaften, die nicht klein im Sinne des § 267 Abs. 1 HGB sind, also mittelgroße und große. Maßgeblich sind Bilanzsumme, Umsatzerlöse und Arbeitnehmerzahl, wobei jeweils mindestens zwei der drei Merkmale überschritten sein müssen — und das an zwei aufeinanderfolgenden Abschlussstichtagen. Der Check auf dieser Seite rechnet Ihnen das durch.',
       },
       {
         question: 'Was ist der Unterschied zwischen Pflichtprüfung und freiwilliger Prüfung?',
         answer:
-          'Die Pflichtprüfung schreibt das Gesetz vor; ohne sie kann der Jahresabschluss nicht festgestellt werden (§ 316 Abs. 1 Satz 2 HGB). Eine freiwillige Prüfung beauftragen Unternehmen dagegen selbst, häufig weil Banken, Gesellschafter oder ein Gesellschaftsvertrag es verlangen, oder weil vor einem Wachstumsschritt Sicherheit über die Zahlen gewünscht ist. Inhaltlich arbeite ich in beiden Fällen gleich sorgfältig; der Umfang lässt sich bei einer freiwilligen Prüfung abstimmen.',
+          'Die Pflichtprüfung schreibt das Gesetz vor; ohne sie kann der Jahresabschluss nicht festgestellt werden (§ 316 Abs. 1 Satz 2 HGB). Eine freiwillige Prüfung beauftragen Sie selbst — meist weil Banken, Gesellschafter oder der Gesellschaftsvertrag es verlangen, oder weil Sie vor einem Wachstumsschritt Sicherheit über die Zahlen wollen. Inhaltlich arbeite ich in beiden Fällen gleich sorgfältig; nur den Umfang können wir bei einer freiwilligen Prüfung miteinander abstimmen.',
       },
       {
-        question: 'Wir haben eine eigene Buchhaltung. Können Sie die aufs Abschlussniveau bringen?',
+        question: 'Wir haben eine eigene Buchhaltung. Bekommen Sie die aufs Abschlussniveau?',
         answer:
-          'Ja, das ist einer meiner Beratungsschwerpunkte. Viele Teams könnten Abstimmungen, Abschlussbuchungen, Rückstellungen und Vorratsbewertung selbst übernehmen, es fehlt nur die Anleitung. Ich arbeite Ihr Team ein, dokumentiere die Vorgehensweise und sorge dafür, dass die Arbeitspapiere später eine effiziente Prüfung ermöglichen.',
+          'Ja, das ist einer meiner Beratungsschwerpunkte. Viele Teams könnten Abstimmungen, Abschlussbuchungen, Rückstellungen und Vorratsbewertung längst selbst übernehmen, es hat ihnen nur nie jemand gezeigt. Ich arbeite Ihr Team ein, dokumentiere die Vorgehensweise und sorge dafür, dass die Arbeitspapiere später eine effiziente Prüfung ermöglichen.',
       },
     ];
   }
@@ -279,11 +337,21 @@ export class ContentService {
   // ===== Prüfungspflicht-Check ============================================
 
   getAuditCheckIntro(): string {
-    return 'Ob Ihr Jahresabschluss geprüft werden muss, hängt an drei Zahlen. Tragen Sie sie ein, und Sie sehen, in welche Größenklasse Ihre Gesellschaft fällt und was daraus folgt.';
+    return 'Ob Ihr Jahresabschluss geprüft werden muss, hängt an drei Zahlen. Tragen Sie sie ein, und Sie sehen, in welche Größenklasse Ihre Gesellschaft fällt und was daraus folgt. Ich bekomme davon nichts mit — die Rechnung läuft in Ihrem Browser.';
   }
 
   getAuditCheckDisclaimer(): string {
     return 'Dieser Check ist eine unverbindliche erste Orientierung und ersetzt keine rechtliche oder steuerliche Beratung. Maßgeblich sind §§ 267, 267a und 316 HGB in der jeweils geltenden Fassung sowie die Umstände des Einzelfalls. Nicht berücksichtigt sind unter anderem Konzernabschlüsse (§ 293 HGB), das Publizitätsgesetz, branchenspezifische Prüfungspflichten sowie gesellschaftsvertraglich oder von Kreditgebern verlangte freiwillige Prüfungen.';
+  }
+
+  // ===== Fristen-Zeitstrahl ===============================================
+
+  getFristenIntro(): string {
+    return 'Der Abschlussstichtag setzt eine Kette von Fristen in Gang. Wählen Sie Ihren Stichtag, und Sie sehen, wann was fällig ist — und warum es sich lohnt, früh mit einer Prüferin zu sprechen.';
+  }
+
+  getFristenDisclaimer(): string {
+    return 'Angegeben sind ausschließlich die unmittelbar aus dem Gesetz folgenden Termine für Kapitalgesellschaften. Nicht abgebildet sind steuerliche Erklärungsfristen, Sonderregeln für Kleinstkapitalgesellschaften (§ 326 HGB) und kapitalmarktorientierte Gesellschaften sowie abweichende Regelungen in Gesellschaftsvertrag oder Satzung. Wie lange eine Prüfung im Einzelfall dauert, hängt vom Unternehmen ab — dazu sprechen wir besser persönlich.';
   }
 
   // ===== Rechtstexte ======================================================
@@ -352,6 +420,12 @@ export class ContentService {
         ],
       },
       {
+        heading: 'Prüfungspflicht-Check und Fristenrechner',
+        paragraphs: [
+          'Die beiden Rechner auf der Leistungsseite laufen vollständig in Ihrem Browser. Die von Ihnen eingegebenen Zahlen und Daten werden nicht übertragen, nicht gespeichert und nicht ausgewertet; sie verlassen Ihr Gerät nicht.',
+        ],
+      },
+      {
         heading: 'Server-Logfiles',
         paragraphs: [
           'Der Hosting-Anbieter erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt: Browsertyp und -version, verwendetes Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse.',
@@ -398,7 +472,7 @@ export class ContentService {
       leistungen: {
         title: 'Leistungen — Wiebke Lefevre, Wirtschaftsprüferin',
         description:
-          'Wirtschaftsprüfung, Beratung und Steuern aus einer Hand. Mit Prüfungspflicht-Check nach den Größenklassen der §§ 267, 267a HGB.',
+          'Wirtschaftsprüfung, Beratung und Steuern aus einer Hand. Mit Prüfungspflicht-Check nach §§ 267, 267a HGB und Fristenrechner zum Jahresabschluss.',
       },
       'ueber-mich': {
         title: 'Über mich — Wiebke Lefevre, Wirtschaftsprüferin',

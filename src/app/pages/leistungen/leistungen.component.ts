@@ -14,7 +14,8 @@ import { SeoService } from '../../core/services/seo.service';
 import { AuditCheckComponent } from '../../shared/audit-check/audit-check.component';
 import { DisplayHeadlineComponent } from '../../shared/display-headline/display-headline.component';
 import { FaqAccordionComponent } from '../../shared/faq-accordion/faq-accordion.component';
-import { RuleLinkComponent } from '../../shared/rule-link/rule-link.component';
+import { CtaLinkComponent } from '../../shared/cta-link/cta-link.component';
+import { FristenTimelineComponent } from '../../shared/fristen-timeline/fristen-timeline.component';
 import { SectionIndicatorComponent } from '../../shared/section-indicator/section-indicator.component';
 import { SectionMarkComponent } from '../../shared/section-mark/section-mark.component';
 import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wrapper.component';
@@ -24,6 +25,7 @@ const LEISTUNGEN_SECTIONS: SectionRef[] = [
   { id: 'leistungen-start', label: 'Leistungen' },
   { id: 'bereiche', label: 'Bereiche' },
   { id: 'pruefungspflicht', label: 'Prüfungspflicht' },
+  { id: 'fristen', label: 'Fristen' },
   { id: 'fragen', label: 'Fragen' },
 ];
 
@@ -37,7 +39,8 @@ const LEISTUNGEN_SECTIONS: SectionRef[] = [
     ServiceTabsComponent,
     AuditCheckComponent,
     FaqAccordionComponent,
-    RuleLinkComponent,
+    CtaLinkComponent,
+    FristenTimelineComponent,
   ],
   templateUrl: './leistungen.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,6 +54,7 @@ export class LeistungenComponent implements OnInit {
 
   readonly sections = LEISTUNGEN_SECTIONS;
   readonly headline = this.content.getLeistungenHeadline();
+  readonly lead = this.content.getLeistungenLead();
   readonly areas = this.content.getServiceAreas();
   readonly faq = this.content.getFaq();
 

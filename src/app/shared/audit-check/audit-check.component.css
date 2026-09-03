@@ -1,13 +1,155 @@
-/* Farbe ist hier nie alleiniger Bedeutungsträger: die Zeile trägt zusätzlich das
-   Wort „überschritten“, die Kante markiert sie nur redundant (WCAG 1.4.1). */
-.criterion-exceeded th {
-  border-inline-start: 2px solid var(--accent-on-surface, var(--color-graphite));
-  padding-inline-start: 0.75rem;
+/* ---- Formular ---------------------------------------------------------- */
+.field-legend {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-variation-settings:
+    'SOFT' 40,
+    'WONK' 1,
+    'opsz' 20;
+  margin-block-end: 1rem;
+}
+
+.field-label {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  margin-block-end: 0.5rem;
+}
+
+/* Die Euro-Marke sitzt im Feld statt im Label — das Label sagt dann, was
+   gemeint ist, und nicht, in welcher Einheit man tippen soll. */
+.field-wrap {
+  position: relative;
+}
+
+.field-wrap .field {
+  padding-inline-end: 2.25rem;
+}
+
+.field-suffix {
+  position: absolute;
+  inset-inline-end: 0.875rem;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  color: var(--color-ink-soft);
+  pointer-events: none;
+}
+
+.field-hint,
+.field-error {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  margin-block-start: 0.5rem;
+}
+
+.field-hint {
+  color: var(--color-ink-soft);
+}
+
+.field-error {
+  color: var(--color-pruefung-deep);
+  font-weight: 500;
+}
+
+.check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
 }
 
 input[type='checkbox'] {
-  accent-color: var(--color-graphite);
-  width: 1rem;
-  height: 1rem;
+  accent-color: var(--color-ink);
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-block-start: 0.1875rem;
   flex-shrink: 0;
+}
+
+/* ---- Tabellen ---------------------------------------------------------- */
+.th {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-ink-soft);
+  padding: 0.75rem 0.75rem 0.75rem 0;
+}
+.th:last-child {
+  padding-inline-end: 0;
+}
+
+.td {
+  padding: 0.875rem 0.75rem 0.875rem 0;
+  vertical-align: top;
+}
+.td:last-child {
+  padding-inline-end: 0;
+}
+
+.td-head {
+  font-weight: 400;
+  font-size: 0.9375rem;
+}
+
+/* Farbe ist hier nie alleiniger Bedeutungsträger: die Zeile trägt zusätzlich das
+   Wort „überschritten", die Kante markiert sie nur redundant (WCAG 1.4.1). */
+.criterion-exceeded th {
+  border-inline-start: 3px solid var(--area-deep);
+  padding-inline-start: 0.75rem;
+}
+
+/* ---- Panels ------------------------------------------------------------ */
+.threshold-panel {
+  background: var(--color-shell);
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .threshold-panel {
+    padding: 1.75rem;
+  }
+}
+
+/* Das Ergebnis liegt auf der Bereichsfarbe des Checks. Beide Zustände nutzen
+   dieselbe Fläche: Prüfungspflicht ist kein Fehlerzustand, also gibt es kein
+   Rot und kein Grün (Ampel-Regel, DESIGN.md). */
+.result-panel {
+  background: var(--color-check-tint);
+  border: 1px solid color-mix(in oklab, var(--color-check) 45%, transparent);
+  padding: 1.75rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .result-panel {
+    padding: 2.25rem 2.5rem;
+  }
+}
+
+/* Die Prüfungspflicht bekommt zusätzlich eine kräftige Kante — sie ist das
+   Ergebnis, auf das die meisten hier warten. */
+.result-panel.is-required {
+  border-inline-start: 6px solid var(--color-check);
+}
+
+.result-panel h3:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 6px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .result-panel {
+    animation: result-in 320ms var(--ease-soft) both;
+  }
+}
+
+@keyframes result-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

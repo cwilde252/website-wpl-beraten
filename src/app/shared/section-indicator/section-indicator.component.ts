@@ -11,9 +11,13 @@ import {
 import { SectionRef } from '../../core/models/section-ref.model';
 
 /**
- * Seitenindikator in der Randspalte. Die Einträge sind echte Anker — sie
+ * Seitenindikator am linken Rand. Die Einträge sind echte Anker — sie
  * funktionieren im vorgerenderten HTML auch ohne JavaScript. Der
  * IntersectionObserver hebt zusätzlich den aktuellen Abschnitt hervor.
+ *
+ * Neu gegenüber dem Vorgänger: Der aktive Punkt wächst und färbt sich, und die
+ * Beschriftung fährt beim Zeigen als kleine Blase heraus, statt nur die Deckkraft
+ * zu wechseln.
  */
 @Component({
   selector: 'app-section-indicator',
@@ -24,50 +28,73 @@ import { SectionRef } from '../../core/models/section-ref.model';
         display: contents;
       }
 
-      .indicator-label {
-        opacity: 0;
-        transform: translateX(-4px);
-        transition:
-          opacity 240ms var(--ease-precise),
-          transform 240ms var(--ease-precise);
+      .indicator-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.375rem 0.5rem;
+        margin-inline: -0.5rem;
+        text-decoration: none;
       }
 
+      .indicator-dot {
+        display: block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: var(--color-edge-strong);
+        flex: none;
+        transition:
+          background-color 280ms var(--ease-soft),
+          transform 280ms var(--ease-spring);
+      }
+
+      .indicator-item[aria-current] .indicator-dot {
+        background: var(--color-ink);
+        transform: scale(1.6);
+      }
+
+      .indicator-label {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        white-space: nowrap;
+        color: var(--color-ink);
+        background: var(--color-cream);
+        border: 1px solid var(--color-edge);
+        border-radius: var(--radius-pill);
+        padding: 0.3125rem 0.75rem;
+        opacity: 0;
+        transform: translateX(-6px);
+        transition:
+          opacity 240ms var(--ease-soft),
+          transform 240ms var(--ease-spring);
+      }
+
+      /* Das Label erscheint nur beim Zeigen. Dauerhaft eingeblendet — auch für
+         den aktiven Abschnitt — liefe es in schmaleren Viewports in die
+         Headline hinein. */
       .indicator-item:hover .indicator-label,
       .indicator-item:focus-visible .indicator-label {
         opacity: 1;
         transform: translateX(0);
       }
-
-      .indicator-tick {
-        transition:
-          opacity 240ms var(--ease-precise),
-          transform 240ms var(--ease-precise);
-      }
     `,
   ],
   template: `
     <nav
-      class="hidden lg:flex fixed left-3 xl:left-6 top-1/2 -translate-y-1/2 z-30 flex-col"
+      class="hidden xl:flex fixed left-4 2xl:left-8 top-1/2 -translate-y-1/2 z-30 flex-col"
       [attr.aria-label]="ariaLabel()"
     >
-      <ol class="list-none m-0 p-0 flex flex-col gap-1">
+      <ol class="list-none m-0 p-0 flex flex-col gap-1.5">
         @for (section of sections(); track section.id) {
           <li>
             <a
               [href]="'#' + section.id"
-              class="indicator-item flex items-center gap-3 py-1.5 px-2 -mx-2 no-underline"
+              class="indicator-item"
               [attr.aria-current]="activeId() === section.id ? 'location' : null"
             >
-              <span
-                class="indicator-tick block w-0.5 h-6 bg-muted shrink-0"
-                [style.opacity]="activeId() === section.id ? '1' : '0.4'"
-                [style.transform]="activeId() === section.id ? 'scaleY(1)' : 'scaleY(0.4)'"
-                aria-hidden="true"
-              ></span>
-              <span
-                class="indicator-label type-label whitespace-nowrap bg-linen-bright text-graphite px-2 py-1"
-                >{{ section.label }}</span
-              >
+              <span class="indicator-dot" aria-hidden="true"></span>
+              <span class="indicator-label">{{ section.label }}</span>
             </a>
           </li>
         }

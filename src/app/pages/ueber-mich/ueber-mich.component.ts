@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { ContentService } from '../../core/services/content.service';
 import { SeoService } from '../../core/services/seo.service';
+import { CtaLinkComponent } from '../../shared/cta-link/cta-link.component';
 import { DisplayHeadlineComponent } from '../../shared/display-headline/display-headline.component';
-import { RuleLinkComponent } from '../../shared/rule-link/rule-link.component';
+import { PortraitComponent } from '../../shared/portrait/portrait.component';
+import { RevealDirective } from '../../shared/reveal.directive';
 import { SectionMarkComponent } from '../../shared/section-mark/section-mark.component';
 import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wrapper.component';
 
@@ -12,9 +14,12 @@ import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wr
     SectionWrapperComponent,
     SectionMarkComponent,
     DisplayHeadlineComponent,
-    RuleLinkComponent,
+    CtaLinkComponent,
+    PortraitComponent,
+    RevealDirective,
   ],
   templateUrl: './ueber-mich.component.html',
+  styleUrl: './ueber-mich.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UeberMichComponent implements OnInit {

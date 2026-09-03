@@ -1,15 +1,15 @@
-<app-section-wrapper theme="paper" padding="large">
-  <app-section-mark label="Über mich" />
-  <div class="sheet-grid">
-    <div class="margin-note">
-      <p class="type-figure text-sm text-muted">{{ profile.role }}</p>
+<app-section-wrapper theme="sand" padding="large">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-14 gap-y-10 items-center">
+    <div class="lg:col-span-5">
+      <app-portrait [src]="profile.portraitSrc" [alt]="profile.portraitAlt" />
     </div>
-    <div class="sheet-body--slim sheet-body">
-      <h2 class="type-headline mb-8">{{ profile.name }}</h2>
-      <p class="type-body mb-6">{{ profile.statement[0] }}</p>
-      <div class="mt-10">
-        <app-rule-link href="/ueber-mich" label="Werdegang ansehen" />
-      </div>
+
+    <div class="lg:col-span-7">
+      <app-section-mark label="Über mich" />
+      <h2 class="type-headline mb-6">{{ profile.name }}</h2>
+      <p class="type-lead mb-6 max-w-none">{{ profile.statement[0] }}</p>
+      <p class="type-body mb-9 text-ink-soft">{{ profile.statement[2] }}</p>
+      <app-cta-link href="/ueber-mich" label="Werdegang ansehen" variant="ghost" />
     </div>
   </div>
 </app-section-wrapper>

@@ -1,0 +1,118 @@
+<p class="type-lead mb-10">{{ intro }}</p>
+
+<!-- Steuerung. Zwei Selects und eine Umschaltung — bewusst kein Datumsfeld:
+     ein Abschlussstichtag ist fast immer ein Monatsende, und eine Auswahl
+     macht weniger Fehler möglich als eine freie Eingabe. -->
+<div class="card p-6 md:p-7 mb-12">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div>
+      <label class="control-label" for="fristen-stichtag">Abschlussstichtag</label>
+      <select
+        id="fristen-stichtag"
+        class="field control-select"
+        [value]="selectedOptionId()"
+        (change)="onStichtagChange($event)"
+      >
+        @for (option of stichtagOptions; track option.id) {
+          <option [value]="option.id">{{ option.label }}</option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label class="control-label" for="fristen-jahr">Geschäftsjahr</label>
+      <select
+        id="fristen-jahr"
+        class="field control-select"
+        [value]="selectedYear()"
+        (change)="onYearChange($event)"
+      >
+        @for (year of years; track year) {
+          <option [value]="year">{{ year }}</option>
+        }
+      </select>
+    </div>
+
+    <fieldset class="border-0 p-0 m-0 lg:col-span-1 sm:col-span-2 lg:col-auto">
+      <legend class="control-label">Größenklasse</legend>
+      <div class="toggle-group" role="group" aria-label="Größenklasse der Gesellschaft">
+        <button
+          type="button"
+          class="toggle"
+          [class.is-active]="groessenlage() === 'nicht-klein'"
+          [attr.aria-pressed]="groessenlage() === 'nicht-klein'"
+          (click)="setGroessenlage('nicht-klein')"
+        >
+          Nicht klein
+        </button>
+        <button
+          type="button"
+          class="toggle"
+          [class.is-active]="groessenlage() === 'klein'"
+          [attr.aria-pressed]="groessenlage() === 'klein'"
+          (click)="setGroessenlage('klein')"
+        >
+          Klein
+        </button>
+      </div>
+    </fieldset>
+  </div>
+</div>
+
+<!-- Der Zeitstrahl. `aria-live` meldet die geänderten Termine, damit die
+     Umschaltung auch ohne Blick auf den Bildschirm etwas bewirkt. -->
+<div aria-live="polite" aria-atomic="true">
+  <ol class="timeline list-none m-0 p-0">
+    @for (frist of plan().fristen; track frist.kind) {
+      <li class="timeline-step" [class.is-anchor]="frist.kind === 'stichtag'">
+        <span class="timeline-marker" aria-hidden="true"></span>
+
+        <div class="timeline-body">
+          <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
+            <span class="type-figure text-lg md:text-xl">{{ formatDate(frist.date) }}</span>
+            <span class="type-norm text-ink-soft">{{ offsetLabel(frist) }}</span>
+          </div>
+
+          <h3 class="type-subhead mb-2">
+            {{ frist.title }}
+            @if (frist.gmbhOnly) {
+              <span class="scope-tag">nur GmbH</span>
+            }
+          </h3>
+
+          <p class="type-body text-base text-ink-soft mb-2">{{ frist.explanation }}</p>
+          <p class="type-norm text-ink-soft">{{ frist.norm }}</p>
+        </div>
+      </li>
+
+      <!-- Das Prüfungsfenster steht zwischen Aufstellung und Feststellung,
+           weil es dort rechtlich hingehört — nicht als Werbeblock am Ende. -->
+      @if (frist.kind === 'aufstellung' && plan().pruefungsfenster; as fenster) {
+        <li class="timeline-window area-pruefung">
+          <span class="timeline-marker is-window" aria-hidden="true"></span>
+          <div class="timeline-body window-body bubble">
+            <p class="type-subhead mb-2">Hier liegt die Prüfung.</p>
+            <p class="type-body text-base">
+              Ohne Prüfung kann der Jahresabschluss nicht festgestellt werden (§&nbsp;316
+              Abs.&nbsp;1 Satz&nbsp;2 HGB). Sie muss deshalb zwischen dem
+              <span class="type-figure">{{ formatDate(fenster.von) }}</span> und dem
+              <span class="type-figure">{{ formatDate(fenster.bis) }}</span> abgeschlossen sein —
+              und in diesem Fenster liegen bei den meisten Unternehmen auch Urlaubszeit und
+              Steuererklärungen.
+            </p>
+          </div>
+        </li>
+      }
+    }
+  </ol>
+
+  @if (!plan().pruefungspflichtig) {
+    <p class="type-body mt-8 pt-6 hairline text-ink-soft">
+      Kleine Kapitalgesellschaften unterliegen keiner gesetzlichen Prüfungspflicht (§&nbsp;316
+      Abs.&nbsp;1 Satz&nbsp;1 HGB). Eine freiwillige Prüfung ist trotzdem möglich — und wird häufig
+      von Banken oder Gesellschaftern verlangt.
+    </p>
+  }
+</div>
+
+<p class="type-body text-sm text-ink-soft mt-10 pt-6 hairline">{{ disclaimer }}</p>

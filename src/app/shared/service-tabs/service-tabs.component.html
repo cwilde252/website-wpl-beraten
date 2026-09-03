@@ -9,18 +9,19 @@
       #tabButton
       type="button"
       role="tab"
-      class="selector-tab"
+      class="selector-tab bubble"
+      [class]="areaClass(area)"
       [id]="'tab-' + area.slug"
       [attr.aria-selected]="activeSlug() === area.slug"
       [attr.aria-controls]="'panel-' + area.slug"
       [tabindex]="activeSlug() === area.slug ? 0 : -1"
       [class.selected]="activeSlug() === area.slug"
-      [style.--accent-on-surface]="accentFor(area)"
       (click)="select(area.slug)"
       (keydown)="onKeydown($event, i)"
     >
-      <span class="type-figure text-sm accent-text" aria-hidden="true">{{ area.ref }}</span>
-      <h2 class="type-subhead mt-2">{{ area.title }}</h2>
+      <span class="selector-dot" aria-hidden="true"></span>
+      <span class="selector-title type-subhead">{{ area.title }}</span>
+      <span class="selector-claim">{{ area.claim }}</span>
     </button>
   }
 </div>
@@ -30,45 +31,38 @@
     <div
       role="tabpanel"
       class="tab-panel"
+      [class]="activeAreaClass()"
       [id]="'panel-' + area.slug"
       [attr.aria-labelledby]="'tab-' + area.slug"
-      [style.--accent-on-surface]="accentColor()"
     >
-      <div class="sheet-grid">
-        <div class="margin-note">
-          <span class="double-rule mb-3" aria-hidden="true"></span>
-          <p class="type-label">{{ area.title }}</p>
-        </div>
+      <!-- Der Claim steht schon auf dem Reiter. Ihn hier zu wiederholen wäre
+           derselbe Anspruch an zwei Orten (PRODUCT.md, Voice-Regel 2), deshalb
+           eröffnet das Panel mit dem Intro. -->
+      <p class="type-lead mb-12 max-w-3xl">{{ area.intro }}</p>
 
-        <div class="sheet-body">
-          <p class="type-lead mb-8">{{ area.claim }}</p>
-          <p class="type-body mb-12">{{ area.intro }}</p>
-
-          @for (block of area.blocks; track block.title) {
-            <div class="rule-row pt-8 mb-8 last:mb-0">
-              <h3 class="type-headline mb-5">{{ block.title }}</h3>
-              @for (paragraph of block.paragraphs; track $index) {
-                <p class="type-body mb-4 last:mb-0">{{ paragraph }}</p>
-              }
-              @if (block.points?.length) {
-                <ul class="list-none m-0 p-0 mt-6 grid grid-cols-1 md:grid-cols-2 gap-x-10">
-                  @for (point of block.points; track point) {
-                    <li class="rule-row py-3 type-body flex gap-3">
-                      <span class="type-figure accent-text shrink-0" aria-hidden="true"
-                        >&mdash;</span
-                      >
-                      <span>{{ point }}</span>
-                    </li>
-                  }
-                </ul>
-              }
-            </div>
-          }
-
-          <div class="mt-12">
-            <app-rule-link href="/kontakt" [label]="area.ctaLabel" />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+        @for (block of area.blocks; track block.title) {
+          <div class="card p-7 md:p-8 flex flex-col">
+            <h3 class="type-subhead mb-4">{{ block.title }}</h3>
+            @for (paragraph of block.paragraphs; track $index) {
+              <p class="type-body text-base text-ink-soft mb-4 last:mb-0">{{ paragraph }}</p>
+            }
+            @if (block.points?.length) {
+              <ul class="list-none m-0 p-0 mt-6 flex flex-col gap-2.5">
+                @for (point of block.points; track point) {
+                  <li class="type-body text-base flex gap-3">
+                    <span class="point-marker" aria-hidden="true"></span>
+                    <span>{{ point }}</span>
+                  </li>
+                }
+              </ul>
+            }
           </div>
-        </div>
+        }
+      </div>
+
+      <div class="mt-12">
+        <app-cta-link href="/kontakt" [label]="area.ctaLabel" variant="primary" />
       </div>
     </div>
   }

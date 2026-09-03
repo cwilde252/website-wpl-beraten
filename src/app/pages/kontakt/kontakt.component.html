@@ -1,31 +1,38 @@
-<section class="bg-graphite text-linen on-graphite py-20 md:py-28" aria-label="Kontakt">
+<section class="bg-ink text-cream on-ink pt-28 md:pt-36 pb-14 md:pb-20" aria-label="Kontakt">
   <div class="sheet">
-    <div class="sheet-grid">
-      <div class="margin-note">
-        <span class="double-rule mb-3" aria-hidden="true"></span>
-        <p class="type-label">Kontakt</p>
-      </div>
-      <div class="sheet-body">
-        <app-display-headline [content]="headline" [level]="1" />
-      </div>
-    </div>
+    <app-signet [size]="48" class="mb-8 text-cream" />
+    <app-display-headline [content]="headline" [level]="1" />
   </div>
 </section>
 
-<app-section-wrapper theme="paper" padding="large">
-  <div class="sheet-grid">
-    <div class="sheet-body--slim sheet-body">
-      <p class="type-lead mb-10">
-        Schreiben Sie mir kurz, worum es geht — Branche, Größenordnung und was gerade ansteht.
-        Danach klären wir in einem ersten Gespräch, ob und wie ich helfen kann. Das Erstgespräch ist
-        unverbindlich.
+<app-section-wrapper theme="cream" padding="large" accent="pruefung">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-14 gap-y-12">
+    <div class="lg:col-span-7">
+      <p class="type-lead mb-8 max-w-none">
+        Es gibt hier bewusst kein Kontaktformular. Eine Mail ist direkter, Sie behalten sie in Ihrem
+        Postausgang, und ich muss sie nicht aus einem Tool abholen.
       </p>
 
+      <div class="card p-7 md:p-8 mb-9">
+        <p class="type-subhead mb-5">Das hilft mir für eine schnelle Antwort:</p>
+        <ul class="list-none m-0 p-0 flex flex-col gap-3">
+          @for (hint of hints; track hint) {
+            <li class="type-body text-base flex gap-3">
+              <span class="hint-marker" aria-hidden="true"></span>
+              <span>{{ hint }}</span>
+            </li>
+          }
+        </ul>
+        <p class="type-body text-sm text-ink-soft mt-6">
+          Alles davon ist optional. Ein Satz reicht auch.
+        </p>
+      </div>
+
       @if (mailtoHref) {
-        <app-rule-link
+        <app-cta-link
           [href]="mailtoHref"
-          [external]="true"
           label="Erstgespräch anfragen"
+          variant="primary"
           ariaLabel="E-Mail schreiben, um ein Erstgespräch anzufragen"
         />
       } @else {
@@ -33,10 +40,12 @@
           Meine Kontaktdaten stehen hier, sobald die Kanzlei offiziell erreichbar ist.
         </p>
       }
+    </div>
 
-      <div class="mt-14 pt-8 rule-row">
-        <p class="type-label mb-5">Kanzlei</p>
-        <address class="not-italic type-body">
+    <div class="lg:col-span-5">
+      <div class="bubble bg-sand p-7 md:p-8">
+        <p class="type-subhead mb-5">Kanzlei</p>
+        <address class="not-italic type-body text-base">
           <span class="block">{{ contact.legalName }}</span>
           @if (hasAddress) {
             <span class="block">{{ contact.street }}</span>
@@ -47,23 +56,24 @@
         </address>
 
         @if (contact.phone || contact.email) {
-          <div class="flex flex-col gap-1 mt-5">
+          <div class="flex flex-col gap-2 mt-5">
             @if (contact.phone) {
-              <a
-                [href]="'tel:' + contact.phone"
-                class="type-figure no-underline text-graphite hover:text-muted transition-colors duration-200"
-                >{{ contact.phoneDisplay }}</a
-              >
+              <a [href]="'tel:' + contact.phone" class="type-body link-plain underline">{{
+                contact.phoneDisplay
+              }}</a>
             }
             @if (contact.email) {
-              <a
-                [href]="'mailto:' + contact.email"
-                class="type-figure no-underline text-graphite hover:text-muted transition-colors duration-200"
-                >{{ contact.email }}</a
-              >
+              <a [href]="'mailto:' + contact.email" class="type-body link-plain underline">{{
+                contact.email
+              }}</a>
             }
           </div>
         }
+
+        <p class="type-body text-sm text-ink-soft mt-6 pt-5 hairline">
+          Das Erstgespräch ist unverbindlich. Wenn ich für Ihr Anliegen die Falsche bin, sage ich
+          Ihnen das — und meistens weiß ich, wer die Richtige wäre.
+        </p>
       </div>
     </div>
   </div>

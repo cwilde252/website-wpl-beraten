@@ -1,0 +1,142 @@
+.control-label {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  margin-block-end: 0.5rem;
+}
+
+.control-select {
+  font-family: var(--font-sans);
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.125rem) calc(50% + 2px),
+    calc(100% - 0.75rem) calc(50% + 2px);
+  background-size:
+    6px 6px,
+    6px 6px;
+  background-repeat: no-repeat;
+  padding-inline-end: 2.5rem;
+}
+
+/* ---- Umschaltung Größenklasse ---------------------------------------- */
+.toggle-group {
+  display: inline-flex;
+  padding: 0.25rem;
+  gap: 0.25rem;
+  background: var(--color-sand);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-pill);
+}
+
+.toggle {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-ink-soft);
+  cursor: pointer;
+  transition:
+    background-color 200ms var(--ease-soft),
+    color 200ms var(--ease-soft);
+}
+
+.toggle:hover {
+  color: var(--color-ink);
+}
+
+.toggle.is-active {
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+
+/* ---- Zeitstrahl -------------------------------------------------------
+   Eine durchgehende Linie links, Marken darauf. Die Linie ist bewusst kein
+   Verlauf und keine Fortschrittsanzeige — es ist eine Kette von Terminen,
+   kein Prozess mit Status. */
+.timeline {
+  position: relative;
+  padding-inline-start: 2.25rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  inset-block: 0.6rem 1.5rem;
+  inset-inline-start: 0.4375rem;
+  width: 2px;
+  background: var(--color-edge);
+}
+
+.timeline-step,
+.timeline-window {
+  position: relative;
+  padding-block-end: 2.25rem;
+}
+
+.timeline-step:last-child,
+.timeline-window:last-child {
+  padding-block-end: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  inset-inline-start: -2.25rem;
+  inset-block-start: 0.4375rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--color-cream);
+  border: 2px solid var(--color-edge-strong);
+}
+
+.is-anchor .timeline-marker {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+.timeline-marker.is-window {
+  background: var(--color-pruefung);
+  border-color: var(--color-pruefung);
+  box-shadow: 0 0 0 5px color-mix(in oklab, var(--color-pruefung) 22%, transparent);
+}
+
+/* Das Prüfungsfenster ist der einzige farbig gefüllte Block im Zeitstrahl —
+   und damit die Stelle, auf die das Auge fällt. */
+.window-body {
+  background: var(--color-pruefung-tint);
+  border: 1px solid color-mix(in oklab, var(--color-pruefung) 40%, transparent);
+  padding: 1.25rem 1.5rem;
+}
+
+.scope-tag {
+  display: inline-block;
+  vertical-align: middle;
+  margin-inline-start: 0.625rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.1875rem 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-shell);
+  color: var(--color-ink-soft);
+}
+
+@media (min-width: 768px) {
+  .timeline {
+    padding-inline-start: 3rem;
+  }
+  .timeline::before {
+    inset-inline-start: 0.5625rem;
+  }
+  .timeline-marker {
+    inset-inline-start: -3rem;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}

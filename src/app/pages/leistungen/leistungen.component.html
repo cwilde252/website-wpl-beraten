@@ -2,23 +2,20 @@
 
 <section
   id="leistungen-start"
-  class="bg-graphite text-linen on-graphite py-20 md:py-28"
+  class="bg-ink text-cream on-ink pt-28 md:pt-36 pb-14 md:pb-20"
   aria-label="Leistungen"
 >
   <div class="sheet">
-    <div class="sheet-grid">
-      <div class="margin-note">
-        <span class="double-rule mb-3" aria-hidden="true"></span>
-        <p class="type-label">Leistungen</p>
-      </div>
-      <div class="sheet-body">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-8 items-end">
+      <div class="lg:col-span-7">
         <app-display-headline [content]="headline" [level]="1" />
       </div>
+      <p class="type-lead lg:col-span-5 text-cream-soft lg:pb-3">{{ lead }}</p>
     </div>
   </div>
 </section>
 
-<app-section-wrapper theme="paper" padding="large">
+<app-section-wrapper theme="cream" padding="large">
   <div id="bereiche">
     <app-service-tabs
       [areas]="areas"
@@ -28,21 +25,34 @@
   </div>
 </app-section-wrapper>
 
-<app-section-wrapper theme="shade" padding="large" accent="check">
+<app-section-wrapper theme="sand" padding="large" accent="check">
   <div id="pruefungspflicht">
-    <h2 id="pruefungspflicht-check" class="type-headline mb-10">Prüfungspflicht-Check</h2>
+    <app-section-mark label="Werkzeug 1" reference="§§ 267, 267a HGB" />
+    <h2 id="pruefungspflicht-check" class="type-headline mb-8">Prüfungspflicht-Check</h2>
     <app-audit-check headingId="pruefungspflicht-check" />
   </div>
 </app-section-wrapper>
 
-<app-section-wrapper theme="paper" padding="large">
+<app-section-wrapper theme="cream" padding="large" accent="beratung">
+  <div id="fristen">
+    <app-section-mark label="Werkzeug 2" reference="§§ 264, 316, 325 HGB" />
+    <h2 class="type-headline mb-8">Wann ist was fällig?</h2>
+    <app-fristen-timeline />
+  </div>
+</app-section-wrapper>
+
+<app-section-wrapper theme="sand" padding="large">
   <div id="fragen">
     <app-section-mark label="Häufige Fragen" />
-    <div class="sheet-grid">
-      <div class="sheet-body--slim sheet-body">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-8">
+      <h2 class="type-headline lg:col-span-4">Was mich oft gefragt wird.</h2>
+      <div class="lg:col-span-8">
         <app-faq-accordion [items]="faq" exclusiveGroup="wpl-faq" />
-        <p class="type-body mt-12 mb-6">Ihre Frage ist nicht dabei? Fragen Sie mich direkt.</p>
-        <app-rule-link href="/kontakt" label="Frage stellen" />
+        <p class="type-body mt-10 mb-6">
+          Ihre Frage ist nicht dabei? Schreiben Sie mir — ich antworte auch auf Fragen, aus denen
+          kein Auftrag wird.
+        </p>
+        <app-cta-link href="/kontakt" label="Frage stellen" variant="ghost" />
       </div>
     </div>
   </div>

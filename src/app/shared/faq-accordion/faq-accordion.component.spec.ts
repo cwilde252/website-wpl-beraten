@@ -45,8 +45,13 @@ describe('FaqAccordionComponent', () => {
     expect(setup('gruppe').querySelector('details')?.getAttribute('name')).toBe('gruppe');
   });
 
-  it('blendet die Plus-Minus-Marke vor Screenreadern aus', () => {
+  it('blendet die Auf-Zu-Marke vor Screenreadern aus', () => {
+    // Eine Marke je Frage, und sie trägt keine eigene Bedeutung — der Zustand
+    // kommt aus dem nativen <details>.
     const markers = setup().querySelectorAll('summary span[aria-hidden="true"]');
-    expect(markers.length).toBe(4);
+    expect(markers.length).toBe(2);
+    for (const marker of Array.from(markers)) {
+      expect(marker.textContent?.trim()).toBe('');
+    }
   });
 });

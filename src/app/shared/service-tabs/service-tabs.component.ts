@@ -1,20 +1,19 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   computed,
+  ElementRef,
   input,
   linkedSignal,
   output,
   viewChildren,
 } from '@angular/core';
 import { ServiceArea } from '../../core/models/service-area.model';
-import { accentVariable } from '../accent';
-import { RuleLinkComponent } from '../rule-link/rule-link.component';
+import { CtaLinkComponent } from '../cta-link/cta-link.component';
 
 @Component({
   selector: 'app-service-tabs',
-  imports: [RuleLinkComponent],
+  imports: [CtaLinkComponent],
   templateUrl: './service-tabs.component.html',
   styleUrl: './service-tabs.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,9 +39,14 @@ export class ServiceTabsComponent {
     this.areas().find((area) => area.slug === this.activeSlug()),
   );
 
-  readonly accentColor = computed(() => {
+  /**
+   * Die Bereichsfarbe wird als Klasse gesetzt, nicht als Inline-Variable. Damit
+   * liegt die Kontrastentscheidung in `styles.css` unter `.area-*` und wird von
+   * `design-system.spec.ts` nachgerechnet.
+   */
+  readonly activeAreaClass = computed(() => {
     const area = this.activeArea();
-    return area ? accentVariable(area.accent, 'paper') : 'var(--color-graphite)';
+    return area ? `area-${area.accent}` : '';
   });
 
   select(slug: string): void {
@@ -78,7 +82,7 @@ export class ServiceTabsComponent {
     this.tabButtons()[target]?.nativeElement.focus();
   }
 
-  accentFor(area: ServiceArea): string {
-    return accentVariable(area.accent, 'paper');
+  areaClass(area: ServiceArea): string {
+    return `area-${area.accent}`;
   }
 }

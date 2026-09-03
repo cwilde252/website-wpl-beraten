@@ -1,16 +1,15 @@
 <section
-  [style.--accent-on-surface]="accentColor()"
-  [class.bg-linen]="theme() === 'paper'"
-  [class.bg-linen-bright]="theme() === 'shade'"
-  [class.bg-graphite]="theme() === 'graphite'"
-  [class.text-linen]="theme() === 'graphite'"
-  [class.on-graphite]="theme() === 'graphite'"
-  [class.py-10]="padding() === 'normal'"
-  [class.md:py-16]="padding() === 'normal'"
-  [class.lg:py-20]="padding() === 'normal'"
-  [class.py-14]="padding() === 'large'"
-  [class.md:py-20]="padding() === 'large'"
-  [class.lg:py-28]="padding() === 'large'"
+  [class]="areaClass()"
+  [class.bg-cream]="theme() === 'cream'"
+  [class.bg-sand]="theme() === 'sand'"
+  [class.bg-ink]="theme() === 'ink'"
+  [class.text-cream]="theme() === 'ink'"
+  [class.on-ink]="theme() === 'ink'"
+  [class.py-14]="padding() === 'normal'"
+  [class.md:py-20]="padding() === 'normal'"
+  [class.py-20]="padding() === 'large'"
+  [class.md:py-28]="padding() === 'large'"
+  [class.lg:py-32]="padding() === 'large'"
 >
   <div class="sheet">
     <ng-content />

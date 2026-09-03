@@ -1,97 +1,129 @@
+/* Der Tab-Strip ist eine Reihe von Blasen, keine Registerkarten-Leiste.
+   Die gewählte Blase füllt sich mit der Bereichsfarbe — im Vorgängersystem
+   durfte das nicht sein, hier ist es der Punkt. */
 .selector-strip {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 1px solid color-mix(in oklab, var(--color-graphite) 20%, transparent);
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .selector-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .selector-tab {
   position: relative;
-  overflow: hidden;
-  padding: 1.5rem 1.25rem 1.25rem;
-  text-align: left;
-  background: transparent;
-  color: var(--color-graphite);
-  border: 0;
-  border-inline-end: 1px solid color-mix(in oklab, var(--color-graphite) 20%, transparent);
-  cursor: pointer;
-  min-height: 7rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  transition: background-color 160ms var(--ease-precise);
-}
-
-.selector-tab:last-child {
-  border-inline-end: 0;
-}
-
-/* Die aktive Markierung ist eine 2-px-Linie in der Bereichsfarbe — nie eine Fläche. */
-.selector-tab::after {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  inset-block-end: 0;
-  height: 2px;
-  background: var(--accent-on-surface, var(--color-graphite));
-  transform: scaleX(0);
-  transform-origin: left center;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1.375rem 1.5rem;
+  text-align: left;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  border: 1px solid var(--color-edge);
+  cursor: pointer;
   transition:
-    transform 240ms var(--ease-precise),
-    opacity 160ms var(--ease-precise);
-  pointer-events: none;
-}
-
-.selector-tab:hover:not(.selected)::after {
-  transform: scaleX(1);
-  opacity: 0.5;
-}
-
-.selector-tab.selected::after {
-  transform: scaleX(1);
-  opacity: 1;
+    background-color 240ms var(--ease-soft),
+    border-color 240ms var(--ease-soft),
+    color 240ms var(--ease-soft),
+    transform 240ms var(--ease-spring);
 }
 
 .selector-tab:hover:not(.selected) {
-  background: color-mix(in oklab, var(--color-graphite) 6%, transparent);
+  border-color: var(--area-deep);
+  transform: translateY(-2px);
 }
 
 .selector-tab.selected {
-  background: var(--color-linen-bright);
+  background: var(--area-solid);
+  color: var(--area-on-solid);
+  border-color: var(--area-solid);
 }
 
 .selector-tab:focus-visible {
-  outline: 2px solid var(--accent-on-surface, var(--color-graphite));
-  outline-offset: -2px;
-  z-index: 1;
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+.selector-tab.selected:focus-visible {
+  outline-color: currentColor;
+}
+
+/* Der Punkt macht die Auswahl auch ohne Farbe erkennbar (WCAG 1.4.1): leer,
+   wenn nicht gewählt, gefüllt mit Ring, wenn gewählt. */
+.selector-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  border: 2px solid var(--area-deep);
+  background: transparent;
+  transition:
+    background-color 240ms var(--ease-soft),
+    border-color 240ms var(--ease-soft),
+    box-shadow 240ms var(--ease-soft);
+}
+
+.selector-tab.selected .selector-dot {
+  background: currentColor;
+  border-color: currentColor;
+  box-shadow: 0 0 0 4px color-mix(in oklab, currentColor 25%, transparent);
+}
+
+.selector-claim {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  /* Gedämpft über eine eigene Farbe, nicht über Deckkraft: `opacity` senkt den
+     Kontrast gegen den tatsächlichen Hintergrund und zieht ihn auf der
+     gefüllten Kachel unter 4,5:1. Auf der gewählten Kachel steht der Text
+     deshalb in voller Deckkraft der Flächen-Textfarbe. */
+  color: var(--color-ink-soft);
+}
+
+.selector-tab.selected .selector-claim {
+  color: currentColor;
 }
 
 .tab-panel {
   padding-block-start: 3rem;
 }
 
+/* Listenmarke in der Bereichsfarbe — der einzige dekorative Einsatz der Farbe
+   im Panel. */
+.point-marker {
+  flex: none;
+  margin-block-start: 0.6875rem;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: var(--area-deep);
+}
+
 @keyframes panel-in {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .tab-panel {
-    animation: panel-in 160ms var(--ease-precise) both;
+    animation: panel-in 280ms var(--ease-soft) both;
   }
 }
 
-@media (max-width: 640px) {
-  .selector-tab {
-    padding: 1rem 0.75rem 0.875rem;
-    min-height: 5.5rem;
+@media (prefers-reduced-motion: reduce) {
+  .selector-tab:hover:not(.selected) {
+    transform: none;
   }
+}
 
+@media (max-width: 767px) {
   .tab-panel {
     padding-block-start: 2rem;
   }

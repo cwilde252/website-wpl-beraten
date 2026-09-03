@@ -1,15 +1,21 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ServiceArea } from '../../../../core/models/service-area.model';
 import { ContentService } from '../../../../core/services/content.service';
-import { accentVariable } from '../../../../shared/accent';
-import { RuleLinkComponent } from '../../../../shared/rule-link/rule-link.component';
+import { CtaLinkComponent } from '../../../../shared/cta-link/cta-link.component';
+import { RevealDirective } from '../../../../shared/reveal.directive';
 import { SectionMarkComponent } from '../../../../shared/section-mark/section-mark.component';
 import { SectionWrapperComponent } from '../../../../shared/section-wrapper/section-wrapper.component';
-import { ServiceArea } from '../../../../core/models/service-area.model';
 
 @Component({
   selector: 'app-leistungen-teaser',
-  imports: [SectionWrapperComponent, SectionMarkComponent, RuleLinkComponent, RouterLink],
+  imports: [
+    SectionWrapperComponent,
+    SectionMarkComponent,
+    CtaLinkComponent,
+    RevealDirective,
+    RouterLink,
+  ],
   templateUrl: './leistungen-teaser.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { id: 'leistungen' },
@@ -17,7 +23,7 @@ import { ServiceArea } from '../../../../core/models/service-area.model';
 export class LeistungenTeaserComponent {
   readonly areas = inject(ContentService).getServiceAreas();
 
-  accentFor(area: ServiceArea): string {
-    return accentVariable(area.accent, 'shade');
+  areaClass(area: ServiceArea): string {
+    return `area-${area.accent}`;
   }
 }

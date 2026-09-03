@@ -3,42 +3,39 @@ import {
   afterNextRender,
   ChangeDetectionStrategy,
   Component,
-  computed,
   DestroyRef,
   inject,
   signal,
 } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { filter, map } from 'rxjs';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ContentService } from '../../core/services/content.service';
 import { NavigationService } from '../../core/services/navigation.service';
+import { CtaLinkComponent } from '../cta-link/cta-link.component';
+import { SignetComponent } from '../signet/signet.component';
 
+/**
+ * Jede Seite öffnet auf der Tintenfläche. Der Kopf liegt darüber und ist oben
+ * deshalb transparent mit hellem Text; sobald gescrollt wird, legt er sich als
+ * helle Fläche darüber und dreht den Text auf Tinte.
+ *
+ * Weil diese Regel für alle Seiten gilt, braucht es keine Fallunterscheidung
+ * nach Route mehr — der Vorgänger hatte dafür ein eigenes Signal.
+ */
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, SignetComponent, CtaLinkComponent],
   templateUrl: './header.component.html',
+  styleUrl: './header.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   private readonly doc = inject(DOCUMENT);
-  private readonly router = inject(Router);
 
   readonly navItems = inject(NavigationService).getMainNavigation();
   readonly contact = inject(ContentService).getContactInfo();
 
   readonly mobileMenuOpen = signal(false);
   readonly scrolled = signal(false);
-
-  private readonly currentUrl = toSignal(
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-      map((event) => event.urlAfterRedirects),
-    ),
-    { initialValue: this.router.url },
-  );
-
-  readonly onDarkPage = computed(() => this.currentUrl() === '/');
 
   constructor() {
     const destroyRef = inject(DestroyRef);

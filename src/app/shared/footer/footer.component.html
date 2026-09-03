@@ -1,25 +1,24 @@
-<footer class="bg-graphite-deep text-linen on-graphite py-16 md:py-20">
+<footer class="bg-ink text-cream on-ink pt-16 md:pt-20 pb-10">
   <div class="sheet">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
       <div class="md:col-span-5">
-        <span class="double-rule mb-4" aria-hidden="true"></span>
-        <p class="type-headline">
-          <span class="display-line">Prüfen. Beraten.</span>
-          <span class="display-line">Steuern.</span>
+        <app-signet [size]="42" class="mb-6 text-cream" />
+        <p class="type-subhead mb-4">{{ contact.legalName }}</p>
+        <p class="type-body text-sm text-cream-soft">
+          Wirtschaftsprüfung, Beratung und Steuern für den Mittelstand in der Region Rottweil.
         </p>
-        <p class="type-body mt-6 text-sm">{{ contact.legalName }}</p>
       </div>
 
       <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6">
         <nav aria-label="Leistungen">
-          <p class="type-label mb-4">Leistungen</p>
-          <ul class="list-none m-0 p-0 flex flex-col gap-2">
+          <p class="footer-heading">Leistungen</p>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2.5">
             @for (link of serviceLinks; track link.label) {
               <li>
                 <a
                   [routerLink]="link.path"
                   [fragment]="link.fragment"
-                  class="type-body text-sm no-underline text-linen hover:text-white transition-colors duration-200"
+                  class="footer-link text-sm no-underline"
                   >{{ link.label }}</a
                 >
               </li>
@@ -28,54 +27,48 @@
         </nav>
 
         <div>
-          <p class="type-label mb-4">Kontakt</p>
+          <p class="footer-heading">Kontakt</p>
           @if (hasAddress) {
-            <address class="not-italic type-body text-sm">
+            <address class="not-italic text-sm text-cream-soft">
               <span class="block">{{ contact.street }}</span>
               <span class="block">{{ contact.postalCode }} {{ contact.city }}</span>
             </address>
           } @else {
-            <p class="type-body text-sm">{{ contact.city }}</p>
+            <p class="text-sm text-cream-soft">{{ contact.city }}</p>
           }
-          <div class="flex flex-col gap-1 mt-3">
+          <div class="flex flex-col gap-2.5 mt-3">
             @if (contact.phone) {
-              <a
-                [href]="'tel:' + contact.phone"
-                class="type-body text-sm no-underline text-linen hover:text-white transition-colors duration-200"
-                >{{ contact.phoneDisplay }}</a
-              >
+              <a [href]="'tel:' + contact.phone" class="footer-link text-sm no-underline">{{
+                contact.phoneDisplay
+              }}</a>
             }
             @if (contact.email) {
-              <a
-                [href]="'mailto:' + contact.email"
-                class="type-body text-sm no-underline text-linen hover:text-white transition-colors duration-200"
-                >{{ contact.email }}</a
-              >
+              <a [href]="'mailto:' + contact.email" class="footer-link text-sm no-underline">{{
+                contact.email
+              }}</a>
             } @else {
-              <a
-                routerLink="/kontakt"
-                class="type-body text-sm no-underline text-linen hover:text-white transition-colors duration-200"
-                >Zur Kontaktseite</a
-              >
+              <a routerLink="/kontakt" class="footer-link text-sm no-underline">Zur Kontaktseite</a>
             }
           </div>
         </div>
 
         <nav aria-label="Rechtliches">
-          <p class="type-label mb-4">Rechtliches</p>
-          <ul class="list-none m-0 p-0 flex flex-col gap-2">
+          <p class="footer-heading">Rechtliches</p>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2.5">
             @for (link of legalLinks; track link.path) {
               <li>
-                <a
-                  [routerLink]="link.path"
-                  class="type-body text-sm no-underline text-linen hover:text-white transition-colors duration-200"
-                  >{{ link.label }}</a
-                >
+                <a [routerLink]="link.path" class="footer-link text-sm no-underline">{{
+                  link.label
+                }}</a>
               </li>
             }
           </ul>
         </nav>
       </div>
     </div>
+
+    <p class="hairline mt-14 pt-6 text-sm text-cream-soft">
+      {{ contact.personName }} — {{ contact.role }}, {{ contact.city }}
+    </p>
   </div>
 </footer>

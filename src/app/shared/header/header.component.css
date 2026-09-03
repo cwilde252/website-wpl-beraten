@@ -1,0 +1,60 @@
+/* Oben transparent über der Tintenfläche, ab 40 px als helle Fläche darüber.
+   Der Wechsel läuft über eine Klasse statt über einzelne Utilities, damit
+   Farbe, Fläche und Schatten in einem Zug umschalten. */
+/* Fixiert statt sticky: Der Kopf soll über der dunklen Eröffnungsfläche
+   liegen, nicht davor. Als sticky-Element im Fluss stünde er auf einem
+   cremefarbenen Streifen und wäre mit hellem Text unsichtbar. */
+.site-header {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-start: 0;
+  color: var(--color-cream);
+  background: transparent;
+  border-block-end: 1px solid transparent;
+  transition:
+    background-color 260ms var(--ease-soft),
+    color 260ms var(--ease-soft),
+    border-color 260ms var(--ease-soft),
+    box-shadow 260ms var(--ease-soft);
+}
+
+.site-header.is-solid {
+  color: var(--color-ink);
+  background: color-mix(in srgb, var(--color-cream) 94%, transparent);
+  backdrop-filter: blur(12px) saturate(1.4);
+  border-block-end-color: var(--color-edge);
+  box-shadow: 0 8px 24px -20px rgba(70, 46, 24, 0.5);
+}
+
+.header-role {
+  opacity: 0.75;
+}
+
+.nav-link {
+  color: inherit;
+  transition:
+    background-color 200ms var(--ease-soft),
+    color 200ms var(--ease-soft);
+}
+
+.site-header:not(.is-solid) .nav-link:hover,
+.site-header:not(.is-solid) .nav-active {
+  background: color-mix(in oklab, var(--color-cream) 16%, transparent);
+}
+
+.site-header.is-solid .nav-link:hover,
+.site-header.is-solid .nav-active {
+  background: var(--color-sand);
+}
+
+/* Der aktive Punkt bekommt zusätzlich zur Fläche eine Marke — Farbe allein
+   trägt keine Bedeutung (WCAG 1.4.1). */
+.nav-active {
+  font-weight: 500;
+}
+
+/* Das aufgeklappte Mobilmenü liegt immer auf heller Fläche. */
+#mobile-nav {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
