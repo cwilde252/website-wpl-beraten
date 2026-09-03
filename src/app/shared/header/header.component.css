@@ -8,7 +8,7 @@
   position: fixed;
   inset-inline: 0;
   inset-block-start: 0;
-  color: var(--color-cream);
+  color: var(--color-paper);
   background: transparent;
   border-block-end: 1px solid transparent;
   transition:
@@ -20,10 +20,15 @@
 
 .site-header.is-solid {
   color: var(--color-ink);
-  background: color-mix(in srgb, var(--color-cream) 94%, transparent);
+  /* Volldeckend statt Milchglas. Eine 94-prozentige Fläche verlässt sich
+     darauf, dass `backdrop-filter` greift — tut es das nicht (ältere Browser,
+     Screenshot- und Druckpfade, abgeschaltete Effekte), steht der Text der
+     Seite lesbar hinter dem Kopf. Der Blur bleibt als Zugabe, trägt aber
+     nichts Notwendiges mehr. */
+  background: var(--color-paper);
   backdrop-filter: blur(12px) saturate(1.4);
   border-block-end-color: var(--color-edge);
-  box-shadow: 0 8px 24px -20px rgba(70, 46, 24, 0.5);
+  box-shadow: var(--shadow-header);
 }
 
 .header-role {
@@ -39,12 +44,12 @@
 
 .site-header:not(.is-solid) .nav-link:hover,
 .site-header:not(.is-solid) .nav-active {
-  background: color-mix(in oklab, var(--color-cream) 16%, transparent);
+  background: color-mix(in oklab, var(--color-paper) 16%, transparent);
 }
 
 .site-header.is-solid .nav-link:hover,
 .site-header.is-solid .nav-active {
-  background: var(--color-sand);
+  background: var(--color-mist);
 }
 
 /* Der aktive Punkt bekommt zusätzlich zur Fläche eine Marke — Farbe allein
@@ -55,6 +60,6 @@
 
 /* Das aufgeklappte Mobilmenü liegt immer auf heller Fläche. */
 #mobile-nav {
-  background: var(--color-cream);
+  background: var(--color-paper);
   color: var(--color-ink);
 }

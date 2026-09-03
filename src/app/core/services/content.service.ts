@@ -62,7 +62,7 @@ export class ContentService {
         id: 'pruefungspflicht',
         question: 'Wir wachsen gerade in die Prüfungspflicht hinein.',
         answer:
-          'Dann klären wir das zuerst — und zwar ohne, dass Sie mir dafür schreiben müssen. Der Check rechnet Ihre drei Zahlen gegen die Größenklassen der §§ 267, 267a HGB durch, inklusive der Regel zu zwei aufeinanderfolgenden Stichtagen.',
+          'Dann klären wir das zuerst, ohne dass Sie mir dafür schreiben müssen. Der Check rechnet Ihre drei Zahlen gegen die Größenklassen der §§ 267, 267a HGB durch, inklusive der Regel zu zwei aufeinanderfolgenden Stichtagen.',
         accent: 'check',
         ctaLabel: 'Zum Prüfungspflicht-Check',
         ctaPath: '/leistungen',
@@ -82,7 +82,7 @@ export class ContentService {
         id: 'kennenlernen',
         question: 'Ich schaue erst mal, wer Sie eigentlich sind.',
         answer:
-          'Völlig richtig so. Wirtschaftsprüfung ist eine Mehrjahresbeziehung — da sollten Sie wissen, mit wem Sie es zu tun haben, bevor Sie irgendwas anfragen.',
+          'Völlig richtig so. Wirtschaftsprüfung ist eine Mehrjahresbeziehung. Da sollten Sie wissen, mit wem Sie es zu tun haben, bevor Sie irgendwas anfragen.',
         accent: 'pruefung',
         ctaLabel: 'Mein Werdegang',
         ctaPath: '/ueber-mich',
@@ -95,7 +95,7 @@ export class ContentService {
   }
 
   getLeistungenLead(): string {
-    return 'Prüfung, Beratung und Steuern hängen zusammen — sie schauen nur von verschiedenen Seiten auf dieselben Zahlen. Suchen Sie sich aus, was gerade ansteht.';
+    return 'Prüfung, Beratung und Steuern hängen zusammen; sie schauen nur von verschiedenen Seiten auf dieselben Zahlen. Suchen Sie sich aus, was gerade ansteht.';
   }
 
   getUeberMichHeadline(): DisplayHeadline {
@@ -109,7 +109,7 @@ export class ContentService {
   // ===== Haltung ==========================================================
 
   getPositionsIntro(): string {
-    return 'Vier Dinge, die Sie vorher wissen sollten — damit Sie einschätzen können, ob das zu Ihnen passt.';
+    return 'Vier Dinge, die Sie vorher wissen sollten, damit Sie einschätzen können, ob das zu Ihnen passt.';
   }
 
   getPositions(): Position[] {
@@ -130,13 +130,13 @@ export class ContentService {
         ref: '03',
         title: 'Fragen sind erlaubt',
         description:
-          'Die Prüfung ist der Anlass, das Gespräch ist der Nutzen. Wenn Ihnen an Ihren Zahlen etwas auffällt oder eine Entscheidung ansteht, reden Sie mit mir darüber — genau dafür sitze ich ohnehin an Ihren Unterlagen.',
+          'Die Prüfung ist der Anlass, das Gespräch ist der Nutzen. Wenn Ihnen an Ihren Zahlen etwas auffällt oder eine Entscheidung ansteht, reden Sie mit mir darüber. Genau dafür sitze ich ohnehin an Ihren Unterlagen.',
       },
       {
         ref: '04',
         title: 'Ich kenne die Gegend',
         description:
-          'Zehn Jahre Prüfung und Beratung im regionalen Mittelstand. Ich weiß, wie hier gewirtschaftet wird, wie die Strukturen gewachsen sind — und wie wenig Zeit Sie tatsächlich haben.',
+          'Zehn Jahre Prüfung und Beratung im regionalen Mittelstand. Ich weiß, wie hier gewirtschaftet wird, wie die Strukturen gewachsen sind, und wie wenig Zeit Sie tatsächlich haben.',
       },
     ];
   }
@@ -152,7 +152,7 @@ export class ContentService {
         title: 'Wirtschaftsprüfung',
         claim: 'Ich prüfe Ihr Unternehmen, nicht meine Checkliste.',
         intro:
-          'Ob gesetzliche Pflichtprüfung oder freiwillige Prüfung des Jahresabschlusses: Der Fokus liegt auf dem Wesentlichen, angepasst an die Besonderheiten und Umstände Ihres Hauses. Als kleine Praxis kann ich mir diesen Zuschnitt leisten — größere Häuser können das oft nicht.',
+          'Ob gesetzliche Pflichtprüfung oder freiwillige Prüfung des Jahresabschlusses: Der Fokus liegt auf dem Wesentlichen, angepasst an die Besonderheiten und Umstände Ihres Hauses. Als kleine Praxis kann ich mir diesen Zuschnitt leisten; größere Häuser können das oft nicht.',
         blocks: [
           {
             title: 'Jahresabschlussprüfung',
@@ -272,7 +272,7 @@ export class ContentService {
       name: 'Wiebke Lefevre',
       role: 'Wirtschaftsprüferin',
       statement: [
-        'Fachlich aufgewachsen bin ich in der Prozessprüfung und in der Begleitung mittelständischer Unternehmen. Was mich daran bis heute interessiert: Jedes Haus hat sich seine eigene Art ausgedacht, Dinge zu organisieren — und in dieser Logik steckt fast immer eine Geschichte.',
+        'Fachlich aufgewachsen bin ich in der Prozessprüfung und in der Begleitung mittelständischer Unternehmen. Was mich daran bis heute interessiert: Jedes Haus hat sich seine eigene Art ausgedacht, Dinge zu organisieren, und in dieser Logik steckt fast immer eine Geschichte.',
         'Deshalb kommt bei mir auch kein Standardprogramm zum Einsatz. Ich passe den Prüfungsansatz an die Besonderheiten, die Größe und die Umstände meiner Mandanten an. Das dauert am Anfang länger und spart hinten heraus Zeit.',
         'Wichtig sind mir der persönliche Kontakt und die Zusammenarbeit auf Augenhöhe. Ich sage Ihnen, was ich sehe, auch wenn es unbequem ist — und ich erwarte dasselbe zurück.',
       ],

@@ -1,17 +1,29 @@
 ---
 name: WPL — Wiebke Lefevre, Wirtschaftsprüferin
-description: Ein Gesprächssystem für eine selbständige Wirtschaftsprüferin im regionalen Mittelstand — Sprechblasen als Formsignatur, die vier Logofarben als echte Flächen, warme Grundtöne. Fachlich belastbar, ohne kanzleikühl zu sein.
+description: Ein Gesprächssystem für eine selbständige Wirtschaftsprüferin im regionalen Mittelstand — Sprechblasen als Formsignatur, die vier Logofarben als echte Flächen, eine fast unbunte Papierfläche. Fachlich belastbar, ohne kanzleikühl zu sein.
 colors:
   ink: "#241C17"
   ink-soft: "#57493F"
-  cream: "#FDF8F0"
-  sand: "#F5EDE0"
-  shell: "#EBDFCD"
+  paper: "#FBFAF8"
+  mist: "#F2F0EB"
+  stone: "#ECE9E3"
+  edge: "#E0D3C0"
   edge-strong: "#96826A"
+  paper-soft: "#C6B6A4"
   pruefung: "#D4780A"
+  pruefung-deep: "#9C5200"
+  pruefung-tint: "#FBE7CF"
   beratung: "#2E7DB8"
+  beratung-deep: "#1F5F8F"
+  beratung-tint: "#E2EFF9"
   steuern: "#2D8B57"
+  steuern-deep: "#1E6B41"
+  steuern-tint: "#DFF0E6"
   check: "#D4A917"
+  check-deep: "#7A5F09"
+  check-tint: "#FAEFCC"
+  beratung-on-ink: "#7FB8E0"
+  steuern-on-ink: "#6EC795"
 typography:
   display:
     fontFamily: "Fraunces Variable, Fraunces, Georgia, serif"
@@ -20,23 +32,61 @@ typography:
     lineHeight: 1.02
     letterSpacing: "-0.025em"
     fontVariationSettings: "'SOFT' 60, 'WONK' 1, 'opsz' 100"
+  display-sub:
+    fontFamily: "Fraunces Variable, Fraunces, Georgia, serif"
+    fontSize: "clamp(2.125rem, 4.4vw, 3.5rem)"
+    fontWeight: 600
+    lineHeight: 1.06
+    fontVariationSettings: "'SOFT' 55, 'WONK' 1, 'opsz' 72"
   headline:
     fontFamily: "Fraunces Variable, Fraunces, Georgia, serif"
     fontSize: "clamp(1.75rem, 3.6vw, 2.75rem)"
     fontWeight: 600
     lineHeight: 1.12
     fontVariationSettings: "'SOFT' 50, 'WONK' 1, 'opsz' 40"
+  subhead:
+    fontFamily: "Fraunces Variable, Fraunces, Georgia, serif"
+    fontSize: "1.375rem"
+    fontWeight: 600
+    lineHeight: 1.35
+  lead:
+    fontFamily: "Instrument Sans Variable, Instrument Sans, system-ui, sans-serif"
+    fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)"
+    fontWeight: 400
+    lineHeight: 1.55
   body:
     fontFamily: "Instrument Sans Variable, Instrument Sans, system-ui, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.65
+  legend:
+    fontFamily: "Fraunces Variable, Fraunces, Georgia, serif"
+    fontSize: "1.125rem"
+    fontWeight: 600
+  control:
+    fontFamily: "Instrument Sans Variable, Instrument Sans, system-ui, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 500
+  small:
+    fontFamily: "Instrument Sans Variable, Instrument Sans, system-ui, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 500
+  fine:
+    fontFamily: "IBM Plex Mono, ui-monospace, monospace"
+    fontSize: "0.8125rem"
+    fontWeight: 400
+  tag:
+    fontFamily: "Instrument Sans Variable, Instrument Sans, system-ui, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 500
   figure:
     fontFamily: "IBM Plex Mono, ui-monospace, monospace"
     fontWeight: 500
     fontVariantNumeric: "tabular-nums"
 rounded:
-  bubble: "1.75rem 1.75rem 1.75rem 0.25rem"
+  bubble: "1.75rem"
+  corner: "0.25rem"
+  soft: "1rem"
   control: "0.625rem"
   pill: "999px"
 ---
@@ -79,8 +129,8 @@ Ampel-Regel (siehe 2.4).
 
 - Die Sprechblase ist die Formsignatur: drei weiche Ecken, unten links eine scharfe.
 - Farbe ist **Fläche**. Jede der vier Logofarben füllt Panels, Kacheln und Reiter.
-- Warme Grundtöne. Kein reines Schwarz, kein reines Weiß, kein kaltes Grau.
-- Karten mit weicher Kante und warmem Schatten statt reinem Linienraster.
+- Eine fast unbunte Papierfläche, damit die Farbflächen als Ereignis lesen.
+- Karten mit weicher Kante statt Linienraster — und ohne Schatten.
 - Zwei Werkzeuge tragen die Leistungsseite: Prüfungspflicht-Check und Fristen-Zeitstrahl.
 - Bewegung ist Antwort auf Handlung — plus ein zurückhaltendes Scroll-Reveal.
 - Fraunces mit den Achsen SOFT und WONK für die Stimme, Instrument Sans für den Text,
@@ -90,19 +140,26 @@ Ampel-Regel (siehe 2.4).
 
 ### 2.1 Grundton
 
-Die ganze unbunte Skala liegt auf der warmen Seite, damit auch Flächen ohne Bereichsfarbe
-freundlich wirken.
-
 | Token | Hex | Rolle |
 |---|---|---|
 | `--color-ink` | `#241C17` | Fließtext und dunkle Fläche |
 | `--color-ink-soft` | `#57493F` | Sekundärtext auf hell |
-| `--color-cream` | `#FDF8F0` | primäre helle Fläche |
-| `--color-sand` | `#F5EDE0` | zweite helle Fläche für den Flächenwechsel |
-| `--color-shell` | `#EBDFCD` | dritte Stufe, eingebettete Panels auf Sand |
+| `--color-paper` | `#FBFAF8` | primäre helle Fläche |
+| `--color-mist` | `#F2F0EB` | zweite helle Fläche für den Flächenwechsel |
+| `--color-stone` | `#ECE9E3` | dritte Stufe, eingebettete Panels |
 | `--color-edge` | `#E0D3C0` | dekorative Trennlinien, bewusst unter 3:1 |
 | `--color-edge-strong` | `#96826A` | Ränder von Steuerelementen, 3,5:1 nach SC 1.4.11 |
-| `--color-cream-soft` | `#C6B6A4` | Sekundärtext auf Tinte |
+| `--color-paper-soft` | `#C6B6A4` | Sekundärtext auf Tinte |
+
+**Papier, nicht Creme.** Die erste Fassung dieses Systems trug ein warmes Creme (`#FDF8F0`) als
+Seitenfläche. Das ist der Reflexgriff: warmes Off-White als „geschmackvoller" Standarduntergrund,
+den jedes zweite generierte Interface trägt — derselbe Vorwurf wie beim Vorgängersystem, nur eine
+Modestufe später. Der Impeccable-Detector hat es unter `cream-palette` benannt.
+
+Die drei hellen Stufen sind jetzt fast unbunt. Die Wärme liegt dort, wo sie etwas bedeutet: in der
+Tinte (einem warmen Braunschwarz), in den vier Bereichsfarben als Flächen, in Fraunces und in der
+Stimme. Vor einer beinahe neutralen Fläche werden die Farbflächen zu Ereignissen, statt im Beige
+mitzuschwimmen.
 
 ### 2.2 Die vier Logofarben, jede in drei Rollen
 
@@ -121,7 +178,7 @@ Orange und Gelb tragen dort ihren Logoton selbst.
 **Die Flächen-Regel.** Jede Vollfarbfläche bringt ihre eigene Textfarbe mit, weil die vier
 Logofarben unterschiedlich hell sind. Orange (5,2:1) und Gelb (7,6:1) sind hell genug für
 Tintentext. Blau und Grün sind es nicht — sie treten als Fläche ausschließlich in der
-`deep`-Variante mit Cremetext auf (6,4:1 und 6,1:1). Das ist die zentrale Neuerung gegenüber dem
+`deep`-Variante mit Papiertext auf (6,4:1 und 6,1:1). Das ist die zentrale Neuerung gegenüber dem
 Vorgängersystem, und sie ist der Grund, warum es drei Tokens je Farbe gibt.
 
 **Die Kontext-Regel.** Eine Sektion setzt ihre Bereichsfarbe genau einmal über eine Klasse
@@ -136,7 +193,7 @@ Farben reihum als Rhythmus, nicht als Bedeutung — dort erscheinen sie nur als 
 Hover-Kante.
 
 **Die Deckkraft-Regel.** Textfarben werden **nie** über `opacity` gedämpft, sondern über eine
-eigene Farbe (`--color-ink-soft`, `--color-cream-soft`). `opacity` mischt den Text mit dem
+eigene Farbe (`--color-ink-soft`, `--color-paper-soft`). `opacity` mischt den Text mit dem
 tatsächlichen Hintergrund und senkt den Kontrast unkontrolliert — auf der orangefarbenen
 Reiterfläche hat genau das AA gerissen (3,88:1 statt 5,18:1), gefunden vom AXE-Test.
 
@@ -200,11 +257,16 @@ kehrt in Karten, Dialogblasen, Reitern, Ergebnispanels und im Signet wieder und 
 dem man diese Seite wiedererkennt. Steuerelemente bekommen `0.625rem`, Pillen und Buttons
 `999px`.
 
-**Schatten sind warm.** `rgba(70, 46, 24, …)` statt Schwarztransparenz, immer weit gestreut und
-schwach. Ein kalter Schatten auf warmem Papier sieht aus wie ein Fehler.
+**Genau ein Schatten.** Er liegt unter dem Kopf, wenn dieser über den Inhalt wandert, und nirgends
+sonst — `--shadow-header`, warm getönt über `--shadow-tint` statt schwarz-transparent. Karten
+tragen eine Kante statt einer Erhebung: Hairline plus breiter, diffuser Schatten ist die
+wiedererkennbare Signatur generierter Oberflächen, zwei Mittel für dieselbe Aussage, von denen
+keines sich festlegt.
 
-**Bewegung** hat zwei Kurven: `--ease-soft` für Zustände, `--ease-spring` (mit leichtem Überschwung)
-für alles, was auf eine Handlung antwortet. Sie erscheint an fünf Stellen: Antwortblasen im
+**Bewegung** hat zwei exponentielle Kurven, beide ohne Überschwung: `--ease-soft` für Zustände,
+`--ease-quick` für alles, was direkt auf eine Handlung antwortet. Eine frühere Federkurve mit
+Überschwung 1,4 ist ersatzlos entfallen — sie federte hübsch und las sich auf der Seite einer
+Wirtschaftsprüferin als Anbiederung. Sie erscheint an fünf Stellen: Antwortblasen im
 Einstiegsdialog, Reiterwechsel, Ergebnis des Checks, Hover auf Karten und Buttons, und das
 Scroll-Reveal.
 
@@ -224,17 +286,17 @@ Hover-Verschiebungen.
 
 | Variante | Fläche | Text |
 |---|---|---|
-| `cream` | `#FDF8F0` | Tinte |
-| `sand` | `#F5EDE0` | Tinte |
-| `ink` | `#241C17` | Creme — setzt zusätzlich `.on-ink` |
+| `cream` | `#FBFAF8` | Tinte |
+| `sand` | `#F2F0EB` | Tinte |
+| `ink` | `#241C17` | Papier — setzt zusätzlich `.on-ink` |
 
 Innen `.sheet` (max. 78 rem). **Jede Seite öffnet auf der Tintenfläche** — daraus folgt, dass der
 Kopf oben transparent mit hellem Text liegen kann und keine Fallunterscheidung nach Route braucht.
 
 ### Kopf
 
-Fest über dem Inhalt (`position: fixed`), oben transparent, ab 40 px gescrollt eine cremefarbene
-Fläche mit Rückenunschärfe und Tintentext. Weil er fest liegt, bekommt **alles mit `id` global
+Fest über dem Inhalt (`position: fixed`), oben transparent, ab 40 px gescrollt eine Papierfläche mit
+Rückenunschärfe und Tintentext. Weil er fest liegt, bekommt **alles mit `id` global
 `scroll-margin-block-start: 6.5rem`** — sonst verschwindet jedes Sprungziel hinter ihm.
 
 ### Einstiegsdialog
@@ -286,14 +348,52 @@ Jeder Container mit `overflow-x-auto` bekommt `tabindex="0"`, `role="group"` und
 `aria-labelledby` auf die Tabellenbeschriftung. Ohne das kommt man an abgeschnittene Spalten nur mit
 der Maus (SC 2.1.1).
 
-## 6. Do's and Don'ts
+## 6. Audit
+
+Das System wird gegen drei Instanzen geprüft, und jede sieht etwas, das die anderen nicht sehen.
+
+| Prüfung | Befehl | Sieht |
+|---|---|---|
+| Kontrast-Tokens | `npm test` | Jede dokumentierte Farbpaarung, aus `styles.css` gerechnet |
+| Barrierefreiheit | `npx playwright test` | AXE auf jeder Route, jedem Reiterzustand, dem Ergebnis des Checks |
+| Design-Detektor | `npx impeccable detect` | Muster, Rampen, Zeilenlängen, Überschriftenkette, Reflexgriffe |
+
+Der Detektor läuft zweimal: gegen `src/` und gegen die laufende Seite unter
+`http://localhost:4300`. Der zweite Durchgang ist der wichtigere — er sieht die berechneten Werte
+statt der Templates. Details in `.impeccable/README.md`.
+
+### Was das erste Audit ergab
+
+Aus 49 Quelltext- und 15 Laufzeitbefunden blieben nach der Korrektur null. Fünf Änderungen waren
+mehr als Kosmetik und stehen deshalb hier:
+
+1. **`cream-palette`.** Die Seitenfläche war ein warmes Creme — der Reflexgriff, gegen den dieses
+   Redesign angetreten war. Ersetzt durch eine fast unbunte Papierskala (siehe 2.1).
+2. **`skipped-heading`.** Auf der Leistungsseite folgte auf die `h1` direkt eine `h3`: Beim Umbau
+   der Reiter war die `h2` des Bereichsnamens verloren gegangen. AXE hatte das nicht gemeldet,
+   weil Überschriftenreihenfolge dort als Best Practice und nicht als WCAG-A-Verstoß zählt.
+3. **`line-length`.** `max-width: 66ch` auf dem Fließtext ergab gemessene **85 Zeichen** pro Zeile.
+   Die Einheit `ch` misst die Breite der Ziffer 0, und die ist deutlich breiter als der
+   Durchschnittsbuchstabe im deutschen Satz. Jetzt 54ch, real rund 70.
+4. **`side-tab`.** Das Ergebnispanel des Prüfungspflicht-Checks trug für „prüfungspflichtig" eine
+   6 px starke farbige Kante — ein Verstoß gegen die eigene Ampel-Regel, denn Prüfungspflicht ist
+   kein Fehlerzustand. Ersatzlos entfernt.
+5. **`gpt-thin-border-wide-shadow`.** Karten trugen Hairline *und* 24-px-Schatten. Jetzt tragen sie
+   nur die Kante.
+
+Ignoriert wird genau eine Regel-Wert-Paarung, dokumentiert in `.impeccable/config.json`:
+`design-system-color` für `rgb(0, 0, 0)`. Angular-Templates werden ohne `styles.css` analysiert,
+weshalb jedes Textelement auf die Browser-Vorgabe Schwarz zurückfällt; im Browser rendert kein
+einziges Element so. Der URL-Durchgang prüft dieselbe Regel gegen die echten Werte.
+
+## 7. Do's and Don'ts
 
 ### Do
 
 - **Do** die Bereichsfarbe über eine `.area-*`-Klasse auf der Sektion setzen und Kinder aus
   `--area-*` lesen lassen.
 - **Do** Blau und Grün als Fläche nur in der `deep`-Variante mit Cremetext einsetzen.
-- **Do** Sekundärtext über `--color-ink-soft` beziehungsweise `--color-cream-soft` dämpfen.
+- **Do** Sekundärtext über `--color-ink-soft` beziehungsweise `--color-paper-soft` dämpfen.
 - **Do** die Sprechblasenform für alles verwenden, was ein Angebot ist: Karten, Panels, Reiter.
 - **Do** Zahlen, Datumsangaben und Normzitate in IBM Plex Mono setzen.
 - **Do** Normzitate mit Absatz und Satz angeben und gegen den Primärtext prüfen.
@@ -314,6 +414,10 @@ der Maus (SC 2.1.1).
 - **Don't** Überschriften oder Textblöcke zentrieren.
 - **Don't** Kursiv verwenden.
 - **Don't** ein Scroll-Reveal ohne Sicherheits-Timeout bauen.
+- **Don't** eine Hairline und einen weiten Schatten am selben Element kombinieren.
+- **Don't** Federkurven mit Überschwung verwenden.
+- **Don't** eine Schriftgröße erfinden, die nicht in der Rampe oben steht.
+- **Don't** einen weichen Radialverlauf als Flächendekoration einsetzen.
 - **Don't** eine Zeitangabe, Prüfungsdauer oder Empfehlung in die Werkzeuge schreiben, die nicht
   unmittelbar aus dem Gesetz folgt.
 - **Don't** mehr als eine gleichrangige Handlungsaufforderung pro Sektion setzen.

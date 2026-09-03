@@ -28,7 +28,8 @@ import { SignetComponent } from '../signet/signet.component';
         position: relative;
         aspect-ratio: 4 / 5;
         overflow: hidden;
-        border-radius: var(--radius-bubble) var(--radius-bubble) var(--radius-bubble) 0.25rem;
+        border-radius: var(--radius-bubble) var(--radius-bubble) var(--radius-bubble)
+          var(--radius-corner);
       }
 
       .frame img {
@@ -37,28 +38,44 @@ import { SignetComponent } from '../signet/signet.component';
         object-fit: cover;
       }
 
-      /* Die Ersatzfläche zitiert die Farbwäsche des Heros — dieselbe Handschrift,
-         nur hell. */
+      /* Die Ersatzfläche war zuerst ein weicher Farbnebel aus drei
+         Radialverläufen — genau die Reflexdekoration, die eine Fläche
+         beschäftigt aussehen lässt, ohne etwas zu sagen. Jetzt trägt sie eine
+         ruhige Fläche und die vier Bereichsfarben als klare Bänder: dieselben
+         vier Punkte wie im Signet, nur ausgezogen. */
       .placeholder {
+        position: relative;
         display: grid;
         place-items: center;
         width: 100%;
         height: 100%;
-        background:
-          radial-gradient(20rem 16rem at 18% 16%, rgba(212, 120, 10, 0.22), transparent 64%),
-          radial-gradient(18rem 15rem at 84% 26%, rgba(46, 125, 184, 0.2), transparent 64%),
-          radial-gradient(16rem 14rem at 74% 88%, rgba(45, 139, 87, 0.18), transparent 66%),
-          var(--color-sand);
+        background: var(--color-stone);
+      }
+
+      .bands {
+        position: absolute;
+        inset-inline: 0;
+        inset-block-end: 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        height: 0.5rem;
       }
     `,
   ],
   template: `
     <div class="frame">
       @if (src()) {
+        <!-- impeccable-disable-next-line broken-image -- steht hinter @if (src()); ohne Quelle rendert stattdessen die Ersatzfläche -->
         <img [ngSrc]="src()" [alt]="alt()" [width]="width()" [height]="height()" priority />
       } @else {
         <div class="placeholder" role="presentation">
-          <app-signet [size]="88" class="text-ink opacity-70" />
+          <app-signet [size]="88" class="text-ink" />
+          <span class="bands" aria-hidden="true">
+            <span style="background: #d4780a"></span>
+            <span style="background: #2e7db8"></span>
+            <span style="background: #2d8b57"></span>
+            <span style="background: #d4a917"></span>
+          </span>
         </div>
       }
     </div>

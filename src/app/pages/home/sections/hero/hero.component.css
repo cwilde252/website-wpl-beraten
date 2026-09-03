@@ -26,22 +26,22 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 1.25rem;
-  background: color-mix(in oklab, var(--color-cream) 9%, transparent);
-  border: 1px solid color-mix(in oklab, var(--color-cream) 20%, transparent);
+  background: color-mix(in oklab, var(--color-paper) 9%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-paper) 20%, transparent);
   transition:
     background-color 220ms var(--ease-soft),
     border-color 220ms var(--ease-soft),
-    transform 220ms var(--ease-spring);
+    transform 220ms var(--ease-quick);
 }
 .dialog-question:hover {
-  background: color-mix(in oklab, var(--color-cream) 15%, transparent);
+  background: color-mix(in oklab, var(--color-paper) 15%, transparent);
   border-color: var(--area-text);
   transform: translateX(4px);
 }
 
 .dialog-chevron {
   color: var(--area-text);
-  transition: transform 220ms var(--ease-spring);
+  transition: transform 220ms var(--ease-quick);
 }
 .dialog[open] .dialog-chevron {
   transform: rotate(180deg);

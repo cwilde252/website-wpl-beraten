@@ -37,17 +37,18 @@ const AREAS = ['pruefung', 'beratung', 'steuern', 'check'] as const;
 
 describe('Design-System: Farbe', () => {
   const ink = () => token('ink');
-  const cream = () => token('cream');
+  const paper = () => token('paper');
 
   describe('Fließtext auf jeder Grundfläche', () => {
     const pairs: [string, string, string][] = [
-      ['Tinte auf Creme', 'ink', 'cream'],
-      ['Tinte auf Sand', 'ink', 'sand'],
-      ['Tinte auf Muschel', 'ink', 'shell'],
-      ['gedämpfte Tinte auf Creme', 'ink-soft', 'cream'],
-      ['gedämpfte Tinte auf Sand', 'ink-soft', 'sand'],
-      ['Creme auf Tinte', 'cream', 'ink'],
-      ['gedämpftes Creme auf Tinte', 'cream-soft', 'ink'],
+      ['Tinte auf Papier', 'ink', 'paper'],
+      ['Tinte auf Nebel', 'ink', 'mist'],
+      ['Tinte auf Stein', 'ink', 'stone'],
+      ['gedämpfte Tinte auf Papier', 'ink-soft', 'paper'],
+      ['gedämpfte Tinte auf Nebel', 'ink-soft', 'mist'],
+      ['gedämpfte Tinte auf Stein', 'ink-soft', 'stone'],
+      ['Papier auf Tinte', 'paper', 'ink'],
+      ['gedämpftes Papier auf Tinte', 'paper-soft', 'ink'],
     ];
 
     for (const [name, fg, bg] of pairs) {
@@ -59,13 +60,13 @@ describe('Design-System: Farbe', () => {
 
   describe('Die Flächen-Regel: jede Vollfarbfläche trägt ihre eigene Textfarbe', () => {
     // Orange und Gelb sind hell und tragen Tintentext; Blau und Grün stehen als
-    // deep-Variante und tragen Cremetext. Das ist die zentrale Neuerung
+    // deep-Variante und tragen Papiertext. Das ist die zentrale Neuerung
     // gegenüber dem Vorgängersystem, in dem Farbe nie Fläche sein durfte.
     const surfaces: [string, string, () => string][] = [
       ['Orange', 'pruefung', ink],
       ['Gelb', 'check', ink],
-      ['Blau', 'beratung-deep', cream],
-      ['Grün', 'steuern-deep', cream],
+      ['Blau', 'beratung-deep', paper],
+      ['Grün', 'steuern-deep', paper],
     ];
 
     for (const [name, surface, textColor] of surfaces) {
@@ -91,7 +92,7 @@ describe('Design-System: Farbe', () => {
 
   describe('Die Kontrast-Regel: deep-Variante als Text auf hellem Grund', () => {
     for (const area of AREAS) {
-      for (const surface of ['cream', 'sand'] as const) {
+      for (const surface of ['paper', 'mist', 'stone'] as const) {
         it(`${area} auf ${surface} erreicht AA`, () => {
           expect(contrastRatio(token(`${area}-deep`), token(surface))).toBeGreaterThanOrEqual(
             AA_TEXT,
@@ -112,7 +113,7 @@ describe('Design-System: Farbe', () => {
   });
 
   describe('Steuerelement-Ränder nach SC 1.4.11', () => {
-    for (const surface of ['cream', 'sand'] as const) {
+    for (const surface of ['paper', 'mist', 'stone'] as const) {
       it(`Rand auf ${surface} erreicht 3:1`, () => {
         expect(contrastRatio(token('edge-strong'), token(surface))).toBeGreaterThanOrEqual(
           AA_NON_TEXT,

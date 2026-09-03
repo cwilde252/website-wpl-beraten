@@ -35,7 +35,7 @@
   width: 0.875rem;
   height: 0.875rem;
   border-radius: 50%;
-  background: var(--color-sand);
+  background: var(--color-mist);
   border: 2px solid var(--color-edge-strong);
   transition:
     background-color 240ms var(--ease-soft),

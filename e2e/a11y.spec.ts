@@ -1,20 +1,25 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, Page, test } from '@playwright/test';
 
-/** Dauer der Reiter-Überblendung in `service-tabs.component.css`, plus Puffer. */
-const UEBERBLENDUNG_MS = 240 + 160;
+/**
+ * Längste Zustandsanimation im System plus Puffer: 320 ms blendet das Ergebnis
+ * des Prüfungspflicht-Checks ein (`audit-check.component.css`), 240 ms wechselt
+ * ein Reiter seine Fläche (`service-tabs.component.css`).
+ */
+const ANIMATION_MS = 320 + 180;
 
 /**
- * Sitzt die Überblendung eines Reiters aus.
+ * Sitzt eine laufende Zustandsanimation aus, bevor AXE misst.
  *
- * Fläche und Textfarbe wechseln über 240 ms. AXE misst sonst ein Bild mitten in
- * dieser Überblendung und meldet einen Kontrast, den es im Ruhezustand nie gibt
- * — geprüft gehört der Zustand, den man liest. Eine feste Wartezeit ist hier
- * das richtige Mittel: Die Dauer ist bekannt und steht im Stylesheet, und es
- * gibt kein Ereignis, das das Ende *aller* beteiligten Übergänge meldet.
+ * Während einer Ein- oder Überblendung stehen Deckkraft und Farbe zwischen
+ * Anfangs- und Endwert. AXE rechnet dann einen Kontrast aus, den es im
+ * Ruhezustand nie gibt — geprüft gehört der Zustand, den man liest. Eine feste
+ * Wartezeit ist hier das richtige Mittel: Die Dauern sind bekannt und stehen im
+ * Stylesheet, und es gibt kein Ereignis, das das Ende *aller* beteiligten
+ * Übergänge und Keyframe-Animationen zusammen meldet.
  */
-async function warteBisFarbeSteht(page: Page): Promise<void> {
-  await page.waitForTimeout(UEBERBLENDUNG_MS);
+async function warteBisAnimationSteht(page: Page): Promise<void> {
+  await page.waitForTimeout(ANIMATION_MS);
 }
 
 const ROUTES = ['/', '/leistungen', '/ueber-mich', '/kontakt', '/impressum', '/datenschutz'];
@@ -33,7 +38,7 @@ test('jeder Tab-Zustand der Leistungsseite ist barrierefrei', async ({ page }) =
   await page.goto('/leistungen');
   for (const slug of ['wirtschaftspruefung', 'beratung', 'steuern']) {
     await page.locator(`#tab-${slug}`).click();
-    await warteBisFarbeSteht(page);
+    await warteBisAnimationSteht(page);
     const results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
       .analyze();
@@ -48,6 +53,7 @@ test('das Ergebnis des Prüfungspflicht-Checks ist barrierefrei', async ({ page 
   await page.fill('#current-employees', '20');
   await page.getByRole('button', { name: 'Größenklasse bestimmen' }).click();
   await expect(page.getByRole('status')).toContainText('keine belastbare Aussage');
+  await warteBisAnimationSteht(page);
 
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])

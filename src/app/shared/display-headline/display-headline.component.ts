@@ -13,5 +13,5 @@ import { DisplayHeadline } from '../../core/models/display-headline.model';
 export class DisplayHeadlineComponent {
   readonly content = input.required<DisplayHeadline>();
   readonly level = input<1 | 2>(1);
-  readonly size = input<'display' | 'headline'>('display');
+  readonly size = input<'display' | 'display-sub' | 'headline'>('display');
 }

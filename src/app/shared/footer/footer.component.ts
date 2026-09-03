@@ -13,15 +13,15 @@ import { SignetComponent } from '../signet/signet.component';
       .footer-heading {
         font-weight: 500;
         margin-block-end: 1rem;
-        color: var(--color-cream);
+        color: var(--color-paper);
       }
 
       .footer-link {
-        color: var(--color-cream-soft);
+        color: var(--color-paper-soft);
         transition: color 200ms var(--ease-soft);
       }
       .footer-link:hover {
-        color: var(--color-cream);
+        color: var(--color-paper);
       }
     `,
   ],

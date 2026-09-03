@@ -48,3 +48,9 @@ Thumbs.db
 /playwright-report
 /blob-report
 /playwright/.cache
+
+# Impeccable: geteilte Konfiguration wird eingecheckt, lokale Zustände nicht.
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/*.png
+.impeccable/review/

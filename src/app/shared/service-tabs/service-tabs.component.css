@@ -21,7 +21,7 @@
   gap: 0.5rem;
   padding: 1.375rem 1.5rem;
   text-align: left;
-  background: var(--color-cream);
+  background: var(--color-paper);
   color: var(--color-ink);
   border: 1px solid var(--color-edge);
   cursor: pointer;
@@ -29,7 +29,7 @@
     background-color 240ms var(--ease-soft),
     border-color 240ms var(--ease-soft),
     color 240ms var(--ease-soft),
-    transform 240ms var(--ease-spring);
+    transform 240ms var(--ease-quick);
 }
 
 .selector-tab:hover:not(.selected) {
@@ -72,7 +72,7 @@
 }
 
 .selector-claim {
-  font-size: 0.9375rem;
+  font-size: var(--text-sm);
   line-height: 1.45;
   /* Gedämpft über eine eigene Farbe, nicht über Deckkraft: `opacity` senkt den
      Kontrast gegen den tatsächlichen Hintergrund und zieht ihn auf der

@@ -29,7 +29,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       @media (prefers-reduced-motion: no-preference) {
         :host(:hover) .dot,
         :host(:focus-visible) .dot {
-          animation: signet-bounce 900ms var(--ease-spring) infinite;
+          /* Kein Federeffekt, sondern der Tippindikator eines Chatfensters:
+             die Punkte heben und senken sich nacheinander, weich abgebremst. */
+          animation: signet-typing 1000ms ease-in-out infinite;
         }
         :host(:hover) .dot:nth-of-type(2) {
           animation-delay: 90ms;
@@ -42,14 +44,14 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
         }
       }
 
-      @keyframes signet-bounce {
+      @keyframes signet-typing {
         0%,
         60%,
         100% {
           transform: translateY(0);
         }
         30% {
-          transform: translateY(-2.6px);
+          transform: translateY(-2.2px);
         }
       }
     `,

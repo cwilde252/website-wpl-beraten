@@ -250,7 +250,7 @@
 
 <div role="status" aria-live="polite" aria-atomic="true">
   @if (result(); as res) {
-    <div class="result-panel bubble mt-12" [class.is-required]="res.auditRequired === true">
+    <div class="result-panel bubble mt-12">
       <h3 #resultHeading tabindex="-1" class="type-headline mb-5">{{ verdict(res) }}</h3>
 
       @if (!res.indeterminate) {

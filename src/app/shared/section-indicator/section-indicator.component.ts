@@ -46,7 +46,7 @@ import { SectionRef } from '../../core/models/section-ref.model';
         flex: none;
         transition:
           background-color 280ms var(--ease-soft),
-          transform 280ms var(--ease-spring);
+          transform 280ms var(--ease-quick);
       }
 
       .indicator-item[aria-current] .indicator-dot {
@@ -55,11 +55,11 @@ import { SectionRef } from '../../core/models/section-ref.model';
       }
 
       .indicator-label {
-        font-size: 0.8125rem;
+        font-size: var(--text-xs);
         font-weight: 500;
         white-space: nowrap;
         color: var(--color-ink);
-        background: var(--color-cream);
+        background: var(--color-paper);
         border: 1px solid var(--color-edge);
         border-radius: var(--radius-pill);
         padding: 0.3125rem 0.75rem;
@@ -67,7 +67,7 @@ import { SectionRef } from '../../core/models/section-ref.model';
         transform: translateX(-6px);
         transition:
           opacity 240ms var(--ease-soft),
-          transform 240ms var(--ease-spring);
+          transform 240ms var(--ease-quick);
       }
 
       /* Das Label erscheint nur beim Zeigen. Dauerhaft eingeblendet — auch für

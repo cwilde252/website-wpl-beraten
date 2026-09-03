@@ -35,10 +35,12 @@
       [id]="'panel-' + area.slug"
       [attr.aria-labelledby]="'tab-' + area.slug"
     >
-      <!-- Der Claim steht schon auf dem Reiter. Ihn hier zu wiederholen wäre
-           derselbe Anspruch an zwei Orten (PRODUCT.md, Voice-Regel 2), deshalb
-           eröffnet das Panel mit dem Intro. -->
-      <p class="type-lead mb-12 max-w-3xl">{{ area.intro }}</p>
+      <!-- Die h2 schließt die Überschriftenkette: Ohne sie folgte auf die h1
+           der Seite direkt die h3 eines Blocktitels. Der Claim steht dagegen
+           nur auf dem Reiter — ihn hier zu wiederholen wäre derselbe Anspruch
+           an zwei Orten (PRODUCT.md, Voice-Regel 2). -->
+      <h2 class="type-headline mb-5">{{ area.title }}</h2>
+      <p class="type-lead mb-12">{{ area.intro }}</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
         @for (block of area.blocks; track block.title) {

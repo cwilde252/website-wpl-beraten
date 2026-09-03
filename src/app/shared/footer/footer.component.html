@@ -1,10 +1,10 @@
-<footer class="bg-ink text-cream on-ink pt-16 md:pt-20 pb-10">
+<footer class="bg-ink text-paper on-ink pt-16 md:pt-20 pb-10">
   <div class="sheet">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
       <div class="md:col-span-5">
-        <app-signet [size]="42" class="mb-6 text-cream" />
+        <app-signet [size]="42" class="mb-6 text-paper" />
         <p class="type-subhead mb-4">{{ contact.legalName }}</p>
-        <p class="type-body text-sm text-cream-soft">
+        <p class="type-body text-sm text-paper-soft">
           Wirtschaftsprüfung, Beratung und Steuern für den Mittelstand in der Region Rottweil.
         </p>
       </div>
@@ -29,12 +29,12 @@
         <div>
           <p class="footer-heading">Kontakt</p>
           @if (hasAddress) {
-            <address class="not-italic text-sm text-cream-soft">
+            <address class="not-italic text-sm text-paper-soft">
               <span class="block">{{ contact.street }}</span>
               <span class="block">{{ contact.postalCode }} {{ contact.city }}</span>
             </address>
           } @else {
-            <p class="text-sm text-cream-soft">{{ contact.city }}</p>
+            <p class="text-sm text-paper-soft">{{ contact.city }}</p>
           }
           <div class="flex flex-col gap-2.5 mt-3">
             @if (contact.phone) {
@@ -67,7 +67,7 @@
       </div>
     </div>
 
-    <p class="hairline mt-14 pt-6 text-sm text-cream-soft">
+    <p class="hairline mt-14 pt-6 text-sm text-paper-soft">
       {{ contact.personName }} — {{ contact.role }}, {{ contact.city }}
     </p>
   </div>
