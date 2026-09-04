@@ -1,75 +1,54 @@
 <section
-  class="bg-ink text-paper on-ink relative overflow-hidden pt-28 md:pt-36 pb-14 md:pb-20"
+  class="pt-32 md:pt-40 pb-16 md:pb-24"
   aria-label="Wiebke Lefevre, Wirtschaftsprüferin in Rottweil"
 >
-  <!-- Vier weiche Farbfelder, die sich hinter dem Text überlagern. Das ist der
-       einzige Ort neben dem Signet, an dem die vier Bereichsfarben zusammen
-       auftreten — und der sichtbarste Bruch mit dem Vorgängersystem, in dem
-       Farbe niemals Fläche sein durfte. -->
-  <div class="hero-wash" aria-hidden="true"></div>
-
-  <div class="sheet relative">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-14 items-start">
-      <div class="lg:col-span-6">
-        <app-signet [size]="52" class="mb-8 text-paper" />
-
+  <div class="sheet">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-16 gap-y-12 items-end">
+      <div class="lg:col-span-7">
+        <span class="rule-mark area-pruefung mb-8" aria-hidden="true"></span>
         <app-display-headline [content]="headline" [level]="1" />
-
-        <p class="type-lead mt-7 text-paper-soft">{{ lead }}</p>
-
-        <p class="type-body mt-10 text-paper-soft flex items-start gap-3">
-          <span
-            class="mt-2.5 inline-block w-2 h-2 rounded-full bg-steuern shrink-0"
-            aria-hidden="true"
-          >
-          </span>
-          Erstgespräch unverbindlich, Region Rottweil und Schwarzwald-Baar
+        <p class="type-lead mt-8">{{ lead }}</p>
+        <p class="type-norm text-ink-soft mt-8">
+          Erstgespräch unverbindlich · Region Rottweil und Schwarzwald-Baar
         </p>
       </div>
 
-      <!-- Der Dialog. Die Fragen stehen in der Ich-Form der Besucherin: man
-           wählt seinen eigenen Satz, nicht einen Menüpunkt. -->
-      <div class="lg:col-span-6 lg:pl-6">
-        <p class="type-subhead mb-5 text-paper">{{ prompt }}</p>
-
-        <ul class="list-none m-0 p-0 flex flex-col gap-3">
-          @for (option of options; track option.id) {
-            <li [class]="areaClass(option)">
-              <details class="dialog group" name="hero-dialog">
-                <summary class="dialog-question bubble">
-                  <span class="type-body max-w-none">{{ option.question }}</span>
-                  <svg
-                    class="dialog-chevron shrink-0"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 18 18"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.75"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M4.5 7 9 11.5 13.5 7" />
-                  </svg>
-                </summary>
-
-                <div class="dialog-answer bubble-mirror on-solid">
-                  <p class="type-body">{{ option.answer }}</p>
-                  <div class="mt-5">
-                    <app-cta-link
-                      [href]="option.ctaPath"
-                      [fragment]="option.ctaFragment"
-                      [label]="option.ctaLabel"
-                      variant="primary"
-                    />
-                  </div>
-                </div>
-              </details>
-            </li>
-          }
-        </ul>
+      <div class="lg:col-span-5">
+        <app-portrait [src]="profile.portraitSrc" [alt]="profile.portraitAlt" />
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Die drei Wege. Als Liste mit aufklappbaren Antworten, nicht als Dialog:
+     Die Idee „erst fragen, dann erzählen" bleibt, das Chatfenster geht. -->
+<section class="pb-16 md:pb-24" aria-labelledby="einstieg-frage">
+  <div class="sheet">
+    <div class="leaf">
+      <p class="leaf-note" id="einstieg-frage">{{ prompt }}</p>
+      <ul class="leaf-body list-none m-0 p-0">
+        @for (option of options; track option.id) {
+          <li [class]="areaClass(option)">
+            <details class="dialog hairline" name="hero-dialog">
+              <summary class="dialog-question">
+                <span class="type-subhead">{{ option.question }}</span>
+                <span class="dialog-sign" aria-hidden="true"></span>
+              </summary>
+              <div class="dialog-answer">
+                <p class="type-body">{{ option.answer }}</p>
+                <div class="mt-5">
+                  <app-cta-link
+                    [href]="option.ctaPath"
+                    [fragment]="option.ctaFragment"
+                    [label]="option.ctaLabel"
+                    variant="quiet"
+                  />
+                </div>
+              </div>
+            </details>
+          </li>
+        }
+      </ul>
     </div>
   </div>
 </section>

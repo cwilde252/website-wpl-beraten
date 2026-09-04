@@ -1,58 +1,10 @@
-/* Der Werdegang als Zeitstrahl statt als Tabelle. Die Linie läuft nach oben
-   aus dem Bild — der Werdegang hat einen Anfang, aber kein Ende. */
-.career {
-  position: relative;
-  padding-inline-start: 2.25rem;
-}
-
-.career::before {
-  content: '';
-  position: absolute;
-  inset-block: 0.5rem 2rem;
-  inset-inline-start: 0.375rem;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    var(--color-edge-strong),
-    var(--color-edge) 70%,
-    transparent
-  );
-}
-
+/* Der Werdegang ist eine Liste auf Linien: links die Jahreszahl in der
+   Marginalie, rechts die Station. Der Zeitstrahl mit Punkten und Verlauf ist
+   entfallen — er war Dekoration, die Chronologie steht in den Jahreszahlen. */
 .career-step {
-  position: relative;
-  padding-block-end: 2rem;
+  padding-block: 1.75rem;
 }
 
 .career-step:last-child {
-  padding-block-end: 0;
-}
-
-.career-marker {
-  position: absolute;
-  inset-inline-start: -2.25rem;
-  inset-block-start: 0.375rem;
-  width: 0.875rem;
-  height: 0.875rem;
-  border-radius: 50%;
-  background: var(--color-mist);
-  border: 2px solid var(--color-edge-strong);
-  transition:
-    background-color 240ms var(--ease-soft),
-    border-color 240ms var(--ease-soft);
-}
-
-/* Die aktuelle Station ist die erste: sie bekommt die Marke in Volltinte. */
-.career-step:first-child .career-marker {
-  background: var(--color-ink);
-  border-color: var(--color-ink);
-}
-
-@media (min-width: 768px) {
-  .career {
-    padding-inline-start: 2.75rem;
-  }
-  .career-marker {
-    inset-inline-start: -2.75rem;
-  }
+  border-block-end: 1px solid var(--color-edge);
 }

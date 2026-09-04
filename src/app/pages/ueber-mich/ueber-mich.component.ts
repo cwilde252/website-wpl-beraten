@@ -4,18 +4,11 @@ import { SeoService } from '../../core/services/seo.service';
 import { CtaLinkComponent } from '../../shared/cta-link/cta-link.component';
 import { DisplayHeadlineComponent } from '../../shared/display-headline/display-headline.component';
 import { PortraitComponent } from '../../shared/portrait/portrait.component';
-import { RevealDirective } from '../../shared/reveal.directive';
 import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wrapper.component';
 
 @Component({
   selector: 'app-ueber-mich',
-  imports: [
-    SectionWrapperComponent,
-    DisplayHeadlineComponent,
-    CtaLinkComponent,
-    PortraitComponent,
-    RevealDirective,
-  ],
+  imports: [SectionWrapperComponent, DisplayHeadlineComponent, CtaLinkComponent, PortraitComponent],
   templateUrl: './ueber-mich.component.html',
   styleUrl: './ueber-mich.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

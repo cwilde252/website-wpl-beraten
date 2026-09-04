@@ -28,15 +28,18 @@
 <app-section-wrapper theme="sand" padding="large">
   <h2 class="type-headline mb-10">Woher ich komme.</h2>
 
+  <!-- Die Jahreszahl steht in der Marginalie, nicht über dem Titel. Als Zeile
+       darüber band sie die Überschrift optisch an den Eintrag davor — und ein
+       Label über einer Überschrift ist ohnehin die Form, die dieses System
+       nicht führt. -->
   <ol class="career list-none m-0 p-0">
-    @for (entry of profile.career; track entry.title; let i = $index) {
-      <li class="career-step" [appReveal]="i * 60">
-        <span class="career-marker" aria-hidden="true"></span>
-        <div class="career-body">
-          <span class="type-figure text-sm text-ink-soft block mb-1.5">{{ entry.period }}</span>
+    @for (entry of profile.career; track entry.title) {
+      <li class="career-step leaf hairline">
+        <p class="leaf-note">{{ entry.period }}</p>
+        <div class="leaf-body">
           <h3 class="type-subhead">{{ entry.title }}</h3>
           @if (entry.description) {
-            <p class="type-body text-base text-ink-soft mt-2">{{ entry.description }}</p>
+            <p class="type-body mt-2 text-ink-soft">{{ entry.description }}</p>
           }
         </div>
       </li>

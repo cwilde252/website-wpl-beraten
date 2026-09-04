@@ -104,9 +104,11 @@ input[type='checkbox'] {
   padding-inline-start: 0.5rem;
 }
 
-/* ---- Panels ------------------------------------------------------------ */
+/* ---- Panels ------------------------------------------------------------
+   Die Schwellenwerte stehen auf einer eigenen, sehr flachen Stufe. Kein
+   Rahmen, keine Rundung — nur ein Flächenwechsel und Innenabstand. */
 .threshold-panel {
-  background: var(--color-stone);
+  background: var(--color-mist);
   padding: 1.5rem;
 }
 
@@ -116,19 +118,12 @@ input[type='checkbox'] {
   }
 }
 
-/* Das Ergebnis liegt auf der Bereichsfarbe des Checks. Beide Zustände nutzen
-   dieselbe Fläche: Prüfungspflicht ist kein Fehlerzustand, also gibt es kein
-   Rot und kein Grün (Ampel-Regel, DESIGN.md). */
+/* Das Ergebnis wird von einer kräftigen Oberlinie eingeleitet, nicht von einer
+   gefüllten Fläche. Beide Ausgänge sehen gleich aus: Prüfungspflicht ist kein
+   Fehlerzustand, also gibt es kein Rot und kein Grün (Ampel-Regel). */
 .result-panel {
-  background: var(--area-tint);
-  border: 1px solid color-mix(in oklab, var(--color-check) 45%, transparent);
-  padding: 1.75rem 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .result-panel {
-    padding: 2.25rem 2.5rem;
-  }
+  border-block-start: 2px solid var(--area-line);
+  padding-block-start: 1.75rem;
 }
 
 /* Hier stand eine 6 px starke Kante für den Fall „prüfungspflichtig". Das war
@@ -144,17 +139,15 @@ input[type='checkbox'] {
 
 @media (prefers-reduced-motion: no-preference) {
   .result-panel {
-    animation: result-in 320ms var(--ease-soft) both;
+    animation: result-in 260ms var(--ease-soft) both;
   }
 }
 
 @keyframes result-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: none;
   }
 }

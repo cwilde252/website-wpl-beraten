@@ -1,6 +1,6 @@
 ---
 name: WPL — Wiebke Lefevre, Wirtschaftsprüferin
-description: Ein Gesprächssystem für eine selbständige Wirtschaftsprüferin im regionalen Mittelstand — Sprechblasen als Formsignatur, die vier Logofarben als echte Flächen, eine fast unbunte Papierfläche. Fachlich belastbar, ohne kanzleikühl zu sein.
+description: Ein gesetztes Dokument statt einer Oberfläche. Newsreader für Überschriften und Fließtext, fast keine Farbe, keine Kacheln, ein Porträt. Die Wärme kommt aus Sprache, Satz und Bild.
 colors:
   ink: "#241C17"
   ink-soft: "#57493F"
@@ -8,7 +8,7 @@ colors:
   paper: "#FBFAF8"
   mist: "#F2F0EB"
   stone: "#ECE9E3"
-  edge: "#E0D3C0"
+  edge: "#DDD8CF"
   edge-strong: "#96826A"
   paper-soft: "#C6B6A4"
   pruefung: "#D4780A"
@@ -27,52 +27,55 @@ colors:
   steuern-on-ink: "#6EC795"
 typography:
   display:
-    fontFamily: "Fraunces Variable, Fraunces, Georgia, serif"
-    fontSize: "clamp(2.5rem, 6vw, 5rem)"
-    fontWeight: 600
-    lineHeight: 1.02
-    letterSpacing: "-0.025em"
-    fontVariationSettings: "'SOFT' 60, 'WONK' 1, 'opsz' 100"
+    fontFamily: "Newsreader Variable, Newsreader, Georgia, serif"
+    fontSize: "clamp(2.25rem, 4.6vw, 3.75rem)"
+    fontWeight: 400
+    lineHeight: 1.1
+    fontVariationSettings: "'opsz' 60"
   display-sub:
-    fontFamily: "Fraunces Variable, Fraunces, Georgia, serif"
-    fontSize: "clamp(2.125rem, 4.4vw, 3.5rem)"
-    fontWeight: 600
-    lineHeight: 1.06
-    fontVariationSettings: "'SOFT' 55, 'WONK' 1, 'opsz' 72"
-  headline:
-    fontFamily: "Fraunces Variable, Fraunces, Georgia, serif"
-    fontSize: "clamp(1.75rem, 3.6vw, 2.75rem)"
-    fontWeight: 600
+    fontFamily: "Newsreader Variable, Newsreader, Georgia, serif"
+    fontSize: "clamp(2rem, 3.8vw, 3rem)"
+    fontWeight: 400
     lineHeight: 1.12
-    fontVariationSettings: "'SOFT' 50, 'WONK' 1, 'opsz' 40"
+    fontVariationSettings: "'opsz' 44"
+  headline:
+    fontFamily: "Newsreader Variable, Newsreader, Georgia, serif"
+    fontSize: "clamp(1.625rem, 2.6vw, 2.25rem)"
+    fontWeight: 400
+    lineHeight: 1.2
+    fontVariationSettings: "'opsz' 32"
   subhead:
-    fontFamily: "Fraunces Variable, Fraunces, Georgia, serif"
-    fontSize: "1.375rem"
-    fontWeight: 600
+    fontFamily: "Newsreader Variable, Newsreader, Georgia, serif"
+    fontSize: "1.3125rem"
+    fontWeight: 500
     lineHeight: 1.35
   lead:
-    fontFamily: "Instrument Sans Variable, Instrument Sans, system-ui, sans-serif"
-    fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)"
+    fontFamily: "Newsreader Variable, Newsreader, Georgia, serif"
+    fontSize: "clamp(1.1875rem, 1.5vw, 1.4375rem)"
     fontWeight: 400
-    lineHeight: 1.55
+    lineHeight: 1.6
   body:
-    fontFamily: "Instrument Sans Variable, Instrument Sans, system-ui, sans-serif"
-    fontSize: "1.0625rem"
-    fontWeight: 400
-    lineHeight: 1.65
-  legend:
-    fontFamily: "Fraunces Variable, Fraunces, Georgia, serif"
+    fontFamily: "Newsreader Variable, Newsreader, Georgia, serif"
     fontSize: "1.125rem"
-    fontWeight: 600
+    fontWeight: 400
+    lineHeight: 1.72
+  wordmark:
+    fontFamily: "Newsreader Variable, Newsreader, Georgia, serif"
+    fontSize: "1.1875rem"
+    fontWeight: 500
+  legend:
+    fontFamily: "Newsreader Variable, Newsreader, Georgia, serif"
+    fontSize: "1.25rem"
+    fontWeight: 500
   control:
     fontFamily: "Instrument Sans Variable, Instrument Sans, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 500
-  small:
+  ui:
     fontFamily: "Instrument Sans Variable, Instrument Sans, system-ui, sans-serif"
     fontSize: "0.9375rem"
     fontWeight: 500
-  fine:
+  norm:
     fontFamily: "IBM Plex Mono, ui-monospace, monospace"
     fontSize: "0.8125rem"
     fontWeight: 400
@@ -85,57 +88,56 @@ typography:
     fontWeight: 500
     fontVariantNumeric: "tabular-nums"
 rounded:
-  bubble: "1.75rem"
-  corner: "0.25rem"
-  soft: "1rem"
-  control: "0.625rem"
-  pill: "999px"
+  control: "2px"
 ---
 
 # Design-System: WPL — Wiebke Lefevre
 
 ## 1. Leitbild
 
-**„Das Gespräch."**
+**„Ein gesetztes Dokument."**
 
-Wiebkes Versprechen ist keine Methode und kein Apparat, sondern eine Person: „Sie arbeiten direkt
-mit mir." Der Formenvorrat des Systems kommt deshalb aus dem Gespräch — die Sprechblase mit drei
-weichen Ecken und einer scharfen, die Frage, auf die eine Antwort folgt, die Reihe von Punkten, die
-anzeigt, dass jemand tippt.
+Die Seite soll aussehen, als hätte sie jemand gesetzt, der nichts beweisen muss. Keine Bühne, kein
+Auftritt, keine Bedienoberfläche — ein Text mit Überschriften, Linien, Rand und einem Porträt.
 
-Die Website ist damit kein Prospekt, sondern ein Vorgespräch. Wer sie öffnet, wird als Erstes etwas
-gefragt und bekommt eine Antwort, bevor er ein Formular sieht.
+Die Wärme liegt in drei Dingen, und in keinem davon ist Gestaltung: **in der Sprache** (Wiebke
+spricht in der Ich-Form und sagt Sätze, die sich jemand getraut hat), **im Satz** (großzügiger
+Rand, ruhige Zeilen, ein Lesetext-Serif) und **im Porträt**. Alles andere hält sich zurück.
 
-### Was das Vorgängersystem war und warum es ersetzt wurde
+### Die Vorgeschichte, weil sie die Regeln erklärt
 
-Bis zu diesem Redesign trug die Seite ein System namens **„Das Arbeitspapier"**: Linienraster,
-Randspalte, Doppelstrich unter jeder Sektionsüberschrift, Mono-Versal-Labels, null Schatten, null
-Rundung, und die harte Regel *Farbe ist nie Fläche*.
+Dieses Repository trägt das dritte Gestaltungssystem. Die beiden Vorgänger sind gescheitert, und
+beide Male an derselben Sache: Sie haben eine Haltung behauptet, statt sie zu unterlassen.
 
-Das war konsequent gebaut und fachlich stimmig. Es hatte zwei Probleme, die es nicht überleben
-konnte:
+**Erstes System, „Das Arbeitspapier".** Linienraster, Randspalte, Doppelstrich, Mono-Versal-Labels,
+Graphit auf Beige, die Regel *Farbe ist nie Fläche*. Fachlich stimmig und sauber gebaut — aber
+strenger Swiss-Minimalismus ist die Standardsprache hunderter Agentur- und Fintech-Auftritte.
+Verworfen als austauschbar.
 
-1. **Es war austauschbar geworden.** Strenger Swiss-Minimalismus in Graphit und Beige mit
-   Mono-Labels ist die Standardsprache hunderter Agentur-, Studio- und Fintech-Auftritte. Was als
-   Abgrenzung von der Großkanzlei gedacht war, las sich als Vorlage.
-2. **Es war gegen Wärme gebaut.** „Bewegung an genau drei Stellen", „keine Fotografie", „Prüfung als
-   Handwerk, nicht als Apparat" — offen, freundlich und ungezwungen kam darin nicht vor. Das war
-   keine Ausführungsschwäche, sondern der erklärte Entwurf.
+**Zweites System, „Das Gespräch".** Als Antwort auf „zu kalt" wurde alles ins Freundliche gedreht:
+Sprechblasen als Formsignatur, aufklappbare Chat-Blasen als Einstieg, ein Messenger-Signet mit vier
+bunten Punkten, eine dunkle Bühne mit farbigem Leuchten, gefüllte Reiter, Pillen-Schaltflächen,
+28-px-Radien, federnde Bewegung. Das Ergebnis las sich nicht als freundlich, sondern als
+**Software** — der Auftritt eines Start-ups, nicht der einer Wirtschaftsprüferin.
 
-Übernommen wurden aus dem alten System genau drei Dinge, weil sie fachlich richtig waren: die vier
-Logofarben als Bereichsmarken, Zahlen und Normzitate in Mono mit Tabellenziffern, und die
-Ampel-Regel (siehe 2.4).
+Der Fehler war eine Verwechslung: *freundlich* wurde mit *app-artig* gleichgesetzt. Alle Mittel, mit
+denen Wärme erzeugt werden sollte — runde Ecken, Farbflächen, Chat-Metaphern, Bewegung — kommen aus
+dem Baukasten für Bedienoberflächen. Sie machen eine Seite nicht menschlich, sondern bedienbar.
+
+**Was daraus folgt, ist die tragende Regel dieses Systems:** Wärme entsteht nicht durch Formen,
+sondern durch Inhalt. Wo eine Gestaltungsentscheidung „freundlicher wirken" soll, ist sie
+wahrscheinlich falsch; sie soll lesbar sein und sich sonst heraushalten.
 
 **Kernmerkmale**
 
-- Die Sprechblase ist die Formsignatur: drei weiche Ecken, unten links eine scharfe.
-- Farbe ist **Fläche**. Jede der vier Logofarben füllt Panels, Kacheln und Reiter.
-- Eine fast unbunte Papierfläche, damit die Farbflächen als Ereignis lesen.
-- Karten mit weicher Kante statt Linienraster — und ohne Schatten.
-- Zwei Werkzeuge tragen die Leistungsseite: Prüfungspflicht-Check und Fristen-Zeitstrahl.
-- Bewegung ist Antwort auf Handlung — plus ein zurückhaltendes Scroll-Reveal.
-- Fraunces mit den Achsen SOFT und WONK für die Stimme, Instrument Sans für den Text,
-  IBM Plex Mono für Zahlen und Normzitate.
+- Newsreader — ein Lesetext-Serif mit optischer Achse — trägt Überschriften **und** Fließtext.
+  Software setzt Sans, ein Dokument setzt Serif.
+- Fast keine Farbe. Die vier Logofarben sind Linien, Listenmarken und Textfarbe, nie Fläche.
+- Ein Radius im ganzen System: 2 px an Steuerelementen. Sonst nichts Rundes.
+- Kein Schatten, keine Kachelraster als Grundstruktur, keine Pillen.
+- Gegliedert wird mit Linien, Weißraum und Schriftgrößen.
+- Bewegung nur als Antwort auf einen Klick. Kein Scroll-Reveal.
+- Das Porträt ist der einzige Blickfang und der Hauptträger der Wärme.
 
 ## 2. Farbe
 
@@ -143,290 +145,223 @@ Ampel-Regel (siehe 2.4).
 
 | Token | Hex | Rolle |
 |---|---|---|
-| `--color-ink` | `#241C17` | Fließtext und dunkle Fläche |
-| `--color-ink-soft` | `#57493F` | Sekundärtext auf hell |
-| `--color-ink-lift` | `#3A2C22` | aufgehellte Tinte, nur als Hover gefüllter Flächen |
-| `--color-paper` | `#FBFAF8` | primäre helle Fläche |
-| `--color-mist` | `#F2F0EB` | zweite helle Fläche für den Flächenwechsel |
-| `--color-stone` | `#ECE9E3` | dritte Stufe, eingebettete Panels |
-| `--color-edge` | `#E0D3C0` | dekorative Trennlinien, bewusst unter 3:1 |
+| `--color-ink` | `#241C17` | Überschriften und Fließtext, warmes Braunschwarz |
+| `--color-ink-soft` | `#57493F` | Sekundärtext, Bildunterschriften, Marginalien |
+| `--color-ink-lift` | `#3A2C22` | Hover auf tintenfarbener Fläche |
+| `--color-paper` | `#FBFAF8` | die Seitenfläche |
+| `--color-mist` | `#F2F0EB` | zweite Fläche für den Sektionswechsel |
+| `--color-stone` | `#ECE9E3` | dritte Stufe, eingebettete Tabellen |
+| `--color-edge` | `#DDD8CF` | Trennlinien |
 | `--color-edge-strong` | `#96826A` | Ränder von Steuerelementen, 3,5:1 nach SC 1.4.11 |
 | `--color-paper-soft` | `#C6B6A4` | Sekundärtext auf Tinte |
 
-**Papier, nicht Creme.** Die erste Fassung dieses Systems trug ein warmes Creme (`#FDF8F0`) als
-Seitenfläche. Das ist der Reflexgriff: warmes Off-White als „geschmackvoller" Standarduntergrund,
-den jedes zweite generierte Interface trägt — derselbe Vorwurf wie beim Vorgängersystem, nur eine
-Modestufe später. Der Impeccable-Detector hat es unter `cream-palette` benannt.
+### 2.2 Die vier Logofarben
 
-Die drei hellen Stufen sind jetzt fast unbunt. Die Wärme liegt dort, wo sie etwas bedeutet: in der
-Tinte (einem warmen Braunschwarz), in den vier Bereichsfarben als Flächen, in Fraunces und in der
-Stimme. Vor einer beinahe neutralen Fläche werden die Farbflächen zu Ereignissen, statt im Beige
-mitzuschwimmen.
-
-### 2.2 Die vier Logofarben, jede in drei Rollen
-
-| Bereich | `--color-X` (Fläche/Signet) | `--color-X-deep` (Text und dunkle Fläche) | `--color-X-tint` (helle Fläche) |
+| Bereich | `--color-X` (Linie, Marke) | `--color-X-deep` (Text auf hell) | `--color-X-tint` (blasse Fläche) |
 |---|---|---|---|
 | Wirtschaftsprüfung | `#D4780A` | `#9C5200` | `#FBE7CF` |
 | Beratung | `#2E7DB8` | `#1F5F8F` | `#E2EFF9` |
 | Steuern | `#2D8B57` | `#1E6B41` | `#DFF0E6` |
 | Prüfungspflicht-Check | `#D4A917` | `#7A5F09` | `#FAEFCC` |
 
-Auf dunkler Fläche gelten aufgehellte Textvarianten: Beratung `#7FB8E0`, Steuern `#6EC795`;
-Orange und Gelb tragen dort ihren Logoton selbst.
+Auf dunkler Fläche gelten aufgehellte Textvarianten: Beratung `#7FB8E0`, Steuern `#6EC795`.
 
 ### 2.3 Named Rules — Farbe
 
-**Die Flächen-Regel.** Jede Vollfarbfläche bringt ihre eigene Textfarbe mit, weil die vier
-Logofarben unterschiedlich hell sind. Orange (5,2:1) und Gelb (7,6:1) sind hell genug für
-Tintentext. Blau und Grün sind es nicht — sie treten als Fläche ausschließlich in der
-`deep`-Variante mit Papiertext auf (6,4:1 und 6,1:1). Das ist die zentrale Neuerung gegenüber dem
-Vorgängersystem, und sie ist der Grund, warum es drei Tokens je Farbe gibt.
+**Die Markierungs-Regel.** Eine Bereichsfarbe erscheint als Linie, Listenmarke, Textfarbe oder
+Hover — **nie als gesättigte Fläche.** Das Vorgängersystem füllte Reiter, Antwortblasen und die
+Kopfleiste vollflächig; genau diese Flächen ließen die Seite nach Anwendung aussehen. Erlaubt sind
+die `-tint`-Varianten als sehr blasser Grund für eingebettete Panels.
 
-**Die Kontext-Regel.** Eine Sektion setzt ihre Bereichsfarbe genau einmal über eine Klasse
-(`.area-pruefung`, `.area-beratung`, `.area-steuern`, `.area-check`). Alle Kinder lesen daraus
-`--area-solid`, `--area-deep`, `--area-tint`, `--area-on-solid` und `--area-text`. Kein Template
-entscheidet selbst über Kontrast; `.on-ink` dreht die Zuordnung für dunkle Flächen um.
+**Die Kontext-Regel.** Eine Sektion setzt ihre Bereichsfarbe einmal über eine Klasse
+(`.area-pruefung` und so weiter). Alle Kinder lesen `--area-line`, `--area-deep`, `--area-tint` und
+`--area-text` daraus. Kein Template entscheidet selbst über Kontrast; `.on-ink` dreht die Zuordnung
+für dunkle Flächen um.
 
 **Die Bereichsfarben-Regel.** Orange gehört der Wirtschaftsprüfung, Blau der Beratung, Grün den
-Steuern, Gelb dem Prüfungspflicht-Check. Innerhalb der Sektionen ist diese Zuordnung unverhandelbar.
-
-Zwei Farben treffen sich nur dort, wo nichts zugeordnet wird: im Signet und in der Farbwäsche des
-Heros. Dazu kommt eine dritte, ausdrücklich beschlossene Ausnahme — die **Kopfleiste ist orange**.
-Sie ist kein Inhalt, sondern Rahmen: Sie beansprucht keinen Leistungsbereich, sondern trägt die
-Leitfarbe der Marke, so wie das Signet alle vier Farben führt, ohne für alle vier Bereiche zu
-stehen. Wer über die Seite scrollt, sieht Orange deshalb an zwei Orten mit zwei Bedeutungen — als
-Marke oben und als Bereichsmarke in der Wirtschaftsprüfung. Das ist der Preis dieser Entscheidung
-und war bewusst.
-
-Die vier Haltungskarten auf der Startseite tragen die Farben reihum als Rhythmus, nicht als
-Bedeutung — dort erscheinen sie nur als Kante beim Zeigen.
+Steuern, Gelb dem Prüfungspflicht-Check. Die einzige Farbe außerhalb einer Sektion ist die
+2-px-Linie unter der Kopfzeile: Sie steht in Orange als Leitfarbe der Marke.
 
 **Die Deckkraft-Regel.** Textfarben werden **nie** gedämpft, indem man sie durchsichtig macht,
-sondern über eine eigene deckende Farbe (`--color-ink-soft`, `--color-paper-soft`). Das gilt für
-`opacity` genauso wie für `color-mix(…, transparent)` — beide mischen den Text mit dem
-tatsächlichen Hintergrund und senken den Kontrast unkontrolliert.
-
-Die Regel hat sich zweimal gerächt, beide Male von AXE gefunden: auf der orangefarbenen
-Reiterfläche (3,88:1 statt 5,18:1) und später an der Rolle „Wirtschaftsprüferin" in der ebenfalls
-orangefarbenen Kopfleiste (3,74:1). Auf einer Fläche mit nur 5,2:1 Spielraum ist für eine
-gedämpfte Zweitfarbe schlicht kein Platz — dort trägt die Hierarchie Größe und Schriftschnitt.
+sondern über eine eigene deckende Farbe. Das gilt für `opacity` genauso wie für
+`color-mix(…, transparent)` — beide mischen den Text mit dem tatsächlichen Hintergrund und senken
+den Kontrast unkontrolliert. Die Regel wurde dreimal verletzt und dreimal von AXE gefunden, zuletzt
+an der Rolle „Wirtschaftsprüferin" in der Kopfzeile (3,74:1 statt 5,18:1).
 
 **Die Ampel-Regel.** Farbe transportiert nie allein eine Aussage. Das Ergebnis des
 Prüfungspflicht-Checks steht als vollständiger Satz und in einer Tabelle mit den Worten
-„überschritten" und „nicht überschritten"; die Fläche ist in beiden Fällen dieselbe. Kein Grün für
-„gut", kein Rot für „schlecht" — Prüfungspflicht ist kein Fehlerzustand.
+„überschritten" und „nicht überschritten"; beide Ausgänge sehen gleich aus. Kein Grün für „gut",
+kein Rot für „schlecht" — Prüfungspflicht ist kein Fehlerzustand.
 
 ### 2.4 Kontraste sind gerechnet, nicht behauptet
 
-`src/design-system.spec.ts` liest die Tokens aus `styles.css` und rechnet **36 Paarungen** nach:
-Fließtext auf jeder Grundfläche, jede Vollfarbfläche gegen ihre Textfarbe, jeder Tint gegen Tinte
-und gegen die eigene `deep`-Variante, jede Bereichsfarbe als Text auf hell und auf dunkel, und die
-Steuerelement-Ränder gegen 3:1. Ein aufgehelltes Token bricht den Test.
+`src/design-system.spec.ts` liest die Tokens aus `styles.css` und rechnet jede dokumentierte
+Paarung nach: Fließtext auf allen drei hellen Flächen, jeder Tint gegen Tinte und gegen die eigene
+`deep`-Variante, jede Bereichsfarbe als Text auf hell und auf dunkel, die Steuerelement-Ränder
+gegen 3:1. Ein aufgehelltes Token bricht den Test.
 
 Was diese Prüfung nicht sehen kann — Deckkraft, Überblendungen, Verläufe —, fängt die AXE-Suite in
 `e2e/a11y.spec.ts` ab: jede Route, jeder Reiterzustand, das Ergebnis des Checks.
 
 ## 3. Typografie
 
-**Fraunces** (variabel, OFL-1.1) trägt die Stimme. Genutzt werden ausdrücklich die Achsen **SOFT**
-(weiche Terminals) und **WONK** (das schräg geschnittene `g`, das kippende `y`) — ohne sie wäre
-Fraunces nur eine weitere Serif. Genau diese beiden Achsen machen den Unterschied zwischen
-„Geschäftsbericht" und „jemand spricht mit mir". Eine Serif für die Stimme ist zugleich die Brücke
-zur Seriosität, die eine Wirtschaftsprüferin braucht.
+**Newsreader** (variabel, OFL-1.1) trägt Überschriften und Fließtext. Genutzt wird die Achse
+`opsz`, und sie ist der Grund für diese Schrift: Bei 60 px braucht ein Serif feinere Haarstriche und
+engere Punzen als bei 18 px. Wer nur skaliert, bekommt entweder klobige Überschriften oder
+brüchigen Lesetext.
 
-**Instrument Sans** (variabel, OFL-1.1) trägt den Fließtext: humanistisch, offen, gut lesbar in
-langen Absätzen, ohne die Neutralität von Inter.
+Dass der **Fließtext** ein Serif ist, ist die eigentliche Antwort auf „soll nicht nach Software
+aussehen". Bedienoberflächen setzen Sans. Bücher, Zeitungen, Gutachten und Prüfungsberichte setzen
+Serif. Die Schriftwahl entscheidet den Eindruck, bevor ein einziges Wort gelesen ist.
 
-**IBM Plex Mono** (400/500, OFL-1.1) trägt, was in Spalten steht oder ein Aktenzeichen ist:
-Geldbeträge, Tabellenwerte, Datumsangaben, Normzitate. Das Kernmaterial dieser Seite sind
-`7.500.000 €`, `31.03.2027` und `§ 267 Abs. 1 HGB` — die brauchen Tabellenziffern.
+**Instrument Sans** trägt ausschließlich Bedienelemente: Navigation, Formularlabels, Schalter,
+Schaltflächen. Sie soll nicht auffallen.
+
+**IBM Plex Mono** trägt, was in Spalten steht oder ein Aktenzeichen ist: Beträge, Datumsangaben,
+Normzitate, Marginalien. `§ 267 Abs. 1 HGB` und `7.500.000 €` brauchen Tabellenziffern.
 
 | Rolle | Klasse | Familie | Größe |
 |---|---|---|---|
-| Display | `.type-display` | Fraunces | `clamp(2.5rem, 6vw, 5rem)` |
-| Headline | `.type-headline` | Fraunces | `clamp(1.75rem, 3.6vw, 2.75rem)` |
-| Subhead | `.type-subhead` | Fraunces | 1.375rem |
-| Lead | `.type-lead` | Instrument Sans | `clamp(1.125rem, 1.5vw, 1.375rem)`, max 40ch |
-| Body | `.type-body` | Instrument Sans | 1.0625rem, max 66ch |
-| Zahl | `.type-figure` | **Mono** | erbt, `tabular-nums` |
-| Norm | `.type-norm` | **Mono** | 0.8125rem |
+| Display | `.type-display` | Serif | `clamp(2.25rem, 4.6vw, 3.75rem)` |
+| Display, Unterseiten | `.type-display-sub` | Serif | `clamp(2rem, 3.8vw, 3rem)` |
+| Headline | `.type-headline` | Serif | `clamp(1.625rem, 2.6vw, 2.25rem)` |
+| Subhead | `.type-subhead` | Serif | 1.3125rem |
+| Lead | `.type-lead` | Serif | `clamp(1.1875rem, 1.5vw, 1.4375rem)`, max 44ch |
+| Body | `.type-body` | Serif | 1.125rem, max **52ch** |
+| Bedienelement | `.type-ui` | Sans | 0.9375rem |
+| Zahl | `.type-figure` | Mono | erbt, `tabular-nums` |
+| Norm, Marginalie | `.type-norm` | Mono | 0.8125rem |
 
-**Die Mono-Regel.** Mono nur für Zahlen in Spalten, Datumsangaben und Normzitate. Nie für
-Fließtext, nie für Überschriften, nie länger als eine Zeile.
+**Die Zeilenlängen-Regel.** `max-width: 52ch`, nicht mehr. Die Einheit `ch` misst die Breite der
+Ziffer 0 und ist deutlich breiter als der Durchschnittsbuchstabe im deutschen Satz: 66ch ergaben
+gemessene 85 Zeichen pro Zeile. 52ch landen bei rund 70.
 
-**Keine Etiketten über Überschriften.** Das Vorgängersystem öffnete jede Sektion mit einem
-Mono-Versal-Label. Die erste Fassung dieses Systems ersetzte es durch eine farbige Pille — also
-dasselbe Muster in freundlich. Beides ist ein *Eyebrow*: eine kleine Kategoriezeile über der
-Überschrift, die das Rezept „Label → Headline → Text" auf jeder Sektion wiederholt und dabei
-nichts sagt, was die Überschrift nicht schon sagt.
-
-Beides ist ersatzlos entfallen. Eine Sektion beginnt mit ihrer Überschrift. Die Normzitate, die in
-den Etiketten mitliefen (`§§ 267, 267a HGB` und so weiter), standen ohnehin doppelt — im Fließtext,
-in den Tabellen und an jeder Frist des Zeitstrahls.
-
-Datumsangaben über einem Titel sind kein Eyebrow: Im Werdegang und im Fristen-Zeitstrahl ist das
-Datum der eigentliche Inhalt der Zeile, nicht eine Kategorie darüber.
+**Die Gewichts-Regel.** Kein Gewicht über 600. Newsreader trägt Überschriften in 400 — ein
+Lesetext-Serif bei 48 px braucht keine Fettung, um Überschrift zu sein. Hierarchie entsteht aus
+Größe, Abstand und Linie.
 
 **Headlines sind Daten, kein Markup.** `DisplayHeadlineComponent` rendert ein `lines: string[]` aus
-dem `ContentService`. Zeilenumbrüche in einer großen Headline sind Gestaltung und gehören deshalb
-in den Content.
+dem `ContentService`. Zeilenumbrüche in einer großen Headline sind Gestaltung und gehören in den
+Content.
 
 ## 4. Form, Tiefe, Bewegung
 
-**Die Sprechblase.** `border-radius: 1.75rem 1.75rem 1.75rem 0.25rem` — drei weiche Ecken, unten
-links eine scharfe. `.bubble`, gespiegelt `.bubble-mirror`, nach oben geöffnet `.bubble-top`. Sie
-kehrt in Karten, Dialogblasen, Reitern, Ergebnispanels und im Signet wieder und ist das Element, an
-dem man diese Seite wiedererkennt. Steuerelemente bekommen `0.625rem`, Pillen und Buttons
-`999px`.
+**Ein Radius.** `--radius-control: 2px`, an Formularfeldern und Schaltflächen. Sonst nichts
+Rundes. Es gibt keine Formsignatur mehr — die Sprechblase des Vorgängersystems mit ihren
+28-px-Ecken ist ersatzlos entfallen.
 
-**Genau ein Schatten.** Er liegt unter dem Kopf, wenn dieser über den Inhalt wandert, und nirgends
-sonst — `--shadow-header`, warm getönt über `--shadow-tint` statt schwarz-transparent. Karten
-tragen eine Kante statt einer Erhebung: Hairline plus breiter, diffuser Schatten ist die
-wiedererkennbare Signatur generierter Oberflächen, zwei Mittel für dieselbe Aussage, von denen
-keines sich festlegt.
+**Kein Schatten.** Tiefe entsteht aus dem Flächenwechsel Papier → Nebel → Stein. Die einzige
+Ausnahme ist eine 1-px-Kante unter der Kopfzeile beim Scrollen, und die ist genau genommen auch nur
+eine Linie.
 
-**Bewegung** hat zwei exponentielle Kurven, beide ohne Überschwung: `--ease-soft` für Zustände,
-`--ease-quick` für alles, was direkt auf eine Handlung antwortet. Eine frühere Federkurve mit
-Überschwung 1,4 ist ersatzlos entfallen — sie federte hübsch und las sich auf der Seite einer
-Wirtschaftsprüferin als Anbiederung. Sie erscheint an fünf Stellen: Antwortblasen im
-Einstiegsdialog, Reiterwechsel, Ergebnis des Checks, Hover auf Karten und Buttons, und das
-Scroll-Reveal.
+**Linien statt Kacheln.** Das Gliederungsmittel ist die Haarlinie (`.hairline`). Karten
+(`.card`) gibt es noch, aber als Ausnahme: eine Kante, kein Schatten, kein Anheben beim Zeigen.
 
-**Scroll-Reveal mit drei Sicherungen.** `RevealDirective` versteckt nur, was beim Laden *unterhalb*
-des Viewports liegt (sonst verschwände vorgerenderter Inhalt und käme wieder), blendet nach
-spätestens 3 Sekunden in jedem Fall ein, und räumt seine Klassen nach der Animation wieder ab, damit
-kein Element dauerhaft in einer eigenen Compositing-Ebene hängt. Ein Druck-Stylesheet hebt den
-Zustand ohnehin auf. Ein Reveal, das Inhalt versteckt und auf ein Ereignis wartet, ist sonst eine
-Wette darauf, dass dieses Ereignis eintritt.
+**Die Sektionsmarke** ist ein 40 × 2 px langer Strich in der Bereichsfarbe über der Überschrift
+(`.rule-mark`) — kein Etikett und keine Kategorie, nur ein Anstrich. Etiketten über Überschriften
+(*Eyebrows*) sind verboten; siehe Do's and Don'ts.
 
-`prefers-reduced-motion: reduce` neutralisiert global alle Übergänge, das Reveal und die
-Hover-Verschiebungen.
+**Die Marginalie** (`.leaf`) ist die Layout-Signatur: ab 1024 px eine 9 rem schmale Randnotiz links
+neben dem Text, für Normzitate, Jahreszahlen und Bildunterschriften. Sie enthält nie Fließtext.
+
+**Bewegung** hat eine Kurve (`--ease-soft`), kurze Dauern und existiert nur, wo etwas auf einen
+Klick antwortet: Aufklappen einer Antwort, Reiterwechsel, Erscheinen des Check-Ergebnisses. Kein
+Scroll-Reveal — Inhalt, der erst beim Scrollen erscheint, ist ein Effekt, kein Argument, und er
+kann hängenbleiben. `prefers-reduced-motion: reduce` neutralisiert global.
 
 ## 5. Komponenten
 
-### Section Wrapper
+### Kopfzeile
 
-| Variante | Fläche | Text |
-|---|---|---|
-| `cream` | `#FBFAF8` | Tinte |
-| `sand` | `#F2F0EB` | Tinte |
-| `ink` | `#241C17` | Papier — setzt zusätzlich `.on-ink` |
+Eine Zeile auf Papier mit einer 2-px-Linie in Orange darunter, fest über dem Inhalt
+(`position: fixed`). Die Vorfassung trug hier ein durchgehend orangefarbenes Band; eine gesättigte
+Vollfläche am oberen Rand ist die Signatur einer Anwendung. Geblieben ist dieselbe Farbe am
+selben Ort, ohne den Auftritt.
 
-Innen `.sheet` (max. 78 rem). **Jede Seite öffnet auf der Tintenfläche** — daraus folgt, dass der
-Kopf oben transparent mit hellem Text liegen kann und keine Fallunterscheidung nach Route braucht.
+Weil die Zeile fest liegt, bekommt **alles mit `id` global `scroll-margin-block-start: 6.5rem`** —
+sonst verschwindet jedes Sprungziel dahinter.
 
-### Kopf
+### Wortmarke
 
-Ein durchgehend orangefarbenes Band, fest über dem Inhalt (`position: fixed`), mit Tintentext
-(5,2:1). Es wechselt seine Farbe nie — beim Scrollen setzt es sich nur über eine dunklere Kante und
-den einzigen Schatten des Systems vom Inhalt ab. Die Begründung für das Orange steht bei der
-Bereichsfarben-Regel.
-
-Weil er fest liegt, bekommt **alles mit `id` global `scroll-margin-block-start: 6.5rem`** — sonst
-verschwindet jedes Sprungziel hinter ihm. Die Fläche ist volldeckend und verlässt sich nicht auf
-`backdrop-filter`: Wo der nicht greift, stünde der Seitentext lesbar hinter dem Kopf.
-
-### Einstiegsdialog
-
-Drei Fragen in der Stimme der Besucherin, drei Antworten in Wiebkes. Gebaut aus nativen
-`<details name="hero-dialog">`: exklusives Aufklappen, `aria-expanded` vom Element selbst,
-funktionsfähig im vorgerenderten HTML. Eine Signal-Nachbildung wäre mehr Code mit weniger
-Barrierefreiheit — deshalb liegt der Zustand hier ausnahmsweise nicht in einem Signal.
-
-### Werkzeuge
-
-Zwei, und sie sind der inhaltliche Kern der Leistungsseite.
-
-**Prüfungspflicht-Check** — Größenklasse nach §§ 267, 267a HGB, inklusive der Zwei-Stichtags-Regel.
-Formular links, Schwellenwerte rechts, damit man beim Tippen sieht, wogegen gerechnet wird.
-
-**Fristen-Zeitstrahl** — Abschlussstichtag und Größenklasse wählen, und die gesetzlichen Termine
-stehen da: Aufstellung (§ 264 Abs. 1 Satz 3/4 HGB), Feststellung (§ 42a Abs. 2 Satz 1 GmbHG),
-Offenlegung (§ 325 Abs. 1a Satz 1 HGB). Dazwischen liegt orange markiert das **Prüfungsfenster** —
-nicht als Werbeblock, sondern weil ohne Prüfung nicht festgestellt werden kann
-(§ 316 Abs. 1 Satz 2 HGB). Das Argument der Seite steht damit im Gesetz und muss nicht behauptet
-werden.
-
-Beide rechnen ausschließlich im Browser. Beide tragen einen Hinweis, was sie *nicht* abbilden.
-
-### Signet
-
-Sprechblase mit vier Punkten in den Logofarben; beim Zeigen federn sie nacheinander an wie ein
-Tippindikator. Der einzige Ort, an dem die vier Farben zusammen auftreten, die Marke solange keine
-Logodatei vorliegt, und die Herleitung der Formsignatur. **Standardmäßig dekorativ** — an jeder
-Stelle steht der Name schon als Text daneben, ein zweiter gleichlautender Bildname wäre für
-Screenreader nur Rauschen.
-
-**Mono-Variante.** Auf farbigen Flächen verschwindet der gleichfarbige Punkt der Vierfarbfassung —
-auf der orangefarbenen Kopfleiste wären es sichtbar nur noch drei. Wie jedes Logo hat diese Marke
-deshalb eine einfarbige Fassung (`[mono]="true"`), die die Textfarbe ihrer Fläche übernimmt.
+Name in Newsreader, Rolle in Instrument Sans daneben. Es gibt **kein Signet**: Die vier bunten
+Punkte in einer Sprechblase sahen aus wie ein Messenger-Logo. Solange Wiebkes echtes Logo fehlt,
+ist die Wortmarke die Marke.
 
 ### Porträt
 
-`PortraitComponent` hält den Platz für Wiebkes Foto (4:5, Sprechblasenrahmen). Solange keines
-vorliegt, steht dort keine graue Silhouette und kein „Bild folgt", sondern eine gestaltete Fläche
-aus Signet und Farbverlauf. Kommt das Foto, wird `portraitSrc` im `ContentService` gesetzt.
+`PortraitComponent`, Hochformat 4:5 mit Kante und optionaler Bildunterschrift. Es ist der einzige
+Blickfang der Seite und trägt den Großteil dessen, was „freundlich" ausmachen soll.
+
+Solange kein Foto vorliegt, steht dort eine ruhige Fläche mit dem Satz „Porträt folgt." — keine
+graue Silhouette, kein Platzhalterbild. **Einbau:** Datei nach `public/wiebke-lefevre.jpg`
+(mindestens 900 × 1125 px), dann `portraitSrc` und `portraitAlt` in `ContentService.getProfile()`
+füllen. Mehr nicht.
+
+### Einstieg
+
+Drei Fragen in der Stimme der Besucherin, als Liste auf Haarlinien mit aufklappbarer Antwort. Die
+Idee „erst fragen, dann erzählen" ist geblieben, das Chatfenster ist weg: keine Sprechblasen, keine
+gefüllten Antwortflächen, nur ein Plus, das beim Öffnen zum Minus wird.
+
+Gebaut aus nativen `<details name="hero-dialog">`: exklusives Aufklappen, `aria-expanded` vom
+Element selbst, funktionsfähig im vorgerenderten HTML.
+
+### Register
+
+Die drei Leistungsbereiche als Reiterzeile mit Unterlinie — der gewählte Reiter trägt volle Tinte
+plus eine Linie in der Bereichsfarbe, also zwei Signale (WCAG 1.4.1). Die gefüllten Farbkacheln der
+Vorfassung sind entfallen.
+
+### Werkzeuge
+
+**Prüfungspflicht-Check** — Größenklasse nach §§ 267, 267a HGB, inklusive der Zwei-Stichtags-Regel.
+Das Ergebnis wird von einer kräftigen Oberlinie eingeleitet, nicht von einer gefüllten Fläche.
+
+**Fristen-Zeitstrahl** — Abschlussstichtag und Größenklasse wählen, und die gesetzlichen Termine
+stehen da: Aufstellung (§ 264 Abs. 1 Satz 3/4 HGB), Feststellung (§ 42a Abs. 2 Satz 1 GmbHG),
+Offenlegung (§ 325 Abs. 1a Satz 1 HGB). Dazwischen liegt das **Prüfungsfenster** — nicht als
+Werbeblock, sondern weil ohne Prüfung nicht festgestellt werden kann (§ 316 Abs. 1 Satz 2 HGB).
+
+Beide rechnen ausschließlich im Browser. Beide tragen einen Hinweis, was sie *nicht* abbilden.
 
 ### Handlungslinks
 
-`CtaLinkComponent`, zwei Stufen: `btn-primary` (gefüllt) und `btn-ghost` (Kontur). Pille mit Pfeil,
-der beim Zeigen nachrückt. Der unterstrichene Versal-Textlink des Vorgängersystems ist entfallen —
-korrekt, aber unfreundlich: Man musste raten, ob etwas anklickbar ist.
+`CtaLinkComponent`, zwei Stufen: `primary` als schlichte Fläche in Tinte, `quiet` als Textlink mit
+Unterlinie in der Bereichsfarbe. Die zweite Stufe ist bewusst kein umrandeter Knopf — zwei gerahmte
+Flächen nebeneinander sehen aus wie ein Dialogfeld.
 
 ### Scrollbare Tabellen
 
 Jeder Container mit `overflow-x-auto` bekommt `tabindex="0"`, `role="group"` und ein
-`aria-labelledby` auf die Tabellenbeschriftung. Ohne das kommt man an abgeschnittene Spalten nur mit
-der Maus (SC 2.1.1).
+`aria-labelledby` auf die Tabellenbeschriftung. Ohne das kommt man an abgeschnittene Spalten nur
+mit der Maus (SC 2.1.1).
 
 ## 6. Audit
-
-Das System wird gegen drei Instanzen geprüft, und jede sieht etwas, das die anderen nicht sehen.
 
 | Prüfung | Befehl | Sieht |
 |---|---|---|
 | Kontrast-Tokens | `npm test` | Jede dokumentierte Farbpaarung, aus `styles.css` gerechnet |
-| Barrierefreiheit | `npx playwright test` | AXE auf jeder Route, jedem Reiterzustand, dem Ergebnis des Checks |
+| Barrierefreiheit | `npx playwright test` | AXE auf jeder Route, jedem Reiterzustand, dem Check-Ergebnis |
 | Design-Detektor | `npx impeccable detect` | Muster, Rampen, Zeilenlängen, Überschriftenkette, Reflexgriffe |
 
-Der Detektor läuft zweimal: gegen `src/` und gegen die laufende Seite unter
-`http://localhost:4300`. Der zweite Durchgang ist der wichtigere — er sieht die berechneten Werte
-statt der Templates. Details in `.impeccable/README.md`.
+Der Detektor läuft zweimal: gegen `src/` und gegen die laufende Seite. Der zweite Durchgang ist der
+wichtigere — er sieht die berechneten Werte statt der Templates. Details in
+`.impeccable/README.md`.
 
-### Was das erste Audit ergab
-
-Aus 49 Quelltext- und 15 Laufzeitbefunden blieben nach der Korrektur null. Fünf Änderungen waren
-mehr als Kosmetik und stehen deshalb hier:
-
-1. **`cream-palette`.** Die Seitenfläche war ein warmes Creme — der Reflexgriff, gegen den dieses
-   Redesign angetreten war. Ersetzt durch eine fast unbunte Papierskala (siehe 2.1).
-2. **`skipped-heading`.** Auf der Leistungsseite folgte auf die `h1` direkt eine `h3`: Beim Umbau
-   der Reiter war die `h2` des Bereichsnamens verloren gegangen. AXE hatte das nicht gemeldet,
-   weil Überschriftenreihenfolge dort als Best Practice und nicht als WCAG-A-Verstoß zählt.
-3. **`line-length`.** `max-width: 66ch` auf dem Fließtext ergab gemessene **85 Zeichen** pro Zeile.
-   Die Einheit `ch` misst die Breite der Ziffer 0, und die ist deutlich breiter als der
-   Durchschnittsbuchstabe im deutschen Satz. Jetzt 54ch, real rund 70.
-4. **`side-tab`.** Das Ergebnispanel des Prüfungspflicht-Checks trug für „prüfungspflichtig" eine
-   6 px starke farbige Kante — ein Verstoß gegen die eigene Ampel-Regel, denn Prüfungspflicht ist
-   kein Fehlerzustand. Ersatzlos entfernt.
-5. **`gpt-thin-border-wide-shadow`.** Karten trugen Hairline *und* 24-px-Schatten. Jetzt tragen sie
-   nur die Kante.
-
-Ignoriert wird genau eine Regel-Wert-Paarung, dokumentiert in `.impeccable/config.json`:
-`design-system-color` für `rgb(0, 0, 0)`. Angular-Templates werden ohne `styles.css` analysiert,
-weshalb jedes Textelement auf die Browser-Vorgabe Schwarz zurückfällt; im Browser rendert kein
-einziges Element so. Der URL-Durchgang prüft dieselbe Regel gegen die echten Werte.
+Zwei Regel-Wert-Paarungen sind dokumentiert stillgelegt, beide Werkzeuggrenzen und keine echten
+Befunde: `design-system-color` für `rgb(0, 0, 0)` (Angular-Templates werden ohne `styles.css`
+analysiert, im Browser rendert kein Element schwarz) und `broken-image` an der Porträtkomponente
+(das `<img>` steht hinter `@if (src())`).
 
 ## 7. Do's and Don'ts
 
 ### Do
 
-- **Do** die Bereichsfarbe über eine `.area-*`-Klasse auf der Sektion setzen und Kinder aus
-  `--area-*` lesen lassen.
-- **Do** Blau und Grün als Fläche nur in der `deep`-Variante mit Cremetext einsetzen.
+- **Do** Fließtext und Überschriften in der Serif setzen, Bedienelemente in der Sans.
+- **Do** die Bereichsfarbe über eine `.area-*`-Klasse auf der Sektion setzen.
+- **Do** eine Bereichsfarbe als Linie, Marke oder Textfarbe einsetzen.
+- **Do** mit Haarlinien und Weißraum gliedern.
 - **Do** Sekundärtext über `--color-ink-soft` beziehungsweise `--color-paper-soft` dämpfen.
-- **Do** die Sprechblasenform für alles verwenden, was ein Angebot ist: Karten, Panels, Reiter.
 - **Do** Zahlen, Datumsangaben und Normzitate in IBM Plex Mono setzen.
 - **Do** Normzitate mit Absatz und Satz angeben und gegen den Primärtext prüfen.
 - **Do** jede Sektion mit ihrer Überschrift öffnen.
@@ -438,22 +373,20 @@ einziges Element so. Der URL-Durchgang prüft dieselbe Regel gegen die echten We
 
 ### Don't
 
-- **Don't** Textfarben über `opacity` dämpfen — siehe die Deckkraft-Regel.
-- **Don't** eine Logofarbe als Fläche einsetzen, ohne die Textfarbe der Flächen-Regel mitzunehmen.
-- **Don't** zwei Bereichsfarben nebeneinander zeigen, außer im Signet und in der Hero-Farbwäsche.
-- **Don't** ein Etikett über eine Überschrift setzen — weder als Versal-Label noch als Pille.
-- **Don't** die Vierfarbfassung des Signets auf eine farbige Fläche setzen.
-- **Don't** Fließtext in Mono setzen.
-- **Don't** Überschriften oder Textblöcke zentrieren.
-- **Don't** Kursiv verwenden.
-- **Don't** ein Scroll-Reveal ohne Sicherheits-Timeout bauen.
-- **Don't** eine Hairline und einen weiten Schatten am selben Element kombinieren.
+- **Don't** eine Bereichsfarbe als gesättigte Fläche einsetzen.
+- **Don't** einen Radius über 6 px verwenden — ein Test erzwingt das.
+- **Don't** Pillen-Schaltflächen, Sprechblasen oder Chat-Metaphern einführen.
+- **Don't** einen Schatten einsetzen.
+- **Don't** Textfarben über `opacity` oder `color-mix(…, transparent)` dämpfen.
+- **Don't** ein Etikett über eine Überschrift setzen (*Eyebrow*).
+- **Don't** ein Scroll-Reveal einbauen.
 - **Don't** Federkurven mit Überschwung verwenden.
 - **Don't** eine Schriftgröße erfinden, die nicht in der Rampe oben steht.
-- **Don't** einen weichen Radialverlauf als Flächendekoration einsetzen.
-- **Don't** eine Zeitangabe, Prüfungsdauer oder Empfehlung in die Werkzeuge schreiben, die nicht
-  unmittelbar aus dem Gesetz folgt.
-- **Don't** mehr als eine gleichrangige Handlungsaufforderung pro Sektion setzen.
+- **Don't** eine Gestaltungsentscheidung damit begründen, dass sie „freundlicher wirkt".
+- **Don't** Fließtext in Mono oder in der Sans setzen.
+- **Don't** Überschriften oder Textblöcke zentrieren.
+- **Don't** eine Zeitangabe oder Prüfungsdauer in die Werkzeuge schreiben, die nicht unmittelbar
+  aus dem Gesetz folgt.
 - **Don't** Grün-Rot-Ampeln als alleinigen Bedeutungsträger verwenden.
 - **Don't** `ngClass` oder `ngStyle` benutzen — `[class.x]` und `[style.x]` reichen.
 - **Don't** `standalone: true` in Decorators schreiben (ab Angular v20 Standard).

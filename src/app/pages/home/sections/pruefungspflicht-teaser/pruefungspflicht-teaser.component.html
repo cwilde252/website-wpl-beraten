@@ -23,9 +23,9 @@
     <!-- Die Schwellenwerte stehen als Zahl da, nicht als Fließtext: Wer sie
          kennt, hat den Nutzen schon hier — auch ohne den Check zu öffnen. -->
     <div class="lg:col-span-6 lg:pl-4">
-      <ul class="list-none m-0 p-0 flex flex-col gap-3">
+      <ul class="list-none m-0 p-0">
         @for (tile of tiles; track tile.label) {
-          <li class="bubble bg-check-tint px-6 py-5 flex items-baseline justify-between gap-6">
+          <li class="hairline py-4 flex items-baseline justify-between gap-6">
             <span class="type-body text-base">{{ tile.label }}</span>
             <span class="type-figure text-xl md:text-2xl whitespace-nowrap">
               {{ tile.value }}
@@ -36,7 +36,7 @@
           </li>
         }
       </ul>
-      <p class="type-norm mt-4 text-ink-soft">
+      <p class="type-norm mt-5 text-ink-soft hairline pt-4">
         Schwellen der kleinen Kapitalgesellschaft, § 267 Abs. 1 HGB
       </p>
     </div>

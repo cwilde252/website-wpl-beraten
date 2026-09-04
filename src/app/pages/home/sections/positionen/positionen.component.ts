@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ContentService } from '../../../../core/services/content.service';
-import { RevealDirective } from '../../../../shared/reveal.directive';
 import { SectionWrapperComponent } from '../../../../shared/section-wrapper/section-wrapper.component';
 
 @Component({
   selector: 'app-positionen',
-  imports: [SectionWrapperComponent, RevealDirective],
+  imports: [SectionWrapperComponent],
   templateUrl: './positionen.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { id: 'haltung' },

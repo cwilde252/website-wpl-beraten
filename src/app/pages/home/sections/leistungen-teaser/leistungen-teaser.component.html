@@ -3,7 +3,7 @@
 
   <ul class="list-none m-0 p-0 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
     @for (area of areas; track area.slug; let i = $index) {
-      <li [class]="areaClass(area)" [appReveal]="i * 80">
+      <li [class]="areaClass(area)">
         <a
           routerLink="/leistungen"
           [fragment]="area.slug"
@@ -36,6 +36,6 @@
   </ul>
 
   <div class="mt-12">
-    <app-cta-link href="/leistungen" label="Alle Leistungen im Detail" variant="ghost" />
+    <app-cta-link href="/leistungen" label="Alle Leistungen im Detail" variant="quiet" />
   </div>
 </app-section-wrapper>

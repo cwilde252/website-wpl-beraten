@@ -277,8 +277,8 @@ export class ContentService {
         'Wichtig sind mir der persönliche Kontakt und die Zusammenarbeit auf Augenhöhe. Ich sage Ihnen, was ich sehe, auch wenn es unbequem ist — und ich erwarte dasselbe zurück.',
       ],
       career: this.getCareer(),
-      // Es liegt noch kein Porträt vor (siehe FRAGEN-AN-WIEBKE.md). Bis dahin
-      // zeigt der Bildbereich das Signet statt eines Platzhalterbildes.
+      // Sobald das Foto vorliegt: nach public/ legen und beide Zeilen füllen.
+      // Siehe PortraitComponent und FRAGEN-AN-WIEBKE.md, Punkt 13.
       portraitSrc: '',
       portraitAlt: '',
     };

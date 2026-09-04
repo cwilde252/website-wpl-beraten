@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 import { RouterLink } from '@angular/router';
 
 /**
- * Der Handlungslink des Systems.
+ * Der Handlungslink des Systems, in zwei Stufen.
  *
- * Ersetzt den unterstrichenen Versal-Textlink des Vorgängersystems. Der war
- * konsequent, aber unfreundlich: Man musste raten, ob etwas anklickbar ist.
- * Eine Pille mit Pfeil beantwortet die Frage, bevor sie entsteht.
+ * `primary` ist eine schlichte Fläche in Tinte, `quiet` ein Textlink mit
+ * Unterlinie in der Bereichsfarbe. Die zweite Stufe ist bewusst kein umrandeter
+ * Knopf: Zwei gerahmte Flächen nebeneinander sehen aus wie ein Dialogfeld.
  *
  * Interne Ziele laufen über `routerLink`, `mailto:` und externe Adressen über
  * ein einfaches `<a href>`.
@@ -21,24 +21,10 @@ import { RouterLink } from '@angular/router';
         [href]="href()"
         class="btn"
         [class.btn-primary]="variant() === 'primary'"
-        [class.btn-ghost]="variant() === 'ghost'"
+        [class.btn-quiet]="variant() === 'quiet'"
         [attr.aria-label]="ariaLabel() || null"
       >
         <span>{{ label() }}</span>
-        <svg
-          class="btn-arrow"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.75"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M3 8h9.5M8.5 3.5 13 8l-4.5 4.5" />
-        </svg>
       </a>
     } @else {
       <a
@@ -46,24 +32,10 @@ import { RouterLink } from '@angular/router';
         [fragment]="fragment()"
         class="btn"
         [class.btn-primary]="variant() === 'primary'"
-        [class.btn-ghost]="variant() === 'ghost'"
+        [class.btn-quiet]="variant() === 'quiet'"
         [attr.aria-label]="ariaLabel() || null"
       >
         <span>{{ label() }}</span>
-        <svg
-          class="btn-arrow"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.75"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M3 8h9.5M8.5 3.5 13 8l-4.5 4.5" />
-        </svg>
       </a>
     }
   `,
@@ -72,7 +44,7 @@ export class CtaLinkComponent {
   readonly href = input.required<string>();
   readonly label = input.required<string>();
   readonly fragment = input<string | undefined>(undefined);
-  readonly variant = input<'primary' | 'ghost'>('primary');
+  readonly variant = input<'primary' | 'quiet'>('primary');
   readonly ariaLabel = input('');
 
   readonly isExternal = computed(() => /^(mailto:|tel:|https?:)/.test(this.href()));

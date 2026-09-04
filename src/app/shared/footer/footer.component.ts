@@ -2,11 +2,10 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ContentService } from '../../core/services/content.service';
 import { NavigationService } from '../../core/services/navigation.service';
-import { SignetComponent } from '../signet/signet.component';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, SignetComponent],
+  imports: [RouterLink],
   templateUrl: './footer.component.html',
   styles: [
     `

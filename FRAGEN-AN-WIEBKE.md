@@ -68,18 +68,29 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
     - Wie lange dauert eine Prüfung, und wann sollte man Sie ansprechen?
     - In welchem Umkreis arbeiten Sie?
 
-13. **Porträtfoto — jetzt eingeplant, fehlt aber noch.** Anders als in der Vorfassung ist das
-    Design nicht mehr auf Bildlosigkeit hin gebaut: Es gibt zwei feste Plätze für dein Porträt,
-    auf `/ueber-mich` (groß, mitlaufend) und auf der Startseite im Profil-Teaser. Solange kein
-    Foto vorliegt, steht dort eine gestaltete Farbfläche mit dem Signet — kein Platzhalter und
-    kein Loch, aber eben auch kein Gesicht.
+13. **Porträtfoto — jetzt der wichtigste offene Punkt.** Die Gestaltung ist bewusst sehr
+    zurückhaltend geworden: fast keine Farbe, keine Kacheln, keine Effekte. Damit ruht alles, was
+    die Seite persönlich machen soll, auf zwei Dingen — deinen Sätzen und deinem Gesicht. Ohne
+    Foto fehlt die Hälfte davon.
 
-    Gebraucht wird ein Hochformat im Seitenverhältnis 4:5, mindestens 720 × 900 px. Sobald es da
-    ist, wird es unter `public/` abgelegt und `portraitSrc` im `ContentService` gesetzt; sonst
-    ändert sich nichts.
+    Es gibt zwei Plätze dafür: prominent im Einstieg der Startseite und groß auf `/ueber-mich`.
+    Solange nichts vorliegt, steht dort eine ruhige Fläche mit dem Satz „Porträt folgt." — kein
+    Platzhalterbild und keine graue Silhouette.
 
-    Das ist die Stelle mit dem größten Hebel für „offen und freundlich". Eine Seite, die mit
-    „Hallo, ich bin Wiebke" beginnt und kein Gesicht zeigt, lässt ein Versprechen offen.
+    **Gebraucht wird:** Hochformat im Verhältnis 4:5, mindestens 900 × 1125 px, als JPG.
+    Kein Studio-Businessporträt vor grauem Hintergrund nötig — im Gegenteil: ein ruhiges Bild an
+    einem echten Ort passt besser zu dieser Seite.
+
+    **Einbau, sobald es da ist:** Datei nach `public/wiebke-lefevre.jpg`, dann in
+    `src/app/core/services/content.service.ts` unter `getProfile()` zwei Zeilen füllen:
+
+    ```ts
+    portraitSrc: '/wiebke-lefevre.jpg',
+    portraitAlt: 'Wiebke Lefevre, Wirtschaftsprüferin in Rottweil',
+    ```
+
+    Rahmen, Zuschnitt und Bildunterschrift stehen bereits.
+
 
 14. **Vorschaubild für geteilte Links** (Open Graph, 1200 × 630). Fehlt. Kann aus Wortmarke und
     Signet erzeugt werden, sobald das Logo vorliegt.

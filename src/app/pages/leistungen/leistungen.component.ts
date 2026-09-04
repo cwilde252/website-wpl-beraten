@@ -8,7 +8,6 @@ import {
   signal,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SectionRef } from '../../core/models/section-ref.model';
 import { ContentService } from '../../core/services/content.service';
 import { SeoService } from '../../core/services/seo.service';
 import { AuditCheckComponent } from '../../shared/audit-check/audit-check.component';
@@ -16,22 +15,12 @@ import { DisplayHeadlineComponent } from '../../shared/display-headline/display-
 import { FaqAccordionComponent } from '../../shared/faq-accordion/faq-accordion.component';
 import { CtaLinkComponent } from '../../shared/cta-link/cta-link.component';
 import { FristenTimelineComponent } from '../../shared/fristen-timeline/fristen-timeline.component';
-import { SectionIndicatorComponent } from '../../shared/section-indicator/section-indicator.component';
 import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wrapper.component';
 import { ServiceTabsComponent } from '../../shared/service-tabs/service-tabs.component';
-
-const LEISTUNGEN_SECTIONS: SectionRef[] = [
-  { id: 'leistungen-start', label: 'Leistungen' },
-  { id: 'bereiche', label: 'Bereiche' },
-  { id: 'pruefungspflicht', label: 'Prüfungspflicht' },
-  { id: 'fristen', label: 'Fristen' },
-  { id: 'fragen', label: 'Fragen' },
-];
 
 @Component({
   selector: 'app-leistungen',
   imports: [
-    SectionIndicatorComponent,
     SectionWrapperComponent,
     DisplayHeadlineComponent,
     ServiceTabsComponent,
@@ -49,8 +38,6 @@ export class LeistungenComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly doc = inject(DOCUMENT);
-
-  readonly sections = LEISTUNGEN_SECTIONS;
   readonly headline = this.content.getLeistungenHeadline();
   readonly lead = this.content.getLeistungenLead();
   readonly areas = this.content.getServiceAreas();

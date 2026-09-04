@@ -3,12 +3,11 @@ import { RouterLink } from '@angular/router';
 import { ServiceArea } from '../../../../core/models/service-area.model';
 import { ContentService } from '../../../../core/services/content.service';
 import { CtaLinkComponent } from '../../../../shared/cta-link/cta-link.component';
-import { RevealDirective } from '../../../../shared/reveal.directive';
 import { SectionWrapperComponent } from '../../../../shared/section-wrapper/section-wrapper.component';
 
 @Component({
   selector: 'app-leistungen-teaser',
-  imports: [SectionWrapperComponent, CtaLinkComponent, RevealDirective, RouterLink],
+  imports: [SectionWrapperComponent, CtaLinkComponent, RouterLink],
   templateUrl: './leistungen-teaser.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { id: 'leistungen' },

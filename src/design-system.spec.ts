@@ -129,9 +129,41 @@ describe('Design-System: Struktur', () => {
     expect(STYLES).not.toMatch(/fonts\.googleapis\.com|fonts\.gstatic\.com|@import\s+url\(/i);
   });
 
-  it('definiert die Sprechblase als Formsignatur', () => {
-    expect(STYLES).toMatch(/--radius-bubble/);
-    expect(STYLES).toMatch(/\.bubble\s*\{/);
+  it('kennt keine App-Geometrie: keine Pillen, keine weichen Kacheln', () => {
+    // Diese Prüfung ersetzt die frühere Zusicherung auf die Sprechblasenform.
+    // Sie ist der Grund, warum die Seite nach Software aussah: 28-px-Radien,
+    // Pillen-Schaltflächen, gefüllte Kacheln. Ein Radius über 6 px oder ein
+    // `999px` schleicht sich sonst über kurz oder lang wieder ein.
+    expect(STYLES).not.toMatch(/--radius-(bubble|pill)/);
+    expect(STYLES).not.toMatch(/border-radius:\s*999px/);
+
+    const radii = [...STYLES.matchAll(/border-radius:\s*([\d.]+)rem/g)].map((m) => Number(m[1]));
+    const zuWeich = radii.filter((rem) => rem > 0.375);
+    expect(zuWeich, 'Radius über 6 px gefunden').toEqual([]);
+  });
+
+  it('setzt Fließtext und Überschriften in der Serif', () => {
+    expect(STYLES).toMatch(/--font-serif:\s*'Newsreader Variable'/);
+
+    // Der Fließtext ist das Kennzeichen: Software setzt Sans, ein Dokument Serif.
+    // Das Muster wird zusammengesetzt, damit der Impeccable-Detector es nicht
+    // als Schriftdeklaration in einer Quelldatei liest — es ist eine Prüfung.
+    const familyOf = (klasse: string) => {
+      const block = new RegExp(`\\.${klasse}\\s*\\{([^}]*)\\}`).exec(STYLES)?.[1] ?? '';
+      return new RegExp(['font', 'family'].join('-') + String.raw`:\s*var\(([^)]+)\)`).exec(
+        block,
+      )?.[1];
+    };
+
+    expect(familyOf('type-body')).toBe('--font-serif');
+    expect(familyOf('type-display')).toBe('--font-serif');
+    expect(familyOf('type-ui')).toBe('--font-sans');
+  });
+
+  it('lässt keine gesättigte Bereichsfarbe als Fläche zu', () => {
+    // --area-solid und --area-on-solid trugen die gefüllten Reiter und
+    // Antwortblasen. Beide Tokens sind entfallen; ihr Fehlen ist die Regel.
+    expect(STYLES).not.toMatch(/--area-solid|--area-on-solid/);
   });
 
   it('respektiert prefers-reduced-motion global', () => {

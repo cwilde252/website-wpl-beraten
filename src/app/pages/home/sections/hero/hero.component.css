@@ -1,89 +1,53 @@
-/* Die Farbwäsche hinter dem Hero: vier weiche Radialverläufe in den
-   Bereichsfarben, stark abgedunkelt. Sie ersetzt das fehlende Bildmaterial und
-   macht die Marke sichtbar, ohne dass eine Farbe eine Bedeutung übernimmt. */
-.hero-wash {
-  position: absolute;
-  inset: -30% -10% auto -10%;
-  height: 130%;
-  pointer-events: none;
-  /* `screen` addiert die Farben auf die dunkle Fläche, statt sie mit ihr zu
-     mischen. Ohne den Modus verschluckt die Tinte alles unterhalb von 60 %
-     Deckkraft, und die vier Farben werden zu einem braunen Fleck. */
-  mix-blend-mode: screen;
-  opacity: 0.85;
-  background:
-    radial-gradient(30rem 22rem at 2% 22%, rgba(212, 120, 10, 0.6), transparent 60%),
-    radial-gradient(28rem 22rem at 70% 6%, rgba(46, 125, 184, 0.62), transparent 60%),
-    radial-gradient(28rem 22rem at 96% 74%, rgba(45, 139, 87, 0.58), transparent 62%),
-    radial-gradient(22rem 18rem at 30% 98%, rgba(212, 169, 23, 0.4), transparent 64%);
-}
-
-/* ---- Dialogblasen ------------------------------------------------------ */
-
+/* Die Wege sind Zeilen auf Linien, keine Blasen. Der einzige Farbanteil ist
+   das kleine Kreuz rechts, das beim Öffnen zum Minus wird. */
 .dialog-question {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 1.25rem;
-  background: color-mix(in oklab, var(--color-paper) 9%, transparent);
-  border: 1px solid color-mix(in oklab, var(--color-paper) 20%, transparent);
-  transition:
-    background-color 220ms var(--ease-soft),
-    border-color 220ms var(--ease-soft),
-    transform 220ms var(--ease-quick);
-}
-.dialog-question:hover {
-  background: color-mix(in oklab, var(--color-paper) 15%, transparent);
-  border-color: var(--area-text);
-  transform: translateX(4px);
+  gap: 1.5rem;
+  padding-block: 1.125rem;
 }
 
-.dialog-chevron {
+.dialog-question:hover .type-subhead {
   color: var(--area-text);
-  transition: transform 220ms var(--ease-quick);
-}
-.dialog[open] .dialog-chevron {
-  transform: rotate(180deg);
 }
 
-/* Die Antwort kommt als gespiegelte Blase in der Bereichsfarbe — sichtbar eine
-   Erwiderung, nicht ein aufgeklappter Absatz. */
+.dialog-question .type-subhead {
+  transition: color 200ms var(--ease-soft);
+}
+
+/* Ein Plus aus zwei Linien; beim Öffnen dreht der senkrechte Strich weg. */
+.dialog-sign {
+  position: relative;
+  flex: none;
+  width: 0.875rem;
+  height: 0.875rem;
+  align-self: center;
+}
+.dialog-sign::before,
+.dialog-sign::after {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--area-line);
+}
+.dialog-sign::after {
+  transform: rotate(90deg);
+  transition: transform 220ms var(--ease-soft);
+}
+.dialog[open] .dialog-sign::after {
+  transform: rotate(0deg);
+}
+
 .dialog-answer {
-  margin-block-start: 0.5rem;
-  margin-inline-start: 1.5rem;
-  padding: 1.25rem 1.375rem 1.375rem;
-  background: var(--area-solid);
-  color: var(--area-on-solid);
-}
-.dialog-answer .type-body {
-  max-width: 46ch;
+  padding-block-end: 1.75rem;
+  max-width: 52ch;
 }
 
-/* Der Fokusring der Antwortfläche muss auf Orange wie auf Blau sitzen. */
-.dialog-answer :focus-visible {
-  outline-color: currentColor;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .dialog[open] .dialog-answer {
-    animation: answer-in 320ms var(--ease-soft) both;
-  }
-}
-
-@keyframes answer-in {
-  from {
-    opacity: 0;
-    transform: translateY(-6px) scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dialog-question:hover {
-    transform: none;
-  }
+/* Der letzte Weg schließt die Liste mit einer Linie ab. */
+.dialog:last-of-type {
+  border-block-end: 1px solid var(--color-edge);
 }

@@ -1,73 +1,57 @@
-<header class="site-header z-40" [class.is-solid]="scrolled() || mobileMenuOpen()">
-  <div class="sheet flex items-center justify-between py-4 md:py-5">
-    <a
-      routerLink="/"
-      class="no-underline flex items-center gap-3"
-      (click)="closeMobileMenu()"
-      aria-label="Startseite"
-    >
-      <app-signet [size]="34" [mono]="true" />
-      <span class="leading-tight">
-        <span class="block type-subhead text-lg">{{ contact.personName }}</span>
-        <span class="header-role block text-sm">{{ contact.role }}</span>
-      </span>
+<header class="site-header z-40" [class.is-scrolled]="scrolled() || mobileMenuOpen()">
+  <div class="sheet flex items-baseline justify-between gap-6 py-5 md:py-6">
+    <a routerLink="/" class="wordmark no-underline" (click)="closeMobileMenu()">
+      <span class="wordmark-name">{{ contact.personName }}</span>
+      <span class="wordmark-role">{{ contact.role }}</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-1" aria-label="Hauptnavigation">
+    <nav class="hidden md:flex items-baseline gap-8" aria-label="Hauptnavigation">
       @for (item of navItems; track item.path) {
-        <a
-          [routerLink]="item.path"
-          routerLinkActive="nav-active"
-          class="nav-link no-underline px-4 py-2 rounded-full"
-          >{{ item.label }}</a
-        >
+        <a [routerLink]="item.path" routerLinkActive="nav-active" class="nav-link no-underline">{{
+          item.label
+        }}</a>
       }
-      <app-cta-link href="/kontakt" label="Erstgespräch" variant="primary" class="ml-3" />
     </nav>
 
     <button
       type="button"
-      class="md:hidden p-2 -mr-2 bg-transparent border-0 text-current cursor-pointer"
+      class="md:hidden self-center p-2 -mr-2 bg-transparent border-0 text-current cursor-pointer"
       (click)="toggleMobileMenu()"
       [attr.aria-expanded]="mobileMenuOpen()"
       aria-controls="mobile-nav"
       [attr.aria-label]="mobileMenuOpen() ? 'Menü schließen' : 'Menü öffnen'"
     >
       <svg
-        width="26"
-        height="26"
-        viewBox="0 0 26 26"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        stroke-width="1.75"
-        stroke-linecap="round"
+        stroke-width="1.5"
         aria-hidden="true"
       >
         @if (mobileMenuOpen()) {
-          <line x1="6.5" y1="6.5" x2="19.5" y2="19.5" />
-          <line x1="19.5" y1="6.5" x2="6.5" y2="19.5" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
         } @else {
-          <line x1="4" y1="9" x2="22" y2="9" />
-          <line x1="4" y1="17" x2="16" y2="17" />
+          <line x1="3" y1="9" x2="21" y2="9" />
+          <line x1="3" y1="16" x2="21" y2="16" />
         }
       </svg>
     </button>
   </div>
 
   @if (mobileMenuOpen()) {
-    <nav id="mobile-nav" class="md:hidden hairline" aria-label="Mobilnavigation">
-      <div class="sheet flex flex-col py-4 gap-1">
+    <nav id="mobile-nav" class="md:hidden" aria-label="Mobilnavigation">
+      <div class="sheet flex flex-col pb-5">
         @for (item of navItems; track item.path) {
           <a
             [routerLink]="item.path"
             (click)="closeMobileMenu()"
-            class="type-subhead no-underline py-3"
+            class="type-subhead no-underline py-3 hairline"
             >{{ item.label }}</a
           >
         }
-        <div class="pt-4 pb-2">
-          <app-cta-link href="/kontakt" label="Erstgespräch anfragen" variant="primary" />
-        </div>
       </div>
     </nav>
   }

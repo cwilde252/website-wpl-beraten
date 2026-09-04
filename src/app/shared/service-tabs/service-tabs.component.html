@@ -9,7 +9,7 @@
       #tabButton
       type="button"
       role="tab"
-      class="selector-tab bubble"
+      class="selector-tab"
       [class]="areaClass(area)"
       [id]="'tab-' + area.slug"
       [attr.aria-selected]="activeSlug() === area.slug"
@@ -19,7 +19,6 @@
       (click)="select(area.slug)"
       (keydown)="onKeydown($event, i)"
     >
-      <span class="selector-dot" aria-hidden="true"></span>
       <span class="selector-title type-subhead">{{ area.title }}</span>
     </button>
   }
@@ -42,9 +41,9 @@
       <h2 class="type-headline mb-6 max-w-4xl">{{ area.claim }}</h2>
       <p class="type-lead mb-12">{{ area.intro }}</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
         @for (block of area.blocks; track block.title) {
-          <div class="card p-7 md:p-8 flex flex-col">
+          <div class="flex flex-col">
             <h3 class="type-subhead mb-4">{{ block.title }}</h3>
             @for (paragraph of block.paragraphs; track $index) {
               <p class="type-body text-base text-ink-soft mb-4 last:mb-0">{{ paragraph }}</p>

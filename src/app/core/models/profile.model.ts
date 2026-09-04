@@ -6,9 +6,10 @@ export interface Profile {
   statement: string[];
   career: CareerEntry[];
   /**
-   * Pfad zum Porträt. Leer, solange kein Foto vorliegt — die Templates blenden
-   * den Bildbereich dann aus und zeigen stattdessen das Signet
-   * (PRODUCT.md, Voice-Regel 5: keine Platzhalter im Output).
+   * Pfad zum Porträt, etwa `/wiebke-lefevre.jpg`. Leer, solange kein Foto
+   * vorliegt — die PortraitComponent zeigt dann eine ruhige Fläche mit dem
+   * Hinweis „Porträt folgt." statt eines Platzhalterbildes
+   * (PRODUCT.md, Voice-Regel 5).
    */
   portraitSrc: string;
   portraitAlt: string;

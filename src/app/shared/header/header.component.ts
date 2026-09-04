@@ -10,20 +10,19 @@ import {
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ContentService } from '../../core/services/content.service';
 import { NavigationService } from '../../core/services/navigation.service';
-import { CtaLinkComponent } from '../cta-link/cta-link.component';
-import { SignetComponent } from '../signet/signet.component';
 
 /**
- * Jede Seite öffnet auf der Tintenfläche. Der Kopf liegt darüber und ist oben
- * deshalb transparent mit hellem Text; sobald gescrollt wird, legt er sich als
- * helle Fläche darüber und dreht den Text auf Tinte.
+ * Der Kopf ist eine Zeile, keine Leiste.
  *
- * Weil diese Regel für alle Seiten gilt, braucht es keine Fallunterscheidung
- * nach Route mehr — der Vorgänger hatte dafür ein eigenes Signal.
+ * Die Vorfassung trug ein durchgehend orangefarbenes Band. Eine gesättigte
+ * Vollfläche am oberen Rand ist aber die Signatur einer Anwendung, nicht eines
+ * Dokuments — sie war der stärkste Grund, warum die Seite nach Software aussah.
+ * Geblieben ist das Orange als feine Linie unter der Zeile: dieselbe Farbe,
+ * derselbe Ort, ohne den Auftritt.
  */
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive, SignetComponent, CtaLinkComponent],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,7 +41,7 @@ export class HeaderComponent {
     afterNextRender(() => {
       const view = this.doc.defaultView;
       if (!view) return;
-      const onScroll = () => this.scrolled.set(view.scrollY > 40);
+      const onScroll = () => this.scrolled.set(view.scrollY > 24);
       onScroll();
       view.addEventListener('scroll', onScroll, { passive: true });
       destroyRef.onDestroy(() => view.removeEventListener('scroll', onScroll));

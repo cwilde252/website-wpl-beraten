@@ -82,34 +82,39 @@ untergräbt, um das es hier geht.
 - **Magazin-Editorial** (zentrierte Display-Headlines, Kursiv-Emphase, großzügige Bedeutungsleere):
   eine Wirtschaftsprüferin verkauft keine Stimmung.
 - **Swiss-Minimalismus von der Stange** (Graphit auf Beige, Mono-Versal-Labels, Linienraster,
-  Randspalte, Doppelstrich): die Bildsprache, die diese Seite bis zum Redesign vom
-  September 2026 trug. Sauber gebaut, fachlich stimmig — und identisch mit hunderten
-  Agentur-, Studio- und Fintech-Auftritten. Als Abgrenzung von der Großkanzlei gedacht, als
-  Vorlage gelesen. Siehe `DESIGN.md`, Abschnitt 1.
-- **Freundlichkeit von der Stange** (Terracotta-Blobs, abgerundete Icon-Kreise, drei lachende
-  Stockfotos, „Lass uns reden!"): der naheliegende Gegenentwurf ist genauso austauschbar. Wärme
-  entsteht hier aus Stimme, Farbe und Form — nicht aus Dekoration.
+  Randspalte, Doppelstrich): das erste Gestaltungssystem dieser Seite. Sauber gebaut, fachlich
+  stimmig — und identisch mit hunderten Agentur-, Studio- und Fintech-Auftritten.
+- **Die Oberfläche einer Anwendung** (Sprechblasen, Chat-Einstieg, Messenger-Signet, dunkle Bühne
+  mit Farbverlauf, gefüllte Farbkacheln, Pillen-Schaltflächen, große Radien, federnde Bewegung):
+  das zweite System. Es sollte die Kälte des ersten beheben und hat dabei *freundlich* mit
+  *app-artig* verwechselt. Alle Mittel, mit denen die Wärme erzeugt werden sollte, stammen aus dem
+  Baukasten für Bedienoberflächen — das Ergebnis las sich als Start-up, nicht als Person.
+- **Freundlichkeit von der Stange** (Terracotta-Blobs, abgerundete Icon-Kreise, lachende
+  Stockfotos, „Lass uns reden!"): der naheliegende Gegenentwurf ist genauso austauschbar.
+
 
 ## Design Principles
 
-1. **Fachlichkeit zeigen, nicht behaupten.** Die beiden Werkzeuge — Prüfungspflicht-Check und
+1. **Wärme kommt aus Inhalt, nicht aus Formen.** Das ist die teuerste Lektion dieses Projekts.
+   Runde Ecken, Farbflächen, Chat-Metaphern und Bewegung machen eine Seite nicht menschlich,
+   sondern bedienbar. Was hier freundlich wirkt, sind Wiebkes Sätze, der Satzspiegel und ihr
+   Porträt. Wo eine Gestaltungsentscheidung damit begründet wird, dass sie „freundlicher wirkt",
+   ist sie wahrscheinlich falsch.
+2. **Ein Dokument, keine Oberfläche.** Lesetext-Serif für Überschriften und Fließtext, Linien und
+   Weißraum als Gliederung, ein Radius im ganzen System. Bedienelemente halten sich zurück.
+3. **Fachlichkeit zeigen, nicht behaupten.** Die beiden Werkzeuge — Prüfungspflicht-Check und
    Fristen-Zeitstrahl — sind das Zentrum der Leistungsseite. Wer sie benutzt, hat einen Nutzen,
    auch ohne je eine Anfrage zu schreiben.
-2. **Erst fragen, dann erzählen.** Die Startseite beginnt mit einer Frage an die Besucherin und
-   drei Antworten in ihrer eigenen Stimme, nicht mit einer Behauptung über Wiebke.
-3. **Farbe ist Fläche.** Die vier Logofarben füllen Panels, Kacheln und Reiter. Jede bringt ihre
-   eigene Textfarbe mit, weil sie unterschiedlich hell sind — die Regel steht an einer Stelle im
-   Stylesheet und wird von einem Test nachgerechnet.
-4. **Zahlen sind Belege.** Alles Prüfbare steht in Mono mit Tabellenziffern — Beträge, Datums-
-   angaben, Normzitate. Typografie macht sichtbar, was Beleg ist und was Text.
-5. **Erreichbarkeit vor Konversion.** Ein Weg zum Erstgespräch pro Sektion, keine Pop-ups, keine
+4. **Farbe ist Markierung.** Die vier Logofarben erscheinen als Linie, Listenmarke und Textfarbe,
+   nie als gesättigte Fläche.
+5. **Zahlen sind Belege.** Alles Prüfbare steht in Mono mit Tabellenziffern — Beträge,
+   Datumsangaben, Normzitate.
+6. **Erreichbarkeit vor Konversion.** Ein Weg zum Erstgespräch pro Sektion, keine Pop-ups, keine
    Dringlichkeitsmuster. Wirtschaftsprüfung ist eine Mehrjahresbeziehung.
-6. **Ohne JavaScript nutzbar.** Die Seite wird statisch vorgerendert. Einstiegsdialog,
-   Schwellenwerte, Fristen, FAQ und Navigation funktionieren auch dann, wenn nichts geladen wird.
-   Eine eigene Testsuite fährt jede Route mit abgeschaltetem JavaScript.
-7. **Bewegung darf nichts verstecken.** Animation ist Antwort auf eine Handlung. Wo doch etwas beim
-   Scrollen erscheint, gibt es einen Sicherheits-Timeout — Inhalt, der auf ein Ereignis wartet, das
-   nie eintritt, ist verlorener Inhalt.
+7. **Ohne JavaScript nutzbar.** Die Seite wird statisch vorgerendert; eine eigene Testsuite fährt
+   jede Route mit abgeschaltetem JavaScript. Es gibt kein Scroll-Reveal — Inhalt, der auf ein
+   Ereignis wartet, kann ausbleiben.
+
 
 ## Pages
 

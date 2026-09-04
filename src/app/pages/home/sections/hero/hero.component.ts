@@ -3,24 +3,24 @@ import { DialogOption } from '../../../../core/models/dialog-option.model';
 import { ContentService } from '../../../../core/services/content.service';
 import { CtaLinkComponent } from '../../../../shared/cta-link/cta-link.component';
 import { DisplayHeadlineComponent } from '../../../../shared/display-headline/display-headline.component';
-import { SignetComponent } from '../../../../shared/signet/signet.component';
+import { PortraitComponent } from '../../../../shared/portrait/portrait.component';
 
 /**
- * Der Einstieg als Gespräch statt als Plakat.
+ * Der Einstieg: eine Person, ein Satz, ein Bild.
  *
- * Statt einer Behauptung und eines Buttons steht hier eine Frage mit drei
- * Antworten, die in der Stimme der Besucherin oder des Besuchers formuliert
- * sind. Wer eine wählt, bekommt Wiebkes Antwort und genau einen nächsten
- * Schritt — statt einer Navigationsleiste, unter der er raten muss.
+ * Die Vorfassung öffnete mit einer dunklen Bühne, farbigem Leuchten und drei
+ * aufklappbaren Chat-Blasen. Das war der Auftritt einer Anwendung. Jetzt steht
+ * hier, was auf der ersten Seite eines Dokuments steht: wer schreibt, worum es
+ * geht, und ein Gesicht dazu.
  *
- * Der Zustand liegt bewusst nicht in einem Signal, sondern beim Browser:
- * gleichnamige `<details>` öffnen exklusiv, liefern `aria-expanded` selbst und
- * funktionieren im vorgerenderten HTML, bevor Angular geladen hat. Eine
- * Signal-Nachbildung wäre hier mehr Code mit weniger Barrierefreiheit.
+ * Die drei Wege in die Seite sind geblieben — als schlichte Liste mit
+ * aufklappbaren Antworten, nicht als Gespräch mit Sprechblasen. Der Zustand
+ * liegt weiterhin beim Browser: gleichnamige `<details>` öffnen exklusiv,
+ * liefern `aria-expanded` selbst und funktionieren im vorgerenderten HTML.
  */
 @Component({
   selector: 'app-hero',
-  imports: [DisplayHeadlineComponent, CtaLinkComponent, SignetComponent],
+  imports: [DisplayHeadlineComponent, CtaLinkComponent, PortraitComponent],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -33,6 +33,7 @@ export class HeroComponent {
   readonly lead = this.content.getHomeLead();
   readonly prompt = this.content.getDialogPrompt();
   readonly options = this.content.getDialogOptions();
+  readonly profile = this.content.getProfile();
 
   areaClass(option: DialogOption): string {
     return `area-${option.accent}`;

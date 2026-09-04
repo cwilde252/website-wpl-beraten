@@ -1,65 +1,66 @@
-/* Die Kopfleiste trägt die Leitfarbe der Marke und liegt fest über dem Inhalt.
-
-   Das ist eine bewusste Ausnahme von der Bereichsfarben-Regel: Orange gehört
-   sonst der Wirtschaftsprüfung. Die Kopfleiste ist aber kein Inhalt, sondern
-   Rahmen — sie beansprucht keinen Leistungsbereich, so wie das Signet alle
-   vier Farben führt, ohne für alle vier Bereiche zu stehen. Innerhalb der
-   Sektionen bleibt die Zuordnung unangetastet.
-
-   Tinte auf Orange erreicht 5,2:1 und damit AA für Fließtext. */
+/* Papier mit einer feinen orangen Linie darunter. Die Linie ist die einzige
+   Farbe im Kopf — sie markiert die Marke, ohne eine Fläche zu beanspruchen. */
 .site-header {
   position: fixed;
   inset-inline: 0;
   inset-block-start: 0;
-  background: var(--color-pruefung);
+  background: var(--color-paper);
   color: var(--color-ink);
-  border-block-end: 1px solid transparent;
-  transition:
-    border-color 260ms var(--ease-soft),
-    box-shadow 260ms var(--ease-soft);
+  border-block-end: 2px solid var(--color-pruefung);
+  transition: box-shadow 260ms var(--ease-soft);
 }
 
-/* Beim Scrollen setzt sich die Leiste über eine dunklere Kante vom Inhalt ab,
-   statt ihre Farbe zu wechseln. Die Marke bleibt konstant. */
-.site-header.is-solid {
-  border-block-end-color: color-mix(in oklab, var(--color-ink) 25%, transparent);
-  box-shadow: var(--shadow-header);
+/* Beim Scrollen kommt ein sehr flacher Schatten dazu, sonst nichts. Die Zeile
+   soll sich vom Inhalt abheben, nicht ihn ankündigen. */
+.site-header.is-scrolled {
+  box-shadow: 0 1px 0 0 color-mix(in oklab, var(--color-ink) 8%, transparent);
 }
 
-/* Volle Tinte, nicht abgedunkelt. `color-mix(…, transparent)` ist Deckkraft
-   unter anderem Namen und fällt unter dieselbe Regel: Auf Orange bleiben nur
-   5,2:1 Spielraum, und 78 Prozent drückten die Rolle auf 3,7:1. Die Hierarchie
-   trägt hier die Größe — Name in Fraunces 18 px, Rolle in Instrument Sans
-   15 px —, nicht die Farbe. */
-.header-role {
-  color: var(--color-ink);
+.wordmark {
+  color: inherit;
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+
+.wordmark-name {
+  font-family: var(--font-serif);
+  font-size: 1.1875rem;
+  font-weight: 500;
+  font-variation-settings: 'opsz' 20;
+  letter-spacing: 0.005em;
+}
+
+/* Die Rolle steht in voller Tinte, nur kleiner. Sie über Deckkraft zu dämpfen
+   wäre dieselbe Falle wie zweimal zuvor: Durchsichtigkeit senkt den Kontrast
+   gegen die tatsächliche Fläche. */
+.wordmark-role {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-ink-soft);
 }
 
 .nav-link {
-  color: inherit;
-  transition: background-color 200ms var(--ease-soft);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+  padding-block-end: 0.1875rem;
+  border-block-end: 1px solid transparent;
+  transition: border-color 200ms var(--ease-soft);
 }
 
-/* Der Zustand hellt die Fläche auf, statt sie abzudunkeln.
-   Die Leiste trägt dunklen Text auf mittelheller Farbe; jede Abdunklung frisst
-   genau den Kontrast, von dem dieser Text lebt. 12 Prozent Tinte drückten die
-   aktive Navigation auf 4,31:1. 18 Prozent Papier heben sie auf 6,25:1 und sind
-   dabei deutlicher zu sehen. */
-.nav-link:hover,
+.nav-link:hover {
+  border-block-end-color: var(--color-edge-strong);
+}
+
+/* Der aktive Punkt trägt die Markenfarbe als Unterlinie — plus ein schwereres
+   Gewicht, damit die Farbe nicht alleiniger Bedeutungsträger ist (WCAG 1.4.1). */
 .nav-active {
-  background: color-mix(in oklab, var(--color-paper) 18%, transparent);
+  font-weight: 600;
+  border-block-end-color: var(--color-pruefung);
 }
 
-/* Der aktive Punkt bekommt zusätzlich zur Fläche eine Marke — Farbe allein
-   trägt keine Bedeutung (WCAG 1.4.1). */
-.nav-active {
-  font-weight: 500;
-}
-
-/* Das aufgeklappte Mobilmenü liegt auf Papier, damit die Liste ruhig bleibt
-   und die Leiste als Band darüber lesbar wird. */
 #mobile-nav {
   background: var(--color-paper);
-  color: var(--color-ink);
-  border-block-start: 1px solid color-mix(in oklab, var(--color-ink) 18%, transparent);
 }

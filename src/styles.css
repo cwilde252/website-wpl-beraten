@@ -2,122 +2,84 @@
 
 /* Schriften selbst gehostet — DSGVO: kein Google-Fonts-CDN, keine Verbindung zu Dritten.
 
-   Fraunces trägt die Stimme. `full.css` liefert alle Achsen, weil das System die
-   SOFT- und WONK-Achse tatsächlich benutzt (siehe DESIGN.md, Abschnitt Typografie) —
-   ohne sie wäre Fraunces nur eine weitere Serif.
-   Instrument Sans trägt den Fließtext, IBM Plex Mono die Zahlenkolonnen. */
-@import '@fontsource-variable/fraunces/full.css';
+   Newsreader trägt Überschriften und Fließtext. `opsz.css` liefert die optische
+   Achse, und die ist der Grund für diese Schrift: Bei 64 px braucht ein Serif
+   feinere Haarstriche und engere Punzen als bei 18 px. Wer nur skaliert,
+   bekommt entweder klobige Überschriften oder brüchigen Lesetext.
+   Instrument Sans trägt die Bedienelemente, IBM Plex Mono die Zahlenkolonnen. */
+@import '@fontsource-variable/newsreader/opsz.css';
 @import '@fontsource-variable/instrument-sans/wght.css';
 @import '@fontsource/ibm-plex-mono/latin-400.css';
 @import '@fontsource/ibm-plex-mono/latin-500.css';
 
-/* `static`: Tailwind gibt sonst nur die Variablen aus, die es als Utility-Klasse im
-   Quelltext findet. Die Bereichsfarben werden zur Laufzeit über --area-* gesetzt und
-   wären damit still aus dem Build gefallen. */
+/* `static`: Tailwind gibt sonst nur die Variablen aus, die es als Utility-Klasse
+   im Quelltext findet. Die Bereichsfarben werden zur Laufzeit über --area-*
+   gesetzt und wären damit still aus dem Build gefallen. */
 @theme static {
   /* ==== Grundton =========================================================
-     Papier statt Creme. Die erste Fassung dieses Systems hatte ein warmes
-     Creme (#FDF8F0) als Seitenfläche — und genau das ist der Reflexgriff:
-     warmes Off-White als „geschmackvoller" Standarduntergrund, den jedes
-     zweite generierte Interface trägt. Es hätte denselben Vorwurf verdient
-     wie das Vorgängersystem, nur eine Modestufe später.
-
-     Die drei hellen Stufen sind jetzt fast unbunt. Die Wärme dieser Seite
-     liegt dort, wo sie etwas bedeutet: in der Tinte (ein warmes Braunschwarz),
-     in den vier Bereichsfarben als Flächen, in Fraunces und in der Stimme.
-     Vor einer beinahe neutralen Fläche werden die Farbflächen zu Ereignissen,
-     statt im Beige mitzuschwimmen. */
-  --color-ink: #241c17; /* Text und dunkle Fläche — 16,1:1 auf Papier */
-  --color-ink-lift: #3a2c22; /* aufgehellte Tinte, nur als Hover gefüllter Flächen */
-  --color-ink-soft: #57493f; /* Sekundärtext auf hell — 8,2:1 auf Creme */
-  --color-paper: #fbfaf8; /* primäre helle Fläche */
-  --color-mist: #f2f0eb; /* zweite helle Fläche für den Flächenwechsel */
-  --color-stone: #ece9e3; /* dritte Stufe, für eingebettete Panels */
-  --color-edge: #e0d3c0; /* dekorative Trennlinien — bewusst unter 3:1 */
+     Fast nur Tinte auf Papier. Die Wärme dieser Seite kommt aus der Sprache,
+     dem Porträt und dem Satz — nicht aus Farbe. */
+  --color-ink: #241c17; /* Fließtext und Überschriften — 16,1:1 auf Papier */
+  --color-ink-soft: #57493f; /* Sekundärtext, Bildunterschriften — 8,3:1 */
+  --color-ink-lift: #3a2c22; /* aufgehellte Tinte, nur als Hover auf Tinte */
+  --color-paper: #fbfaf8; /* die Seitenfläche */
+  --color-mist: #f2f0eb; /* zweite Fläche für den Sektionswechsel */
+  --color-stone: #ece9e3; /* dritte Stufe, eingebettete Tabellen und Panels */
+  --color-edge: #ddd8cf; /* Trennlinien */
   --color-edge-strong: #96826a; /* Ränder von Steuerelementen — 3,5:1, SC 1.4.11 */
   --color-paper-soft: #c6b6a4; /* Sekundärtext auf Tinte — 8,5:1 */
 
   /* ==== Bereichsfarben ===================================================
-     Die vier Logofarben, jede in drei Rollen:
+     Die vier Logofarben bleiben, aber sie sind wieder Markierung geworden:
+     Linien, Listenmarken, Textfarbe, Hover. Die gesättigten Vollflächen der
+     Vorfassung — gefüllte Reiter, farbige Antwortblasen, orangefarbene
+     Kopfleiste — sind entfallen. Sie waren der Grund, warum die Seite nach
+     Software aussah und nicht nach einer Person.
 
-       --color-X        Signet und Fläche, wo der Kontrast trägt
-       --color-X-deep   Text auf hell UND dunkle Fläche mit Creme-Text
-       --color-X-tint   helle Fläche mit Tinten-Text
-
-     Anders als im Vorgängersystem sind das echte Flächenfarben. Welcher Text
-     auf welcher Fläche steht, regelt die Flächen-Regel in DESIGN.md. */
-
-  /* Wirtschaftsprüfung — Orange trägt Tintentext (5,2:1) */
+       --color-X        Die Logofarbe. Signet, Hairlines, Marken.
+       --color-X-deep   Textfarbe auf hellem Grund.
+       --color-X-tint   sehr blasse Fläche für eingebettete Panels.
+  */
   --color-pruefung: #d4780a;
-  --color-pruefung-deep: #9c5200; /* 5,5:1 auf Creme */
+  --color-pruefung-deep: #9c5200;
   --color-pruefung-tint: #fbe7cf;
 
-  /* Beratung — Blau ist als Logoton zu hell für Text, die deep-Variante trägt beidseitig */
   --color-beratung: #2e7db8;
-  --color-beratung-deep: #1f5f8f; /* 6,4:1 auf Creme, 6,4:1 mit Creme-Text */
+  --color-beratung-deep: #1f5f8f;
   --color-beratung-tint: #e2eff9;
 
-  /* Steuern — dieselbe Konstruktion wie Blau */
   --color-steuern: #2d8b57;
-  --color-steuern-deep: #1e6b41; /* 6,1:1 auf Creme, 6,1:1 mit Creme-Text */
+  --color-steuern-deep: #1e6b41;
   --color-steuern-tint: #dff0e6;
 
-  /* Prüfungspflicht-Check — Gelb ist hell genug für Tintentext (7,6:1) */
   --color-check: #d4a917;
-  --color-check-deep: #7a5f09; /* 5,7:1 auf Creme */
+  --color-check-deep: #7a5f09;
   --color-check-tint: #faefcc;
 
   /* ==== Schrift ========================================================== */
-  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, serif;
+  --font-serif: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-sans: 'Instrument Sans Variable', 'Instrument Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* ==== Größenstufen =====================================================
-     Vier Hilfsgrößen unterhalb des Fließtexts, alle in DESIGN.md
-     dokumentiert. Vor dem Audit standen hier fünf erfundene Zwischenwerte
-     (0.75, 0.8125, 0.9375, 1, 1.125rem) verteilt über acht Dateien — wer
-     „kleinen Text" ändern wollte, musste sie erst zusammensuchen.
-
-     Normzitate in IBM Plex Mono stehen auf `--text-xs` und damit eine Stufe
-     unter dem Sekundärtext: Mono baut bei gleicher Punktgröße optisch größer
-     als Instrument Sans. */
   --text-2xs: 0.75rem;
   --text-xs: 0.8125rem;
   --text-sm: 0.9375rem;
   --text-control: 1rem;
-  --text-legend: 1.125rem;
+  --text-legend: 1.25rem;
 
   /* ==== Form ============================================================
-     Die Sprechblase ist die Signatur: drei weiche Ecken, eine scharfe.
-     Sie zitiert das Gespräch, nicht das Formular. */
-  --radius-bubble: 1.75rem;
-  /* Die eine scharfe Ecke der Sprechblase. Sie ist der charakteristischste
-     Wert des ganzen Systems und stand bis zum Audit sechsmal als nackte Zahl
-     im Stylesheet. */
-  --radius-corner: 0.25rem;
-  --radius-soft: 1rem;
-  --radius-control: 0.625rem;
-  --radius-pill: 999px;
+     Es gibt keine Formsignatur mehr. Die Vorfassung hatte die Sprechblase —
+     drei weiche Ecken, eine scharfe — und damit überall App-Geometrie:
+     28 px Radien, Pillen-Schaltflächen, gefüllte Kacheln. Geblieben ist eine
+     Kante, die kaum als Rundung auffällt. Was die Seite gliedert, sind
+     Linien, Weißraum und Schriftgrößen. */
+  --radius-control: 2px;
 
   /* ==== Bewegung ========================================================
-     Zwei exponentielle Kurven, beide ohne Überschwung: `soft` für Zustände,
-     `quick` für alles, was direkt auf eine Handlung antwortet.
-
-     Die frühere `spring`-Kurve hatte einen Überschwung von 1.4. Das federt
-     hübsch, liest sich auf der Seite einer Wirtschaftsprüferin aber als
-     Anbiederung — und echte Gegenstände schwingen beim Abbremsen nicht über.
-     Die Wärme dieser Seite kommt aus Farbe, Schrift und Stimme, nicht aus
-     hüpfenden Schaltflächen. */
+     Eine Kurve, kurze Dauern, und nur dort, wo etwas auf eine Handlung
+     antwortet. Kein Scroll-Reveal: Inhalt, der erst beim Scrollen erscheint,
+     ist ein Effekt, kein Argument. */
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-quick: cubic-bezier(0.16, 1, 0.3, 1);
-
-  /* ==== Schatten =========================================================
-     Genau ein Schatten im ganzen System, und er ist warm getönt statt
-     schwarz-transparent: ein kalter Schatten auf warmem Papier sieht aus wie
-     ein Fehler. Er liegt nur unter dem Kopf, wenn dieser über den Inhalt
-     wandert — Karten tragen eine Kante statt einer Erhebung. */
-  --shadow-tint: 70 46 24;
-  --shadow-header: 0 8px 24px -20px rgb(var(--shadow-tint) / 0.5);
 }
 
 /* ======================================================================
@@ -129,39 +91,34 @@
    Jede Sektion setzt --area-* einmal; alle Kinder lesen daraus. Damit steht
    die Kontrast-Regel an genau einer Stelle statt in jedem Template. */
 :root {
-  --area-solid: var(--color-ink);
+  --area-line: var(--color-edge-strong);
   --area-deep: var(--color-ink);
-  --area-tint: var(--color-mist);
-  --area-on-solid: var(--color-paper);
+  --area-tint: var(--color-stone);
   --area-text: var(--color-ink);
 }
 
 .area-pruefung {
-  --area-solid: var(--color-pruefung);
+  --area-line: var(--color-pruefung);
   --area-deep: var(--color-pruefung-deep);
   --area-tint: var(--color-pruefung-tint);
-  --area-on-solid: var(--color-ink); /* Orange ist hell: Tintentext, 5,2:1 */
   --area-text: var(--color-pruefung-deep);
 }
 .area-beratung {
-  --area-solid: var(--color-beratung-deep);
+  --area-line: var(--color-beratung);
   --area-deep: var(--color-beratung-deep);
   --area-tint: var(--color-beratung-tint);
-  --area-on-solid: var(--color-paper);
   --area-text: var(--color-beratung-deep);
 }
 .area-steuern {
-  --area-solid: var(--color-steuern-deep);
+  --area-line: var(--color-steuern);
   --area-deep: var(--color-steuern-deep);
   --area-tint: var(--color-steuern-tint);
-  --area-on-solid: var(--color-paper);
   --area-text: var(--color-steuern-deep);
 }
 .area-check {
-  --area-solid: var(--color-check);
+  --area-line: var(--color-check);
   --area-deep: var(--color-check-deep);
   --area-tint: var(--color-check-tint);
-  --area-on-solid: var(--color-ink); /* Gelb ist hell: Tintentext, 7,6:1 */
   --area-text: var(--color-check-deep);
 }
 
@@ -170,16 +127,16 @@
   --area-text: var(--color-paper);
 }
 .on-ink.area-pruefung {
-  --area-text: var(--color-pruefung); /* 4,7:1 auf Tinte */
+  --area-text: var(--color-pruefung); /* 5,2:1 auf Tinte */
 }
 .on-ink.area-beratung {
-  --area-text: #7fb8e0; /* 7,0:1 auf Tinte — das Logoblau trägt hier nicht */
+  --area-text: #7fb8e0; /* 7,9:1 — das Logoblau trägt hier nicht */
 }
 .on-ink.area-steuern {
-  --area-text: #6ec795; /* 7,6:1 auf Tinte */
+  --area-text: #6ec795; /* 8,2:1 */
 }
 .on-ink.area-check {
-  --area-text: var(--color-check); /* 6,8:1 auf Tinte */
+  --area-text: var(--color-check); /* 7,6:1 */
 }
 
 .area-text {
@@ -193,110 +150,86 @@
   color: var(--color-paper-soft);
 }
 
-/* Der Kopf liegt fest über dem Inhalt. Ohne diesen Abstand verschwindet jedes
-   Sprungziel — Ankerlinks, Skip-Link, der Weg aus dem Einstiegsdialog — hinter
-   ihm. Gilt für alles mit id, weil genau das die möglichen Ziele sind. */
-[id] {
-  scroll-margin-block-start: 6.5rem;
-}
-
-/* ---- Struktur --------------------------------------------------------- */
+/* ---- Struktur --------------------------------------------------------
+   Schmaler als zuvor. 68 rem statt 78: Eine Seite, die ruhig wirken soll,
+   braucht Rand, keine Ausnutzung. */
 .sheet {
-  max-width: 78rem;
+  max-width: 68rem;
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: 1.5rem;
 }
 @media (min-width: 768px) {
   .sheet {
-    padding-inline: 2.5rem;
+    padding-inline: 3rem;
   }
 }
 @media (min-width: 1280px) {
   .sheet {
-    padding-inline: 4rem;
+    padding-inline: 4.5rem;
   }
 }
 .sheet-narrow {
-  max-width: 46rem;
+  max-width: 42rem;
 }
 
 /* ---- Typografie ------------------------------------------------------
-   Fraunces mit SOFT und WONK: die weichen Terminals und das schräge `g`
-   sind der Grund, diese Schrift zu nehmen. Ohne die Achsen wäre sie
-   austauschbar. */
-.type-display {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 600;
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  font-variation-settings:
-    'SOFT' 60,
-    'WONK' 1,
-    'opsz' 100;
-}
-/* Zweite Display-Stufe für die Unterseiten. Die volle Größe bleibt den zwei
-   Momenten vorbehalten, die sie verdienen: der Begrüßung auf der Startseite und
-   dem Schlussruf. Drei Zeilen à 77 px sind auf einer Leistungsseite kein
-   Auftakt mehr, sondern eine Wand. */
-.type-display-sub {
-  font-family: var(--font-display);
-  font-size: clamp(2.125rem, 4.4vw, 3.5rem);
-  font-weight: 600;
-  line-height: 1.06;
-  letter-spacing: -0.022em;
-  font-variation-settings:
-    'SOFT' 55,
-    'WONK' 1,
-    'opsz' 72;
-}
+   Serif für alles, was gelesen wird — Überschriften und Fließtext. Sans nur
+   für Bedienelemente, Mono nur für Zahlen und Normzitate.
 
-.type-headline {
-  font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
-  font-weight: 600;
+   Ein durchgehender Lesetext-Serif ist die eigentliche Antwort auf „soll nicht
+   nach Software aussehen": Software setzt Sans. Ein Dokument setzt Serif. */
+.type-display {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  font-variation-settings: 'opsz' 60;
+}
+.type-display-sub {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 400;
   line-height: 1.12;
-  letter-spacing: -0.018em;
-  font-variation-settings:
-    'SOFT' 50,
-    'WONK' 1,
-    'opsz' 40;
+  letter-spacing: -0.012em;
+  font-variation-settings: 'opsz' 44;
+}
+.type-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(1.625rem, 2.6vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.008em;
+  font-variation-settings: 'opsz' 32;
 }
 .type-subhead {
-  font-family: var(--font-display);
-  font-size: 1.375rem;
-  font-weight: 600;
-  /* Nicht unter 1.3: Subheads laufen in den Karten regelmäßig über zwei
-     Zeilen, und darunter kleben die Zeilen aneinander. */
+  font-family: var(--font-serif);
+  font-size: 1.3125rem;
+  font-weight: 500;
   line-height: 1.35;
-  letter-spacing: -0.01em;
-  font-variation-settings:
-    'SOFT' 40,
-    'WONK' 1,
-    'opsz' 20;
+  font-variation-settings: 'opsz' 22;
 }
 .type-lead {
-  font-family: var(--font-sans);
-  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+  font-family: var(--font-serif);
+  font-size: clamp(1.1875rem, 1.5vw, 1.4375rem);
   font-weight: 400;
-  line-height: 1.55;
-  max-width: 40ch;
+  line-height: 1.6;
+  font-variation-settings: 'opsz' 24;
+  max-width: 44ch;
 }
 .type-body {
-  font-family: var(--font-sans);
-  font-size: 1.0625rem;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
   font-weight: 400;
-  line-height: 1.65;
-  /* 54ch, nicht 66ch. Die Einheit `ch` misst die Breite der Ziffer 0, und die
-     ist deutlich breiter als der Durchschnittsbuchstabe im deutschen Fließtext:
-     66ch ergaben gemessene 85 Zeichen pro Zeile. 54ch landen bei rund 70 und
-     damit im lesbaren Korridor von 45 bis 75. */
-  max-width: 54ch;
+  line-height: 1.72;
+  font-variation-settings: 'opsz' 16;
+  /* 52ch, nicht mehr. `ch` misst die Ziffernbreite und ist deutlich breiter
+     als der Durchschnittsbuchstabe im deutschen Satz — 66ch ergaben gemessene
+     85 Zeichen pro Zeile. */
+  max-width: 52ch;
 }
 
-/* Mono trägt nur noch, was in Spalten steht oder ein Aktenzeichen ist.
-   Die Mono-Versal-Labels des Vorgängersystems sind ersatzlos weg — sie waren
-   der Hauptgrund, warum die Seite kühl wirkte. */
+/* Mono trägt nur, was in Spalten steht oder ein Aktenzeichen ist. */
 .type-figure {
   font-family: var(--font-mono);
   font-weight: 500;
@@ -310,79 +243,100 @@
   letter-spacing: -0.01em;
 }
 
-/* ---- Sprechblase: die Formsignatur -----------------------------------
-   Drei weiche Ecken, eine scharfe. `--bubble-corner` bestimmt, welche —
-   Standard ist unten links, gespiegelte Blasen setzen sie um. */
-.bubble {
-  border-radius: var(--radius-bubble) var(--radius-bubble) var(--radius-bubble) var(--radius-corner);
+/* Kleine Sans-Beschriftungen: Formularlabels, Schalter, Navigation. */
+.type-ui {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.4;
 }
-.bubble-mirror {
-  border-radius: var(--radius-bubble) var(--radius-bubble) var(--radius-corner) var(--radius-bubble);
+
+/* ---- Die Marginalie --------------------------------------------------
+   Eine schmale Randnotiz links neben dem Text, ab 1024 px. Sie trägt
+   Normzitate, Jahreszahlen und Bildunterschriften — das, was im gedruckten
+   Fachtext an den Rand gehört und im Fließtext nur stören würde. */
+.leaf {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem 3rem;
 }
-.bubble-top {
-  border-radius: var(--radius-corner) var(--radius-bubble) var(--radius-bubble) var(--radius-bubble);
+.leaf > * {
+  min-width: 0;
+}
+@media (min-width: 1024px) {
+  .leaf {
+    grid-template-columns: 9rem minmax(0, 1fr);
+  }
+  .leaf-note {
+    grid-column: 1;
+    padding-block-start: 0.4rem;
+  }
+  .leaf-body {
+    grid-column: 2;
+  }
+}
+.leaf-note {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+}
+
+/* ---- Trennlinien -----------------------------------------------------
+   Das Gliederungsmittel dieses Systems. Karten sind die Ausnahme, Linien die
+   Regel. */
+.hairline {
+  border-block-start: 1px solid var(--color-edge);
+}
+.on-ink .hairline {
+  border-block-start-color: color-mix(in oklab, var(--color-paper) 18%, transparent);
+}
+
+/* Die Sektionsmarke: eine kurze Linie in der Bereichsfarbe über der
+   Überschrift. Kein Etikett, keine Kategorie — nur ein Anstrich, der zeigt,
+   dass hier etwas Neues beginnt. */
+.rule-mark {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--area-line);
 }
 
 /* ---- Karte -----------------------------------------------------------
-   Ja, Karten. Das Vorgängersystem verbot sie und hatte dafür ein reines
-   Linienraster — das las sich wie ein Kontoauszug. Eine Karte mit weicher
-   Kante und warmem Schatten ist ein Angebot, kein Formular. */
-/* Die Karte trägt eine definierte Kante — und deshalb keinen Schatten.
-   Hairline plus breiter, diffuser Schatten ist die wiedererkennbare Signatur
-   generierter Oberflächen: zwei Mittel für dieselbe Aussage, von denen keines
-   sich festlegt. Die Tiefe kommt hier aus dem Flächenwechsel Sand → Creme, die
-   Abgrenzung aus der Kante. */
+   Eine Kante, kein Schatten, kaum Radius, kein Anheben beim Zeigen. */
 .card {
   background: var(--color-paper);
   border: 1px solid var(--color-edge);
-  border-radius: var(--radius-bubble) var(--radius-bubble) var(--radius-bubble) var(--radius-corner);
-  transition:
-    transform 260ms var(--ease-soft),
-    border-color 260ms var(--ease-soft);
+  border-radius: var(--radius-control);
 }
-
-/* Beim Zeigen wird die Kante zur Bereichsfarbe und kräftiger, statt dass ein
-   Schatten aufgeht. Dieselbe Aussage, ein Mittel. */
+.card-interactive {
+  transition: border-color 220ms var(--ease-soft);
+}
 .card-interactive:hover,
 .card-interactive:focus-within {
-  transform: translateY(-2px);
   border-color: var(--area-deep);
-  box-shadow: inset 0 0 0 1px var(--area-deep);
-}
-.on-ink .card {
-  background: color-mix(in oklab, var(--color-paper) 8%, transparent);
-  border-color: color-mix(in oklab, var(--color-paper) 18%, transparent);
-  box-shadow: none;
 }
 
-/* ---- Buttons ---------------------------------------------------------
-   Zwei Stufen. Der Vorgänger kannte nur einen unterstrichenen Textlink —
-   korrekt, aber unfreundlich: man musste raten, ob etwas anklickbar ist. */
+/* ---- Schaltflächen und Links -----------------------------------------
+   Keine Pillen mehr. Die primäre Fläche ist ein schlichtes Rechteck in Tinte,
+   die sekundäre ein Textlink mit Unterlinie. */
 .btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 0.625rem;
   font-family: var(--font-sans);
   font-size: var(--text-control);
   font-weight: 500;
   line-height: 1.2;
   text-decoration: none;
-  padding: 0.875rem 1.375rem;
+  padding: 0.8125rem 1.25rem;
   border: 1px solid transparent;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-control);
   cursor: pointer;
   transition:
     background-color 200ms var(--ease-soft),
     color 200ms var(--ease-soft),
-    border-color 200ms var(--ease-soft),
-    transform 200ms var(--ease-quick);
-}
-.btn:hover {
-  transform: translateY(-2px);
-}
-.btn:active {
-  transform: translateY(0);
+    border-color 200ms var(--ease-soft);
 }
 
 .btn-primary {
@@ -390,11 +344,6 @@
   color: var(--color-paper);
 }
 .btn-primary:hover {
-  background: var(--area-deep);
-}
-/* In der Kopfleiste bleibt die Pille tintenfarben: Ihr Hover dürfte nicht in
-   die Bereichsfarbe wechseln, weil die Leiste selbst schon orange ist. */
-.site-header .btn-primary:hover {
   background: var(--color-ink-lift);
 }
 .on-ink .btn-primary {
@@ -405,50 +354,29 @@
   background: var(--color-paper-soft);
 }
 
-.btn-ghost {
-  background: transparent;
+/* Die zweite Stufe ist bewusst kein Rahmen, sondern ein Textlink: Zwei
+   umrandete Flächen nebeneinander sehen aus wie ein Dialogfeld. */
+.btn-quiet {
+  padding: 0;
+  border: 0;
+  background: none;
   color: var(--color-ink);
-  border-color: var(--color-edge-strong);
+  border-block-end: 1px solid var(--area-line);
+  padding-block-end: 0.25rem;
+  border-radius: 0;
 }
-.btn-ghost:hover {
-  background: var(--area-tint);
-  border-color: var(--area-deep);
-  color: var(--area-deep);
+.btn-quiet:hover {
+  color: var(--area-text);
 }
-.on-ink .btn-ghost {
+.on-ink .btn-quiet {
   color: var(--color-paper);
-  border-color: color-mix(in oklab, var(--color-paper) 40%, transparent);
-}
-.on-ink .btn-ghost:hover {
-  background: color-mix(in oklab, var(--color-paper) 12%, transparent);
-  color: var(--color-paper);
-  border-color: var(--color-paper);
+  border-block-end-color: var(--color-paper-soft);
 }
 
-/* Der Pfeil rückt beim Hover nach — die kleinste Bewegung, die eine
-   Richtung zeigt. */
-.btn .btn-arrow {
-  transition: transform 200ms var(--ease-quick);
-}
-.btn:hover .btn-arrow {
-  transform: translateX(3px);
-}
-
-/* Der Pfeil auf einer verlinkten Karte rückt mit, wenn die Karte angesteuert
-   wird — dieselbe Geste wie beim Button, nur ausgelöst von der ganzen Fläche. */
-.area-arrow {
-  transition: transform 200ms var(--ease-quick);
-}
-.area-card:hover .area-arrow,
-.area-card:focus-visible .area-arrow {
-  transform: translateX(3px);
-}
-
-/* ---- Textlink --------------------------------------------------------- */
 .link-plain {
   color: inherit;
   text-decoration-color: var(--color-edge-strong);
-  text-underline-offset: 0.25em;
+  text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
   transition:
     color 200ms var(--ease-soft),
@@ -459,17 +387,14 @@
   text-decoration-color: currentColor;
 }
 
-/* ---- Fokus: nie unsichtbar -------------------------------------------
-   Zwei Ringe, damit der Fokus auf jeder der vielen Flächenfarben steht:
-   innen die Fläche, außen die Tinte. */
+/* ---- Fokus: nie unsichtbar ------------------------------------------- */
 :focus-visible {
   outline: 2px solid var(--color-ink);
   outline-offset: 3px;
-  border-radius: var(--radius-corner);
+  border-radius: var(--radius-control);
 }
-.on-ink :focus-visible,
-.on-solid :focus-visible {
-  outline-color: currentColor;
+.on-ink :focus-visible {
+  outline-color: var(--color-paper);
 }
 
 /* ---- Formular --------------------------------------------------------- */
@@ -480,12 +405,10 @@
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
   font-size: var(--text-control);
-  padding: 0.75rem 0.875rem;
+  padding: 0.6875rem 0.8125rem;
   border: 1px solid var(--color-edge-strong);
   border-radius: var(--radius-control);
-  transition:
-    border-color 180ms var(--ease-soft),
-    box-shadow 180ms var(--ease-soft);
+  transition: border-color 180ms var(--ease-soft);
 }
 .field:hover {
   border-color: var(--area-deep);
@@ -495,11 +418,8 @@
   outline-offset: 1px;
   border-color: var(--area-deep);
 }
-/* Fehler tragen zusätzlich zur Farbe eine spürbar stärkere Umrandung — Farbe
-   allein wäre für Rot-Grün-Blindheit kein Signal (WCAG 1.4.1). Bewusst rundum
-   und nicht als dicke Kante links: eine einseitige Farbkante ist die Signatur
-   generierter Oberflächen, eine kräftigere Umrandung ist einfach ein
-   kräftigeres Feld. */
+/* Fehler tragen zusätzlich zur Farbe eine stärkere Umrandung — Farbe allein
+   wäre für Rot-Grün-Blindheit kein Signal (WCAG 1.4.1). */
 .field[aria-invalid='true'] {
   border-color: var(--color-pruefung-deep);
   border-width: 2px;
@@ -512,14 +432,6 @@ summary {
 }
 summary::-webkit-details-marker {
   display: none;
-}
-
-/* ---- Trennlinie ------------------------------------------------------- */
-.hairline {
-  border-block-start: 1px solid var(--color-edge);
-}
-.on-ink .hairline {
-  border-block-start-color: color-mix(in oklab, var(--color-paper) 18%, transparent);
 }
 
 /* ---- Skip-Link -------------------------------------------------------- */
@@ -535,33 +447,20 @@ summary::-webkit-details-marker {
   border-radius: var(--radius-control);
   font-family: var(--font-sans);
   font-size: var(--text-sm);
-  transition: transform 200ms var(--ease-quick);
 }
 .skip-link:focus {
   transform: translateY(0);
 }
 
-/* ---- Scroll-Reveal ---------------------------------------------------
-   Sektionen steigen beim Eintreten leicht auf. Bewusst klein gehalten:
-   14 px und 560 ms, keine Staffelung über mehr als drei Elemente.
-   Ohne JavaScript bleibt `.reveal` unberührt sichtbar — der Ausgangszustand
-   wird erst von der Direktive gesetzt. */
-.reveal-armed {
-  opacity: 0;
-  transform: translateY(14px);
-}
-.reveal-in {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 560ms var(--ease-soft),
-    transform 560ms var(--ease-soft);
-  transition-delay: var(--reveal-delay, 0ms);
+/* Der Kopf liegt fest über dem Inhalt. Ohne diesen Abstand verschwindet jedes
+   Sprungziel — Ankerlinks, Skip-Link, der Weg aus dem Einstieg — hinter ihm. */
+[id] {
+  scroll-margin-block-start: 6.5rem;
 }
 
 /* ---- Basis ------------------------------------------------------------ */
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   color: var(--color-ink);
   background-color: var(--color-paper);
   -webkit-font-smoothing: antialiased;
@@ -573,16 +472,6 @@ body {
   }
 }
 
-/* Beim Drucken gibt es kein Scrollen und keinen Viewport, in den etwas
-   hineinfahren könnte — der Einblend-Ausgangszustand muss hier weg, sonst
-   fehlen im Ausdruck ganze Abschnitte. */
-@media print {
-  .reveal-armed {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -591,13 +480,5 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-  .reveal-armed {
-    opacity: 1;
-    transform: none;
-  }
-  .btn:hover,
-  .card-interactive:hover {
-    transform: none;
   }
 }

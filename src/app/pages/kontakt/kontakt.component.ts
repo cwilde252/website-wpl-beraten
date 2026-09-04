@@ -4,11 +4,10 @@ import { SeoService } from '../../core/services/seo.service';
 import { CtaLinkComponent } from '../../shared/cta-link/cta-link.component';
 import { DisplayHeadlineComponent } from '../../shared/display-headline/display-headline.component';
 import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wrapper.component';
-import { SignetComponent } from '../../shared/signet/signet.component';
 
 @Component({
   selector: 'app-kontakt',
-  imports: [SectionWrapperComponent, DisplayHeadlineComponent, CtaLinkComponent, SignetComponent],
+  imports: [SectionWrapperComponent, DisplayHeadlineComponent, CtaLinkComponent],
   templateUrl: './kontakt.component.html',
   styles: [
     '.hint-marker { flex: none; margin-block-start: 0.5625rem; width: 0.4375rem; height: 0.4375rem; border-radius: 50%; background: var(--area-deep); }',

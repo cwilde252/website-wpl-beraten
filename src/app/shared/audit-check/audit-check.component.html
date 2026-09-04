@@ -196,7 +196,7 @@
   <!-- Steht bewusst im vorgerenderten HTML: der volle Informationswert auch
        ohne JavaScript. -->
   <div class="lg:col-span-5">
-    <div class="threshold-panel bubble">
+    <div class="threshold-panel">
       <!-- Ein horizontal scrollbarer Bereich muss mit der Tastatur erreichbar
            sein (SC 2.1.1) — sonst kommt man an die abgeschnittenen Spalten nur
            mit der Maus. -->
@@ -250,7 +250,7 @@
 
 <div role="status" aria-live="polite" aria-atomic="true">
   @if (result(); as res) {
-    <div class="result-panel bubble mt-12">
+    <div class="result-panel mt-12">
       <h3 #resultHeading tabindex="-1" class="type-headline mb-5">{{ verdict(res) }}</h3>
 
       @if (!res.indeterminate) {
