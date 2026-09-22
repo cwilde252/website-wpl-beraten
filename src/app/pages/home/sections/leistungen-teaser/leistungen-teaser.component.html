@@ -1,29 +1,37 @@
-<app-section-wrapper theme="shade" padding="large">
-  <app-section-mark label="Leistungen" />
-  <div class="sheet-grid">
-    <div class="sheet-body">
-      <h2 class="type-headline mb-10">Drei Perspektiven auf dasselbe Unternehmen.</h2>
-
-      <ul class="list-none m-0 p-0 grid grid-cols-1 md:grid-cols-3 gap-x-8">
-        @for (area of areas; track area.slug) {
-          <li class="rule-row py-6" [style.--accent-on-surface]="accentFor(area)">
-            <span class="type-figure text-sm accent-text" aria-hidden="true">{{ area.ref }}</span>
-            <h3 class="type-subhead mt-3 mb-3">
-              <a
-                routerLink="/leistungen"
-                [fragment]="area.slug"
-                class="no-underline text-graphite hover:text-muted transition-colors duration-200"
-                >{{ area.title }}</a
-              >
-            </h3>
-            <p class="type-body text-base">{{ area.claim }}</p>
-          </li>
-        }
-      </ul>
-
-      <div class="mt-12">
-        <app-rule-link href="/leistungen" label="Alle Leistungen" />
-      </div>
-    </div>
+<section class="wrap section" aria-labelledby="leistungen-title">
+  <div class="max-w-3xl">
+    <h2 id="leistungen-title" class="t-h2">Drei Bereiche, eine Ansprechpartnerin.</h2>
+    <p class="t-lead t-soft mt-5">
+      Prüfung, Beratung und Steuern greifen bei mir ineinander. Sie erklären Ihr Unternehmen einmal,
+      nicht dreimal.
+    </p>
   </div>
-</app-section-wrapper>
+
+  <div class="sheet-stack mt-12 md:mt-16">
+    @for (area of areas; track area.slug; let i = $index) {
+      <app-register-sheet [tone]="area.accent" [tabbed]="true" [tabAt]="tabPositions[i]">
+        <h3 sheetTab class="flex items-center gap-2.5">
+          <span class="tone-dot" aria-hidden="true"></span>{{ area.title }}
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10">
+          <div class="md:col-span-6">
+            <p class="t-h3">{{ area.claim }}</p>
+            <div class="mt-5">
+              <app-action-link
+                href="/leistungen"
+                [fragment]="area.slug"
+                [label]="'Mehr zu ' + area.title"
+                variant="link"
+              />
+            </div>
+          </div>
+          <ul class="check-list md:col-span-6">
+            @for (block of area.blocks; track block.title) {
+              <li><app-icon name="check" />{{ block.title }}</li>
+            }
+          </ul>
+        </div>
+      </app-register-sheet>
+    }
+  </div>
+</section>

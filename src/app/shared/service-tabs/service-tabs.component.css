@@ -1,98 +1,79 @@
-.selector-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 1px solid color-mix(in oklab, var(--color-graphite) 20%, transparent);
-}
-
-.selector-tab {
-  position: relative;
-  overflow: hidden;
-  padding: 1.5rem 1.25rem 1.25rem;
-  text-align: left;
-  background: transparent;
-  color: var(--color-graphite);
-  border: 0;
-  border-inline-end: 1px solid color-mix(in oklab, var(--color-graphite) 20%, transparent);
-  cursor: pointer;
-  min-height: 7rem;
+.reg-tabs {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  transition: background-color 160ms var(--ease-precise);
+  gap: 0.375rem;
+  align-items: flex-end;
 }
 
-.selector-tab:last-child {
-  border-inline-end: 0;
-}
-
-/* Die aktive Markierung ist eine 2-px-Linie in der Bereichsfarbe — nie eine Fläche. */
-.selector-tab::after {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  inset-block-end: 0;
-  height: 2px;
-  background: var(--accent-on-surface, var(--color-graphite));
-  transform: scaleX(0);
-  transform-origin: left center;
+.reg-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.25rem;
+  padding: 0.75rem 1.25rem 0.6rem;
+  border: 0;
+  border-radius: var(--radius-tab) var(--radius-tab) 0 0;
+  background: var(--tone-bg);
+  color: var(--tone-ink);
+  font: inherit;
+  font-weight: 650;
+  text-align: left;
+  cursor: pointer;
+  /* Nicht gewählte Reiter stecken etwas tiefer im Ordner. */
+  transform: translateY(0.5rem);
   transition:
-    transform 240ms var(--ease-precise),
-    opacity 160ms var(--ease-precise);
-  pointer-events: none;
+    transform var(--dur-base) var(--ease-out),
+    padding var(--dur-base) var(--ease-out);
+}
+.reg-tab:hover {
+  transform: translateY(0.2rem);
+}
+.reg-tab[aria-selected='true'] {
+  transform: none;
+  padding-block-end: 0.85rem;
+}
+.reg-tab:focus-visible {
+  outline-offset: -4px;
 }
 
-.selector-tab:hover:not(.selected)::after {
-  transform: scaleX(1);
-  opacity: 0.5;
+.reg-panel {
+  border-start-start-radius: 0;
+  transition: background-color var(--dur-base) var(--ease-out);
+}
+.reg-panel:not(.is-first) {
+  border-start-start-radius: var(--radius-sheet);
 }
 
-.selector-tab.selected::after {
-  transform: scaleX(1);
-  opacity: 1;
-}
-
-.selector-tab:hover:not(.selected) {
-  background: color-mix(in oklab, var(--color-graphite) 6%, transparent);
-}
-
-.selector-tab.selected {
-  background: var(--color-linen-bright);
-}
-
-.selector-tab:focus-visible {
-  outline: 2px solid var(--accent-on-surface, var(--color-graphite));
-  outline-offset: -2px;
-  z-index: 1;
-}
-
-.tab-panel {
-  padding-block-start: 3rem;
-}
-
-@keyframes panel-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.reg-block {
+  padding-block: 1.75rem;
+  border-block-start: 1px solid color-mix(in oklab, var(--tone-ink) 22%, transparent);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .tab-panel {
-    animation: panel-in 160ms var(--ease-precise) both;
+  .reg-content {
+    animation: panel-in var(--dur-base) var(--ease-out) both;
   }
 }
 
-@media (max-width: 640px) {
-  .selector-tab {
-    padding: 1rem 0.75rem 0.875rem;
-    min-height: 5.5rem;
-  }
+.label-short {
+  display: none;
+}
 
-  .tab-panel {
-    padding-block-start: 2rem;
+@media (max-width: 640px) {
+  .reg-tabs {
+    gap: 0.25rem;
+  }
+  .reg-tab {
+    flex: 0 1 auto;
+    min-width: 0;
+    gap: 0.45rem;
+    padding: 0.7rem 0.85rem 0.55rem;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+  }
+  .reg-tab:has(.label-short) .label-full {
+    display: none;
+  }
+  .label-short {
+    display: inline;
   }
 }

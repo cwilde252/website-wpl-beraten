@@ -1,49 +1,47 @@
-<app-section-indicator [sections]="sections" ariaLabel="Abschnitte der Leistungsseite" />
+<section id="leistungen-start" class="wrap page-intro" aria-labelledby="leistungen-title">
+  <h1 id="leistungen-title" class="t-display">
+    @for (line of headline.lines; track $index) {
+      <span class="line">{{ line }}</span>
+    }
+  </h1>
+  <p class="t-lead t-soft mt-6">
+    Wählen Sie den Bereich, der Sie gerade beschäftigt. Weiter unten finden Sie den
+    Prüfungspflicht-Check und Antworten auf häufige Fragen.
+  </p>
+</section>
+
+<section id="bereiche" class="wrap scroll-anchor" aria-label="Leistungsbereiche">
+  <app-service-tabs
+    [areas]="areas"
+    [initialSlug]="initialSlug()"
+    (activated)="onAreaActivated($event)"
+  />
+</section>
 
 <section
-  id="leistungen-start"
-  class="bg-graphite text-linen on-graphite py-20 md:py-28"
-  aria-label="Leistungen"
+  id="pruefungspflicht"
+  class="wrap section scroll-anchor"
+  aria-labelledby="pruefungspflicht-check"
 >
-  <div class="sheet">
-    <div class="sheet-grid">
-      <div class="margin-note">
-        <span class="double-rule mb-3" aria-hidden="true"></span>
-        <p class="type-label">Leistungen</p>
+  <app-register-sheet tone="check" [tabbed]="true">
+    <h2 sheetTab id="pruefungspflicht-check" class="flex items-center gap-2.5">
+      <span class="tone-dot" aria-hidden="true"></span>Prüfungspflicht-Check
+    </h2>
+    <app-audit-check headingId="pruefungspflicht-check" />
+  </app-register-sheet>
+</section>
+
+<section id="fragen" class="wrap section--tight scroll-anchor" aria-labelledby="fragen-title">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">
+    <div class="lg:col-span-4">
+      <h2 id="fragen-title" class="t-h2">Häufige Fragen</h2>
+      <p class="t-body t-soft mt-5">Ihre Frage ist nicht dabei? Fragen Sie mich direkt.</p>
+      <div class="mt-4">
+        <app-action-link href="/kontakt" label="Frage stellen" variant="link" />
       </div>
-      <div class="sheet-body">
-        <app-display-headline [content]="headline" [level]="1" />
-      </div>
+    </div>
+    <div class="lg:col-span-8">
+      <app-faq-accordion [items]="faq" exclusiveGroup="wpl-faq" />
     </div>
   </div>
 </section>
-
-<app-section-wrapper theme="paper" padding="large">
-  <div id="bereiche">
-    <app-service-tabs
-      [areas]="areas"
-      [initialSlug]="initialSlug()"
-      (activated)="onAreaActivated($event)"
-    />
-  </div>
-</app-section-wrapper>
-
-<app-section-wrapper theme="shade" padding="large" accent="check">
-  <div id="pruefungspflicht">
-    <h2 id="pruefungspflicht-check" class="type-headline mb-10">Prüfungspflicht-Check</h2>
-    <app-audit-check headingId="pruefungspflicht-check" />
-  </div>
-</app-section-wrapper>
-
-<app-section-wrapper theme="paper" padding="large">
-  <div id="fragen">
-    <app-section-mark label="Häufige Fragen" />
-    <div class="sheet-grid">
-      <div class="sheet-body--slim sheet-body">
-        <app-faq-accordion [items]="faq" exclusiveGroup="wpl-faq" />
-        <p class="type-body mt-12 mb-6">Ihre Frage ist nicht dabei? Fragen Sie mich direkt.</p>
-        <app-rule-link href="/kontakt" label="Frage stellen" />
-      </div>
-    </div>
-  </div>
-</app-section-wrapper>

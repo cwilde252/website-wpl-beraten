@@ -80,21 +80,22 @@ untergräbt, um das es hier geht.
 - **Magazin-Editorial** (zentrierte Display-Headlines, Kursiv-Emphase, großzügige Bedeutungsleere):
   eine Wirtschaftsprüferin verkauft keine Stimmung.
 - **AI-Slop-Templates** (Scroll-Reveal auf jeder Sektion, Blur-Blobs, dekorative Icon-Kreise, überall
-  dasselbe Label-Linie-Grid-Rezept): Bewegung ist hier auf Interaktionsfeedback beschränkt, alles
-  andere steht still.
-- **Der bisherige Auftritt dieser Seite**: vollflächig oranger Hero, vier konkurrierende
-  Akzentfarben, runde Karten mit Schatten, Pill-Buttons.
+  dasselbe Label-Linie-Grid-Rezept): Bewegung gibt es als Feedback und genau einen inszenierten
+  Moment, nie als Einblendung jeder Sektion.
+- **Frühere Auftritte dieser Seite**: der vollflächig orange Hero mit Karten und Pill-Buttons ebenso
+  wie das dunkle Graphit-„Arbeitspapier" mit Mono-Labels. Gewünscht ist ausdrücklich: hell,
+  freundlich, einladend, clean und nicht überladen (Entscheidung der Auftraggeberin, 2026).
 
 ## Design Principles
 
 1. **Fachlichkeit zeigen, nicht behaupten.** Die Schwellenwerttabelle und der Prüfungspflicht-Check
    sind das visuelle Zentrum der Leistungsseite. Wer sie liest, hat einen Nutzen — auch ohne Anfrage.
-2. **Farbe ist Markierung, nicht Fläche.** Die vier Logofarben bleiben, aber sie kennzeichnen
-   Bereiche als Linie, Label und Marke. Keine einzige Fläche über 4 px trägt eine Logofarbe.
-3. **Struktur statt Bild.** Es gibt keine Fotografie. Linienraster, Randspalte, Typografie-Skala und
-   Flächenwechsel tragen die Seite. Das ist der Entwurf, nicht ein Notbehelf.
-4. **Zahlen sind Belege.** Alles Prüfbare steht in Mono mit Tabellenziffern — Beträge, Jahreszahlen,
-   Normzitate. Typografie macht sichtbar, was Beleg ist und was Text.
+2. **Farbe heißt Bereich.** Die vier Logofarben tragen als zarte Flächen je einen Bereich:
+   Orange Prüfung, Blau Beratung, Grün Steuern, Gelb Check. Alles andere ist neutral.
+3. **Ohne Foto vollständig, mit Foto persönlicher.** Die Seite trägt sich über Registerblätter und
+   Typografie. Ein Porträt ist vorgesehen und erscheint, sobald eines freigegeben ist.
+4. **Zahlen sind Belege.** Alles Prüfbare steht mit Tabellenziffern: Beträge, Jahreszahlen,
+   Normzitate, immer mit Quelle.
 5. **Erreichbarkeit vor Konversion.** Ein Weg zum Erstgespräch pro Sektion, keine Pop-ups, keine
    Dringlichkeitsmuster. Wirtschaftsprüfung ist eine Mehrjahresbeziehung.
 6. **Ohne JavaScript nutzbar.** Die Seite wird statisch vorgerendert. Schwellenwerte, FAQ,

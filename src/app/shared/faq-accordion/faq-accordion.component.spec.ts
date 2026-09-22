@@ -45,8 +45,8 @@ describe('FaqAccordionComponent', () => {
     expect(setup('gruppe').querySelector('details')?.getAttribute('name')).toBe('gruppe');
   });
 
-  it('blendet die Plus-Minus-Marke vor Screenreadern aus', () => {
+  it('blendet die Auf-zu-Marke vor Screenreadern aus', () => {
     const markers = setup().querySelectorAll('summary span[aria-hidden="true"]');
-    expect(markers.length).toBe(4);
+    expect(markers.length).toBe(2);
   });
 });

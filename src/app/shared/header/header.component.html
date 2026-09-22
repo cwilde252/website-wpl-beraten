@@ -1,74 +1,58 @@
-<header
-  class="sticky top-0 z-40 transition-colors duration-200"
-  [class.bg-linen]="scrolled() || mobileMenuOpen()"
-  [class.border-b]="scrolled() || mobileMenuOpen()"
-  [class.border-graphite/15]="scrolled() || mobileMenuOpen()"
->
-  <div class="sheet flex items-center justify-between py-4 md:py-5">
+<header class="site-header" [class.is-raised]="scrolled() || mobileMenuOpen()">
+  <div class="wrap flex items-center justify-between gap-6 py-3 md:py-4">
     <a
       routerLink="/"
-      class="no-underline text-graphite"
+      class="brand"
       (click)="closeMobileMenu()"
-      aria-label="Startseite"
+      aria-label="Startseite, Wiebke Lefevre"
     >
-      <span class="block type-label">{{ contact.personName }}</span>
-      <span class="block type-figure text-xs text-muted mt-0.5">{{ contact.role }}</span>
+      <span class="brand-name">{{ contact.personName }}</span>
+      <span class="brand-role">{{ contact.role }} · {{ contact.city }}</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-10" aria-label="Hauptnavigation">
+    <nav class="hidden md:flex items-center gap-1" aria-label="Hauptnavigation">
       @for (item of navItems; track item.path) {
         <a
           [routerLink]="item.path"
-          routerLinkActive="border-b border-graphite"
-          class="type-label no-underline text-graphite pb-1 hover:text-muted transition-colors duration-200"
+          routerLinkActive="is-active"
+          ariaCurrentWhenActive="page"
+          class="nav-link"
           >{{ item.label }}</a
         >
       }
+      <span class="ms-4">
+        <app-action-link href="/kontakt" label="Erstgespräch" [small]="true" />
+      </span>
     </nav>
 
     <button
       type="button"
-      class="md:hidden p-2 -mr-2 bg-transparent border-0 text-graphite cursor-pointer"
+      class="menu-button md:hidden"
       (click)="toggleMobileMenu()"
       [attr.aria-expanded]="mobileMenuOpen()"
       aria-controls="mobile-nav"
       [attr.aria-label]="mobileMenuOpen() ? 'Menü schließen' : 'Menü öffnen'"
     >
-      <svg
-        width="26"
-        height="26"
-        viewBox="0 0 26 26"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.5"
-        aria-hidden="true"
-      >
-        @if (mobileMenuOpen()) {
-          <line x1="6" y1="6" x2="20" y2="20" />
-          <line x1="20" y1="6" x2="6" y2="20" />
-        } @else {
-          <line x1="4" y1="9" x2="22" y2="9" />
-          <line x1="4" y1="17" x2="22" y2="17" />
-        }
-      </svg>
+      <app-icon [name]="mobileMenuOpen() ? 'close' : 'menu'" svgClass="size-6" />
     </button>
   </div>
 
   @if (mobileMenuOpen()) {
-    <nav
-      id="mobile-nav"
-      class="md:hidden bg-linen border-t border-graphite/15"
-      aria-label="Mobilnavigation"
-    >
-      <div class="sheet flex flex-col py-2">
+    <nav id="mobile-nav" class="mobile-nav md:hidden" aria-label="Mobilnavigation">
+      <div class="wrap flex flex-col pb-6">
         @for (item of navItems; track item.path) {
           <a
             [routerLink]="item.path"
+            routerLinkActive="is-active"
+            ariaCurrentWhenActive="page"
             (click)="closeMobileMenu()"
-            class="type-subhead no-underline text-graphite py-4 rule-row"
+            class="mobile-link"
             >{{ item.label }}</a
           >
         }
+        <span class="mt-5">
+          <app-action-link href="/kontakt" label="Erstgespräch vereinbaren" />
+        </span>
       </div>
     </nav>
   }

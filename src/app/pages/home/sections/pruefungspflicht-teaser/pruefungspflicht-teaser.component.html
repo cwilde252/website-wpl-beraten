@@ -1,25 +1,44 @@
-<app-section-wrapper theme="graphite" padding="large" accent="check">
-  <app-section-mark label="Prüfungspflicht" reference="§ 267" />
-  <div class="sheet-grid">
-    <div class="sheet-body--slim sheet-body">
-      <h2 class="type-headline mb-8">Müssen Sie prüfen lassen?</h2>
-      <p class="type-body mb-6">
-        Die Antwort hängt an drei Zahlen: Bilanzsumme, Umsatzerlöse und Arbeitnehmerzahl. Wer
-        mindestens zwei der Schwellen
-        <span class="type-figure">{{ format(small.balanceSheetTotal) }}&nbsp;&euro;</span>,
-        <span class="type-figure">{{ format(small.revenue) }}&nbsp;&euro;</span> und
-        <span class="type-figure">{{ small.employees }}</span> überschreitet, ist nicht mehr klein
-        im Sinne des § 267 Abs. 1 HGB — und damit prüfungspflichtig.
-      </p>
-      <p class="type-body mb-10">
-        Der Check rechnet das für Sie durch, inklusive der Regel zu zwei aufeinanderfolgenden
-        Abschlussstichtagen.
-      </p>
-      <app-rule-link
-        href="/leistungen"
-        fragment="pruefungspflicht"
-        label="Prüfungspflicht prüfen"
-      />
+<section class="wrap section--tight" aria-labelledby="pflicht-title">
+  <app-register-sheet tone="check" [tabbed]="true" tabAt="calc(100% - 15rem)">
+    <h2 sheetTab id="pflicht-title" class="flex items-center gap-2.5">
+      <span class="tone-dot" aria-hidden="true"></span>Prüfungspflicht-Check
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+      <div class="lg:col-span-6">
+        <h3 class="t-h2">Müssen Sie Ihren Jahresabschluss prüfen lassen?</h3>
+        <p class="t-body mt-5">
+          Das hängt an drei Zahlen. Wer an zwei aufeinanderfolgenden Abschlussstichtagen mindestens
+          zwei der drei Schwellen überschreitet, ist nicht mehr klein im Sinne des § 267 Abs. 1 HGB
+          und damit prüfungspflichtig.
+        </p>
+        <div class="mt-8">
+          <app-action-link
+            href="/leistungen"
+            fragment="pruefungspflicht"
+            label="Zum Prüfungspflicht-Check"
+          />
+        </div>
+      </div>
+
+      <div class="thresholds lg:col-span-6">
+        <p id="schwellen-caption" class="thresholds-caption">
+          Schwellen für kleine Kapitalgesellschaften (§ 267 Abs. 1 HGB)
+        </p>
+        <dl class="m-0" aria-labelledby="schwellen-caption">
+          <div>
+            <dt>Bilanzsumme</dt>
+            <dd class="num">{{ format(small.balanceSheetTotal) }}&nbsp;&euro;</dd>
+          </div>
+          <div>
+            <dt>Umsatzerlöse</dt>
+            <dd class="num">{{ format(small.revenue) }}&nbsp;&euro;</dd>
+          </div>
+          <div>
+            <dt>Arbeitnehmer im Jahresdurchschnitt</dt>
+            <dd class="num">{{ small.employees }}</dd>
+          </div>
+        </dl>
+      </div>
     </div>
-  </div>
-</app-section-wrapper>
+  </app-register-sheet>
+</section>

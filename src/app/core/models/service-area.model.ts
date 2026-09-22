@@ -8,6 +8,8 @@ export interface ServiceArea {
   slug: string;
   accent: AreaAccent;
   title: string;
+  /** Kurzform für schmale Reiter; der volle Titel bleibt der zugängliche Name. */
+  shortTitle?: string;
   claim: string;
   intro: string;
   blocks: ServiceBlock[];

@@ -1,20 +1,15 @@
+import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { ContentService } from '../../core/services/content.service';
 import { SeoService } from '../../core/services/seo.service';
-import { DisplayHeadlineComponent } from '../../shared/display-headline/display-headline.component';
-import { RuleLinkComponent } from '../../shared/rule-link/rule-link.component';
-import { SectionMarkComponent } from '../../shared/section-mark/section-mark.component';
-import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wrapper.component';
+import { ActionLinkComponent } from '../../shared/action-link/action-link.component';
+import { RegisterSheetComponent } from '../../shared/register-sheet/register-sheet.component';
 
 @Component({
   selector: 'app-ueber-mich',
-  imports: [
-    SectionWrapperComponent,
-    SectionMarkComponent,
-    DisplayHeadlineComponent,
-    RuleLinkComponent,
-  ],
+  imports: [RegisterSheetComponent, ActionLinkComponent, NgOptimizedImage],
   templateUrl: './ueber-mich.component.html',
+  styleUrl: './ueber-mich.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UeberMichComponent implements OnInit {

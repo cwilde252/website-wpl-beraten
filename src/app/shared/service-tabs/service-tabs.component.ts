@@ -9,12 +9,12 @@ import {
   viewChildren,
 } from '@angular/core';
 import { ServiceArea } from '../../core/models/service-area.model';
-import { accentVariable } from '../accent';
-import { RuleLinkComponent } from '../rule-link/rule-link.component';
+import { ActionLinkComponent } from '../action-link/action-link.component';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-service-tabs',
-  imports: [RuleLinkComponent],
+  imports: [ActionLinkComponent, IconComponent],
   templateUrl: './service-tabs.component.html',
   styleUrl: './service-tabs.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,10 +40,9 @@ export class ServiceTabsComponent {
     this.areas().find((area) => area.slug === this.activeSlug()),
   );
 
-  readonly accentColor = computed(() => {
-    const area = this.activeArea();
-    return area ? accentVariable(area.accent, 'paper') : 'var(--color-graphite)';
-  });
+  readonly activeIndex = computed(() =>
+    this.areas().findIndex((area) => area.slug === this.activeSlug()),
+  );
 
   select(slug: string): void {
     this.activeSlug.set(slug);
@@ -76,9 +75,5 @@ export class ServiceTabsComponent {
     event.preventDefault();
     this.select(areas[target].slug);
     this.tabButtons()[target]?.nativeElement.focus();
-  }
-
-  accentFor(area: ServiceArea): string {
-    return accentVariable(area.accent, 'paper');
   }
 }

@@ -4,12 +4,10 @@ import {
   DefinitionItem,
   DefinitionListComponent,
 } from '../../../../shared/definition-list/definition-list.component';
-import { SectionMarkComponent } from '../../../../shared/section-mark/section-mark.component';
-import { SectionWrapperComponent } from '../../../../shared/section-wrapper/section-wrapper.component';
 
 @Component({
   selector: 'app-positionen',
-  imports: [SectionWrapperComponent, SectionMarkComponent, DefinitionListComponent],
+  imports: [DefinitionListComponent],
   templateUrl: './positionen.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { id: 'haltung' },
@@ -19,7 +17,6 @@ export class PositionenComponent {
 
   readonly items = computed<DefinitionItem[]>(() =>
     this.positions.map((position) => ({
-      reference: position.ref,
       term: position.title,
       description: position.description,
     })),

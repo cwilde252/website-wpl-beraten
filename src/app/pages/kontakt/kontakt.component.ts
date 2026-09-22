@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { ContentService } from '../../core/services/content.service';
 import { SeoService } from '../../core/services/seo.service';
-import { DisplayHeadlineComponent } from '../../shared/display-headline/display-headline.component';
-import { RuleLinkComponent } from '../../shared/rule-link/rule-link.component';
-import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wrapper.component';
+import { ActionLinkComponent } from '../../shared/action-link/action-link.component';
+import { IconComponent } from '../../shared/icon/icon.component';
+import { RegisterSheetComponent } from '../../shared/register-sheet/register-sheet.component';
 
 @Component({
   selector: 'app-kontakt',
-  imports: [SectionWrapperComponent, DisplayHeadlineComponent, RuleLinkComponent],
+  imports: [RegisterSheetComponent, ActionLinkComponent, IconComponent],
   templateUrl: './kontakt.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

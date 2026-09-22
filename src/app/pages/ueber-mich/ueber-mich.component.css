@@ -1,0 +1,59 @@
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.35rem;
+  padding: 0 0 1.75rem 1.75rem;
+}
+.timeline-item:last-child {
+  padding-block-end: 0;
+}
+/* Leitlinie und Punkt: der Weg bis zur eigenen Praxis. */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0.3rem;
+  inset-block: 0.6rem -0.6rem;
+  width: 1px;
+  background: var(--color-control);
+}
+.timeline-item:last-child::before {
+  display: none;
+}
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.4rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--color-neutral);
+  border: 1.5px solid var(--color-ink-soft);
+}
+.timeline-item.is-current::after {
+  background: var(--color-pruefung);
+  border-color: var(--color-pruefung);
+}
+
+.timeline-period {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+@media (min-width: 768px) {
+  .timeline-item {
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+  .timeline-period {
+    padding-block-start: 0.2rem;
+  }
+}

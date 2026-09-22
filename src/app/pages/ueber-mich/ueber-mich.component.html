@@ -1,61 +1,61 @@
-<section class="bg-graphite text-linen on-graphite py-20 md:py-28" aria-label="Über mich">
-  <div class="sheet">
-    <div class="sheet-grid">
-      <div class="margin-note">
-        <span class="double-rule mb-3" aria-hidden="true"></span>
-        <p class="type-label">Über mich</p>
-      </div>
-      <div class="sheet-body">
-        <app-display-headline [content]="headline" [level]="1" />
-      </div>
+<section class="wrap page-intro" aria-labelledby="ueber-title">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
+    <div [class]="profile.portrait ? 'lg:col-span-7' : 'lg:col-span-9'">
+      <h1 id="ueber-title" class="t-display">
+        @for (line of headline.lines; track $index) {
+          <span class="line">{{ line }}</span>
+        }
+      </h1>
+      @for (paragraph of profile.statement; track $index) {
+        <p class="t-lead mt-6 first-of-type:mt-8">{{ paragraph }}</p>
+      }
     </div>
+    @if (profile.portrait; as photo) {
+      <div class="lg:col-span-4 lg:col-start-9">
+        <img
+          class="w-full h-auto rounded-[1.75rem]"
+          [ngSrc]="photo.src"
+          [width]="photo.width"
+          [height]="photo.height"
+          [alt]="photo.alt"
+          priority
+        />
+      </div>
+    }
   </div>
 </section>
 
-<app-section-wrapper theme="paper" padding="large">
-  <div class="sheet-grid">
-    <div class="margin-note">
-      <p class="type-figure text-sm text-muted">{{ profile.role }}</p>
-    </div>
-    <div class="sheet-body--slim sheet-body">
-      @for (paragraph of profile.statement; track $index) {
-        <p class="type-lead mb-6 last:mb-0">{{ paragraph }}</p>
-      }
-    </div>
-  </div>
-</app-section-wrapper>
-
-<app-section-wrapper theme="shade" padding="large">
-  <app-section-mark label="Werdegang" />
-  <div class="sheet-grid">
-    <div class="sheet-body">
-      <ol class="list-none m-0 p-0">
-        @for (entry of profile.career; track entry.title) {
-          <li class="rule-row py-6 grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-8">
-            <span class="type-figure text-sm text-muted md:col-span-3">{{ entry.period }}</span>
-            <div class="md:col-span-9">
-              <h2 class="type-subhead">{{ entry.title }}</h2>
+<section class="wrap section--tight" aria-labelledby="werdegang-title">
+  <app-register-sheet tone="neutral" [tabbed]="true">
+    <h2 sheetTab id="werdegang-title" class="flex items-center gap-2.5">
+      <span class="tone-dot" aria-hidden="true"></span>Werdegang
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <ol class="timeline lg:col-span-10">
+        @for (entry of profile.career; track entry.title; let first = $first) {
+          <li class="timeline-item" [class.is-current]="first">
+            <span class="timeline-period num">{{ entry.period }}</span>
+            <div>
+              <h3 class="t-h3">{{ entry.title }}</h3>
               @if (entry.description) {
-                <p class="type-body mt-2">{{ entry.description }}</p>
+                <p class="t-body t-soft mt-1.5">{{ entry.description }}</p>
               }
             </div>
           </li>
         }
       </ol>
     </div>
-  </div>
-</app-section-wrapper>
+  </app-register-sheet>
+</section>
 
-<app-section-wrapper theme="paper" padding="large">
-  <app-section-mark label="Erstgespräch" />
-  <div class="sheet-grid">
-    <div class="sheet-body--slim sheet-body">
-      <h2 class="type-headline mb-8">Klingt passend?</h2>
-      <p class="type-body mb-10">
-        Dann lassen Sie uns sprechen. Im Erstgespräch klären wir, worum es geht und ob ich die
-        Richtige dafür bin.
-      </p>
-      <app-rule-link href="/kontakt" label="Kontakt aufnehmen" />
+<section class="wrap section" aria-labelledby="ueber-schluss">
+  <div class="max-w-2xl">
+    <h2 id="ueber-schluss" class="t-h2">Lernen wir uns kennen.</h2>
+    <p class="t-body mt-5">
+      Im Erstgespräch klären wir, worum es geht und ob ich die Richtige dafür bin.
+    </p>
+    <div class="mt-8">
+      <app-action-link href="/kontakt" label="Erstgespräch vereinbaren" />
     </div>
   </div>
-</app-section-wrapper>
+</section>
