@@ -7,9 +7,11 @@
   gap: 0.375rem;
 }
 .footer-tabs > span {
+  display: grid;
+  place-items: center;
   width: clamp(3.5rem, 9vw, 6rem);
-  height: 0.875rem;
-  background: var(--tone-bg);
+  height: 1.5rem;
+  background: var(--color-neutral);
   border-radius: 0.625rem 0.625rem 0 0;
 }
 

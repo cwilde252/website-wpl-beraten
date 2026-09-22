@@ -6,6 +6,7 @@
       role="tab"
       class="reg-tab"
       [attr.data-tone]="area.accent"
+      [attr.aria-label]="area.shortTitle ? area.title : null"
       [id]="'tab-' + area.slug"
       [attr.aria-selected]="activeSlug() === area.slug"
       [attr.aria-controls]="'panel-' + area.slug"
@@ -14,7 +15,10 @@
       (keydown)="onKeydown($event, i)"
     >
       <span class="tone-dot" aria-hidden="true"></span>
-      <span>{{ area.title }}</span>
+      <span class="label-full">{{ area.title }}</span>
+      @if (area.shortTitle) {
+        <span class="label-short" aria-hidden="true">{{ area.shortTitle }}</span>
+      }
     </button>
   }
 </div>

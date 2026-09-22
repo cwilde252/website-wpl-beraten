@@ -4,7 +4,7 @@
 
     <!-- Steht bewusst über dem Formular: der volle Informationswert auch ohne JavaScript. -->
     <div class="panel overflow-x-auto mb-10">
-      <table class="table">
+      <table class="table table--stack">
         <caption>
           Schwellenwerte nach §§ 267, 267a HGB
         </caption>
@@ -23,9 +23,11 @@
                 {{ row.sizeClass }}
                 <span class="block t-small t-soft">{{ row.norm }}</span>
               </th>
-              <td class="r num">{{ formatEuro(row.balanceSheetTotal) }} &euro;</td>
-              <td class="r num">{{ formatEuro(row.revenue) }} &euro;</td>
-              <td class="r num">{{ row.employees }}</td>
+              <td class="r num" data-label="Bilanzsumme">
+                {{ formatEuro(row.balanceSheetTotal) }} &euro;
+              </td>
+              <td class="r num" data-label="Umsatzerlöse">{{ formatEuro(row.revenue) }} &euro;</td>
+              <td class="r num" data-label="Arbeitnehmer">{{ row.employees }}</td>
             </tr>
           }
           <tr>
@@ -221,7 +223,7 @@
           }
 
           <div class="overflow-x-auto mt-8">
-            <table class="table">
+            <table class="table table--stack">
               <caption>
                 Merkmalsprüfung gegen
                 {{
@@ -242,13 +244,13 @@
                     <th scope="row" class="font-normal">
                       {{ criterion.label }}
                     </th>
-                    <td class="r num">
+                    <td class="r num" data-label="Ihr Wert">
                       {{ formatEuro(criterion.value) }}
                     </td>
-                    <td class="r num">
+                    <td class="r num" data-label="Schwelle">
                       {{ formatEuro(criterion.threshold) }}
                     </td>
-                    <td>
+                    <td data-label="Ergebnis">
                       {{ criterion.exceeded ? 'überschritten' : 'nicht überschritten' }}
                     </td>
                   </tr>

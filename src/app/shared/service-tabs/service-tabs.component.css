@@ -54,19 +54,26 @@
   }
 }
 
+.label-short {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .reg-tabs {
     gap: 0.25rem;
   }
   .reg-tab {
-    flex: 1 1 0;
+    flex: 0 1 auto;
     min-width: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
-    padding: 0.7rem 0.75rem 0.55rem;
-    font-size: 0.875rem;
-    hyphens: auto;
-    overflow-wrap: anywhere;
+    gap: 0.45rem;
+    padding: 0.7rem 0.85rem 0.55rem;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+  }
+  .reg-tab:has(.label-short) .label-full {
+    display: none;
+  }
+  .label-short {
+    display: inline;
   }
 }

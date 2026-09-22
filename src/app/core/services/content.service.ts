@@ -97,6 +97,7 @@ export class ContentService {
         slug: 'wirtschaftspruefung',
         accent: 'pruefung',
         title: 'Wirtschaftsprüfung',
+        shortTitle: 'Prüfung',
         claim: 'Ein Prüfungsansatz, der zur Größe Ihres Unternehmens passt.',
         intro:
           'Ob gesetzliche Pflichtprüfung oder freiwillige Prüfung des Jahresabschlusses: Ich richte den Prüfungsansatz an der Größe und Komplexität Ihres Unternehmens aus und konzentriere mich auf das Wesentliche.',

@@ -11,12 +11,25 @@
         />
       </div>
     }
-    <div [class]="profile.portrait ? 'lg:col-span-7 lg:col-start-6' : 'lg:col-span-8'">
+    <div [class]="profile.portrait ? 'lg:col-span-7 lg:col-start-6' : 'lg:col-span-7'">
       <h2 id="profil-title" class="t-h2">{{ profile.name }}</h2>
       <p class="t-lead mt-5">{{ profile.statement[0] }}</p>
       <div class="mt-8">
         <app-action-link href="/ueber-mich" label="Werdegang ansehen" variant="link" />
       </div>
     </div>
+    @if (!profile.portrait) {
+      <!-- Solange kein Porträt freigegeben ist, trägt ein Auszug aus dem Werdegang die Spalte. -->
+      <app-register-sheet tone="neutral" class="lg:col-span-4 lg:col-start-9">
+        <ol class="stations" aria-label="Stationen">
+          @for (entry of stations; track entry.title) {
+            <li>
+              <span class="t-small t-soft num">{{ entry.period }}</span>
+              <span class="block font-semibold mt-0.5">{{ entry.title }}</span>
+            </li>
+          }
+        </ol>
+      </app-register-sheet>
+    }
   </div>
 </section>

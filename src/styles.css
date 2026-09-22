@@ -469,6 +469,55 @@ details[open]::details-content {
 .table .r {
   text-align: right;
 }
+.table .num {
+  white-space: nowrap;
+}
+
+/* Schmal: jede Zeile wird zum Block mit Beschriftung je Wert — keine Spalte
+   verschwindet hinter einem unsichtbaren Querscroll. */
+@media (max-width: 639px) {
+  .table--stack thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .table--stack,
+  .table--stack tbody,
+  .table--stack tr,
+  .table--stack th,
+  .table--stack td {
+    display: block;
+  }
+  .table--stack caption {
+    display: block;
+    inline-size: 100%;
+  }
+  .table--stack tbody tr {
+    padding-block: 0.75rem;
+  }
+  .table--stack th,
+  .table--stack td {
+    padding: 0.2rem 0;
+    border: 0 !important;
+    text-align: left;
+  }
+  .table--stack th[scope='row'] {
+    font-weight: 600;
+    padding-block-end: 0.4rem;
+  }
+  .table--stack td[data-label] {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .table--stack td[data-label]::before {
+    content: attr(data-label);
+    color: var(--color-ink-soft);
+    white-space: normal;
+  }
+}
 
 /* ---- Skip-Link -------------------------------------------------------- */
 .skip-link {

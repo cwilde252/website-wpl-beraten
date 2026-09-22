@@ -1,5 +1,8 @@
 <section class="wrap section--tight" aria-labelledby="pflicht-title">
-  <app-register-sheet tone="check">
+  <app-register-sheet tone="check" [tabbed]="true" tabAt="calc(100% - 15rem)">
+    <span sheetTab class="flex items-center gap-2.5" aria-hidden="true">
+      <span class="tone-dot"></span>Prüfungspflicht-Check
+    </span>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
       <div class="lg:col-span-6">
         <h2 id="pflicht-title" class="t-h2">Müssen Sie Ihren Jahresabschluss prüfen lassen?</h2>
@@ -17,23 +20,25 @@
         </div>
       </div>
 
-      <dl
-        class="thresholds lg:col-span-6"
-        aria-label="Schwellenwerte für kleine Kapitalgesellschaften"
-      >
-        <div>
-          <dt>Bilanzsumme</dt>
-          <dd class="num">{{ format(small.balanceSheetTotal) }}&nbsp;&euro;</dd>
-        </div>
-        <div>
-          <dt>Umsatzerlöse</dt>
-          <dd class="num">{{ format(small.revenue) }}&nbsp;&euro;</dd>
-        </div>
-        <div>
-          <dt>Arbeitnehmer im Jahresdurchschnitt</dt>
-          <dd class="num">{{ small.employees }}</dd>
-        </div>
-      </dl>
+      <div class="thresholds lg:col-span-6">
+        <p id="schwellen-caption" class="thresholds-caption">
+          Schwellen für kleine Kapitalgesellschaften (§ 267 Abs. 1 HGB)
+        </p>
+        <dl class="m-0" aria-labelledby="schwellen-caption">
+          <div>
+            <dt>Bilanzsumme</dt>
+            <dd class="num">{{ format(small.balanceSheetTotal) }}&nbsp;&euro;</dd>
+          </div>
+          <div>
+            <dt>Umsatzerlöse</dt>
+            <dd class="num">{{ format(small.revenue) }}&nbsp;&euro;</dd>
+          </div>
+          <div>
+            <dt>Arbeitnehmer im Jahresdurchschnitt</dt>
+            <dd class="num">{{ small.employees }}</dd>
+          </div>
+        </dl>
+      </div>
     </div>
   </app-register-sheet>
 </section>

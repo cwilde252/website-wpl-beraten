@@ -26,10 +26,12 @@
 </section>
 
 <section class="wrap section--tight" aria-labelledby="werdegang-title">
-  <app-register-sheet tone="neutral">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">
-      <h2 id="werdegang-title" class="t-h2 lg:col-span-4">Werdegang</h2>
-      <ol class="timeline lg:col-span-8">
+  <app-register-sheet tone="neutral" [tabbed]="true">
+    <h2 sheetTab id="werdegang-title" class="flex items-center gap-2.5">
+      <span class="tone-dot" aria-hidden="true"></span>Werdegang
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <ol class="timeline lg:col-span-10">
         @for (entry of profile.career; track entry.title; let first = $first) {
           <li class="timeline-item" [class.is-current]="first">
             <span class="timeline-period num">{{ entry.period }}</span>

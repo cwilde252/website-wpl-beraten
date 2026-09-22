@@ -16,7 +16,7 @@
 .stack {
   --step: 3.6rem;
   --tab-h: 2.75rem;
-  --tab-room: 14rem;
+  --tab-room: 15.5rem;
   position: relative;
   min-height: calc(var(--tab-h) + 4 * var(--step) + 13rem);
 }
@@ -123,7 +123,7 @@
 @media (max-width: 480px) {
   .stack {
     --step: 3.25rem;
-    --tab-room: 13rem;
+    --tab-room: 14rem;
   }
   .stack-sheet .tab {
     font-size: 0.875rem;
