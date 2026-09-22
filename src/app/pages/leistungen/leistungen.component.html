@@ -24,10 +24,9 @@
   aria-labelledby="pruefungspflicht-check"
 >
   <app-register-sheet tone="check" [tabbed]="true">
-    <span sheetTab class="flex items-center gap-2.5" aria-hidden="true">
-      <span class="tone-dot"></span>§ 267 HGB
-    </span>
-    <h2 id="pruefungspflicht-check" class="t-h2">Prüfungspflicht-Check</h2>
+    <h2 sheetTab id="pruefungspflicht-check" class="flex items-center gap-2.5">
+      <span class="tone-dot" aria-hidden="true"></span>Prüfungspflicht-Check
+    </h2>
     <app-audit-check headingId="pruefungspflicht-check" />
   </app-register-sheet>
 </section>

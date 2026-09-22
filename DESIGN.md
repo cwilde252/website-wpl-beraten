@@ -1,265 +1,366 @@
 ---
 name: WPL — Wiebke Lefevre, Wirtschaftsprüferin
-description: Arbeitspapier-System für eine selbständige Wirtschaftsprüferin im regionalen Mittelstand — Linienraster, Randspalte, Zahlen als Bild. Die vier Logofarben als präzise Akzente, nie als Fläche.
+description: Registerblatt-System für eine selbständige Wirtschaftsprüferin im regionalen Mittelstand — weißes Papier, zart getönte Blätter mit herausstehenden Reitern, Farbe heißt Bereich.
 colors:
-  graphite: "#23262A"
-  graphite-deep: "#16181B"
-  linen: "#EFEDE7"
-  linen-bright: "#F9F8F5"
-  muted: "#5E5A54"
-  rule: "#7E786C"
+  paper: "#FFFFFF"
+  neutral: "#F3F4F1"
+  ink: "#1D2731"
+  ink-hover: "#2E3D4B"
+  ink-soft: "#4A5561"
+  hairline: "#E1E4E0"
+  control: "#7D868F"
   pruefung: "#D4780A"
+  pruefung-tint: "#FDEDDA"
+  pruefung-deep: "#8F4A00"
   beratung: "#2E7DB8"
+  beratung-tint: "#E5EFF8"
+  beratung-deep: "#1E5E8E"
   steuern: "#2D8B57"
+  steuern-tint: "#E2F1E7"
+  steuern-deep: "#1C6A40"
   check: "#D4A917"
+  check-tint: "#FBF2CF"
+  check-deep: "#6F5300"
 typography:
   display:
-    fontFamily: "Libre Franklin Variable, Libre Franklin, system-ui, sans-serif"
-    fontSize: "clamp(2.25rem, 5.2vw, 4.5rem)"
-    fontWeight: 500
-    lineHeight: 1.06
-    letterSpacing: "-0.02em"
+    fontFamily: "Bricolage Grotesque Variable, Figtree Variable, system-ui, sans-serif"
+    fontSize: "clamp(1.75rem, 9vw - 0.25rem, 4.75rem)"
+    fontWeight: 600
+    lineHeight: 1.02
+    letterSpacing: "-0.035em"
   headline:
-    fontFamily: "Libre Franklin Variable, Libre Franklin, system-ui, sans-serif"
-    fontSize: "clamp(1.5rem, 3.4vw, 2.5rem)"
-    fontWeight: 500
-    lineHeight: 1.15
-    letterSpacing: "-0.012em"
+    fontFamily: "Bricolage Grotesque Variable, Figtree Variable, system-ui, sans-serif"
+    fontSize: "clamp(1.875rem, 2.2vw + 1.1rem, 3rem)"
+    fontWeight: 600
+    lineHeight: 1.08
+    letterSpacing: "-0.028em"
+  title:
+    fontFamily: "Bricolage Grotesque Variable, Figtree Variable, system-ui, sans-serif"
+    fontSize: "clamp(1.25rem, 0.5vw + 1.1rem, 1.5rem)"
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: "-0.015em"
+  lead:
+    fontFamily: "Figtree Variable, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "clamp(1.125rem, 0.45vw + 1rem, 1.3125rem)"
+    fontWeight: 400
+    lineHeight: 1.55
   body:
-    fontFamily: "Libre Franklin Variable, Libre Franklin, system-ui, sans-serif"
+    fontFamily: "Figtree Variable, system-ui, -apple-system, Segoe UI, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.65
   label:
-    fontFamily: "IBM Plex Mono, ui-monospace, monospace"
-    fontSize: "0.75rem"
-    fontWeight: 500
-    letterSpacing: "0.08em"
+    fontFamily: "Figtree Variable, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 650
+    lineHeight: 1.2
 rounded:
-  sheet: "0px"
-  control: "2px"
+  sheet: "1.75rem"
+  tab: "0.875rem"
+  control: "0.75rem"
+  inset: "1.25rem"
+spacing:
+  gutter: "clamp(1rem, 4vw, 3rem)"
+  sheet-pad: "clamp(1.5rem, 4vw, 3.5rem)"
+  section: "clamp(4rem, 9vw, 7.5rem)"
+  section-tight: "clamp(3rem, 6vw, 5rem)"
+  tab-height: "2.75rem"
+components:
+  button-primary:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    typography: "{typography.label}"
+    rounded: "{rounded.control}"
+    padding: "0.8rem 1.35rem"
+    height: "3rem"
+  button-primary-hover:
+    backgroundColor: "{colors.ink-hover}"
+  button-quiet:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.control}"
+    padding: "0.8rem 1.35rem"
+    height: "3rem"
+  button-quiet-hover:
+    backgroundColor: "{colors.neutral}"
+  sheet-pruefung:
+    backgroundColor: "{colors.pruefung-tint}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.sheet}"
+    padding: "{spacing.sheet-pad}"
+  sheet-neutral:
+    backgroundColor: "{colors.neutral}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.sheet}"
+    padding: "{spacing.sheet-pad}"
+  tab-pruefung:
+    backgroundColor: "{colors.pruefung-tint}"
+    textColor: "{colors.pruefung-deep}"
+    typography: "{typography.label}"
+    rounded: "{rounded.tab}"
+    padding: "0.55rem 1.15rem 0.35rem"
+    height: "2.75rem"
+  field:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body}"
+    rounded: "{rounded.control}"
+    padding: "0.65rem 0.9rem"
+    height: "3rem"
 ---
 
 # Design-System: WPL — Wiebke Lefevre
 
+Dieses Dokument beschreibt das gebaute System (Stand: Redesign „Registerblätter", September 2026).
+Es ersetzt vollständig das frühere dunkle „Arbeitspapier"-System. Normativ sind die Tokens oben und
+in `src/styles.css` (`@theme static`); der Text erklärt, wo und warum sie gelten.
+
 ## 1. Leitbild
 
-**„Das Arbeitspapier."**
+**„Der gut geführte Ordner."**
 
-Das Kernartefakt einer Wirtschaftsprüferin ist das Arbeitspapier: liniertes Papier, ausgerichtete
-Zahlenkolonnen, eine schmale Randspalte für Referenzen, der Doppelstrich unter der geprüften
-Endsumme. Präzise, prüfbar, ohne Dekoration.
+Die Website ist ein Ordner mit farbigen Registerblättern. Jeder Leistungsbereich hat sein Blatt,
+jedes Blatt seinen Reiter, und wer die Seite öffnet, greift den passenden Reiter. Das Bild ist
+fachlich ehrlich — Ordnung, Ablage, Nachvollziehbarkeit sind das Handwerk einer Prüferin — und es ist
+freundlich: weißes Papier, zarte Töne der vier Logofarben, weich gerundete Ecken.
 
-Dieser Formenvorrat ist die Grundlage des Systems — aus drei Gründen. Er ist **fachlich wahr**:
-er zeigt, wie hier gearbeitet wird, statt es zu behaupten. Er **trägt ohne Fotografie**: für dieses
-Projekt existiert kein einziges Bildasset, und ein Redesign, das auf Fotos wartet, wäre nie fertig.
-Und er ist **weder Kanzlei-Klischee noch SaaS noch Magazin** — die drei Richtungen, in die eine
-Website für Wirtschaftsprüfung von allein abrutscht.
-
-Die Website ist eine Arbeitsprobe. Wer sie liest, soll denken: Die weiß, was sie tut, und muss mich
-nicht überreden.
+Das System verweigert die übliche Berater-Seite (Hero-Foto, Icon-Karten-Raster, Dunkelblau) ebenso
+wie das vorige dunkle Arbeitspapier. Es ist hell, ruhig, einladend und nicht überladen. Die Form
+trägt ohne Fotografie; ein Porträt kann später hinzukommen, ohne dass sich etwas verschiebt.
 
 **Kernmerkmale**
 
-- Flächen ausschließlich in Graphit, Leinen und Leinen-hell. Farbe ist nie Fläche.
-- Die vier Logofarben sind Bereichsmarken: eine je Leistungsbereich, nur als Linie, Label oder Marke.
-- Vollständig flach — null `box-shadow`. Tiefe entsteht aus Flächenwechsel und Linienstärke.
-- Scharfe Ecken. Eine dokumentierte Ausnahme: 2 px an Formularfeldern und Buttons.
-- Linienraster statt Karten. Es gibt keine Boxen, nur horizontale 1-px-Regeln.
-- Randspalte ab 1024 px: Marginalien links, Inhalt rechts. Die Layout-Signatur des Systems.
-- Zwei Schriftfamilien mit klarer Arbeitsteilung: Libre Franklin für Sprache, IBM Plex Mono für Zahlen.
-- Bewegung an genau drei Stellen. Kein Scroll-Reveal.
+- Weißes Papier als Grund, darauf Registerblätter in den Tönungen der vier Logofarben.
+- Farbe heißt Bereich: Orange Prüfung, Blau Beratung, Grün Steuern, Gelb Check. Alles andere neutral.
+- Reiter wachsen mit konkaven Übergängen aus dem Blatt und stehen versetzt wie echte Trennblätter.
+- Tinte in tiefem Blaugrau statt Schwarz; Bricolage Grotesque für Überschriften, Figtree für Text.
+- Flach bis auf einen einzigen weichen Schatten unter dem Deckblatt im Hero.
+- Bewegung heißt „Register ziehen": nur Transform, nie Transparenz.
+- Keine Karten-Raster, keine Monospace-Labels, keine Abschnittsnummern.
 
 ## 2. Farbe
 
-### 2.1 Grundton
+Weißes Papier, eine tiefe blaugraue Tinte und vier Logofarben, die als zarte Fläche einen Bereich
+anzeigen und als tiefe Variante darin Text tragen.
+
+### 2.1 Grund und Tinte
 
 | Token | Hex | Rolle |
 |---|---|---|
-| `--color-graphite` | `#23262A` | Dominante dunkle Fläche (Hero, Footer-Vorstufe) **und** Fließtextfarbe auf hellem Grund |
-| `--color-graphite-deep` | `#16181B` | Footer und Hover auf dunklen Flächen. Nie eigenständige Sektionsfläche. |
-| `--color-linen` | `#EFEDE7` | Primäre helle Fläche, warmes Papier |
-| `--color-linen-bright` | `#F9F8F5` | Zweite helle Fläche für den Sektionswechsel |
-| `--color-muted` | `#5E5A54` | Sekundärtext auf hell (Marginalien, Bildunterschriften, Hinweise) |
-| `--color-rule` | `#7E786C` | Ränder von Steuerelementen — braucht 3:1 nach SC 1.4.11 |
-| `--color-muted-on-graphite` | `#A8B0AD` | Sekundärtext auf Graphit |
+| `--color-paper` | `#FFFFFF` | Seitengrund, Deckblatt, Formularfelder, eingelegte Tafeln im Blatt |
+| `--color-neutral` | `#F3F4F1` | Neutrales Blatt (Schluss-Aufruf, Werdegang-Auszug), Footer, Hover-Grund |
+| `--color-ink` | `#1D2731` | Tiefes Blaugrau: Text, primärer Button, Fokusring |
+| `--color-ink-hover` | `#2E3D4B` | Hover des primären Buttons |
+| `--color-ink-soft` | `#4A5561` | Sekundärtext, Tabellenköpfe, Beschriftungen |
+| `--color-hairline` | `#E1E4E0` | Rein dekorative Trennlinien (Listenzeilen, Kopf beim Scrollen) |
+| `--color-control` | `#7D868F` | Ränder von Steuerelementen (Feld, ruhiger Button, Tabellenkopf) |
 
-Geprüfte Kontraste: Graphit auf Leinen 12,8:1 · Graphit auf Leinen-hell 14,2:1 · Leinen auf Graphit
-12,8:1 · Muted auf Leinen 5,8:1 · Rule auf Leinen 3,9:1 · Muted-on-Graphite auf Graphit 6,6:1.
+Geprüfte Kontraste: Tinte auf Weiß 15,1:1 · Ink-soft auf Weiß 7,6:1 und ≥ 6,5:1 auf jeder Tönung ·
+Control-Rand ≥ 3,29:1 auf Weiß und auf der Check-Tönung (SC 1.4.11).
 
 ### 2.2 Die vier Logofarben
 
-Orange, Blau, Grün und Gelb stammen aus dem Logo und bleiben unverändert erhalten. Sie sind das
-einzige Farbelement des Systems — und sie sind ausschließlich **Markierung**, nie Fläche.
+Jede Logofarbe kommt in drei Stufen: **rein** (Markierung), **Tönung** (Blattfläche),
+**tief** (Text und Linien im Ton).
 
-| Bereich | Logo (Signet) | auf Leinen | auf Graphit |
+| Bereich | rein | Tönung | tief (auf eigener Tönung) |
 |---|---|---|---|
-| Wirtschaftsprüfung | `#D4780A` | `#A55700` (4,51:1) | `#D4780A` (4,70:1) |
-| Beratung | `#2E7DB8` | `#24709F` (4,58:1) | `#5AA3D6` (5,45:1) |
-| Steuern | `#2D8B57` | `#247347` (4,90:1) | `#4FB37D` (5,80:1) |
-| Prüfungspflicht-Check | `#D4A917` | `#82640A` (4,75:1) | `#D4A917` (6,83:1) |
+| Wirtschaftsprüfung | `#D4780A` | `#FDEDDA` | `#8F4A00` (5,8:1) |
+| Beratung | `#2E7DB8` | `#E5EFF8` | `#1E5E8E` (5,9:1) |
+| Steuern | `#2D8B57` | `#E2F1E7` | `#1C6A40` (5,6:1) |
+| Prüfungspflicht-Check | `#D4A917` | `#FBF2CF` | `#6F5300` (6,4:1) |
 
-**Warum drei Tokens je Farbe.** Keine der vier Logofarben erreicht auf Leinen die 4,5:1, die WCAG AA
-für Fließtext verlangt; Orange verfehlt dort mit 2,73:1 sogar die 3:1 für nicht-textliche Elemente.
-Die Logofarbe bleibt deshalb dem Signet und den Markierungen auf dunklem Grund vorbehalten, während
-Text und Linien auf hellem Grund die abgedunkelte Variante nutzen. Der Farbeindruck bleibt erhalten,
-der Kontrast stimmt. Für Blau und Grün gilt dasselbe auf Graphit in die andere Richtung.
+Die Töne werden über `data-tone` (`plain`, `neutral`, `pruefung`, `beratung`, `steuern`, `check`)
+gesetzt und liefern drei Variablen: `--tone-bg` (Fläche), `--tone-ink` (Text im Ton), `--tone-mark`
+(reine Markierung). Komponenten lesen nur diese Variablen, nie die Bereichsfarbe direkt.
 
 ### 2.3 Named Rules — Farbe
 
-**Die Bereichsfarben-Regel.** Jede Logofarbe gehört genau einem Leistungsbereich: Orange der
-Wirtschaftsprüfung, Blau der Beratung, Grün den Steuern, Gelb dem Prüfungspflicht-Check. Sie
-erscheint dort nur als Hairline, Label, Tab-Markierung, Listenmarke oder Hover-Farbe — nie als
-gefüllte Fläche über 4 px. Zwei Bereichsfarben treffen sich nirgends außer im Signet.
+**Die Bereichsfarben-Regel.** Farbe heißt Bereich: Orange gehört der Prüfung, Blau der Beratung,
+Grün den Steuern, Gelb dem Check. Was keinem Bereich gehört — Kopf, Navigation, Haltung, Profil,
+Schluss-Aufruf, Footer — bleibt weiß oder neutral. Eine Logofarbe als Schmuck ohne Bereich gibt es nicht.
 
-**Die Kontrast-Regel.** Auf Leinen und Leinen-hell gilt die `-on-paper`-Variante, auf Graphit die
-`-on-graphite`-Variante. Die reine Logofarbe steht ausschließlich im Signet und in nicht-textlichen
-Markierungen auf Graphit. Durchgesetzt über Descendant-Regeln unter `.on-graphite` in `styles.css`.
+**Die Markierungs-Regel.** Die reinen Logofarben (`#D4780A`, `#2E7DB8`, `#2D8B57`, `#D4A917`) sind
+nur Marken — der Tonpunkt im Reiter, die Punkte der Footer-Reiter —, nie Text. Orange erreicht auf
+Weiß nur 3,2:1, Gelb 2,2:1. Text im Ton nutzt immer die tiefe Variante.
 
-**Die Ampel-Regel.** Farbe transportiert nie allein eine Aussage. Im Prüfungspflicht-Check steht das
-Ergebnis als vollständiger Satz und in einer Tabelle mit den Worten „überschritten" und „nicht
-überschritten"; Gelb markiert lediglich zusätzlich die linke Kante überschreitender Zeilen. Kein
-Grün für „gut", kein Rot für „schlecht" — Prüfungspflicht ist kein Fehlerzustand.
+**Die Ampel-Regel.** Farbe trägt nie allein eine Aussage. Im Check steht „überschritten" als Wort in
+der Zeile, die gelbe Hinterlegung ist nur redundant; Feldfehler zeigen sich zusätzlich über die
+doppelte Randstärke (2 px) und einen Text. Prüfungspflicht ist kein Fehlerzustand: kein Rot, kein Grün für „gut".
 
 ## 3. Typografie
 
-Zwei Familien, aber die zweite hat einen **Job, keinen Stil**.
+**Überschriften:** Bricolage Grotesque (variabel, mit optischer Größe), Rückfall Figtree.
+**Text:** Figtree (variabel), Rückfall system-ui. Beide selbst gehostet über Fontsource (DSGVO: keine
+Verbindung zu Dritten).
 
-**Libre Franklin** (variabel, OFL-1.1) trägt die Sprache: Display, Headlines, Fließtext, Navigation.
-Ein Franklin-Gothic-Abkömmling — die Schrift des seriösen Geschäftsberichts. Robust, mit spürbarem
-Strichstärkenkontrast und humanistischen Details, also weder die Neo-Grotesk-Neutralität von
-Helvetica und Inter noch die freundliche Geometrie von DM Sans.
+**Charakter:** Bricolage bringt in großen Größen eine eigenwillige, warme Grotesk-Stimme mit engem
+Laufweitenschnitt; Figtree ist klar, rund und gut lesbar im Fließtext. Zahlen stehen in derselben
+Familie mit Tabellenziffern (`.num`: `tnum`, `lnum`) — es gibt keine Monospace-Schrift.
 
-**IBM Plex Mono** (400/500, OFL-1.1) trägt die Zahlen: Labels, Normzitate, Jahreszahlen, Beträge,
-Tabellenwerte, CTA-Labels. Das Kernmaterial dieser Seite sind Zahlen in Spalten und Paragraphen —
-`§ 267 Abs. 1 HGB`, `7.500.000 €`, `2014 – 2024`. Die brauchen Tabellenziffern und feste Laufweite,
-sonst tanzen sie. Im echten Arbeitspapier ist das genauso. Plex Mono hat Schreibmaschinen-, nicht
-Code-Anmutung — „technisches Dokument", nicht „Terminal".
+### 3.1 Hierarchie
 
-| Rolle | Klasse | Familie | Größe | Gewicht |
+| Rolle | Klasse | Familie | Größe | Gewicht / Zeilenhöhe |
 |---|---|---|---|---|
-| Display | `.type-display` | Sans | `clamp(2.25rem, 5.2vw, 4.5rem)` | 500 |
-| Headline | `.type-headline` | Sans | `clamp(1.5rem, 3.4vw, 2.5rem)` | 500 |
-| Subhead | `.type-subhead` | Sans | 1.125rem | 600 |
-| Lead | `.type-lead` | Sans | `clamp(1.125rem, 1.6vw, 1.375rem)` | 400 |
-| Body | `.type-body` | Sans | 1.0625rem, max 68ch | 400 |
-| Label | `.type-label` | **Mono** | 0.75rem, uppercase, +0.08em | 500 |
-| Zahl | `.type-figure` | **Mono** | erbt, `tabular-nums` | 500 |
+| Display | `.t-display` | Bricolage | `clamp(1.75rem, 9vw − 0.25rem, 4.75rem)`, ab 1024 px `clamp(2.75rem, 4.6vw, 4.75rem)` | 600 / 1,02, −0,035em |
+| Headline | `.t-h2` | Bricolage | `clamp(1.875rem, 2.2vw + 1.1rem, 3rem)` | 600 / 1,08, −0,028em |
+| Titel | `.t-h3` | Bricolage | `clamp(1.25rem, 0.5vw + 1.1rem, 1.5rem)` | 600 / 1,2, −0,015em |
+| Lead | `.t-lead` | Figtree | `clamp(1.125rem, 0.45vw + 1rem, 1.3125rem)` | 400 / 1,55, max. 60ch |
+| Fließtext | `.t-body` | Figtree | 1,0625rem (17 px) | 400 / 1,65, max. 68ch |
+| Klein | `.t-small` | Figtree | 0,9375rem | 400 / 1,55 |
+| Reiter / Label | `.tab`, `.field-label` | Figtree | 0,9375rem | 650 bzw. 600 / 1,2 |
 
-**Die Skalen-Regel.** Hierarchie entsteht aus Größe, Linie und Position — nie aus Gewicht, nie aus
-Farbe. Kein Gewicht über 600; einzige Ausnahme ist das Verdikt des Prüfungspflicht-Checks (700).
-Braucht ein Wort Betonung, gehört es in eine eigene Zeile oder über eine Linie.
+Überschriften nutzen `text-wrap: balance`, Fließtext `text-wrap: pretty`. Display-Zeilen werden
+bewusst gesetzt (`.line` je Zeile), nicht dem Umbruch überlassen.
 
-**Die Mono-Regel.** IBM Plex Mono ausschließlich für Marginalien-Labels, Normzitate, Jahreszahlen,
-Geldbeträge, Tabellenzahlen, CTA-Labels und Formularfeld-Inhalte. Nie für Fließtext, nie für
-Headlines, nie länger als eine Zeile. Erscheint Mono als Textblock, ist die Anwendung falsch.
+### 3.2 Named Rules — Typografie
 
-**Kein Kursiv.** Nirgends. Kein Serif. Keine dritte Familie.
+**Die Kompositum-Regel.** Die Display-Größe ist an der Spaltenbreite bemessen, nicht am Viewport
+allein: das längste Wort („Wirtschaftsprüfung") passt ab 320 px ungetrennt — einspaltig bis 1024 px,
+danach in der 7/12-Spalte. Neue Display-Texte werden am längsten Kompositum geprüft; `.t-h3` hat
+`hyphens: auto` nur als Notbremse.
 
-Headlines sind **Daten, kein Markup**: `DisplayHeadlineComponent` rendert ein `lines: string[]` aus
-dem `ContentService`. Zeilenumbrüche in einer Display-Headline sind Gestaltung und gehören deshalb
-in den Content, nicht ins Template.
+**Die Eine-Stimme-Regel.** Keine Monospace-Labels, keine Versalien-Etiketten, keine Abschnittsnummern.
+Zahlen bekommen Tabellenziffern, keinen Schriftwechsel.
 
-## 4. Elevation, Radius, Bewegung
+## 4. Layout
 
-**Kein Schatten.** Null `box-shadow` im gesamten Projekt. Tiefe entsteht aus dem Wechsel der Flächen
-Leinen → Leinen-hell → Graphit und aus der Linienstärke (1 px dekorativ, 2 px strukturell). Wer nach
-einem Schatten greift, hat das Element falsch gebaut.
+- **Container:** `.wrap`, max. 76rem, seitlicher Rand `clamp(1rem, 4vw, 3rem)`; Kinder mit
+  `min-width: 0`, damit nichts horizontal überläuft (320 px aufwärts).
+- **Raster:** 12 Spalten ab `lg` (1024 px). Wiederkehrende Teilungen: 7/5 im Hero, 4/8 für
+  Überschrift links und Inhalt rechts, 6/6 innerhalb eines Blatts. Mobil alles einspaltig.
+- **Rhythmus:** Abschnitte `clamp(4rem, 9vw, 7.5rem)` vertikal, enge Abschnitte
+  `clamp(3rem, 6vw, 5rem)`; Blattinnenraum `clamp(1.5rem, 4vw, 3.5rem)`.
+- **Gestapelte Blätter:** Folgende Blätter legen sich mit ihrem Reiter über die Unterkante des
+  vorigen (`margin-top: 2.75rem − Blattradius`), Reiter stehen versetzt (`--tab-at`) wie Trennblätter.
+- **Hero:** links Headline, Lead, primärer Button und Textlink; rechts der Stapel aus vier getönten
+  Blättern mit versetzten Reitern (je ein Link auf den Bereich), vorne das weiße Deckblatt mit Name,
+  Rolle, Ort. Mobil folgt der Stapel unter der Headline, die Reiter als gestaffelte Streifen.
+- **Sticky-Kopf:** weiß, erhält beim Scrollen eine Hairline; Sprungziele haben
+  `scroll-margin-top: 5.5rem`.
+- **Tabellen:** unter 640 px wird jede Zeile zum Block mit Beschriftung je Wert (`.table--stack`) —
+  keine Spalte verschwindet hinter einem Querscroll.
+- **Porträt:** Der Porträtplatz (Deckblatt, Profil-Teaser) ist vorbereitet, bleibt aber unsichtbar,
+  solange `portrait` `null` ist. Bis dahin trägt ein neutrales Blatt mit dem Werdegang die Spalte.
 
-**Radius 0**, `--radius-sheet: 0px`, für alle Flächen, Sektionen, Tabs und Listen. Genau eine
-dokumentierte Ausnahme: `--radius-control: 2px` an Formularfeldern und Buttons — ein Eingabefeld soll
-wie ein Eingabefeld aussehen und nicht wie eine Kante. Kein `rounded-full`, kein `rounded-2xl`.
+## 5. Elevation, Form und Bewegung
 
-**Bewegung** nutzt `--ease-precise: cubic-bezier(0.32, 0.72, 0, 1)` bei 160 ms oder 240 ms und
-existiert an genau drei Stellen: Einblendung des Tab-Panels, Zustandswechsel des Scroll-Spy-Ticks,
-Hover-Farbwechsel. Kein Scroll-Reveal, keine Hero-Staffelung, keine Endlosanimation. `styles.css`
-enthält einen globalen `prefers-reduced-motion: reduce`-Block; jede animierende Datei hat zusätzlich
-einen lokalen Guard.
+### 5.1 Tiefe
 
-## 5. Komponenten
+Das System ist flach. Tiefe entsteht aus Tönung gegen Weiß und aus dem Überlappen der Blätter.
+Es gibt genau einen Schatten:
 
-### Section Wrapper
+- **Deckblatt-Schatten** (`box-shadow: 0 1.5rem 3rem -1.75rem rgb(29 39 49 / 0.35)`): nur unter dem
+  weißen Deckblatt im Hero-Stapel, zusammen mit einer Hairline-Kante.
 
-Der strukturelle Container aller Sektionen.
+**Die Ein-Schatten-Regel.** Kein anderes Element bekommt einen Schatten — keine Karten, keine
+Buttons, kein Hover-Heben per Schatten. Der Fokusring des Felds (3 px Tinte zu 22 %) ist ein Ring, kein Schatten.
 
-| Variante | Fläche | Text |
+### 5.2 Form
+
+- **Blatt:** weich gerundete Ecken (1,75rem). Ein Blatt mit Reiter verliert die Rundung an der Ecke,
+  aus der der Reiter wächst; wird der Reiter verschoben, bleibt sie erhalten.
+- **Reiter:** oben gerundet (0,875rem), unten offen, mit konkaven Übergängen (radiale Verläufe im
+  Blattton) — er wächst aus dem Blatt, statt aufzusitzen. Mindesthöhe 2,75rem.
+- **Steuerelemente:** Buttons und Felder 0,75rem; eingelegte weiße Tafeln im Blatt 1,25rem.
+- **Tonpunkt:** 0,5rem-Kreis in der reinen Logofarbe, immer `aria-hidden`.
+- **Icons:** eigene Strich-Icons, 24er-Raster, 1,75 px, runde Enden, immer dekorativ.
+
+**Die Reiter-Regel.** Ein Reiter benennt sein Blatt. Er darf eine echte Überschrift sein (h2/h3 im
+Reiter), aber nie ein Etikett, das als Dachzeile über einer Überschrift sitzt.
+
+### 5.3 Bewegung: „Register ziehen"
+
+| Token | Wert | Einsatz |
 |---|---|---|
-| `paper` | Leinen `#EFEDE7` | Graphit |
-| `shade` | Leinen-hell `#F9F8F5` | Graphit |
-| `graphite` | Graphit `#23262A` | Leinen — setzt zusätzlich `.on-graphite` |
+| `--ease-out` | `cubic-bezier(0.16, 1, 0.3, 1)` | Standard für alle Zustandswechsel |
+| `--ease-in-out` | `cubic-bezier(0.65, 0, 0.35, 1)` | reserviert |
+| `--dur-quick` | 160 ms | Hover-Farben, Button-Druck |
+| `--dur-base` | 280 ms | Reiter heben, Tab-Wechsel, Accordion, Menü |
+| `--dur-slow` | 640 ms | das eine inszenierte Moment |
 
-Innen `.sheet` (max. 78 rem, Innenabstand 1,25 rem → 2,5 rem → 4 rem). Vertikaler Abstand
-`normal` 2,5/4/5 rem, `large` 3,5/5/7 rem.
+- **Das eine Moment:** Beim Laden setzt sich der Hero-Stapel einmal Blatt für Blatt
+  (`sheet-settle`, 2,25rem, 90 ms Versatz je Blatt).
+- **Reiter heben:** Hero-Blätter heben sich bei Hover/Fokus um 0,5rem; nicht gewählte Leistungs-Reiter
+  stecken 0,5rem tiefer im Ordner.
+- **Tab-Wechsel:** Das Panel färbt seine Fläche in den neuen Ton um (`background-color`), der Inhalt
+  rückt 0,75rem nach (`panel-in`).
+- **Scroll:** Reiter heben sich, wenn ihr Blatt ins Bild kommt (`animation-timeline: view()`) — nur wo
+  unterstützt, sonst stehen sie einfach. Die einzige Bewegung beim Scrollen.
 
-### Doppelstrich und Section-Mark
+**Die Kontrast-in-jedem-Frame-Regel.** Animiert wird nur `transform`, nie `opacity`. Inhalte sind ohne
+Animation sichtbar; Bewegung kommt nur obendrauf, und der Kontrast gilt auch mitten in der Animation.
 
-**Die Doppelstrich-Regel.** Jede Sektion öffnet mit dem Doppelstrich: 40 px breit, 2 px Graphit,
-3 px Abstand, 1 px in der Bereichsfarbe. Darunter das Mono-Label, optional links in der Randspalte
-die Mono-Referenz. Genau **einmal** pro Sektion — deshalb darf er nicht inflationär werden.
-Herleitung: der Abschlussstrich unter der geprüften Endsumme. Auf Graphit invertiert der obere
-Strich zu Leinen.
+**Reduzierte Bewegung:** keine Wege (Animationen auf 0,01 ms, kein Button-Druck, kein Pfeilgleiten,
+kein Scroll-Reiter), aber Farb- und Zustandswechsel bleiben.
 
-### Randspalte
+## 6. Komponenten
 
-**Die Randspalten-Regel.** Ab 1024 px liegt jede Sektion auf einem 12-Spalten-Raster: Spalte 1–2 ist
-die Randspalte (Mono-Referenz, Jahreszahl, Normzitat, Scroll-Spy), Spalte 3–12 der Inhalt. Die
-Randspalte enthält nie Fließtext, der Inhalt beginnt nie in Spalte 1. Unterhalb von 1024 px fällt die
-Randspalte über den Inhalt. Das ist die Layout-Signatur, an der man diese Seite erkennt.
+### Registerblatt (`app-register-sheet`)
+Das tragende Element. Getönte Fläche über `tone`, optionaler Reiter über `tabbed`, Reiterlage über
+`tabAt`. Der Reiterinhalt kommt per `[sheetTab]`-Slot, damit er eine echte Überschrift sein kann.
+Tonpunkt vor dem Reitertext. Blätter stehen einzeln oder in `.sheet-stack`, nie in einem Karten-Raster.
 
-### Rule Link
+### Hero-Stapel und Deckblatt
+Vier getönte Blätter als Navigationsliste (`nav` „Leistungsbereiche"), jedes ein Link auf seinen
+Bereich; Fokus zeigt den Ring am Reiter. Davor das weiße Deckblatt mit Name (Bricolage,
+`clamp(1.5rem, 1vw + 1.2rem, 1.875rem)`), Rolle, Fakten als `dl` — und dem einzigen Schatten.
 
-Der einzige CTA-Typ: ein Textlink mit 1-px-Unterlinie, kein Button. Mono, 0.8125 rem, versal,
-Unterlinie in `--color-rule`; im Hover wechseln Text und Linie in die Bereichsfarbe. Fokus:
-2 px Outline, 3 px Offset.
+### Aktionen (`app-action-link`)
+- **Primär:** Tinte gefüllt, weißer Text, 3rem hoch, Radius 0,75rem, Pfeil-Icon. Hover `ink-hover`,
+  Druck `scale(0.98)`.
+- **Ruhig:** weiß mit Control-Rand, Hover neutral (Footer).
+- **Klein:** 2,5rem (Kopf).
+- **Textlink:** Tinte, 600, Unterstreichung 1 px mit 45 % Deckkraft, Hover in `--tone-ink` —
+  also im Ton des Blatts, in dem er steht. Mindesthöhe 2,75rem.
+- Der Pfeil gleitet beim Hover 3 px nach vorn.
 
-**Eine CTA pro Sektion.** Zwei gleichrangige Handlungsaufforderungen bedeuten, dass die Hierarchie
-nicht stimmt.
+### Leistungs-Reiter (`app-service-tabs`)
+ARIA-Tablist mit Pfeiltastensteuerung. Jeder Reiter trägt seinen Ton; der gewählte steht voll oben,
+die anderen stecken tiefer. Das Panel ist ein Blatt im Ton des gewählten Bereichs; Blöcke darin
+trennt eine Linie in `--tone-ink` zu 22 %. Mobil (≤ 640 px) Kurztitel, voller Titel als `aria-label`.
 
-### Zeilenraster statt Karten
+### Prüfungspflicht-Check (`app-audit-check`)
+Formular auf der Check-Tönung, Schwellen-Tabelle auf eingelegter weißer Tafel (1,25rem).
+- **Feld:** weiß, 1 px Control-Rand, 3rem hoch, Tabellenziffern. Hover `ink-soft`, Fokus Tintenrand
+  plus 3-px-Ring. Fehler: Rand `pruefung-deep` in 2 px plus Fehlertext mit `role="alert"`.
+- **Überschrittene Zeile:** Check-Tönung als Hinterlegung plus das Wort „überschritten".
+- **Ergebnis:** Rahmen in `--tone-ink` zu 30 %, rückt mit `panel-in` nach.
 
-Listenartige Inhalte werden nicht zu Karten, sondern zu Zeilen mit 1-px-Oberlinie (`.rule-row`):
-Werdegang, FAQ, Leistungspunkte, Schwellenwerttabelle. `DefinitionListComponent` rendert ein echtes
-`<dl>`. Es gibt in diesem System keine Boxen mit Rahmen.
+### Definitionsliste und FAQ
+Zeilen statt Karten: Hairline oben, Titel in `.t-h3`, Beschreibung in Ink-soft; ab 768 px optional
+zweispaltig. FAQ auf nativem `details`/`summary`, Höhe animiert über `::details-content`, Plus-Icon
+im neutralen Kreis dreht sich beim Öffnen um 45°.
 
-### Formular
+### Navigation
+Weißer Sticky-Kopf: Name in Bricolage 1,1875rem, darunter Rolle und Ort in Ink-soft. Links mit
+neutralem Hover-Grund; aktive Seite mit 2-px-Unterstrich, der per `scaleX` einfährt. Kleiner
+primärer Button „Erstgespräch". Mobil: Menü-Button (2,75rem), ausfahrende Liste mit großen
+Bricolage-Links und Hairlines.
 
-Nur im Prüfungspflicht-Check. Transparente Fläche auf Leinen, 1 px `--color-rule`, Radius 2 px,
-Inhalt in Mono mit Tabellenziffern. Fokus: 2 px Outline in der Bereichsfarbe. Fehler werden zusätzlich
-über eine 3 px starke linke Kante markiert, nicht nur über Farbe.
+### Footer
+Vier kleine neutrale Reiter mit je einem Tonpunkt der vier Bereiche (rein dekorativ) auf einer
+neutralen Fläche — das Ordner-Motiv als Abschluss jeder Seite.
 
-## 6. Do's and Don'ts
+## 7. Do's and Don'ts
 
 ### Do
-
-- **Do** die Logofarbe je Bereich konsequent durchhalten: Orange = Prüfung, Blau = Beratung, Grün = Steuern, Gelb = Check.
-- **Do** auf hellem Grund die `-on-paper`-Variante nutzen, auf Graphit die `-on-graphite`-Variante.
-- **Do** jede Sektion mit genau einem Doppelstrich und einem Mono-Label öffnen.
-- **Do** Marginalien in die Randspalte setzen und den Inhalt in Spalte 3–12 beginnen.
-- **Do** Zahlen, Jahreszahlen, Beträge und Normzitate in IBM Plex Mono setzen.
-- **Do** Listen als Zeilenraster mit 1-px-Oberlinie bauen.
-- **Do** alles linksbündig setzen.
-- **Do** `prefers-reduced-motion` in jeder animierenden Datei respektieren.
-- **Do** sämtliche Texte und ARIA-Attribute auf Deutsch halten.
-- **Do** `ChangeDetectionStrategy.OnPush` in jeder Komponente setzen.
-- **Do** `input()` und `output()` statt Decorators verwenden.
-- **Do** Anker über das `host`-Objekt im Decorator setzen, nicht über `@HostBinding`.
-- **Do** fehlende Inhalte hinter `@if`-Guards verbergen.
+- **Do** jedem Bereich seine Farbe geben und nur ihm: Orange Prüfung, Blau Beratung, Grün Steuern, Gelb Check.
+- **Do** Text im Ton immer in der tiefen Variante setzen (`--tone-ink`), die reine Logofarbe nur als Marke.
+- **Do** Inhalte auf Registerblättern ordnen; Reiter versetzen, damit Stapel wie Trennblätter wirken.
+- **Do** einen Reiter, wenn er Text trägt, zur echten Überschrift seines Blatts machen.
+- **Do** nur `transform` animieren und jede Bewegung mit einem Reduced-Motion-Pfad versehen.
+- **Do** neue Display-Texte am längsten Kompositum bei 320 px prüfen.
+- **Do** Fokus immer sichtbar halten: 2 px Tinte, 3 px Abstand.
+- **Do** den Porträtplatz leer lassen, bis ein freigegebenes Foto vorliegt.
 
 ### Don't
-
-- **Don't** eine Logofarbe als Fläche über 4 px einsetzen — auch nicht als Hero-Hintergrund.
-- **Don't** eine reine Logofarbe als Text auf Leinen setzen; keine erreicht dort 4,5:1.
-- **Don't** zwei Bereichsfarben nebeneinander zeigen, außer im Signet.
-- **Don't** `box-shadow` verwenden.
-- **Don't** `border-radius` verwenden, außer den 2 px an Formularfeldern und Buttons.
-- **Don't** Karten mit Rahmen bauen — das System kennt nur Linien.
-- **Don't** Kursiv, Serif oder eine dritte Schriftfamilie einführen.
-- **Don't** Gewicht über 600 verwenden, außer im Verdikt des Prüfungspflicht-Checks.
-- **Don't** Fließtext in Mono setzen.
-- **Don't** Headlines oder Textblöcke zentrieren.
-- **Don't** Scroll-Reveal, Blur-Blobs, Verläufe oder dekorative Icons einsetzen.
-- **Don't** mehr als eine CTA pro Sektion setzen.
-- **Don't** Grün-Rot-Ampeln als alleinigen Bedeutungsträger verwenden.
-- **Don't** `ngClass` oder `ngStyle` benutzen — `[class.x]` und `[style.x]` reichen.
-- **Don't** `standalone: true` in Decorators schreiben (ab Angular v20 Standard).
-- **Don't** Platzhalter in den gerenderten Output lassen.
+- **Don't** eine Logofarbe ohne Bereich einsetzen oder Seiten „bunt" machen; Neutrales bleibt weiß oder neutral.
+- **Don't** Orange oder Gelb als Textfarbe verwenden (3,2:1 bzw. 2,2:1 auf Weiß).
+- **Don't** einen Reiter als Etikett oder Dachzeile über eine Überschrift setzen.
+- **Don't** `opacity` animieren oder Inhalte erst per Einblenden sichtbar machen.
+- **Don't** Karten-Raster, Icon-Kacheln, Monospace-Labels oder Abschnittsnummern einführen.
+- **Don't** weitere Schatten hinzufügen; der Deckblatt-Schatten bleibt der einzige.
+- **Don't** Tabellen auf schmalen Displays quer scrollen lassen; `.table--stack` nutzen.
+- **Don't** Farbe allein Bedeutung tragen lassen.

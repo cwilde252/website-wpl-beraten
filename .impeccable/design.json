@@ -1,0 +1,524 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-22T19:07:27.245357+00:00",
+  "title": "Design-System: WPL — Wiebke Lefevre",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Weißes Papier",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "oklch(15% 0.000 89.9)",
+          "oklch(26% 0.000 89.9)",
+          "oklch(37% 0.000 89.9)",
+          "oklch(48% 0.000 89.9)",
+          "oklch(59% 0.000 89.9)",
+          "oklch(70% 0.000 89.9)",
+          "oklch(82% 0.000 89.9)",
+          "oklch(95% 0.000 89.9)"
+        ]
+      },
+      "neutral": {
+        "role": "neutral",
+        "displayName": "Neutrales Blatt",
+        "canonical": "#F3F4F1",
+        "tonalRamp": [
+          "oklch(15% 0.004 121.6)",
+          "oklch(26% 0.004 121.6)",
+          "oklch(37% 0.004 121.6)",
+          "oklch(48% 0.004 121.6)",
+          "oklch(59% 0.004 121.6)",
+          "oklch(70% 0.004 121.6)",
+          "oklch(82% 0.004 121.6)",
+          "oklch(95% 0.004 121.6)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinte Blaugrau",
+        "canonical": "#1D2731",
+        "tonalRamp": [
+          "oklch(15% 0.023 248.7)",
+          "oklch(26% 0.023 248.7)",
+          "oklch(37% 0.023 248.7)",
+          "oklch(48% 0.023 248.7)",
+          "oklch(59% 0.023 248.7)",
+          "oklch(70% 0.023 248.7)",
+          "oklch(82% 0.023 248.7)",
+          "oklch(95% 0.023 248.7)"
+        ]
+      },
+      "ink-hover": {
+        "role": "neutral",
+        "displayName": "Tinte hell",
+        "canonical": "#2E3D4B",
+        "tonalRamp": [
+          "oklch(15% 0.031 247.0)",
+          "oklch(26% 0.031 247.0)",
+          "oklch(37% 0.031 247.0)",
+          "oklch(48% 0.031 247.0)",
+          "oklch(59% 0.031 247.0)",
+          "oklch(70% 0.031 247.0)",
+          "oklch(82% 0.031 247.0)",
+          "oklch(95% 0.031 247.0)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Tinte leise",
+        "canonical": "#4A5561",
+        "tonalRamp": [
+          "oklch(15% 0.024 250.7)",
+          "oklch(26% 0.024 250.7)",
+          "oklch(37% 0.024 250.7)",
+          "oklch(48% 0.024 250.7)",
+          "oklch(59% 0.024 250.7)",
+          "oklch(70% 0.024 250.7)",
+          "oklch(82% 0.024 250.7)",
+          "oklch(95% 0.024 250.7)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#E1E4E0",
+        "tonalRamp": [
+          "oklch(15% 0.006 137.8)",
+          "oklch(26% 0.006 137.8)",
+          "oklch(37% 0.006 137.8)",
+          "oklch(48% 0.006 137.8)",
+          "oklch(59% 0.006 137.8)",
+          "oklch(70% 0.006 137.8)",
+          "oklch(82% 0.006 137.8)",
+          "oklch(95% 0.006 137.8)"
+        ]
+      },
+      "control": {
+        "role": "neutral",
+        "displayName": "Steuerrand",
+        "canonical": "#7D868F",
+        "tonalRamp": [
+          "oklch(15% 0.017 248.1)",
+          "oklch(26% 0.017 248.1)",
+          "oklch(37% 0.017 248.1)",
+          "oklch(48% 0.017 248.1)",
+          "oklch(59% 0.017 248.1)",
+          "oklch(70% 0.017 248.1)",
+          "oklch(82% 0.017 248.1)",
+          "oklch(95% 0.017 248.1)"
+        ]
+      },
+      "pruefung": {
+        "role": "primary",
+        "displayName": "Prüfungs-Orange (Marke)",
+        "canonical": "#D4780A",
+        "tonalRamp": [
+          "oklch(15% 0.060 60.2)",
+          "oklch(26% 0.152 60.2)",
+          "oklch(37% 0.152 60.2)",
+          "oklch(48% 0.152 60.2)",
+          "oklch(59% 0.152 60.2)",
+          "oklch(70% 0.152 60.2)",
+          "oklch(82% 0.152 60.2)",
+          "oklch(95% 0.060 60.2)"
+        ]
+      },
+      "pruefung-tint": {
+        "role": "primary",
+        "displayName": "Prüfungs-Tönung",
+        "canonical": "#FDEDDA",
+        "tonalRamp": [
+          "oklch(15% 0.031 72.2)",
+          "oklch(26% 0.031 72.2)",
+          "oklch(37% 0.031 72.2)",
+          "oklch(48% 0.031 72.2)",
+          "oklch(59% 0.031 72.2)",
+          "oklch(70% 0.031 72.2)",
+          "oklch(82% 0.031 72.2)",
+          "oklch(95% 0.031 72.2)"
+        ]
+      },
+      "pruefung-deep": {
+        "role": "primary",
+        "displayName": "Prüfungs-Orange tief",
+        "canonical": "#8F4A00",
+        "tonalRamp": [
+          "oklch(15% 0.060 56.8)",
+          "oklch(26% 0.117 56.8)",
+          "oklch(37% 0.117 56.8)",
+          "oklch(48% 0.117 56.8)",
+          "oklch(59% 0.117 56.8)",
+          "oklch(70% 0.117 56.8)",
+          "oklch(82% 0.117 56.8)",
+          "oklch(95% 0.060 56.8)"
+        ]
+      },
+      "beratung": {
+        "role": "secondary",
+        "displayName": "Beratungs-Blau (Marke)",
+        "canonical": "#2E7DB8",
+        "tonalRamp": [
+          "oklch(15% 0.060 244.9)",
+          "oklch(26% 0.119 244.9)",
+          "oklch(37% 0.119 244.9)",
+          "oklch(48% 0.119 244.9)",
+          "oklch(59% 0.119 244.9)",
+          "oklch(70% 0.119 244.9)",
+          "oklch(82% 0.119 244.9)",
+          "oklch(95% 0.060 244.9)"
+        ]
+      },
+      "beratung-tint": {
+        "role": "secondary",
+        "displayName": "Beratungs-Tönung",
+        "canonical": "#E5EFF8",
+        "tonalRamp": [
+          "oklch(15% 0.016 245.1)",
+          "oklch(26% 0.016 245.1)",
+          "oklch(37% 0.016 245.1)",
+          "oklch(48% 0.016 245.1)",
+          "oklch(59% 0.016 245.1)",
+          "oklch(70% 0.016 245.1)",
+          "oklch(82% 0.016 245.1)",
+          "oklch(95% 0.016 245.1)"
+        ]
+      },
+      "beratung-deep": {
+        "role": "secondary",
+        "displayName": "Beratungs-Blau tief",
+        "canonical": "#1E5E8E",
+        "tonalRamp": [
+          "oklch(15% 0.060 245.4)",
+          "oklch(26% 0.101 245.4)",
+          "oklch(37% 0.101 245.4)",
+          "oklch(48% 0.101 245.4)",
+          "oklch(59% 0.101 245.4)",
+          "oklch(70% 0.101 245.4)",
+          "oklch(82% 0.101 245.4)",
+          "oklch(95% 0.060 245.4)"
+        ]
+      },
+      "steuern": {
+        "role": "tertiary",
+        "displayName": "Steuer-Grün (Marke)",
+        "canonical": "#2D8B57",
+        "tonalRamp": [
+          "oklch(15% 0.060 155.1)",
+          "oklch(26% 0.119 155.1)",
+          "oklch(37% 0.119 155.1)",
+          "oklch(48% 0.119 155.1)",
+          "oklch(59% 0.119 155.1)",
+          "oklch(70% 0.119 155.1)",
+          "oklch(82% 0.119 155.1)",
+          "oklch(95% 0.060 155.1)"
+        ]
+      },
+      "steuern-tint": {
+        "role": "tertiary",
+        "displayName": "Steuer-Tönung",
+        "canonical": "#E2F1E7",
+        "tonalRamp": [
+          "oklch(15% 0.021 156.8)",
+          "oklch(26% 0.021 156.8)",
+          "oklch(37% 0.021 156.8)",
+          "oklch(48% 0.021 156.8)",
+          "oklch(59% 0.021 156.8)",
+          "oklch(70% 0.021 156.8)",
+          "oklch(82% 0.021 156.8)",
+          "oklch(95% 0.021 156.8)"
+        ]
+      },
+      "steuern-deep": {
+        "role": "tertiary",
+        "displayName": "Steuer-Grün tief",
+        "canonical": "#1C6A40",
+        "tonalRamp": [
+          "oklch(15% 0.060 155.1)",
+          "oklch(26% 0.101 155.1)",
+          "oklch(37% 0.101 155.1)",
+          "oklch(48% 0.101 155.1)",
+          "oklch(59% 0.101 155.1)",
+          "oklch(70% 0.101 155.1)",
+          "oklch(82% 0.101 155.1)",
+          "oklch(95% 0.060 155.1)"
+        ]
+      },
+      "check": {
+        "role": "tertiary",
+        "displayName": "Check-Gelb (Marke)",
+        "canonical": "#D4A917",
+        "tonalRamp": [
+          "oklch(15% 0.060 89.6)",
+          "oklch(26% 0.150 89.6)",
+          "oklch(37% 0.150 89.6)",
+          "oklch(48% 0.150 89.6)",
+          "oklch(59% 0.150 89.6)",
+          "oklch(70% 0.150 89.6)",
+          "oklch(82% 0.150 89.6)",
+          "oklch(95% 0.060 89.6)"
+        ]
+      },
+      "check-tint": {
+        "role": "tertiary",
+        "displayName": "Check-Tönung",
+        "canonical": "#FBF2CF",
+        "tonalRamp": [
+          "oklch(15% 0.047 95.2)",
+          "oklch(26% 0.047 95.2)",
+          "oklch(37% 0.047 95.2)",
+          "oklch(48% 0.047 95.2)",
+          "oklch(59% 0.047 95.2)",
+          "oklch(70% 0.047 95.2)",
+          "oklch(82% 0.047 95.2)",
+          "oklch(95% 0.047 95.2)"
+        ]
+      },
+      "check-deep": {
+        "role": "tertiary",
+        "displayName": "Check-Gelb tief",
+        "canonical": "#6F5300",
+        "tonalRamp": [
+          "oklch(15% 0.060 85.9)",
+          "oklch(26% 0.094 85.9)",
+          "oklch(37% 0.094 85.9)",
+          "oklch(48% 0.094 85.9)",
+          "oklch(59% 0.094 85.9)",
+          "oklch(70% 0.094 85.9)",
+          "oklch(82% 0.094 85.9)",
+          "oklch(95% 0.060 85.9)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero-Headline und Schluss-Aufruf; an der Spaltenbreite bemessen, damit „Wirtschaftsprüfung“ ab 320 px ungetrennt passt."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Abschnittsüberschriften (h2)."
+      },
+      "title": {
+        "displayName": "Titel",
+        "purpose": "Blocküberschriften, Claims im Blatt, Listentitel (h3)."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Ein Satz unter Headlines, max. 60ch."
+      },
+      "body": {
+        "displayName": "Fließtext",
+        "purpose": "Text, max. 68ch."
+      },
+      "label": {
+        "displayName": "Reiter / Label",
+        "purpose": "Reitertext, Feldbeschriftungen, Button-Text."
+      }
+    },
+    "shadows": [
+      {
+        "name": "cover-sheet",
+        "value": "0 1.5rem 3rem -1.75rem rgb(29 39 49 / 0.35)",
+        "purpose": "Einziger Schatten: das weiße Deckblatt im Hero-Stapel."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Standard für alle Zustandswechsel."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Reserviert."
+      },
+      {
+        "name": "dur-quick",
+        "value": "160ms",
+        "purpose": "Hover-Farben, Button-Druck."
+      },
+      {
+        "name": "dur-base",
+        "value": "280ms",
+        "purpose": "Reiter heben, Tab-Wechsel, Accordion, Menü."
+      },
+      {
+        "name": "dur-slow",
+        "value": "640ms",
+        "purpose": "Das eine Moment: Hero-Stapel setzt sich Blatt für Blatt (90 ms Versatz)."
+      },
+      {
+        "name": "sheet-settle",
+        "value": "translateY(2.25rem) → 0",
+        "purpose": "Hero-Stapel beim Laden. Nur transform."
+      },
+      {
+        "name": "panel-in",
+        "value": "translateY(0.75rem) → 0",
+        "purpose": "Tab-Panel und Check-Ergebnis. Nur transform."
+      },
+      {
+        "name": "tab-rise",
+        "value": "translateY(0.6rem) → 0, animation-timeline: view()",
+        "purpose": "Reiter heben sich beim Scrollen, nur wo unterstützt und ohne reduzierte Bewegung."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primärer Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Haupt-Handlungsaufforderung, z. B. „Erstgespräch vereinbaren“.",
+      "html": "<a class=\"ds-btn\" href=\"#\"><span>Erstgespräch vereinbaren</span><svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h13\"/><path d=\"m13 6 6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:.625rem;min-height:3rem;padding:.8rem 1.35rem;border:1px solid transparent;border-radius:.75rem;background:#1d2731;color:#fff;font-family:'Figtree Variable',system-ui,sans-serif;font-size:1rem;font-weight:600;line-height:1.2;text-decoration:none;transition:background-color 160ms cubic-bezier(.16,1,.3,1),transform 160ms cubic-bezier(.16,1,.3,1)}.ds-btn:hover{background:#2e3d4b}.ds-btn:active{transform:scale(.98)}.ds-btn:focus-visible{outline:2px solid #1d2731;outline-offset:3px}.ds-arrow{width:1.1em;height:1.1em;transition:transform 280ms cubic-bezier(.16,1,.3,1)}.ds-btn:hover .ds-arrow{transform:translateX(3px)}"
+    },
+    {
+      "name": "Ruhiger Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Zweitrangige Aktion auf neutraler Fläche (Footer).",
+      "html": "<a class=\"ds-btn-quiet\" href=\"#\">Erstgespräch vereinbaren</a>",
+      "css": ".ds-btn-quiet{display:inline-flex;align-items:center;min-height:3rem;padding:.8rem 1.35rem;border:1px solid #7d868f;border-radius:.75rem;background:#fff;color:#1d2731;font-family:'Figtree Variable',system-ui,sans-serif;font-weight:600;text-decoration:none;transition:background-color 160ms cubic-bezier(.16,1,.3,1)}.ds-btn-quiet:hover{background:#f3f4f1}.ds-btn-quiet:focus-visible{outline:2px solid #1d2731;outline-offset:3px}"
+    },
+    {
+      "name": "Textlink",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Sekundäre Aktion; färbt sich beim Hover in den Ton des Blatts.",
+      "html": "<div class=\"ds-tone-beratung\" style=\"padding:1rem\"><a class=\"ds-link\" href=\"#\">Mehr zu Beratung →</a></div>",
+      "css": ".ds-tone-beratung{background:#e5eff8;--tone-ink:#1e5e8e}.ds-link{display:inline-flex;align-items:center;min-height:2.75rem;color:#1d2731;font-family:'Figtree Variable',system-ui,sans-serif;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.3em;text-decoration-color:rgb(29 39 49 / .45);transition:color 160ms cubic-bezier(.16,1,.3,1)}.ds-link:hover{color:var(--tone-ink,#1d2731);text-decoration-color:currentColor}.ds-link:focus-visible{outline:2px solid #1d2731;outline-offset:3px}"
+    },
+    {
+      "name": "Registerblatt mit Reiter",
+      "kind": "card",
+      "refersTo": "sheet-pruefung",
+      "description": "Das tragende Element: getönte Fläche, Reiter wächst mit konkavem Übergang heraus und ist eine echte Überschrift.",
+      "html": "<div class=\"ds-sheet\"><h3 class=\"ds-tab\"><span class=\"ds-dot\" aria-hidden=\"true\"></span>Wirtschaftsprüfung</h3><p class=\"ds-claim\">Ein Prüfungsansatz, der zur Größe Ihres Unternehmens passt.</p></div>",
+      "css": ".ds-sheet{position:relative;margin-top:2.75rem;background:#fdedda;border-radius:0 1.75rem 1.75rem 1.75rem;padding:clamp(1.5rem,4vw,3.5rem);color:#1d2731}.ds-tab{position:absolute;bottom:100%;left:0;margin:0;display:inline-flex;align-items:center;gap:.55rem;min-height:2.75rem;padding:.55rem 1.15rem .35rem;box-sizing:border-box;background:#fdedda;color:#8f4a00;border-radius:.875rem .875rem 0 0;font-family:'Figtree Variable',system-ui,sans-serif;font-size:.9375rem;font-weight:650;line-height:1.2;white-space:nowrap}.ds-tab::after{content:'';position:absolute;bottom:0;left:100%;width:.875rem;height:.875rem;background:radial-gradient(circle at 100% 0,transparent calc(.875rem - .5px),#fdedda .875rem)}.ds-dot{width:.5rem;height:.5rem;border-radius:50%;background:#d4780a}.ds-claim{margin:0;font-family:'Bricolage Grotesque Variable',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-.015em;line-height:1.2}"
+    },
+    {
+      "name": "Deckblatt",
+      "kind": "card",
+      "refersTo": "cover",
+      "description": "Weißes Deckblatt vorn im Hero-Stapel; trägt den einzigen Schatten des Systems.",
+      "html": "<div class=\"ds-cover\"><p class=\"ds-cover-name\">Wiebke Lefevre</p><p class=\"ds-soft\">Wirtschaftsprüferin</p><dl class=\"ds-facts\"><div><dt>Ort</dt><dd>Rottweil</dd></div><div><dt>Selbständig</dt><dd>seit 2026</dd></div></dl></div>",
+      "css": ".ds-cover{padding:clamp(1.5rem,3vw,2.25rem);background:#fff;border:1px solid #e1e4e0;border-radius:1.75rem;box-shadow:0 1.5rem 3rem -1.75rem rgb(29 39 49 / .35);color:#1d2731;font-family:'Figtree Variable',system-ui,sans-serif}.ds-cover p{margin:0}.ds-cover-name{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:1.75rem;font-weight:600;letter-spacing:-.025em;line-height:1.1}.ds-soft{color:#4a5561}.ds-facts{display:flex;gap:.75rem 2rem;margin:1.5rem 0 0;padding-top:1.25rem;border-top:1px solid #e1e4e0}.ds-facts dt{font-size:.875rem;color:#4a5561}.ds-facts dd{margin:0;font-weight:600}"
+    },
+    {
+      "name": "Leistungs-Reiter",
+      "kind": "nav",
+      "refersTo": "service-tabs",
+      "description": "Tablist: gewählter Reiter steht oben, die anderen stecken tiefer; Panel färbt sich in den Ton.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-rtab ds-p\" role=\"tab\" aria-selected=\"true\"><span class=\"ds-dot\"></span>Wirtschaftsprüfung</button><button class=\"ds-rtab ds-b\" role=\"tab\" aria-selected=\"false\"><span class=\"ds-dot\"></span>Beratung</button><button class=\"ds-rtab ds-s\" role=\"tab\" aria-selected=\"false\"><span class=\"ds-dot\"></span>Steuern</button></div><div class=\"ds-panel\">Panel im Ton des gewählten Bereichs</div>",
+      "css": ".ds-tabs{display:flex;gap:.375rem;align-items:flex-end}.ds-rtab{display:inline-flex;align-items:center;gap:.6rem;min-height:3.25rem;padding:.75rem 1.25rem .6rem;border:0;border-radius:.875rem .875rem 0 0;font-family:'Figtree Variable',system-ui,sans-serif;font-size:1rem;font-weight:650;cursor:pointer;transform:translateY(.5rem);transition:transform 280ms cubic-bezier(.16,1,.3,1)}.ds-rtab:hover{transform:translateY(.2rem)}.ds-rtab[aria-selected=true]{transform:none;padding-bottom:.85rem}.ds-rtab:focus-visible{outline:2px solid #1d2731;outline-offset:-4px}.ds-p{background:#fdedda;color:#8f4a00}.ds-p .ds-dot{background:#d4780a}.ds-b{background:#e5eff8;color:#1e5e8e}.ds-b .ds-dot{background:#2e7db8}.ds-s{background:#e2f1e7;color:#1c6a40}.ds-s .ds-dot{background:#2d8b57}.ds-dot{width:.5rem;height:.5rem;border-radius:50%}.ds-panel{position:relative;background:#fdedda;border-radius:0 1.75rem 1.75rem 1.75rem;padding:2rem;color:#1d2731;font-family:'Figtree Variable',system-ui,sans-serif}"
+    },
+    {
+      "name": "Eingabefeld",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Zahlenfeld im Prüfungspflicht-Check; Fehler über Randstärke und Text.",
+      "html": "<label class=\"ds-label\" for=\"ds-f\">Bilanzsumme in Euro</label><input id=\"ds-f\" class=\"ds-field\" inputmode=\"numeric\" value=\"7.500.000\"><input class=\"ds-field\" aria-invalid=\"true\" value=\"abc\" style=\"margin-top:.75rem\" aria-label=\"Fehlerbeispiel\"><p class=\"ds-error\">Bitte eine Zahl eingeben.</p>",
+      "css": ".ds-label{display:block;margin-bottom:.4rem;font-family:'Figtree Variable',system-ui,sans-serif;font-size:.9375rem;font-weight:600;color:#1d2731}.ds-field{display:block;width:100%;box-sizing:border-box;min-height:3rem;padding:.65rem .9rem;background:#fff;color:#1d2731;font-family:'Figtree Variable',system-ui,sans-serif;font-size:1.0625rem;font-variant-numeric:tabular-nums;border:1px solid #7d868f;border-radius:.75rem;transition:border-color 160ms cubic-bezier(.16,1,.3,1),box-shadow 160ms cubic-bezier(.16,1,.3,1)}.ds-field:hover{border-color:#4a5561}.ds-field:focus-visible{outline:none;border-color:#1d2731;box-shadow:0 0 0 3px rgb(29 39 49 / .22)}.ds-field[aria-invalid=true]{border-color:#8f4a00;border-width:2px}.ds-error{margin:.4rem 0 0;font-family:'Figtree Variable',system-ui,sans-serif;font-size:.9375rem;color:#8f4a00}"
+    },
+    {
+      "name": "Hauptnavigation",
+      "kind": "nav",
+      "refersTo": "header",
+      "description": "Weißer Sticky-Kopf: Name, Links mit einfahrendem Unterstrich, kleiner primärer Button.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\"><span class=\"ds-bn\">Wiebke Lefevre</span><span class=\"ds-br\">Wirtschaftsprüferin · Rottweil</span></a><span class=\"ds-links\"><a class=\"ds-nl is-active\" href=\"#\" aria-current=\"page\">Leistungen</a><a class=\"ds-nl\" href=\"#\">Über mich</a><a class=\"ds-nl\" href=\"#\">Kontakt</a></span></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1rem 0;background:#fff;font-family:'Figtree Variable',system-ui,sans-serif}.ds-brand{display:flex;flex-direction:column;color:#1d2731;text-decoration:none}.ds-bn{font-family:'Bricolage Grotesque Variable',sans-serif;font-size:1.1875rem;font-weight:650;letter-spacing:-.02em}.ds-br{font-size:.8125rem;color:#4a5561}.ds-links{display:flex;gap:.25rem}.ds-nl{position:relative;display:inline-flex;align-items:center;min-height:2.75rem;padding:0 .85rem;border-radius:.625rem;color:#1d2731;font-weight:550;text-decoration:none;transition:background-color 160ms}.ds-nl:hover{background:#f3f4f1}.ds-nl:focus-visible{outline:2px solid #1d2731;outline-offset:3px}.ds-nl::after{content:'';position:absolute;left:.85rem;right:.85rem;bottom:.45rem;height:2px;border-radius:2px;background:#1d2731;transform:scaleX(0);transform-origin:left;transition:transform 280ms cubic-bezier(.16,1,.3,1)}.ds-nl.is-active::after{transform:scaleX(1)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Der gut geführte Ordner",
+    "overview": "Die Website ist ein Ordner mit farbigen Registerblättern. Jeder Leistungsbereich hat sein Blatt, jedes Blatt seinen Reiter, und wer die Seite öffnet, greift den passenden Reiter. Das Bild ist fachlich ehrlich — Ordnung, Ablage, Nachvollziehbarkeit sind das Handwerk einer Prüferin — und es ist freundlich: weißes Papier, zarte Töne der vier Logofarben, weich gerundete Ecken.\n\nDas System verweigert die übliche Berater-Seite (Hero-Foto, Icon-Karten-Raster, Dunkelblau) ebenso wie das vorige dunkle Arbeitspapier. Es ist hell, ruhig, einladend und nicht überladen. Die Form trägt ohne Fotografie; ein Porträt kann später hinzukommen, ohne dass sich etwas verschiebt.",
+    "keyCharacteristics": [
+      "Weißes Papier als Grund, darauf Registerblätter in den Tönungen der vier Logofarben.",
+      "Farbe heißt Bereich: Orange Prüfung, Blau Beratung, Grün Steuern, Gelb Check. Alles andere neutral.",
+      "Reiter wachsen mit konkaven Übergängen aus dem Blatt und stehen versetzt wie echte Trennblätter.",
+      "Tinte in tiefem Blaugrau statt Schwarz; Bricolage Grotesque für Überschriften, Figtree für Text.",
+      "Flach bis auf einen einzigen weichen Schatten unter dem Deckblatt im Hero.",
+      "Bewegung heißt „Register ziehen\": nur Transform, nie Transparenz.",
+      "Keine Karten-Raster, keine Monospace-Labels, keine Abschnittsnummern."
+    ],
+    "rules": [
+      {
+        "name": "Die Bereichsfarben-Regel",
+        "body": "Farbe heißt Bereich: Orange gehört der Prüfung, Blau der Beratung, Grün den Steuern, Gelb dem Check. Was keinem Bereich gehört — Kopf, Navigation, Haltung, Profil, Schluss-Aufruf, Footer — bleibt weiß oder neutral. Eine Logofarbe als Schmuck ohne Bereich gibt es nicht.",
+        "section": "colors"
+      },
+      {
+        "name": "Die Markierungs-Regel",
+        "body": "Die reinen Logofarben (`#D4780A`, `#2E7DB8`, `#2D8B57`, `#D4A917`) sind nur Marken — der Tonpunkt im Reiter, die Punkte der Footer-Reiter —, nie Text. Orange erreicht auf Weiß nur 3,2:1, Gelb 2,2:1. Text im Ton nutzt immer die tiefe Variante.",
+        "section": "colors"
+      },
+      {
+        "name": "Die Ampel-Regel",
+        "body": "Farbe trägt nie allein eine Aussage. Im Check steht „überschritten\" als Wort in der Zeile, die gelbe Hinterlegung ist nur redundant; Feldfehler zeigen sich zusätzlich über die doppelte Randstärke (2 px) und einen Text. Prüfungspflicht ist kein Fehlerzustand: kein Rot, kein Grün für „gut\".",
+        "section": "colors"
+      },
+      {
+        "name": "Die Kompositum-Regel",
+        "body": "Die Display-Größe ist an der Spaltenbreite bemessen, nicht am Viewport allein: das längste Wort („Wirtschaftsprüfung\") passt ab 320 px ungetrennt — einspaltig bis 1024 px, danach in der 7/12-Spalte. Neue Display-Texte werden am längsten Kompositum geprüft; `.t-h3` hat `hyphens: auto` nur als Notbremse.",
+        "section": "typography"
+      },
+      {
+        "name": "Die Eine-Stimme-Regel",
+        "body": "Keine Monospace-Labels, keine Versalien-Etiketten, keine Abschnittsnummern. Zahlen bekommen Tabellenziffern, keinen Schriftwechsel.",
+        "section": "typography"
+      },
+      {
+        "name": "Die Ein-Schatten-Regel",
+        "body": "Kein anderes Element bekommt einen Schatten — keine Karten, keine Buttons, kein Hover-Heben per Schatten. Der Fokusring des Felds (3 px Tinte zu 22 %) ist ein Ring, kein Schatten.",
+        "section": "elevation"
+      },
+      {
+        "name": "Die Reiter-Regel",
+        "body": "Ein Reiter benennt sein Blatt. Er darf eine echte Überschrift sein (h2/h3 im Reiter), aber nie ein Etikett, das als Dachzeile über einer Überschrift sitzt.",
+        "section": "elevation"
+      },
+      {
+        "name": "Die Kontrast-in-jedem-Frame-Regel",
+        "body": "Animiert wird nur `transform`, nie `opacity`. Inhalte sind ohne Animation sichtbar; Bewegung kommt nur obendrauf, und der Kontrast gilt auch mitten in der Animation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do jedem Bereich seine Farbe geben und nur ihm: Orange Prüfung, Blau Beratung, Grün Steuern, Gelb Check.",
+      "Do Text im Ton immer in der tiefen Variante setzen (`--tone-ink`), die reine Logofarbe nur als Marke.",
+      "Do Inhalte auf Registerblättern ordnen; Reiter versetzen, damit Stapel wie Trennblätter wirken.",
+      "Do einen Reiter, wenn er Text trägt, zur echten Überschrift seines Blatts machen.",
+      "Do nur `transform` animieren und jede Bewegung mit einem Reduced-Motion-Pfad versehen.",
+      "Do neue Display-Texte am längsten Kompositum bei 320 px prüfen.",
+      "Do Fokus immer sichtbar halten: 2 px Tinte, 3 px Abstand.",
+      "Do den Porträtplatz leer lassen, bis ein freigegebenes Foto vorliegt."
+    ],
+    "donts": [
+      "Don't eine Logofarbe ohne Bereich einsetzen oder Seiten „bunt\" machen; Neutrales bleibt weiß oder neutral.",
+      "Don't Orange oder Gelb als Textfarbe verwenden (3,2:1 bzw. 2,2:1 auf Weiß).",
+      "Don't einen Reiter als Etikett oder Dachzeile über eine Überschrift setzen.",
+      "Don't `opacity` animieren oder Inhalte erst per Einblenden sichtbar machen.",
+      "Don't Karten-Raster, Icon-Kacheln, Monospace-Labels oder Abschnittsnummern einführen.",
+      "Don't weitere Schatten hinzufügen; der Deckblatt-Schatten bleibt der einzige.",
+      "Don't Tabellen auf schmalen Displays quer scrollen lassen; `.table--stack` nutzen.",
+      "Don't Farbe allein Bedeutung tragen lassen."
+    ]
+  }
+}
