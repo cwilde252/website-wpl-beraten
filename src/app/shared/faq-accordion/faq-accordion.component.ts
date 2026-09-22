@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { FaqItem } from '../../core/models/faq-item.model';
+import { IconComponent } from '../icon/icon.component';
 
 /**
  * Natives <details>/<summary>. Der Zustand liegt beim Browser — deshalb kein
@@ -8,7 +9,9 @@ import { FaqItem } from '../../core/models/faq-item.model';
  */
 @Component({
   selector: 'app-faq-accordion',
+  imports: [IconComponent],
   templateUrl: './faq-accordion.component.html',
+  styleUrl: './faq-accordion.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FaqAccordionComponent {

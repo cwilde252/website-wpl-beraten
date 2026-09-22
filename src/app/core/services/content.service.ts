@@ -38,23 +38,23 @@ export class ContentService {
   // ===== Headlines ========================================================
 
   getHomeHeadline(): DisplayHeadline {
-    return { lines: ['Prüfen.', 'Beraten.', 'Steuern.'] };
+    return { lines: ['Wirtschaftsprüfung', 'für den Mittelstand,', 'persönlich aus Rottweil.'] };
   }
 
   getHomeLead(): string {
-    return 'Wirtschaftsprüfung und Beratung für den Mittelstand — persönlich, pragmatisch und auf Augenhöhe.';
+    return 'Ich prüfe Jahresabschlüsse, berate zu Controlling und Organisation und beziehe Steuern in Ihre Planung ein.';
   }
 
   getLeistungenHeadline(): DisplayHeadline {
-    return { lines: ['Drei Perspektiven', 'auf dasselbe', 'Unternehmen.'] };
+    return { lines: ['Drei Bereiche,', 'ein Blick auf', 'Ihr Unternehmen.'] };
   }
 
   getUeberMichHeadline(): DisplayHeadline {
-    return { lines: ['Wiebke Lefevre,', 'Wirtschaftsprüferin', 'in Rottweil.'] };
+    return { lines: ['Ich bin Wiebke Lefevre,', 'Wirtschaftsprüferin in Rottweil.'] };
   }
 
   getKontaktHeadline(): DisplayHeadline {
-    return { lines: ['Reden wir', 'über Ihr Unternehmen.'] };
+    return { lines: ['Reden wir über', 'Ihr Unternehmen.'] };
   }
 
   // ===== Haltung ==========================================================
@@ -97,14 +97,14 @@ export class ContentService {
         slug: 'wirtschaftspruefung',
         accent: 'pruefung',
         title: 'Wirtschaftsprüfung',
-        claim: 'Prüfen mit Verstand — nicht nach Schema F.',
+        claim: 'Ein Prüfungsansatz, der zur Größe Ihres Unternehmens passt.',
         intro:
-          'Ob gesetzliche Pflichtprüfung oder freiwillige Prüfung des Jahresabschlusses: Mein Prüfungsansatz ist auf die Größe und Komplexität Ihres Unternehmens zugeschnitten. Keine überdimensionierten Checklisten, sondern echtes Reindenken in Ihr Unternehmen.',
+          'Ob gesetzliche Pflichtprüfung oder freiwillige Prüfung des Jahresabschlusses: Ich richte den Prüfungsansatz an der Größe und Komplexität Ihres Unternehmens aus und konzentriere mich auf das Wesentliche.',
         blocks: [
           {
             title: 'Jahresabschlussprüfung',
             paragraphs: [
-              'Als kleine Kanzlei biete ich Ihnen einen unkomplizierten, pragmatischen Prüfungsansatz. Der Fokus liegt auf dem Wesentlichen, angepasst an die Besonderheiten und Umstände Ihres Unternehmens.',
+              'Als kleine Kanzlei arbeite ich unkompliziert und mit kurzen Wegen. Die Prüfung richtet sich nach den Besonderheiten und Umständen Ihres Unternehmens.',
             ],
             points: [
               'Gesetzliche Pflichtprüfung und freiwillige Prüfung',
@@ -138,7 +138,7 @@ export class ContentService {
         slug: 'beratung',
         accent: 'beratung',
         title: 'Beratung',
-        claim: 'Gute Entscheidungen sind kein Zufall — sie sind gut vorbereitet.',
+        claim: 'Gute Entscheidungen brauchen gute Vorbereitung.',
         intro:
           'Eine Buchhaltung ist kein Zahlenfriedhof, sondern eine wertvolle Informationsquelle. Machen wir sie gemeinsam nutzbar.',
         blocks: [
@@ -190,7 +190,7 @@ export class ContentService {
         slug: 'steuern',
         accent: 'steuern',
         title: 'Steuern',
-        claim: 'Steuern mitdenken — nicht nur zahlen.',
+        claim: 'Steuern als fester Teil Ihrer Planung.',
         intro:
           'Unternehmenssteuerung heißt: Informationen gewinnen und aufbereiten, Entscheidungen vorbereiten, planen und reflektieren. Steuern sind Teil des Unternehmens und gehören in diese Steuerung hinein.',
         blocks: [
@@ -222,6 +222,9 @@ export class ContentService {
         'Aufgewachsen bin ich fachlich in der Prozessprüfung und in der Begleitung mittelständischer Unternehmen. Meine Leidenschaft liegt darin, unterschiedliche Geschäfts- und Organisationsmodelle im regionalen Mittelstand zu verstehen.',
         'Wichtig sind mir der persönliche Kontakt und die Zusammenarbeit auf Augenhöhe. Genau deshalb passe ich den Prüfungsansatz an die Besonderheiten, die Größe und die jeweiligen Umstände meiner Mandanten an.',
       ],
+      // Porträt folgt — siehe FRAGEN-AN-WIEBKE.md, Frage 13. Bis dahin blenden
+      // Startseite und Über-mich-Seite den Bildplatz aus.
+      portrait: null,
       career: this.getCareer(),
     };
   }

@@ -28,7 +28,7 @@ describe('DefinitionListComponent', () => {
     expect(setup().querySelectorAll('dd').length).toBe(1);
   });
 
-  it('blendet die Mono-Referenz vor Screenreadern aus', () => {
+  it('blendet die Referenz vor Screenreadern aus', () => {
     expect(setup().querySelector('span[aria-hidden="true"]')?.textContent?.trim()).toBe('01');
   });
 

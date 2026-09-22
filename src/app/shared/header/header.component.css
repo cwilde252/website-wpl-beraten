@@ -1,0 +1,111 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--color-paper);
+  border-block-end: 1px solid transparent;
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+.site-header.is-raised {
+  border-block-end-color: var(--color-hairline);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-height: 2.75rem;
+  justify-content: center;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.brand-role {
+  font-size: 0.8125rem;
+  color: var(--color-ink-soft);
+  line-height: 1.2;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: 0.85rem;
+  border-radius: 0.625rem;
+  color: var(--color-ink);
+  font-weight: 550;
+  text-decoration: none;
+  transition: background-color var(--dur-quick) var(--ease-out);
+}
+.nav-link:hover {
+  background: var(--color-neutral);
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0.85rem;
+  inset-block-end: 0.45rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+.menu-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-inline-end: -0.5rem;
+  border: 0;
+  border-radius: 0.625rem;
+  background: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .menu-button {
+    display: none;
+  }
+}
+.menu-button:hover {
+  background: var(--color-neutral);
+}
+
+.mobile-nav {
+  border-block-start: 1px solid var(--color-hairline);
+  animation: menu-in var(--dur-base) var(--ease-out) both;
+}
+.mobile-link {
+  display: flex;
+  align-items: center;
+  min-height: 3.5rem;
+  border-block-end: 1px solid var(--color-hairline);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+}
+.mobile-link.is-active {
+  color: var(--color-ink-soft);
+}
+
+@keyframes menu-in {
+  from {
+    transform: translateY(-0.5rem);
+  }
+}

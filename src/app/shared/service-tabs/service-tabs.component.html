@@ -1,75 +1,62 @@
-<div
-  class="selector-strip"
-  role="tablist"
-  aria-label="Leistungsbereiche"
-  aria-orientation="horizontal"
->
+<div class="reg-tabs" role="tablist" aria-label="Leistungsbereiche" aria-orientation="horizontal">
   @for (area of areas(); track area.slug; let i = $index) {
     <button
       #tabButton
       type="button"
       role="tab"
-      class="selector-tab"
+      class="reg-tab"
+      [attr.data-tone]="area.accent"
       [id]="'tab-' + area.slug"
       [attr.aria-selected]="activeSlug() === area.slug"
       [attr.aria-controls]="'panel-' + area.slug"
       [tabindex]="activeSlug() === area.slug ? 0 : -1"
-      [class.selected]="activeSlug() === area.slug"
-      [style.--accent-on-surface]="accentFor(area)"
       (click)="select(area.slug)"
       (keydown)="onKeydown($event, i)"
     >
-      <span class="type-figure text-sm accent-text" aria-hidden="true">{{ area.ref }}</span>
-      <h2 class="type-subhead mt-2">{{ area.title }}</h2>
+      <span class="tone-dot" aria-hidden="true"></span>
+      <span>{{ area.title }}</span>
     </button>
   }
 </div>
 
-@for (area of [activeArea()]; track area?.slug) {
-  @if (area) {
-    <div
-      role="tabpanel"
-      class="tab-panel"
-      [id]="'panel-' + area.slug"
-      [attr.aria-labelledby]="'tab-' + area.slug"
-      [style.--accent-on-surface]="accentColor()"
-    >
-      <div class="sheet-grid">
-        <div class="margin-note">
-          <span class="double-rule mb-3" aria-hidden="true"></span>
-          <p class="type-label">{{ area.title }}</p>
-        </div>
+@if (activeArea(); as area) {
+  <div
+    role="tabpanel"
+    class="reg-panel sheet"
+    [class.is-first]="activeIndex() === 0"
+    [attr.data-tone]="area.accent"
+    [id]="'panel-' + area.slug"
+    [attr.aria-labelledby]="'tab-' + area.slug"
+  >
+    @for (current of [area]; track current.slug) {
+      <div class="reg-content">
+        <h2 class="t-h2 max-w-3xl">{{ current.claim }}</h2>
+        <p class="t-lead mt-5">{{ current.intro }}</p>
 
-        <div class="sheet-body">
-          <p class="type-lead mb-8">{{ area.claim }}</p>
-          <p class="type-body mb-12">{{ area.intro }}</p>
-
-          @for (block of area.blocks; track block.title) {
-            <div class="rule-row pt-8 mb-8 last:mb-0">
-              <h3 class="type-headline mb-5">{{ block.title }}</h3>
-              @for (paragraph of block.paragraphs; track $index) {
-                <p class="type-body mb-4 last:mb-0">{{ paragraph }}</p>
-              }
-              @if (block.points?.length) {
-                <ul class="list-none m-0 p-0 mt-6 grid grid-cols-1 md:grid-cols-2 gap-x-10">
-                  @for (point of block.points; track point) {
-                    <li class="rule-row py-3 type-body flex gap-3">
-                      <span class="type-figure accent-text shrink-0" aria-hidden="true"
-                        >&mdash;</span
-                      >
-                      <span>{{ point }}</span>
-                    </li>
-                  }
-                </ul>
-              }
+        <div class="reg-blocks mt-10 md:mt-14">
+          @for (block of current.blocks; track block.title) {
+            <div class="reg-block grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-10">
+              <h3 class="t-h3 lg:col-span-4">{{ block.title }}</h3>
+              <div class="lg:col-span-8">
+                @for (paragraph of block.paragraphs; track $index) {
+                  <p class="t-body mb-4 last:mb-0">{{ paragraph }}</p>
+                }
+                @if (block.points?.length) {
+                  <ul class="check-list mt-5">
+                    @for (point of block.points; track point) {
+                      <li><app-icon name="check" />{{ point }}</li>
+                    }
+                  </ul>
+                }
+              </div>
             </div>
           }
+        </div>
 
-          <div class="mt-12">
-            <app-rule-link href="/kontakt" [label]="area.ctaLabel" />
-          </div>
+        <div class="mt-10 md:mt-12">
+          <app-action-link href="/kontakt" [label]="current.ctaLabel" />
         </div>
       </div>
-    </div>
-  }
+    }
+  </div>
 }

@@ -1,13 +1,32 @@
-/* Farbe ist hier nie alleiniger Bedeutungsträger: die Zeile trägt zusätzlich das
-   Wort „überschritten“, die Kante markiert sie nur redundant (WCAG 1.4.1). */
-.criterion-exceeded th {
-  border-inline-start: 2px solid var(--accent-on-surface, var(--color-graphite));
-  padding-inline-start: 0.75rem;
+.panel {
+  background: var(--color-paper);
+  border-radius: 1.25rem;
+  padding: clamp(1rem, 2.5vw, 1.75rem);
 }
 
-input[type='checkbox'] {
-  accent-color: var(--color-graphite);
-  width: 1rem;
-  height: 1rem;
-  flex-shrink: 0;
+/* Farbe ist hier nie alleiniger Bedeutungsträger: die Zeile trägt zusätzlich das
+   Wort „überschritten", die Markierung ist nur redundant (WCAG 1.4.1). */
+.criterion-exceeded > * {
+  background: var(--color-check-tint);
+}
+.criterion-exceeded > th {
+  padding-inline-start: 0.75rem;
+  border-start-start-radius: 0.5rem;
+  border-end-start-radius: 0.5rem;
+}
+.criterion-exceeded > td:last-child {
+  font-weight: 600;
+}
+
+.result {
+  border: 1px solid color-mix(in oklab, var(--tone-ink) 30%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .result {
+    animation: panel-in var(--dur-base) var(--ease-out) both;
+  }
+}
+
+.disclaimer {
+  border-block-start: 1px solid color-mix(in oklab, var(--tone-ink) 22%, transparent);
 }

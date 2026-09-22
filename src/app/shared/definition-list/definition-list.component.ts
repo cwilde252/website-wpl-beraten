@@ -3,11 +3,11 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 export interface DefinitionItem {
   term: string;
   description?: string;
-  /** Mono-Referenz links, etwa eine Nummer oder Jahreszahl. */
+  /** Optionale Referenz über dem Begriff, etwa eine Jahreszahl. */
   reference?: string;
 }
 
-/** Zeilenraster statt Karten: rendert ein echtes <dl> auf 1-px-Regeln. */
+/** Rendert ein echtes <dl>: Begriff und Erklärung, ohne Karten. */
 @Component({
   selector: 'app-definition-list',
   templateUrl: './definition-list.component.html',

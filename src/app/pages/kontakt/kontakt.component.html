@@ -1,43 +1,40 @@
-<section class="bg-graphite text-linen on-graphite py-20 md:py-28" aria-label="Kontakt">
-  <div class="sheet">
-    <div class="sheet-grid">
-      <div class="margin-note">
-        <span class="double-rule mb-3" aria-hidden="true"></span>
-        <p class="type-label">Kontakt</p>
-      </div>
-      <div class="sheet-body">
-        <app-display-headline [content]="headline" [level]="1" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<app-section-wrapper theme="paper" padding="large">
-  <div class="sheet-grid">
-    <div class="sheet-body--slim sheet-body">
-      <p class="type-lead mb-10">
-        Schreiben Sie mir kurz, worum es geht — Branche, Größenordnung und was gerade ansteht.
-        Danach klären wir in einem ersten Gespräch, ob und wie ich helfen kann. Das Erstgespräch ist
+<section class="wrap page-intro" aria-labelledby="kontakt-title">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
+    <div class="lg:col-span-7">
+      <h1 id="kontakt-title" class="t-display">
+        @for (line of headline.lines; track $index) {
+          <span class="line">{{ line }}</span>
+        }
+      </h1>
+      <p class="t-lead mt-8">
+        Schreiben Sie mir kurz, worum es geht: Branche, Größenordnung und was gerade ansteht. Danach
+        klären wir in einem ersten Gespräch, ob und wie ich helfen kann. Das Erstgespräch ist
         unverbindlich.
       </p>
+      <div class="mt-8">
+        @if (mailtoHref) {
+          <app-action-link
+            [href]="mailtoHref"
+            [external]="true"
+            icon="mail"
+            label="Erstgespräch anfragen"
+            ariaLabel="E-Mail schreiben, um ein Erstgespräch anzufragen"
+          />
+        } @else {
+          <p class="t-body t-soft">
+            Meine Kontaktdaten stehen hier, sobald die Kanzlei offiziell erreichbar ist.
+          </p>
+        }
+      </div>
+    </div>
 
-      @if (mailtoHref) {
-        <app-rule-link
-          [href]="mailtoHref"
-          [external]="true"
-          label="Erstgespräch anfragen"
-          ariaLabel="E-Mail schreiben, um ein Erstgespräch anzufragen"
-        />
-      } @else {
-        <p class="type-body">
-          Meine Kontaktdaten stehen hier, sobald die Kanzlei offiziell erreichbar ist.
-        </p>
-      }
-
-      <div class="mt-14 pt-8 rule-row">
-        <p class="type-label mb-5">Kanzlei</p>
-        <address class="not-italic type-body">
-          <span class="block">{{ contact.legalName }}</span>
+    <div class="lg:col-span-4 lg:col-start-9">
+      <app-register-sheet tone="neutral" [tabbed]="true">
+        <span sheetTab class="flex items-center gap-2.5">
+          <app-icon name="pin" svgClass="size-5" />Kanzlei
+        </span>
+        <address class="not-italic t-body">
+          <span class="block font-semibold">{{ contact.legalName }}</span>
           @if (hasAddress) {
             <span class="block">{{ contact.street }}</span>
             <span class="block">{{ contact.postalCode }} {{ contact.city }}</span>
@@ -47,24 +44,20 @@
         </address>
 
         @if (contact.phone || contact.email) {
-          <div class="flex flex-col gap-1 mt-5">
+          <ul class="list-none m-0 p-0 mt-5 flex flex-col gap-1">
             @if (contact.phone) {
-              <a
-                [href]="'tel:' + contact.phone"
-                class="type-figure no-underline text-graphite hover:text-muted transition-colors duration-200"
-                >{{ contact.phoneDisplay }}</a
-              >
+              <li>
+                <a [href]="'tel:' + contact.phone" class="link num">{{ contact.phoneDisplay }}</a>
+              </li>
             }
             @if (contact.email) {
-              <a
-                [href]="'mailto:' + contact.email"
-                class="type-figure no-underline text-graphite hover:text-muted transition-colors duration-200"
-                >{{ contact.email }}</a
-              >
+              <li>
+                <a [href]="'mailto:' + contact.email" class="link">{{ contact.email }}</a>
+              </li>
             }
-          </div>
+          </ul>
         }
-      </div>
+      </app-register-sheet>
     </div>
   </div>
-</app-section-wrapper>
+</section>

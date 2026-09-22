@@ -1,0 +1,132 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 3.5rem;
+  align-items: center;
+  padding-block: clamp(2.5rem, 7vw, 6rem) clamp(3.5rem, 8vw, 7rem);
+}
+@media (min-width: 1024px) {
+  .hero {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 4rem;
+  }
+}
+
+/* ---- Der Stapel: vier Registerblätter, vorn das Deckblatt ------------- */
+.stack {
+  --step: 3.6rem;
+  --tab-h: 2.75rem;
+  --tab-room: 14rem;
+  position: relative;
+  min-height: calc(var(--tab-h) + 4 * var(--step) + 13rem);
+}
+
+.stack-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stack-item {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(var(--tab-h) + var(--i) * var(--step));
+  bottom: 0;
+  z-index: calc(var(--i) + 1);
+}
+
+.stack-sheet {
+  --tab-at: calc((100% - var(--tab-room)) * var(--i) / 3);
+  display: block;
+  height: 100%;
+  min-height: 16rem;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.stack-sheet .tab {
+  gap: 0.6rem;
+}
+.stack-sheet:hover,
+.stack-sheet:focus-visible {
+  transform: translateY(-0.5rem);
+}
+.stack-sheet:focus-visible {
+  outline: none;
+}
+.stack-sheet:focus-visible .tab {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+.stack-sheet .tab {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.25em;
+  transition: text-decoration-color var(--dur-quick) var(--ease-out);
+}
+.stack-sheet:hover .tab {
+  text-decoration-color: currentColor;
+}
+
+.cover {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: calc(var(--tab-h) + var(--i) * var(--step));
+  z-index: 10;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--color-paper);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-sheet);
+  box-shadow: 0 1.5rem 3rem -1.75rem rgb(29 39 49 / 0.35);
+}
+.cover-photo {
+  width: 5.5rem;
+  height: 5.5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-block-end: 1.25rem;
+}
+.cover-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1vw + 1.2rem, 1.875rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+.cover-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  margin: 1.5rem 0 0;
+  padding-block-start: 1.25rem;
+  border-block-start: 1px solid var(--color-hairline);
+}
+.cover-facts dt {
+  font-size: 0.875rem;
+  color: var(--color-ink-soft);
+}
+.cover-facts dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Das eine inszenierte Moment der Seite: der Stapel setzt sich Blatt für Blatt. */
+@media (prefers-reduced-motion: no-preference) {
+  .stack-item,
+  .cover {
+    animation: sheet-settle var(--dur-slow) var(--ease-out) both;
+    animation-delay: calc(120ms + var(--i) * 90ms);
+  }
+}
+
+@media (max-width: 480px) {
+  .stack {
+    --step: 3.25rem;
+    --tab-room: 13rem;
+  }
+  .stack-sheet .tab {
+    font-size: 0.875rem;
+    padding-inline: 0.9rem;
+  }
+}

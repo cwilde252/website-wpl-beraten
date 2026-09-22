@@ -1,16 +1,13 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ContentService } from '../../../../core/services/content.service';
-import { RuleLinkComponent } from '../../../../shared/rule-link/rule-link.component';
-import { SectionMarkComponent } from '../../../../shared/section-mark/section-mark.component';
-import { SectionWrapperComponent } from '../../../../shared/section-wrapper/section-wrapper.component';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ActionLinkComponent } from '../../../../shared/action-link/action-link.component';
+import { IconComponent } from '../../../../shared/icon/icon.component';
+import { RegisterSheetComponent } from '../../../../shared/register-sheet/register-sheet.component';
 
 @Component({
   selector: 'app-kontakt-schluss',
-  imports: [SectionWrapperComponent, SectionMarkComponent, RuleLinkComponent],
+  imports: [RegisterSheetComponent, ActionLinkComponent, IconComponent],
   templateUrl: './kontakt-schluss.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { id: 'kontakt' },
 })
-export class KontaktSchlussComponent {
-  readonly contact = inject(ContentService).getContactInfo();
-}
+export class KontaktSchlussComponent {}

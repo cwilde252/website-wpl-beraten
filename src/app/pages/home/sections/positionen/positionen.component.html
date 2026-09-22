@@ -1,8 +1,9 @@
-<app-section-wrapper theme="paper" padding="large">
-  <app-section-mark label="Zusammenarbeit" />
-  <div class="sheet-grid">
-    <div class="sheet-body">
-      <h2 class="type-headline mb-10">Wie ich arbeite.</h2>
+<section class="wrap section" aria-labelledby="haltung-title">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8">
+    <div class="lg:col-span-4">
+      <h2 id="haltung-title" class="t-h2">So arbeite ich mit Ihnen.</h2>
+    </div>
+    <div class="lg:col-span-8">
       <app-definition-list
         [items]="items()"
         [columns]="2"
@@ -10,4 +11,4 @@
       />
     </div>
   </div>
-</app-section-wrapper>
+</section>

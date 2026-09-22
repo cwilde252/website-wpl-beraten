@@ -56,8 +56,11 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
     - Wie lange dauert eine Prüfung, und wann sollte man Sie ansprechen?
     - In welchem Umkreis arbeiten Sie?
 
-13. **Porträtfoto.** Das Design kommt ohne aus — das ist so entworfen, kein Notbehelf. Falls doch
-    eines kommen soll, ist die Stelle vorgesehen: `/ueber-mich`, Randspaltenlayout, Graustufen.
+13. **Porträtfoto.** Der Bildplatz ist vorbereitet und bleibt unsichtbar, bis ein Foto da ist:
+    als runder Ausschnitt auf dem Deckblatt im Startseiten-Kopf, neben dem Profil auf der
+    Startseite und auf `/ueber-mich`. Gewünscht: ein freundliches, helles Porträt im Hochformat
+    (mind. 1200 px breit). Einbau: Datei nach `public/` legen und in `ContentService.getProfile()`
+    das Feld `portrait` setzen (Pfad, Alt-Text, Breite, Höhe).
 
 14. **Vorschaubild für geteilte Links** (Open Graph, 1200 × 630). Fehlt. Kann aus Wortmarke und
     Doppelstrich erzeugt werden, sobald das Logo vorliegt.

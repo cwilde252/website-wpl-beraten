@@ -8,36 +8,22 @@ import {
   signal,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SectionRef } from '../../core/models/section-ref.model';
 import { ContentService } from '../../core/services/content.service';
 import { SeoService } from '../../core/services/seo.service';
 import { AuditCheckComponent } from '../../shared/audit-check/audit-check.component';
-import { DisplayHeadlineComponent } from '../../shared/display-headline/display-headline.component';
 import { FaqAccordionComponent } from '../../shared/faq-accordion/faq-accordion.component';
-import { RuleLinkComponent } from '../../shared/rule-link/rule-link.component';
-import { SectionIndicatorComponent } from '../../shared/section-indicator/section-indicator.component';
-import { SectionMarkComponent } from '../../shared/section-mark/section-mark.component';
-import { SectionWrapperComponent } from '../../shared/section-wrapper/section-wrapper.component';
+import { ActionLinkComponent } from '../../shared/action-link/action-link.component';
+import { RegisterSheetComponent } from '../../shared/register-sheet/register-sheet.component';
 import { ServiceTabsComponent } from '../../shared/service-tabs/service-tabs.component';
-
-const LEISTUNGEN_SECTIONS: SectionRef[] = [
-  { id: 'leistungen-start', label: 'Leistungen' },
-  { id: 'bereiche', label: 'Bereiche' },
-  { id: 'pruefungspflicht', label: 'Prüfungspflicht' },
-  { id: 'fragen', label: 'Fragen' },
-];
 
 @Component({
   selector: 'app-leistungen',
   imports: [
-    SectionIndicatorComponent,
-    SectionWrapperComponent,
-    SectionMarkComponent,
-    DisplayHeadlineComponent,
+    RegisterSheetComponent,
     ServiceTabsComponent,
     AuditCheckComponent,
     FaqAccordionComponent,
-    RuleLinkComponent,
+    ActionLinkComponent,
   ],
   templateUrl: './leistungen.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,7 +35,6 @@ export class LeistungenComponent implements OnInit {
   private readonly router = inject(Router);
   private readonly doc = inject(DOCUMENT);
 
-  readonly sections = LEISTUNGEN_SECTIONS;
   readonly headline = this.content.getLeistungenHeadline();
   readonly areas = this.content.getServiceAreas();
   readonly faq = this.content.getFaq();

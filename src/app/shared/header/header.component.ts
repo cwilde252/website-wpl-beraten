@@ -3,26 +3,28 @@ import {
   afterNextRender,
   ChangeDetectionStrategy,
   Component,
-  computed,
   DestroyRef,
   inject,
   signal,
 } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { filter, map } from 'rxjs';
+import { filter } from 'rxjs';
 import { ContentService } from '../../core/services/content.service';
 import { NavigationService } from '../../core/services/navigation.service';
+import { ActionLinkComponent } from '../action-link/action-link.component';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, ActionLinkComponent, IconComponent],
   templateUrl: './header.component.html',
+  styleUrl: './header.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { '(document:keydown.escape)': 'closeMobileMenu()' },
 })
 export class HeaderComponent {
   private readonly doc = inject(DOCUMENT);
-  private readonly router = inject(Router);
 
   readonly navItems = inject(NavigationService).getMainNavigation();
   readonly contact = inject(ContentService).getContactInfo();
@@ -30,22 +32,21 @@ export class HeaderComponent {
   readonly mobileMenuOpen = signal(false);
   readonly scrolled = signal(false);
 
-  private readonly currentUrl = toSignal(
-    this.router.events.pipe(
-      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-      map((event) => event.urlAfterRedirects),
-    ),
-    { initialValue: this.router.url },
-  );
-
-  readonly onDarkPage = computed(() => this.currentUrl() === '/');
-
   constructor() {
     const destroyRef = inject(DestroyRef);
+
+    // Jede abgeschlossene Navigation schließt das Mobilmenü — auch über den Button darin.
+    inject(Router)
+      .events.pipe(
+        filter((event) => event instanceof NavigationEnd),
+        takeUntilDestroyed(),
+      )
+      .subscribe(() => this.closeMobileMenu());
+
     afterNextRender(() => {
       const view = this.doc.defaultView;
       if (!view) return;
-      const onScroll = () => this.scrolled.set(view.scrollY > 40);
+      const onScroll = () => this.scrolled.set(view.scrollY > 8);
       onScroll();
       view.addEventListener('scroll', onScroll, { passive: true });
       destroyRef.onDestroy(() => view.removeEventListener('scroll', onScroll));
