@@ -40,7 +40,8 @@
   --color-orange-soft: #3b2a1a; /* Nebentext auf Orange, 5,1:1 */
   --color-orange-hover: #ea9d4b; /* Button-Hover auf Schiefer, Tinte darauf 7,3:1 */
   --color-ink-hover: #2e3a33; /* Button-Hover auf Orange, Weiß darauf > 11:1 */
-  --color-slate: #3a403d; /* Schiefer: Check und Fuß. Weiß 10,6:1, Minze 7,9:1, Orange 3,9:1 */
+  --color-slate: #3a403d; /* Schiefer: der Check. Weiß 10,6:1, Minze 7,9:1, Orange 3,9:1 */
+  --color-slate-deep: #2f3532; /* Fuß, eine Stufe dunkler. Weiß 12,5:1, Minze 9,3:1, Orange 4,6:1 */
 
   --color-error: #8a1c12; /* 9,0:1 auf Weiß; Fehler stehen nur in weißen Panels */
 
@@ -96,8 +97,10 @@
   --surface-accent: var(--color-ink);
   --surface-line: color-mix(in oklab, var(--color-ink) 22%, transparent);
 }
-/* Check, Schluss und Fuß: Schiefer statt Fast-Schwarz (wirkte drückend), darauf der orange Button. */
-[data-surface='slate'] {
+/* Check und Fuß: Schiefer statt Fast-Schwarz (wirkte drückend), darauf der orange Button.
+   Der Fuß steht eine Stufe dunkler, damit die Seite unten klar abschließt. */
+[data-surface='slate'],
+[data-surface='slate-deep'] {
   --surface-bg: var(--color-slate);
   --surface-ink: var(--color-white);
   --surface-soft: var(--color-mint);
@@ -109,6 +112,9 @@
   --link-hover: var(--color-orange);
   --surface-accent: var(--color-orange);
   --surface-line: color-mix(in oklab, var(--color-mint) 22%, transparent);
+}
+[data-surface='slate-deep'] {
+  --surface-bg: var(--color-slate-deep);
 }
 [data-surface='pruefung'],
 [data-surface='beratung'],

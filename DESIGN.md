@@ -13,6 +13,7 @@ colors:
   orange-hover: "#EA9D4B"
   ink-hover: "#2E3A33"
   slate: "#3A403D"
+  slate-deep: "#2F3532"
   pine: "#1E4636"
   pine-deep: "#16352A"
   mint: "#CFE3D6"
@@ -152,6 +153,7 @@ Fokusfarbe und Hover-Farbe für Links. Komponenten lesen nur diese Variablen
 |---|---|---|---|---|
 | `orange` | `#E0892A` | Tinte 6,0:1 / `#3B2A1A` 5,1:1 | Tinte, Weiß | Tinte |
 | `slate` | `#3A403D` | Weiß 10,6:1 / Minze 7,9:1 | Orange (3,9:1 zur Fläche), Tinte 6,0:1 | Orange |
+| `slate-deep` (Fuß) | `#2F3532` | Weiß 12,5:1 / Minze 9,3:1 | Orange (4,6:1 zur Fläche), Tinte 6,0:1 | Orange |
 | `white` (Standard) | `#FFFFFF` | Tinte 16,2:1 / Tinte weich 7,3:1 | Tanne, Weiß | Tinte |
 | `nebel` | `#EDF2EE` | Tinte 14,3:1 / Tinte weich 6,5:1 | Tanne, Weiß | Tinte |
 | `pruefung` | `#A64F00` | Weiß 5,6:1 | Weiß, Tinte | Weiß |
@@ -166,8 +168,8 @@ lokal auf Weiß zurück. Tanne ist keine Fläche mehr, nur Farbe für Bogen und 
 
 - **Farbe besitzt Flächen.** Eine Farbe nimmt einen ganzen Abschnitt oder eine ganze Karte ein —
   nie als zarter Schleier, nie als Randstreifen.
-- **Rhythmus pro Seite.** Orange oben (Kopf und Einstieg), Weiß zum Lesen, Schiefer für den Check
-  und zum Schluss. Nie zwei gleiche Farbflächen hintereinander.
+- **Rhythmus pro Seite.** Orange oben (Kopf und Einstieg), Weiß zum Lesen, Schiefer für den Check,
+  eine Stufe dunkler zum Schluss. Nie zwei gleiche Farbflächen hintereinander.
 - **Auf Orange nie Weiß.** Text, Buttons und Fokus auf Orange sind Tinte; der orange Button
   steht nur auf Schiefer.
 - **Bereichsfarben** gehören den drei Leistungsbereichen: Orange-tief Prüfung, Blau Beratung,

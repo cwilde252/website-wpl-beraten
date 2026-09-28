@@ -73,7 +73,7 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
 15a. **Farbwelt und Texte des Redesigns „Offene Tür“.** Kopf und Einstieg tragen jetzt das
     Logo-Orange `#E0892A` mit dunkler Schrift — bewusst nah an dem orangen Auftritt, den du früher
     verworfen hast, aber ohne weiße Schrift und Pill-Buttons. Passt das für dich? Dazu Tinte
-    `#17231D` als Schrift, Schiefergrau `#3A403D` für Check und Fuß, Tannengrün `#1E4636` im Porträt-Bogen;
+    `#17231D` als Schrift, Schiefergrau `#3A403D` für den Check, eine Stufe dunkler `#2F3532` im Fuß, Tannengrün `#1E4636` im Porträt-Bogen;
     Orange, Blau und Grün sind für weißen Text abgedunkelt (`#A64F00`, `#1F5F92`, `#2D7550`).
     Neu formuliert sind die Überschriften als Mandantenfragen (z. B. „Müssen wir unseren
     Abschluss prüfen lassen?“), der Einstieg „Erst verstehen, dann prüfen.“ und die Zeile
