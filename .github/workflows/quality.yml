@@ -24,6 +24,7 @@ jobs:
       - run: npx ng test --watch=false
       - run: npx playwright install --with-deps chromium
       - run: npx playwright test
+      - run: npm run check:gate
       - name: impeccable detect (gerenderte Seiten)
         run: |
           npx http-server dist/wpl-beraten/browser -p 4400 -s &

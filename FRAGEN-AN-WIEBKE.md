@@ -77,8 +77,8 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
 
 ## Technisch, ohne Rückfrage entscheidbar — nur zur Kenntnis
 
-15. **Passwortschutz.** Die Netlify-Edge-Function `netlify/edge-functions/auth.ts` sperrt die Seite
-    hinter ein Passwort. Sie fällt auf den fest eingebauten Wert `"fallback"` zurück, wenn die
-    Umgebungsvariable `SITE_PASSWORD` nicht gesetzt ist, und das gesetzte Cookie ist ein statischer,
-    ungeschützter Wert — der Schutz ist praktisch wirkungslos. Vor dem Livegang sollte der Block
-    entweder entfernt oder ordentlich abgesichert werden.
+15. **Passwortschutz — erledigt.** Das frühere Schloss (`auth.ts`) fiel ohne `SITE_PASSWORD` auf
+    das Passwort `"fallback"` zurück und akzeptierte ein von Hand gesetztes Cookie `auth=ok`.
+    Ersetzt durch `netlify/edge-functions/site-gate.ts` (wie in `website-bbs`): bleibt ohne
+    Passwort zu, signiertes Cookie mit Ablauf, geprüft mit `npm run check:gate`. Vor dem Livegang
+    wird die Funktion entfernt — siehe README.md, „Zutritt“.
