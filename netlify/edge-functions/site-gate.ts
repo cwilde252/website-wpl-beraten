@@ -346,7 +346,9 @@ const LOGO_ICON =
 
   Körper, Augen, Schnur und der violette Windfänger stammen unverändert aus
   `design/maskottchen-one/build.mjs` im Repository von cwilde (`website-cwilde`), wie
-  schon in website-bbs; die Grundbewegung ebenfalls. Neu ist allein, was vor den Augen
+  schon in website-bbs; die Grundbewegung ebenfalls. Der violette Knauf oben kommt aus
+  `tools/projektvorstellung/assets/oto/oto-haengt.svg` (`cwilde-brand-agents`) — in der
+  Fassung von website-bbs fehlt er, ohne ihn liest sich die Kuppel als Glatze. Neu ist allein, was vor den Augen
   sitzt und was unter ihm liegt. Soll s'häkle über diese Seite hinaus Bestand haben,
   gehört die Form nach `website-cwilde` zurückgetragen, sonst laufen die Fassungen
   auseinander.
@@ -432,6 +434,8 @@ const OTO_SZENE = `<svg class="oto" viewBox="0 0 200 350" width="200" height="35
       <path d="M100 30 C 136 30, 158 58, 158 94 C 158 122, 146 140, 126 146
         L 132 153 L 119 150 L 100 153 L 81 150 L 68 153 L 74 146
         C 54 140, 42 122, 42 94 C 42 58, 64 30, 100 30 Z" fill="#000000" />
+      <!-- Der Knauf, an dem die Glocke hängt: Maß und Lage aus oto-haengt.svg. -->
+      <ellipse class="oto-knauf" cx="100" cy="24" rx="10" ry="8" fill="#8b3dff" />
       <g class="oto-blick">
         <circle class="oto-auge" cx="84" cy="100" r="6" fill="#ffffff" />
         <circle class="oto-auge oto-auge--r" cx="116" cy="100" r="6" fill="#ffffff" />

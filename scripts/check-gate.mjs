@@ -233,6 +233,11 @@ for (const path of Object.keys(pages)) {
       `Genau ein oto: ${path} bei ${viewport.width} px`,
       (await page.locator('svg.oto').count()) === 1,
     );
+    // Ohne Knauf ist die Glocke eine Glatze — er gehört zur Figur wie im Original.
+    check(
+      `oto hat seinen Knauf: ${path} bei ${viewport.width} px`,
+      (await page.locator('svg.oto .oto-knauf').count()) === 1,
+    );
     // Und er sagt nichts, was die Überschrift nicht schon sagt — also bleibt er für
     // Vorlesesoftware unsichtbar.
     check(
