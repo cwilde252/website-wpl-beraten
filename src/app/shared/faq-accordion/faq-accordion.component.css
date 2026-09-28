@@ -7,31 +7,15 @@
 
 .faq-summary {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding-block: 1.35rem;
+  min-height: 2.75rem;
+  padding-block: 1.5rem;
   border-radius: 0.5rem;
 }
-.faq-summary .t-h3 {
-  font-size: 1.1875rem;
-}
-
-.faq-icon {
-  display: inline-grid;
-  place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--color-neutral);
-  transition:
-    transform var(--dur-base) var(--ease-out),
-    background-color var(--dur-quick) var(--ease-out);
-}
-.faq-summary:hover .faq-icon {
-  background: var(--color-hairline);
-}
-.faq-item[open] .faq-icon {
-  transform: rotate(45deg);
+.faq-summary:hover .t-title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
 }

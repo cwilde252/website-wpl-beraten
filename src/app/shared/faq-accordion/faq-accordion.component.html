@@ -2,10 +2,12 @@
   @for (item of items(); track item.question) {
     <details class="faq-item" [attr.name]="exclusiveGroup()">
       <summary class="faq-summary">
-        <h3 class="t-h3">{{ item.question }}</h3>
-        <span class="faq-icon" aria-hidden="true"><app-icon name="plus" svgClass="size-5" /></span>
+        <h3 class="t-title">{{ item.question }}</h3>
+        <span class="toggle-mark" aria-hidden="true"
+          ><app-icon name="plus" svgClass="size-5"
+        /></span>
       </summary>
-      <p class="t-body t-soft pb-6 pe-12">{{ item.answer }}</p>
+      <p class="t-body t-soft pb-7 pe-14">{{ item.answer }}</p>
     </details>
   }
 </div>

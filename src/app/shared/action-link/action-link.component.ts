@@ -17,7 +17,9 @@ export type ActionVariant = 'primary' | 'quiet' | 'link';
     @if (external()) {
       <a [href]="href()" [class]="classes()" [attr.aria-label]="ariaLabel() || null">
         <span>{{ label() }}</span>
-        <app-icon [name]="icon()" svgClass="arrow" />
+        @if (arrow()) {
+          <app-icon [name]="icon()" svgClass="arrow" />
+        }
       </a>
     } @else {
       <a
@@ -27,7 +29,9 @@ export type ActionVariant = 'primary' | 'quiet' | 'link';
         [attr.aria-label]="ariaLabel() || null"
       >
         <span>{{ label() }}</span>
-        <app-icon [name]="icon()" svgClass="arrow" />
+        @if (arrow()) {
+          <app-icon [name]="icon()" svgClass="arrow" />
+        }
       </a>
     }
   `,
@@ -41,6 +45,8 @@ export class ActionLinkComponent {
   readonly variant = input<ActionVariant>('primary');
   readonly small = input(false);
   readonly icon = input<'arrow' | 'mail'>('arrow');
+  /** Im Kopf steht der Button ohne Pfeil — dort ist er Ziel, nicht Weg. */
+  readonly arrow = input(true);
 
   readonly classes = computed(() => {
     const variant = this.variant();

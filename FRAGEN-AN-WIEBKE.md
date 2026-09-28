@@ -29,9 +29,12 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
 
 7. **Umsatzsteuer-Identifikationsnummer.** Falls vorhanden, gehört sie ins Impressum.
 
-8. **Hosting-Anbieter.** Für die Datenschutzerklärung: Anbieter, Serverstandort und ob ein
-   Auftragsverarbeitungsvertrag vorliegt. (Aktuell deutet die Konfiguration auf Netlify hin — bitte
-   bestätigen.)
+8. **Hosting bei Netlify.** Die Seite liegt bei Netlify, Inc. (USA, zertifiziert nach dem EU-US
+   Data Privacy Framework), im Konto von christoph wilde consulting; die Datenschutzerklärung nennt
+   Netlify. Verantwortlich für die Daten der Besucher bist du. Deshalb brauchen wir vor dem Livegang
+   einen **Auftragsverarbeitungsvertrag nach Art. 28 DSGVO zwischen dir und christoph wilde
+   consulting**, mit Netlify als Unterauftragsverarbeiter. Christoph schickt dir den Entwurf; bitte
+   prüfen und unterschreiben.
 
 9. **Freigabe des Prüfungspflicht-Checks.** Ein Rechner auf der Seite einer Wirtschaftsprüferin wird
    als fachliche Aussage gelesen. Bitte prüfen und freigeben:
@@ -56,19 +59,31 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
     - Wie lange dauert eine Prüfung, und wann sollte man Sie ansprechen?
     - In welchem Umkreis arbeiten Sie?
 
-13. **Porträtfoto.** Der Bildplatz ist vorbereitet und bleibt unsichtbar, bis ein Foto da ist:
-    als runder Ausschnitt auf dem Deckblatt im Startseiten-Kopf, neben dem Profil auf der
-    Startseite und auf `/ueber-mich`. Gewünscht: ein freundliches, helles Porträt im Hochformat
-    (mind. 1200 px breit). Einbau: Datei nach `public/` legen und in `ContentService.getProfile()`
-    das Feld `portrait` setzen (Pfad, Alt-Text, Breite, Höhe).
+13. **Porträtfoto.** Wichtigster offener Punkt für die Wärme der Seite. Der Bogen im
+    Startseiten-Kopf ist vorbereitet und bleibt bis dahin eine reine Tannenfläche; auf
+    `/ueber-mich` erscheint das Porträt in derselben Bogenform. Gewünscht: ein freundliches, helles
+    Porträt im Hochformat (mind. 1200 px breit, Seitenverhältnis etwa 4:5), am besten mit ruhigem
+    Hintergrund, der sich freistellen lässt — es steht vor Tannengrün auf Orange. Einbau:
+    Datei nach `public/` legen und in `ContentService.getProfile()` das Feld `portrait` setzen
+    (Pfad, Alt-Text, Breite, Höhe).
 
 14. **Vorschaubild für geteilte Links** (Open Graph, 1200 × 630). Fehlt. Kann aus Wortmarke und
     Doppelstrich erzeugt werden, sobald das Logo vorliegt.
 
+15a. **Farbwelt und Texte des Redesigns „Offene Tür“.** Kopf und Einstieg tragen jetzt das
+    Logo-Orange `#E0892A` mit dunkler Schrift — bewusst nah an dem orangen Auftritt, den du früher
+    verworfen hast, aber ohne weiße Schrift und Pill-Buttons. Passt das für dich? Dazu Tinte
+    `#17231D` als Schrift, Schiefergrau `#3A403D` für den Check, eine Stufe dunkler `#2F3532` im Fuß, Tannengrün `#1E4636` im Porträt-Bogen;
+    Orange, Blau und Grün sind für weißen Text abgedunkelt (`#A64F00`, `#1F5F92`, `#2D7550`).
+    Neu formuliert sind die Überschriften als Mandantenfragen (z. B. „Müssen wir unseren
+    Abschluss prüfen lassen?“), der Einstieg „Erst verstehen, dann prüfen.“ und die Zeile
+    „Zehn Jahre Mittelstand, jetzt in eigener Praxis.“ (2014–2024 bei WSS Aktiv Beraten).
+    Bitte prüfen, ob du dich darin wiederfindest.
+
 ## Technisch, ohne Rückfrage entscheidbar — nur zur Kenntnis
 
-15. **Passwortschutz.** Die Netlify-Edge-Function `netlify/edge-functions/auth.ts` sperrt die Seite
-    hinter ein Passwort. Sie fällt auf den fest eingebauten Wert `"fallback"` zurück, wenn die
-    Umgebungsvariable `SITE_PASSWORD` nicht gesetzt ist, und das gesetzte Cookie ist ein statischer,
-    ungeschützter Wert — der Schutz ist praktisch wirkungslos. Vor dem Livegang sollte der Block
-    entweder entfernt oder ordentlich abgesichert werden.
+15. **Passwortschutz — erledigt.** Das frühere Schloss (`auth.ts`) fiel ohne `SITE_PASSWORD` auf
+    das Passwort `"fallback"` zurück und akzeptierte ein von Hand gesetztes Cookie `auth=ok`.
+    Ersetzt durch `netlify/edge-functions/site-gate.ts` (wie in `website-bbs`): bleibt ohne
+    Passwort zu, signiertes Cookie mit Ablauf, geprüft mit `npm run check:gate`. Vor dem Livegang
+    wird die Funktion entfernt — siehe README.md, „Zutritt“.

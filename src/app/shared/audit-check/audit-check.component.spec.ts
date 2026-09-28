@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { AuditCheckComponent } from './audit-check.component';
 
@@ -8,7 +9,10 @@ describe('AuditCheckComponent', () => {
 
   beforeEach(() => {
     TestBed.resetTestingModule();
-    TestBed.configureTestingModule({ imports: [AuditCheckComponent] });
+    TestBed.configureTestingModule({
+      imports: [AuditCheckComponent],
+      providers: [provideRouter([])],
+    });
     fixture = TestBed.createComponent(AuditCheckComponent);
     fixture.detectChanges();
     el = fixture.nativeElement as HTMLElement;

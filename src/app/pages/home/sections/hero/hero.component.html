@@ -1,67 +1,42 @@
-<section class="wrap hero" aria-labelledby="hero-title">
-  <div class="hero-copy">
-    <h1 id="hero-title" class="t-display">
-      @for (line of headline.lines; track $index) {
-        <span class="line">{{ line }}</span>
-      }
-    </h1>
-    <p class="t-lead mt-6 md:mt-8">{{ lead }}</p>
-    <div class="mt-8 md:mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-      <app-action-link href="/kontakt" label="Erstgespräch vereinbaren" />
-      <app-action-link
-        href="/leistungen"
-        fragment="pruefungspflicht"
-        label="Muss ich prüfen lassen?"
-        variant="link"
-      />
-    </div>
-  </div>
-
-  <div class="stack">
-    <nav aria-label="Leistungsbereiche">
-      <ul class="stack-list">
-        @for (tab of tabs; track tab.label; let i = $index) {
-          <li class="stack-item" [style.--i]="i">
-            <a
-              class="stack-sheet sheet sheet--tabbed"
-              [class.tab-shifted]="i > 0"
-              [attr.data-tone]="tab.tone"
-              routerLink="/leistungen"
-              [fragment]="tab.fragment"
-            >
-              <span class="tab">
-                <span class="tone-dot" aria-hidden="true"></span>
-                {{ tab.label }}
-              </span>
-            </a>
-          </li>
+<div class="hero-band" data-surface="orange">
+  <section class="wrap hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <h1 id="hero-title" class="t-display">
+        @for (line of headline.lines; track $index) {
+          <span class="line">{{ line }}</span>
         }
-      </ul>
-    </nav>
-
-    <div class="cover" [style.--i]="tabs.length">
-      @if (portrait; as photo) {
-        <img
-          class="cover-photo"
-          [ngSrc]="photo.src"
-          [width]="photo.width"
-          [height]="photo.height"
-          [alt]="photo.alt"
-          priority
+      </h1>
+      <p class="t-lead t-soft mt-7 md:mt-8">{{ lead }}</p>
+      <div class="mt-9 md:mt-10 flex flex-wrap items-center gap-4">
+        <app-action-link href="/kontakt" label="Erstgespräch vereinbaren" />
+        <app-action-link
+          href="/leistungen"
+          fragment="pruefungspflicht"
+          label="Muss ich prüfen lassen?"
+          variant="quiet"
+          [arrow]="false"
         />
-      }
-      <p class="cover-name">{{ contact.personName }}</p>
-      <p class="t-soft">{{ contact.role }}</p>
-      <dl class="cover-facts">
-        <div>
-          <dt>Ort</dt>
-          <dd>{{ contact.city }}</dd>
-        </div>
-        <div>
-          <dt>Selbständig</dt>
-          <dd class="num">seit 2026</dd>
-        </div>
-      </dl>
+      </div>
     </div>
-  </div>
-</section>
+
+    <div class="hero-visual">
+      <!-- Der Bogen: eine offene Tür, in Tanne. Ohne Foto eine reine Farbfläche. -->
+      <div class="arch">
+        @if (portrait; as photo) {
+          <img
+            class="arch-photo"
+            [ngSrc]="photo.src"
+            [width]="photo.width"
+            [height]="photo.height"
+            [alt]="photo.alt"
+            priority
+          />
+        }
+      </div>
+      <p class="note" data-surface="white">
+        <span class="note-title">{{ note.title }}</span>
+        <span class="t-small t-soft">{{ note.text }}</span>
+      </p>
+    </div>
+  </section>
+</div>

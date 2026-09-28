@@ -26,6 +26,13 @@ describe('ContentService', () => {
       service.getContactInfo(),
       service.getHomeHeadline(),
       service.getHomeLead(),
+      service.getHeroNote(),
+      service.getAnliegenIntro(),
+      service.getQuote(),
+      service.getProfilTeaserHeadline(),
+      service.getInvitation(),
+      service.getLeistungenLead(),
+      service.getAuditCheckTeaser(),
       service.getLeistungenHeadline(),
       service.getUeberMichHeadline(),
       service.getKontaktHeadline(),
@@ -68,6 +75,16 @@ describe('ContentService', () => {
   it('vergibt eindeutige Slugs für die Leistungsbereiche', () => {
     const slugs = service.getServiceAreas().map((area) => area.slug);
     expect(new Set(slugs).size).toBe(slugs.length);
+  });
+
+  it('zitiert nur, was wörtlich im Profil steht', () => {
+    const statement = service.getProfile().statement.join(' ');
+    expect(statement).toContain(service.getQuote().replace(/\.$/, ''));
+  });
+
+  it('gibt jedem Leistungsblock eine Anliegen-Überschrift', () => {
+    const blocks = service.getServiceAreas().flatMap((area) => area.blocks);
+    expect(blocks.every((block) => block.question.trim().length > 0)).toBe(true);
   });
 
   it('hält jede SEO-Beschreibung unter 161 Zeichen', () => {

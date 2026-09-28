@@ -1,0 +1,23 @@
+<section class="wrap section" aria-labelledby="anliegen-title">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end">
+    <h2 id="anliegen-title" class="t-h2 lg:col-span-7">Womit kommen Sie zu mir?</h2>
+    <p class="t-lead t-soft lg:col-span-4 lg:col-start-9">{{ intro }}</p>
+  </div>
+
+  <ul class="cards mt-12 md:mt-14" role="list">
+    @for (area of areas; track area.slug) {
+      <li class="card" [attr.data-surface]="area.accent">
+        <h3 class="t-h3">„{{ area.question }}“</h3>
+        <p class="t-body mt-5">{{ area.answer }}</p>
+        <div class="card-action">
+          <app-action-link
+            href="/leistungen"
+            [fragment]="area.slug"
+            [label]="'Mehr zu ' + area.title"
+            variant="link"
+          />
+        </div>
+      </li>
+    }
+  </ul>
+</section>

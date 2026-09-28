@@ -6,6 +6,7 @@ export class NavigationService {
   getMainNavigation(): NavItem[] {
     return [
       { label: 'Leistungen', path: '/leistungen' },
+      { label: 'Prüfungspflicht-Check', path: '/leistungen', fragment: 'pruefungspflicht' },
       { label: 'Über mich', path: '/ueber-mich' },
       { label: 'Kontakt', path: '/kontakt' },
     ];

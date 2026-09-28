@@ -5,7 +5,7 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# Die drei alten Leistungsrouten leiten dauerhaft auf das jeweilige Tab-Fragment.
+# Die drei alten Leistungsrouten leiten dauerhaft auf den jeweiligen Abschnitt.
 # force = true greift vor der statisch vorgerenderten Datei.
 [[redirects]]
   from = "/wirtschaftspruefung"
@@ -25,6 +25,15 @@
   status = 301
   force = true
 
-[[edge_functions]]
-  path = "/*"
-  function = "auth"
+# --- Zutritt -------------------------------------------------------------------
+# Solange die Seite im Bau ist, liegt sie hinter einem Passwort. Die Abfrage kommt von
+# netlify/edge-functions/site-gate.ts — einer Seite im Auftritt von cwilde, die auch
+# sagt, woran gerade gearbeitet wird (wie in website-bbs).
+#
+# Die Funktion meldet ihren Pfad selbst an (`export const config`), deshalb steht hier
+# kein [[edge_functions]]-Block mehr. Zwei Dinge müssen im Netlify-Projekt stimmen,
+# sonst greift sie nicht — beides steht in README.md, „Zutritt“:
+#   1. Der eingebaute Passwortschutz ist AUS. Er läuft vor den Edge Functions und
+#      würde diese Seite nie zu Gesicht kommen lassen.
+#   2. Die Variable SITE_PASSWORD ist gesetzt. Fehlt sie, bleibt die Seite für alle
+#      zu — ein vergessener Wert darf sie nicht öffnen.

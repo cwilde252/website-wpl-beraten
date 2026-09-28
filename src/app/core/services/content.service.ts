@@ -38,15 +38,48 @@ export class ContentService {
   // ===== Headlines ========================================================
 
   getHomeHeadline(): DisplayHeadline {
-    return { lines: ['Wirtschaftsprüfung', 'für den Mittelstand,', 'persönlich aus Rottweil.'] };
+    return { lines: ['Erst verstehen,', 'dann prüfen.'] };
   }
 
   getHomeLead(): string {
-    return 'Ich prüfe Jahresabschlüsse, berate zu Controlling und Organisation und beziehe Steuern in Ihre Planung ein.';
+    return 'Ich bin Wiebke Lefevre, Wirtschaftsprüferin in Rottweil, und begleite mittelständische Unternehmen: mit der Prüfung Ihres Jahresabschlusses, mit Beratung zu Controlling und Organisation und mit dem Blick auf Ihre Steuern.';
+  }
+
+  /** Die kleine Notiz am Porträt-Bogen im Startseiten-Kopf. */
+  getHeroNote(): { title: string; text: string } {
+    return {
+      title: 'Selbständig seit 2026',
+      text: 'Eigene Praxis in Rottweil – für den Mittelstand in der Region.',
+    };
+  }
+
+  getAnliegenIntro(): string {
+    return 'Die meisten Gespräche beginnen mit einer dieser drei Fragen. Oft hängen sie zusammen.';
+  }
+
+  /** Ein echter Satz aus Wiebke Lefevres Selbstbeschreibung (Profil, zweiter Absatz). */
+  getQuote(): string {
+    return 'Wichtig sind mir der persönliche Kontakt und die Zusammenarbeit auf Augenhöhe.';
+  }
+
+  getProfilTeaserHeadline(): string {
+    return 'Zehn Jahre Mittelstand, jetzt in eigener Praxis.';
+  }
+
+  /** Die Einladung zum Erstgespräch am Ende jeder Seite. */
+  getInvitation(): { heading: string; text: string } {
+    return {
+      heading: 'Erzählen Sie mir von Ihrem Unternehmen.',
+      text: 'Im ersten Gespräch klären wir, worum es geht und ob ich helfen kann. Das Erstgespräch ist unverbindlich.',
+    };
   }
 
   getLeistungenHeadline(): DisplayHeadline {
-    return { lines: ['Drei Bereiche,', 'ein Blick auf', 'Ihr Unternehmen.'] };
+    return { lines: ['Prüfung, Beratung, Steuern –', 'bei einer Ansprechpartnerin.'] };
+  }
+
+  getLeistungenLead(): string {
+    return 'Die drei Bereiche greifen bei mir ineinander. Sie erklären Ihr Unternehmen einmal, nicht dreimal.';
   }
 
   getUeberMichHeadline(): DisplayHeadline {
@@ -97,13 +130,16 @@ export class ContentService {
         slug: 'wirtschaftspruefung',
         accent: 'pruefung',
         title: 'Wirtschaftsprüfung',
-        shortTitle: 'Prüfung',
+        question: 'Müssen wir unseren Abschluss prüfen lassen?',
+        answer:
+          'Ob gesetzliche Pflicht oder freiwillige Prüfung: Ich richte den Prüfungsansatz an Größe und Komplexität Ihres Unternehmens aus und konzentriere mich auf das Wesentliche.',
         claim: 'Ein Prüfungsansatz, der zur Größe Ihres Unternehmens passt.',
         intro:
           'Ob gesetzliche Pflichtprüfung oder freiwillige Prüfung des Jahresabschlusses: Ich richte den Prüfungsansatz an der Größe und Komplexität Ihres Unternehmens aus und konzentriere mich auf das Wesentliche.',
         blocks: [
           {
             title: 'Jahresabschlussprüfung',
+            question: 'Pflicht oder freiwillig – mit kurzen Wegen',
             paragraphs: [
               'Als kleine Kanzlei arbeite ich unkompliziert und mit kurzen Wegen. Die Prüfung richtet sich nach den Besonderheiten und Umständen Ihres Unternehmens.',
             ],
@@ -115,6 +151,7 @@ export class ContentService {
           },
           {
             title: 'Prozesse und Kontrollen',
+            question: 'Wie belastbar ist Ihr internes Kontrollsystem?',
             paragraphs: [
               'Ein unabhängiger Review der Prozesse rund um Ihre Buchhaltung und Jahresabschlusserstellung gibt Ihnen Sicherheit. Ich schaue auf Funktionalität und Ausgestaltung Ihres internen Kontrollsystems und zeige Ihnen, wo Verbesserungspotenzial liegt.',
             ],
@@ -126,6 +163,7 @@ export class ContentService {
           },
           {
             title: 'Sparringspartnerin auf Augenhöhe',
+            question: 'Die Prüfung als Gespräch über Ihr Unternehmen',
             paragraphs: [
               'Die Jahresabschlussprüfung ist mehr als Pflichterfüllung. Nutzen Sie den Dialog mit Ihrer Prüferin, um über die betriebswirtschaftliche Entwicklung und anstehende Entscheidungen zu sprechen.',
             ],
@@ -139,12 +177,16 @@ export class ContentService {
         slug: 'beratung',
         accent: 'beratung',
         title: 'Beratung',
+        question: 'Läuft bei uns noch alles über den Schreibtisch des Chefs?',
+        answer:
+          'Dann braucht es Strukturen, die tragen: ein Controlling, das die richtigen Zahlen liefert, klare Zuständigkeiten und eine Buchhaltung, die den Abschluss selbst kann.',
         claim: 'Gute Entscheidungen brauchen gute Vorbereitung.',
         intro:
           'Eine Buchhaltung ist kein Zahlenfriedhof, sondern eine wertvolle Informationsquelle. Machen wir sie gemeinsam nutzbar.',
         blocks: [
           {
             title: 'Controlling und Informationsmanagement',
+            question: 'Bekommen Sie die Zahlen, die Sie für Entscheidungen brauchen?',
             paragraphs: [
               'Ich arbeite mit Ihnen ein Konzept für Ihr internes Controlling und Ihr Informationsmanagement aus. Das Ziel: Sie bekommen immer die Informationen, die Sie für Ihre Entscheidungen brauchen — aufbereitet, aktuell, auf den Punkt.',
             ],
@@ -156,6 +198,7 @@ export class ContentService {
           },
           {
             title: 'Organisationsoptimierung',
+            question: 'Wächst die Arbeit schneller als die Organisation?',
             paragraphs: [
               'Läuft bei Ihnen noch alles über den Schreibtisch des Chefs? Gerade bei erfolgreich wachsenden Unternehmen wird das schnell zur Belastung: Die Stunden im Büro werden mehr, man wird zum begrenzenden Faktor der eigenen Unternehmung, und dazu kommt das Gefühl, den Überblick zu verlieren.',
               'Wer nur Arbeit delegiert und nicht auch Entscheidungen, steht bald wieder am selben Punkt. Ich helfe Ihnen, belastbare Systeme aufzubauen, die Sie wirklich voranbringen.',
@@ -169,6 +212,7 @@ export class ContentService {
           },
           {
             title: 'Coaching für die Buchhaltung',
+            question: 'Kann Ihr Team den Abschluss selbst?',
             paragraphs: [
               'Sie haben ein eigenes Buchhaltungsteam, aber der Jahresabschluss wird noch vom Steuerberater erstellt? Spätestens wenn die Gesellschaft die Grenzen zur Prüfungspflicht erreicht, bedeutet das zusätzliche Kosten, Verzögerungen und längere Wege bei Rückfragen.',
               'Dabei wäre Ihr Team technisch und fachlich in der Lage, die Abschlussbuchungen selbst zu bearbeiten. Ich coache Ihre Buchhaltung auf Abschlussniveau.',
@@ -191,12 +235,16 @@ export class ContentService {
         slug: 'steuern',
         accent: 'steuern',
         title: 'Steuern',
+        question: 'Wie vermeiden wir Überraschungen beim Steuerbescheid?',
+        answer:
+          'Indem die Steuerbelastung von Anfang an in Liquiditätsplanung und Investitionsentscheidungen einfließt und Vorauszahlungen und Fristen vorausschauend geplant sind.',
         claim: 'Steuern als fester Teil Ihrer Planung.',
         intro:
           'Unternehmenssteuerung heißt: Informationen gewinnen und aufbereiten, Entscheidungen vorbereiten, planen und reflektieren. Steuern sind Teil des Unternehmens und gehören in diese Steuerung hinein.',
         blocks: [
           {
             title: 'Steuern in der Unternehmenssteuerung',
+            question: 'Steuern gehören in die Planung',
             paragraphs: [
               'Ob Liquiditätsplanung, Investitionsentscheidung oder täglicher Geschäftsbetrieb — die Steuerbelastung gehört in Planungen und Entscheidungen einbezogen. Vorauszahlungen und Termine lassen sich so managen, dass der Steuerbescheid keine bösen Überraschungen bereithält.',
             ],
@@ -282,6 +330,10 @@ export class ContentService {
 
   // ===== Prüfungspflicht-Check ============================================
 
+  getAuditCheckTeaser(): string {
+    return 'Drei Zahlen genügen für eine erste Einordnung. Prüfungspflichtig wird eine Kapitalgesellschaft, wenn sie an zwei aufeinanderfolgenden Stichtagen mindestens zwei dieser drei Schwellen überschreitet:';
+  }
+
   getAuditCheckIntro(): string {
     return 'Ob Ihr Jahresabschluss geprüft werden muss, hängt an drei Zahlen. Tragen Sie sie ein, und Sie sehen, in welche Größenklasse Ihre Gesellschaft fällt und was daraus folgt.';
   }
@@ -352,13 +404,20 @@ export class ContentService {
       {
         heading: 'Keine externen Dienste',
         paragraphs: [
-          'Diese Website bindet keine externen Schriftarten, Karten, Analyse- oder Social-Media-Dienste ein. Alle Schriften werden vom eigenen Server ausgeliefert. Es werden keine Cookies zu Analyse- oder Marketingzwecken gesetzt.',
+          'Diese Website bindet keine externen Schriftarten, Karten, Analyse- oder Social-Media-Dienste ein. Alle Schriften werden mit der Website selbst ausgeliefert. Es werden keine Cookies zu Analyse- oder Marketingzwecken gesetzt.',
+        ],
+      },
+      {
+        heading: 'Hosting',
+        paragraphs: [
+          'Diese Website liegt bei Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA, und wird über dessen weltweites Servernetz ausgeliefert. Netlify verarbeitet die unten genannten Server-Logfiles in meinem Auftrag (Art. 28 DSGVO).',
+          'Dabei können Daten in die USA übermittelt werden. Netlify ist nach dem EU-US Data Privacy Framework zertifiziert; die Übermittlung stützt sich auf den Angemessenheitsbeschluss der Europäischen Kommission (Art. 45 DSGVO).',
         ],
       },
       {
         heading: 'Server-Logfiles',
         paragraphs: [
-          'Der Hosting-Anbieter erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt: Browsertyp und -version, verwendetes Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse.',
+          'Netlify erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt: Browsertyp und -version, verwendetes Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse.',
           'Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Es besteht ein berechtigtes Interesse an der technisch fehlerfreien Darstellung und der Sicherheit der Website. Eine Zusammenführung dieser Daten mit anderen Datenquellen findet nicht statt.',
         ],
       },

@@ -1,244 +1,260 @@
 @import 'tailwindcss';
 
 /* Schriften selbst gehostet — DSGVO: keine Verbindung zu Dritten.
-   Bricolage Grotesque mit optischer Größe für Überschriften, Figtree für Text. */
-@import '@fontsource-variable/bricolage-grotesque/opsz.css';
-@import '@fontsource-variable/figtree/wght.css';
+   Red Hat Display für Überschriften, Red Hat Text für Fließtext. */
+@import '@fontsource-variable/red-hat-display/wght.css';
+@import '@fontsource-variable/red-hat-text/wght.css';
 
-/* `static`: Die Töne werden zur Laufzeit über data-tone gesetzt und wären sonst
-   still aus dem Build gefallen. */
+/* `static`: Die Flächen werden zur Laufzeit über data-surface gesetzt und wären
+   sonst still aus dem Build gefallen. */
 @theme static {
-  /* ---- Grund ---------------------------------------------------------- */
-  --color-paper: #ffffff; /* Seitengrund */
-  --color-neutral: #f3f4f1; /* neutrales Blatt, Footer */
-  --color-ink: #1d2731; /* Text, 15,1:1 auf Weiß */
-  --color-ink-hover: #2e3d4b;
-  --color-ink-soft: #4a5561; /* Sekundärtext, 7,6:1 auf Weiß, ≥ 6,5:1 auf jedem Ton */
-  --color-hairline: #e1e4e0; /* dekorative Trennlinien */
-  --color-control: #7d868f; /* Rahmen von Steuerelementen, ≥ 3,29:1 (SC 1.4.11) */
+  /* ---- Grund und Tinte ---------------------------------------------- */
+  --color-white: #ffffff; /* Seitengrund */
+  --color-nebel: #edf2ee; /* ruhige Flächen */
+  --color-ink: #17231d; /* Text, 16,2:1 auf Weiß */
+  --color-ink-soft: #4a5a51; /* Nebentext, 7,3:1 auf Weiß, 6,5:1 auf Nebel */
+  --color-hairline: #dce3dd; /* rein dekorative Trenner */
+  --color-control: #6f7d74; /* Ränder von Steuerelementen, 4,3:1 (SC 1.4.11) */
 
-  /* ---- Die vier Logofarben -------------------------------------------
-     Die reine Logofarbe ist Markierung (Punkte, Kanten), nie Text: Orange und
-     Gelb erreichen auf Weiß nur 3,2:1 bzw. 2,2:1. Text im Ton nutzt -deep. */
-  --color-pruefung: #d4780a;
-  --color-pruefung-tint: #fdedda;
-  --color-pruefung-deep: #8f4a00; /* 5,8:1 auf Tönung */
+  /* ---- Tanne ------------------------------------------------------------
+     Kein Sonnengelb als Fläche mehr (Entscheidung 28.09.2026): Es biss sich mit dem
+     Orange im Kopf. Der Check steht jetzt auf Schiefer. */
+  --color-pine: #1e4636; /* Porträt-Bogen, Buttons auf Weiß; Weiß 10,6:1 */
+  --color-pine-deep: #16352a; /* Hover der Tanne-Buttons, Weiß 13,3:1 */
+  --color-mint: #cfe3d6; /* Nebentext auf Tinte, 12,1:1 */
 
-  --color-beratung: #2e7db8;
-  --color-beratung-tint: #e5eff8;
-  --color-beratung-deep: #1e5e8e; /* 5,9:1 */
+  /* ---- Bereiche: je eine volle Fläche, Text immer Weiß --------------- */
+  --color-pruefung: #a64f00; /* Weiß 5,6:1 */
+  --color-beratung: #1f5f92; /* Weiß 6,8:1 */
+  --color-steuern: #2d7550; /* Weiß 5,6:1 */
 
-  --color-steuern: #2d8b57;
-  --color-steuern-tint: #e2f1e7;
-  --color-steuern-deep: #1c6a40; /* 5,6:1 */
+  /* ---- Logofarben: nur Zeichen, nie Text ----------------------------- */
+  --color-logo-orange: #d4780a;
+  --color-logo-blue: #2e7db8;
+  --color-logo-green: #2d8b57;
+  --color-logo-yellow: #d4a917;
 
-  --color-check: #d4a917;
-  --color-check-tint: #fbf2cf;
-  --color-check-deep: #6f5300; /* 6,4:1 */
+  /* ---- Logo-Orange als Grund (Entscheidung 28.09.2026) --------------
+     Weiß erreicht darauf nur 2,7:1 — Text und Buttons sind deshalb dunkel. */
+  --color-orange: #e0892a; /* Kopf und Einstieg, Tinte darauf 6,0:1 */
+  --color-orange-soft: #3b2a1a; /* Nebentext auf Orange, 5,1:1 */
+  --color-orange-hover: #ea9d4b; /* Button-Hover auf Schiefer, Tinte darauf 7,3:1 */
+  --color-ink-hover: #2e3a33; /* Button-Hover auf Orange, Weiß darauf > 11:1 */
+  --color-slate: #3a403d; /* Schiefer: der Check. Weiß 10,6:1, Minze 7,9:1, Orange 3,9:1 */
+  --color-slate-deep: #2f3532; /* Fuß, eine Stufe dunkler. Weiß 12,5:1, Minze 9,3:1, Orange 4,6:1 */
+
+  --color-error: #8a1c12; /* 9,0:1 auf Weiß; Fehler stehen nur in weißen Panels */
 
   /* ---- Schrift --------------------------------------------------------- */
-  --font-display: 'Bricolage Grotesque Variable', 'Figtree Variable', system-ui, sans-serif;
-  --font-sans: 'Figtree Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Red Hat Display Variable', system-ui, sans-serif;
+  --font-sans: 'Red Hat Text Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* ---- Form ------------------------------------------------------------ */
-  --radius-sheet: 1.75rem;
-  --radius-tab: 0.875rem;
-  --radius-control: 0.75rem;
+  --radius-card: 1.75rem;
+  --radius-control: 0.875rem;
 
-  /* ---- Bewegung: „Register ziehen" ------------------------------------ */
+  /* ---- Bewegung: ruhig ----------------------------------------------- */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-quick: 160ms;
+  --dur-quick: 180ms;
   --dur-base: 280ms;
-  --dur-slow: 640ms;
+  --dur-slow: 720ms;
 }
 
 /* ======================================================================
-   Töne: jedes Registerblatt bekommt seine Fläche über data-tone.
-   Global, weil anyComponentStyle in angular.json auf 4 kB budgetiert ist.
+   Flächen: Jede farbige Fläche setzt data-surface und liefert damit Grund,
+   Text, Nebentext, Aktionsfarbe und Fokusfarbe. Komponenten lesen nur diese
+   Variablen. Global, weil anyComponentStyle in angular.json auf 4 kB budgetiert ist.
    ====================================================================== */
 :root,
-[data-tone='plain'] {
-  --tone-bg: var(--color-paper);
-  --tone-ink: var(--color-ink);
-  --tone-mark: var(--color-ink);
+[data-surface='white'],
+[data-surface='nebel'] {
+  --surface-bg: var(--color-white);
+  --surface-ink: var(--color-ink);
+  --surface-soft: var(--color-ink-soft);
+  --action-bg: var(--color-pine);
+  --action-ink: var(--color-white);
+  --action-hover: var(--color-pine-deep);
+  --quiet-border: var(--color-control);
+  --focus: var(--color-ink);
+  --link-hover: var(--color-pruefung);
+  --surface-accent: var(--color-ink);
+  --surface-line: var(--color-hairline);
 }
-[data-tone='neutral'] {
-  --tone-bg: var(--color-neutral);
-  --tone-ink: var(--color-ink);
-  --tone-mark: var(--color-ink-soft);
+[data-surface='nebel'] {
+  --surface-bg: var(--color-nebel);
 }
-[data-tone='pruefung'] {
-  --tone-bg: var(--color-pruefung-tint);
-  --tone-ink: var(--color-pruefung-deep);
-  --tone-mark: var(--color-pruefung);
+/* Die tragende Fläche: Kopf, Einstieg jeder Seite. Dunkle Schrift, dunkle Buttons. */
+[data-surface='orange'] {
+  --surface-bg: var(--color-orange);
+  --surface-ink: var(--color-ink);
+  --surface-soft: var(--color-orange-soft);
+  --action-bg: var(--color-ink);
+  --action-ink: var(--color-white);
+  --action-hover: var(--color-ink-hover);
+  --quiet-border: var(--color-ink);
+  --focus: var(--color-ink);
+  --link-hover: var(--color-ink);
+  --surface-accent: var(--color-ink);
+  --surface-line: color-mix(in oklab, var(--color-ink) 22%, transparent);
 }
-[data-tone='beratung'] {
-  --tone-bg: var(--color-beratung-tint);
-  --tone-ink: var(--color-beratung-deep);
-  --tone-mark: var(--color-beratung);
+/* Check und Fuß: Schiefer statt Fast-Schwarz (wirkte drückend), darauf der orange Button.
+   Der Fuß steht eine Stufe dunkler, damit die Seite unten klar abschließt. */
+[data-surface='slate'],
+[data-surface='slate-deep'] {
+  --surface-bg: var(--color-slate);
+  --surface-ink: var(--color-white);
+  --surface-soft: var(--color-mint);
+  --action-bg: var(--color-orange);
+  --action-ink: var(--color-ink);
+  --action-hover: var(--color-orange-hover);
+  --quiet-border: var(--color-mint);
+  --focus: var(--color-orange);
+  --link-hover: var(--color-orange);
+  --surface-accent: var(--color-orange);
+  --surface-line: color-mix(in oklab, var(--color-mint) 22%, transparent);
 }
-[data-tone='steuern'] {
-  --tone-bg: var(--color-steuern-tint);
-  --tone-ink: var(--color-steuern-deep);
-  --tone-mark: var(--color-steuern);
+[data-surface='slate-deep'] {
+  --surface-bg: var(--color-slate-deep);
 }
-[data-tone='check'] {
-  --tone-bg: var(--color-check-tint);
-  --tone-ink: var(--color-check-deep);
-  --tone-mark: var(--color-check);
+[data-surface='pruefung'],
+[data-surface='beratung'],
+[data-surface='steuern'] {
+  --surface-ink: var(--color-white);
+  --surface-soft: var(--color-white);
+  --action-bg: var(--color-white);
+  --action-ink: var(--color-ink);
+  --action-hover: var(--color-nebel);
+  --quiet-border: var(--color-white);
+  --focus: var(--color-white);
+  --link-hover: var(--color-white);
+  --surface-accent: var(--color-white);
+  --surface-line: color-mix(in oklab, var(--color-white) 30%, transparent);
+}
+[data-surface='pruefung'] {
+  --surface-bg: var(--color-pruefung);
+}
+[data-surface='beratung'] {
+  --surface-bg: var(--color-beratung);
+}
+[data-surface='steuern'] {
+  --surface-bg: var(--color-steuern);
+}
+[data-surface] {
+  background-color: var(--surface-bg);
+  color: var(--surface-ink);
 }
 
 /* ---- Struktur -------------------------------------------------------- */
 .wrap {
-  max-width: 76rem;
+  max-width: 90rem;
   margin-inline: auto;
-  padding-inline: clamp(1rem, 4vw, 3rem);
+  padding-inline: clamp(1rem, 5.5vw, 5rem);
 }
 .wrap > * {
   min-width: 0;
 }
 
 .section {
-  padding-block: clamp(4rem, 9vw, 7.5rem);
+  padding-block: clamp(4.5rem, 9vw, 8rem);
 }
 .section--tight {
-  padding-block: clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
 }
 
-/* ---- Registerblatt ----------------------------------------------------
-   Das tragende Element: eine getönte Fläche mit weich gerundeten Ecken und
-   einem Reiter, der oben herausragt. --tab-at verschiebt den Reiter, damit
-   gestapelte Blätter wie echte Trennblätter versetzt wirken. */
-.sheet {
-  display: block;
-  position: relative;
-  background: var(--tone-bg);
-  border-radius: var(--radius-sheet);
-  padding: clamp(1.5rem, 4vw, 3.5rem);
-}
-.sheet--tabbed {
-  border-start-start-radius: 0;
-  margin-block-start: 2.75rem;
-}
-.sheet--tabbed.tab-shifted {
-  border-start-start-radius: var(--radius-sheet);
+/* Karte: eine volle Fläche mit weichen Ecken. Farbe kommt über data-surface. */
+.card {
+  border-radius: var(--radius-card);
+  padding: clamp(1.75rem, 3vw, 2.75rem);
 }
 
-.tab {
-  position: absolute;
-  inset-block-end: 100%;
-  inset-inline-start: var(--tab-at, 0px);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  min-height: 2.75rem;
-  padding: 0.55rem 1.15rem 0.35rem;
-  background: var(--tone-bg);
-  color: var(--tone-ink);
-  border-radius: var(--radius-tab) var(--radius-tab) 0 0;
-  font-family: var(--font-sans);
-  font-size: 0.9375rem;
-  font-weight: 650;
-  line-height: 1.2;
-  white-space: nowrap;
-}
-/* Konkave Übergänge: der Reiter wächst aus dem Blatt, statt aufzusitzen. */
-.tab::before,
-.tab::after {
-  content: '';
-  position: absolute;
-  inset-block-end: 0;
-  width: var(--radius-tab);
-  height: var(--radius-tab);
-  pointer-events: none;
-}
-.tab::after {
-  inset-inline-start: 100%;
-  background: radial-gradient(
-    circle at 100% 0,
-    transparent calc(var(--radius-tab) - 0.5px),
-    var(--tone-bg) var(--radius-tab)
-  );
-}
-.tab-shifted > .tab::before {
-  inset-inline-end: 100%;
-  background: radial-gradient(
-    circle at 0 0,
-    transparent calc(var(--radius-tab) - 0.5px),
-    var(--tone-bg) var(--radius-tab)
-  );
-}
-
-/* Kleine Markierung in der reinen Logofarbe — nie Bedeutungsträger allein. */
-.tone-dot {
+/* Bereichspunkt in der reinen Logofarbe — nie Bedeutungsträger allein. */
+.area-dot {
   display: inline-block;
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.625rem;
+  height: 0.625rem;
   border-radius: 50%;
-  background: var(--tone-mark);
   flex-shrink: 0;
+}
+.area-dot--pruefung {
+  background: var(--color-logo-orange);
+}
+.area-dot--beratung {
+  background: var(--color-logo-blue);
+}
+.area-dot--steuern {
+  background: var(--color-logo-green);
+}
+.area-dot--check {
+  background: var(--color-logo-yellow);
 }
 
 /* ---- Typografie ------------------------------------------------------ */
 .t-display,
+.t-h1,
 .t-h2,
-.t-h3 {
+.t-h3,
+.t-title {
   font-family: var(--font-display);
-  font-optical-sizing: auto;
-  color: var(--color-ink);
+  font-weight: 600;
+  color: inherit;
   text-wrap: balance;
 }
 .t-display {
-  /* An der Spaltenbreite bemessen: das längste Wort („Wirtschaftsprüfung")
-     muss ungetrennt passen — einspaltig bis 1024 px, danach in 7/12. */
-  font-size: clamp(1.75rem, 9vw - 0.25rem, 4.75rem);
-  font-weight: 600;
+  font-size: clamp(2.5rem, 5.4vw + 0.5rem, 6rem);
   line-height: 1.02;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.022em;
 }
-@media (min-width: 1024px) {
-  .t-display {
-    font-size: clamp(2.75rem, 4.6vw, 4.75rem);
-  }
+.t-h1 {
+  font-size: clamp(2.25rem, 3.6vw + 1rem, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 .t-h2 {
-  font-size: clamp(1.875rem, 2.2vw + 1.1rem, 3rem);
-  font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -0.028em;
+  font-size: clamp(2rem, 2.4vw + 1.1rem, 3.75rem);
+  line-height: 1.07;
+  letter-spacing: -0.018em;
 }
 .t-h3 {
-  font-size: clamp(1.25rem, 0.5vw + 1.1rem, 1.5rem);
-  /* Nur als Notbremse für lange Komposita auf sehr schmalen Displays. */
-  hyphens: auto;
-  overflow-wrap: break-word;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.015em;
+  font-size: clamp(1.375rem, 0.8vw + 1.1rem, 2rem);
+  line-height: 1.18;
+  letter-spacing: -0.012em;
+}
+.t-title {
+  font-size: clamp(1.25rem, 0.4vw + 1.1rem, 1.5625rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+/* Lange Komposita („Ansprechpartnerin", „Wirtschaftsprüfung") auf schmalen
+   Displays: lieber sauber getrennt als über den Rand. */
+@media (max-width: 639px) {
+  .t-display,
+  .t-h1,
+  .t-h2,
+  .t-h3 {
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
 }
 .t-lead {
-  font-size: clamp(1.125rem, 0.45vw + 1rem, 1.3125rem);
+  font-size: clamp(1.125rem, 0.5vw + 1rem, 1.375rem);
   line-height: 1.55;
-  color: var(--color-ink);
-  max-width: 60ch;
+  max-width: 58ch;
   text-wrap: pretty;
 }
+/* Red Hat Text läuft schmal: 62ch entsprechen rund 75 echten Zeichen pro Zeile. */
 .t-body {
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.65;
-  max-width: 68ch;
+  max-width: 62ch;
   text-wrap: pretty;
 }
 .t-small {
   font-size: 0.9375rem;
   line-height: 1.55;
+  max-width: 62ch;
 }
 .t-soft {
-  color: var(--color-ink-soft);
-}
-.t-tone {
-  color: var(--tone-ink);
+  color: var(--surface-soft);
 }
 .num {
   font-variant-numeric: tabular-nums lining-nums;
@@ -255,15 +271,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.625rem;
-  min-height: 3rem;
-  padding: 0.8rem 1.35rem;
-  border: 1px solid transparent;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0.85rem 1.6rem;
+  border: 1.5px solid transparent;
   border-radius: var(--radius-control);
-  background: var(--color-ink);
-  color: var(--color-paper);
+  background: var(--action-bg);
+  color: var(--action-ink);
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   line-height: 1.2;
   text-decoration: none;
@@ -273,101 +289,74 @@
     transform var(--dur-quick) var(--ease-out);
 }
 .btn:hover {
-  background: var(--color-ink-hover);
+  background: var(--action-hover);
 }
 .btn:active {
   transform: scale(0.98);
 }
 .btn--quiet {
-  background: var(--color-paper);
-  color: var(--color-ink);
-  border-color: var(--color-control);
+  background: transparent;
+  color: var(--surface-ink);
+  border-color: var(--quiet-border);
 }
 .btn--quiet:hover {
-  background: var(--color-neutral);
+  background: color-mix(in oklab, var(--surface-ink) 10%, transparent);
 }
 .btn--small {
-  min-height: 2.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.9375rem;
+  min-height: 3rem;
+  padding: 0.6rem 1.25rem;
+  font-size: 1rem;
 }
 
 .link {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   min-height: 2.75rem;
-  color: var(--color-ink);
+  color: inherit;
   font-weight: 600;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.3em;
-  text-decoration-color: color-mix(in oklab, currentColor 45%, transparent);
   transition:
     color var(--dur-quick) var(--ease-out),
-    text-decoration-color var(--dur-quick) var(--ease-out);
+    text-decoration-thickness var(--dur-quick) var(--ease-out);
 }
 .link:hover {
-  color: var(--tone-ink);
-  text-decoration-color: currentColor;
+  color: var(--link-hover);
+  text-decoration-thickness: 2px;
 }
 
 /* Pfeil in Aktionen: gleitet beim Hover ein Stück nach vorn. */
 .arrow {
-  width: 1.1em;
-  height: 1.1em;
+  width: 1.15em;
+  height: 1.15em;
   flex-shrink: 0;
   transition: transform var(--dur-base) var(--ease-out);
 }
 .btn:hover .arrow,
-.link:hover .arrow,
-a:hover > .arrow-host .arrow {
+.link:hover .arrow {
   transform: translateX(3px);
 }
 
-/* Fließtextlinks */
-.prose-link {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.25em;
-}
-.prose-link:hover {
-  color: var(--tone-ink);
-}
-
-/* ---- Fokus: nie unsichtbar ------------------------------------------- */
+/* ---- Fokus: nie unsichtbar, in der Fokusfarbe der Fläche -------------- */
 :focus-visible {
-  outline: 2px solid var(--color-ink);
+  outline: 2px solid var(--focus);
   outline-offset: 3px;
   border-radius: 0.375rem;
 }
 
 /* ---- Listen ------------------------------------------------------------ */
-.check-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.point-list {
+  list-style: disc;
+  padding-inline-start: 1.35rem;
   display: grid;
-  gap: 0.7rem;
-}
-.check-list > li {
-  display: grid;
-  grid-template-columns: 1.25rem 1fr;
-  gap: 0.75rem;
-  align-items: start;
-  font-size: 1.0625rem;
+  gap: 0.4rem;
+  font-size: 1.125rem;
   line-height: 1.55;
 }
-.check-list > li > svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-top: 0.15rem;
-  color: var(--tone-ink);
-}
-
-.divided > * + * {
-  border-block-start: 1px solid var(--color-hairline);
+.point-list > li::marker {
+  color: var(--surface-soft);
 }
 
 /* ---- Natives Accordion ------------------------------------------------ */
@@ -392,17 +381,51 @@ details[open]::details-content {
   interpolate-size: allow-keywords;
 }
 
+/* Auf-zu-Marke: gefüllt in Tanne, sobald offen. */
+.toggle-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-nebel);
+  color: var(--color-pine);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    background-color var(--dur-quick) var(--ease-out),
+    color var(--dur-quick) var(--ease-out);
+}
+details[open] > summary .toggle-mark {
+  transform: rotate(45deg);
+  background: var(--color-pine);
+  color: var(--color-white);
+}
+
 /* ---- Formular: Prüfungspflicht-Check ---------------------------------- */
+.panel {
+  background: var(--color-white);
+  color: var(--color-ink);
+  border-radius: var(--radius-card);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  --surface-ink: var(--color-ink);
+  --surface-soft: var(--color-ink-soft);
+  --action-bg: var(--color-pine);
+  --action-ink: var(--color-white);
+  --action-hover: var(--color-pine-deep);
+  --focus: var(--color-ink);
+  --link-hover: var(--color-pruefung);
+}
 .field {
   width: 100%;
-  min-height: 3rem;
-  background: var(--color-paper);
+  min-height: 3.375rem;
+  background: var(--color-white);
   color: var(--color-ink);
   font-family: var(--font-sans);
   font-variant-numeric: tabular-nums;
-  font-size: 1.0625rem;
-  padding: 0.65rem 0.9rem;
-  border: 1px solid var(--color-control);
+  font-size: 1.125rem;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--color-control);
   border-radius: var(--radius-control);
   transition:
     border-color var(--dur-quick) var(--ease-out),
@@ -414,30 +437,31 @@ details[open]::details-content {
 .field:focus-visible {
   outline: none;
   border-color: var(--color-ink);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-ink) 22%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-pine) 28%, transparent);
 }
 /* Fehler zusätzlich über die Randstärke, nicht nur über Farbe (WCAG 1.4.1). */
 .field[aria-invalid='true'] {
-  border-color: var(--color-pruefung-deep);
-  border-width: 2px;
+  border-color: var(--color-error);
+  border-width: 2.5px;
 }
 .field-label {
   display: block;
-  margin-block-end: 0.4rem;
-  font-size: 0.9375rem;
+  margin-block-end: 0.45rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 .field-error {
-  margin-block-start: 0.4rem;
+  margin-block-start: 0.45rem;
   font-size: 0.9375rem;
-  color: var(--color-pruefung-deep);
+  font-weight: 600;
+  color: var(--color-error);
 }
 .checkbox {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-top: 0.15rem;
+  width: 1.375rem;
+  height: 1.375rem;
+  margin-top: 0.1rem;
   flex-shrink: 0;
-  accent-color: var(--color-ink);
+  accent-color: var(--color-pine);
 }
 
 /* ---- Tabellen ---------------------------------------------------------- */
@@ -445,26 +469,31 @@ details[open]::details-content {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 1rem;
+  font-size: 1.0625rem;
 }
 .table caption {
   text-align: left;
-  font-weight: 600;
-  margin-block-end: 0.75rem;
+  font-size: 0.9375rem;
+  color: var(--color-ink-soft);
+  margin-block-end: 0.5rem;
 }
 .table th,
 .table td {
   padding: 0.85rem 1rem 0.85rem 0;
   vertical-align: top;
 }
+.table th:last-child,
+.table td:last-child {
+  padding-inline-end: 0;
+}
 .table thead th {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--color-ink-soft);
-  border-block-end: 1px solid var(--color-control);
+  color: var(--color-ink);
+  border-block-end: 1.5px solid var(--color-control);
 }
 .table tbody tr + tr > * {
-  border-block-start: 1px solid color-mix(in oklab, var(--color-ink) 14%, transparent);
+  border-block-start: 1px solid var(--color-hairline);
 }
 .table .r {
   text-align: right;
@@ -519,6 +548,54 @@ details[open]::details-content {
   }
 }
 
+/* ---- Zeitleiste (Startseite, Über mich) ------------------------------- */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.75rem;
+  border-inline-start: 2px solid var(--color-hairline);
+  display: grid;
+  gap: 1.75rem;
+}
+.timeline > li {
+  position: relative;
+  display: grid;
+  gap: 0.2rem;
+}
+/* Der Punkt sitzt mittig auf der Linie; die aktuelle Station ist Orange mit Tannenrand. */
+.timeline > li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: calc(-1.75rem - 1px - 0.4375rem);
+  inset-block-start: 0.3rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 50%;
+  background: var(--color-pine);
+}
+.timeline > li.is-current::before {
+  inset-inline-start: calc(-1.75rem - 1px - 0.5625rem);
+  inset-block-start: 0.2rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  box-sizing: border-box;
+  background: var(--color-orange);
+  border: 3px solid var(--color-pine);
+}
+.timeline-period {
+  font-size: 1rem;
+  color: var(--color-ink-soft);
+}
+.is-current > .timeline-period {
+  font-weight: 700;
+  color: var(--color-pine);
+}
+.timeline-title {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
 /* ---- Skip-Link -------------------------------------------------------- */
 .skip-link {
   position: absolute;
@@ -526,8 +603,8 @@ details[open]::details-content {
   inset-inline-start: 0.5rem;
   z-index: 100;
   transform: translateY(-160%);
-  background: var(--color-ink);
-  color: var(--color-paper);
+  background: var(--color-orange);
+  color: var(--color-ink);
   padding: 0.75rem 1.25rem;
   border-radius: var(--radius-control);
   font-weight: 600;
@@ -536,41 +613,33 @@ details[open]::details-content {
   transform: translateY(0);
 }
 
-/* ---- Bewegung: Register ziehen -----------------------------------------
-   Inhalte sind ohne Animation sichtbar; Bewegung kommt nur obendrauf. */
-/* Nur Bewegung, nie Transparenz: Text ist in jedem Frame voll lesbar
-   (Kontrast gilt auch während der Animation). */
-@keyframes sheet-settle {
-  from {
-    transform: translateY(2.25rem);
-  }
+/* Offenes Mobilmenü: Die Seite dahinter scrollt nicht mit. */
+body.menu-offen {
+  overflow: hidden;
 }
-@keyframes panel-in {
+/* Pfeil im Mobilmenü. Global, weil das SVG in app-icon liegt (eigene Kapselung). */
+.mobile-arrow {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.mobile-link:hover .mobile-arrow {
+  transform: translateX(4px);
+}
+
+/* ---- Bewegung ---------------------------------------------------------
+   Inhalte sind ohne Animation sichtbar; Bewegung kommt nur obendrauf, und
+   animiert wird nur transform, nie opacity. */
+@keyframes rise-in {
   from {
     transform: translateY(0.75rem);
   }
 }
 
-/* Scroll-getrieben, nur wo unterstützt: Reiter heben sich, wenn ihr Blatt
-   ins Bild kommt — die einzige Bewegung beim Scrollen. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .tab-rise > .tab {
-      animation: tab-rise linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 60%;
-    }
-  }
-}
-@keyframes tab-rise {
-  from {
-    transform: translateY(0.6rem);
-  }
-}
-
 /* ---- Browser-Oberflächen --------------------------------------------- */
 ::selection {
-  background: var(--color-check-tint);
+  background: var(--color-orange);
   color: var(--color-ink);
 }
 html {
@@ -581,11 +650,10 @@ html {
 }
 body {
   font-family: var(--font-sans);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   color: var(--color-ink);
-  background-color: var(--color-paper);
+  background-color: var(--color-white);
   caret-color: var(--color-ink);
-  font-optical-sizing: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -606,27 +674,15 @@ body {
   .btn:active {
     transform: none;
   }
-  .arrow {
+  .arrow,
+  .toggle-mark {
     transition: none;
   }
 }
 
-/* ---- Gestapelte Blätter -------------------------------------------------
-   Jedes folgende Blatt legt sich mit seinem Reiter über die Unterkante des
-   vorigen — wie Trennblätter im Ordner. */
-.sheet-stack > .sheet + .sheet {
-  margin-block-start: calc(2.75rem - var(--radius-sheet));
-}
-.sheet-stack > .sheet:not(:last-child) {
-  padding-block-end: calc(clamp(1.5rem, 4vw, 3.5rem) + var(--radius-sheet));
-}
-.sheet-stack > .sheet > .tab {
-  max-width: 15rem;
-}
-
 /* ---- Seitenkopf der Unterseiten --------------------------------------- */
 .page-intro {
-  padding-block: clamp(2.5rem, 7vw, 5.5rem) clamp(2.5rem, 5vw, 4rem);
+  padding-block: clamp(2.5rem, 6vw, 5rem) clamp(3.5rem, 7vw, 6.5rem);
 }
 
 /* Sprungziele landen nicht unter dem klebenden Kopf. */

@@ -1,13 +1,41 @@
-.panel {
-  background: var(--color-paper);
-  border-radius: 1.25rem;
-  padding: clamp(1rem, 2.5vw, 1.75rem);
+.check-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .check-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+}
+/* Kein gap: Die leere Live-Region soll keinen Abstand erzeugen, das Ergebnis bringt ihn mit. */
+.check-side {
+  display: grid;
+}
+.result {
+  margin-block-end: 1.5rem;
+}
+
+.check-step {
+  margin-block-start: 2rem;
+  padding-block-start: 2rem;
+  border-block-start: 1px solid var(--color-hairline);
+}
+
+.special-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2.75rem;
+  border-radius: 0.5rem;
 }
 
 /* Farbe ist hier nie alleiniger Bedeutungsträger: die Zeile trägt zusätzlich das
    Wort „überschritten", die Markierung ist nur redundant (WCAG 1.4.1). */
 .criterion-exceeded > * {
-  background: var(--color-check-tint);
+  background: color-mix(in oklab, var(--color-orange) 30%, var(--color-white));
 }
 .criterion-exceeded > th {
   padding-inline-start: 0.75rem;
@@ -18,15 +46,12 @@
   font-weight: 600;
 }
 
-.result {
-  border: 1px solid color-mix(in oklab, var(--tone-ink) 30%, transparent);
-}
 @media (prefers-reduced-motion: no-preference) {
   .result {
-    animation: panel-in var(--dur-base) var(--ease-out) both;
+    animation: rise-in var(--dur-base) var(--ease-out) both;
   }
 }
 
 .disclaimer {
-  border-block-start: 1px solid color-mix(in oklab, var(--tone-ink) 22%, transparent);
+  border-block-start: 1px solid var(--surface-line);
 }

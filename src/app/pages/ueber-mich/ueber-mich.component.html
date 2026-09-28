@@ -1,61 +1,45 @@
-<section class="wrap page-intro" aria-labelledby="ueber-title">
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
-    <div [class]="profile.portrait ? 'lg:col-span-7' : 'lg:col-span-9'">
-      <h1 id="ueber-title" class="t-display">
-        @for (line of headline.lines; track $index) {
-          <span class="line">{{ line }}</span>
+<div data-surface="orange">
+  <section class="wrap page-intro" aria-labelledby="ueber-title">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-end">
+      <div [class]="profile.portrait ? 'lg:col-span-7' : 'lg:col-span-9'">
+        <h1 id="ueber-title" class="t-h1">
+          @for (line of headline.lines; track $index) {
+            <span class="line">{{ line }}</span>
+          }
+        </h1>
+        @for (paragraph of profile.statement; track $index) {
+          <p class="t-lead t-soft mt-6 first-of-type:mt-8">{{ paragraph }}</p>
         }
-      </h1>
-      @for (paragraph of profile.statement; track $index) {
-        <p class="t-lead mt-6 first-of-type:mt-8">{{ paragraph }}</p>
+      </div>
+      @if (profile.portrait; as photo) {
+        <div class="lg:col-span-4 lg:col-start-9">
+          <img
+            class="portrait"
+            [ngSrc]="photo.src"
+            [width]="photo.width"
+            [height]="photo.height"
+            [alt]="photo.alt"
+            priority
+          />
+        </div>
       }
     </div>
-    @if (profile.portrait; as photo) {
-      <div class="lg:col-span-4 lg:col-start-9">
-        <img
-          class="w-full h-auto rounded-[1.75rem]"
-          [ngSrc]="photo.src"
-          [width]="photo.width"
-          [height]="photo.height"
-          [alt]="photo.alt"
-          priority
-        />
-      </div>
-    }
-  </div>
-</section>
+  </section>
+</div>
 
-<section class="wrap section--tight" aria-labelledby="werdegang-title">
-  <app-register-sheet tone="neutral" [tabbed]="true">
-    <h2 sheetTab id="werdegang-title" class="flex items-center gap-2.5">
-      <span class="tone-dot" aria-hidden="true"></span>Werdegang
-    </h2>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      <ol class="timeline lg:col-span-10">
-        @for (entry of profile.career; track entry.title; let first = $first) {
-          <li class="timeline-item" [class.is-current]="first">
-            <span class="timeline-period num">{{ entry.period }}</span>
-            <div>
-              <h3 class="t-h3">{{ entry.title }}</h3>
-              @if (entry.description) {
-                <p class="t-body t-soft mt-1.5">{{ entry.description }}</p>
-              }
-            </div>
-          </li>
-        }
-      </ol>
-    </div>
-  </app-register-sheet>
-</section>
-
-<section class="wrap section" aria-labelledby="ueber-schluss">
-  <div class="max-w-2xl">
-    <h2 id="ueber-schluss" class="t-h2">Lernen wir uns kennen.</h2>
-    <p class="t-body mt-5">
-      Im Erstgespräch klären wir, worum es geht und ob ich die Richtige dafür bin.
-    </p>
-    <div class="mt-8">
-      <app-action-link href="/kontakt" label="Erstgespräch vereinbaren" />
-    </div>
+<section class="wrap section" aria-labelledby="werdegang-title">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
+    <h2 id="werdegang-title" class="t-h2 lg:col-span-4">Werdegang</h2>
+    <ol class="timeline lg:col-span-7 lg:col-start-6">
+      @for (entry of profile.career; track entry.title; let first = $first) {
+        <li [class.is-current]="first">
+          <span class="timeline-period num">{{ entry.period }}</span>
+          <h3 class="timeline-title">{{ entry.title }}</h3>
+          @if (entry.description) {
+            <p class="t-body t-soft">{{ entry.description }}</p>
+          }
+        </li>
+      }
+    </ol>
   </div>
 </section>

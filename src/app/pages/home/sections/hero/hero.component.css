@@ -1,132 +1,98 @@
+.hero-band {
+  overflow: clip;
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 3.5rem;
-  align-items: center;
-  padding-block: clamp(2.5rem, 7vw, 6rem) clamp(3.5rem, 8vw, 7rem);
+  gap: 3rem;
+  padding-block-start: clamp(2rem, 5vw, 4rem);
 }
 @media (min-width: 1024px) {
   .hero {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: 4rem;
+    gap: 3rem;
+    align-items: end;
   }
 }
 
-/* ---- Der Stapel: vier Registerblätter, vorn das Deckblatt ------------- */
-.stack {
-  --step: 3.6rem;
-  --tab-h: 2.75rem;
-  --tab-room: 15.5rem;
+.hero-copy {
+  align-self: center;
+}
+@media (min-width: 1024px) {
+  .hero-copy {
+    padding-block-end: clamp(5rem, 8vw, 7.5rem);
+  }
+}
+
+/* ---- Der Bogen ----------------------------------------------------------
+   Steht auf der Unterkante der Tanne-Fläche wie eine Tür im Grün. */
+.hero-visual {
   position: relative;
-  min-height: calc(var(--tab-h) + 4 * var(--step) + 13rem);
+  display: grid;
+  justify-items: center;
 }
-
-.stack-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+@media (min-width: 1024px) {
+  .hero-visual {
+    justify-items: end;
+  }
 }
-
-.stack-item {
-  position: absolute;
-  inset-inline: 0;
-  top: calc(var(--tab-h) + var(--i) * var(--step));
-  bottom: 0;
-  z-index: calc(var(--i) + 1);
+.arch {
+  width: min(100%, 30rem);
+  aspect-ratio: 24 / 31;
+  border-radius: 999px 999px 0 0;
+  background: var(--color-pine);
+  overflow: hidden;
 }
-
-.stack-sheet {
-  --tab-at: calc((100% - var(--tab-room)) * var(--i) / 3);
-  display: block;
+@media (max-width: 1023px) {
+  .arch {
+    width: min(82%, 22rem);
+  }
+}
+.arch-photo {
+  width: 100%;
   height: 100%;
-  min-height: 16rem;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  transition: transform var(--dur-base) var(--ease-out);
-}
-.stack-sheet .tab {
-  gap: 0.6rem;
-}
-.stack-sheet:hover,
-.stack-sheet:focus-visible {
-  transform: translateY(-0.5rem);
-}
-.stack-sheet:focus-visible {
-  outline: none;
-}
-.stack-sheet:focus-visible .tab {
-  outline: 2px solid var(--color-ink);
-  outline-offset: 2px;
-}
-.stack-sheet .tab {
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-underline-offset: 0.25em;
-  transition: text-decoration-color var(--dur-quick) var(--ease-out);
-}
-.stack-sheet:hover .tab {
-  text-decoration-color: currentColor;
-}
-
-.cover {
-  position: absolute;
-  inset-inline: 0;
-  inset-block-start: calc(var(--tab-h) + var(--i) * var(--step));
-  z-index: 10;
-  padding: clamp(1.5rem, 3vw, 2.25rem);
-  background: var(--color-paper);
-  border: 1px solid var(--color-hairline);
-  border-radius: var(--radius-sheet);
-  box-shadow: 0 1.5rem 3rem -1.75rem rgb(29 39 49 / 0.35);
-}
-.cover-photo {
-  width: 5.5rem;
-  height: 5.5rem;
   object-fit: cover;
-  border-radius: 50%;
-  margin-block-end: 1.25rem;
+  object-position: center top;
 }
-.cover-name {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 1vw + 1.2rem, 1.875rem);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-}
-.cover-facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 2rem;
-  margin: 1.5rem 0 0;
-  padding-block-start: 1.25rem;
-  border-block-start: 1px solid var(--color-hairline);
-}
-.cover-facts dt {
-  font-size: 0.875rem;
-  color: var(--color-ink-soft);
-}
-.cover-facts dd {
+
+/* Die Notiz: das einzige Element mit Schatten. */
+.note {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-end: clamp(1.5rem, 5vw, 4.5rem);
+  display: grid;
+  gap: 0.3rem;
+  max-width: 18rem;
   margin: 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 1.5rem 3rem -1.25rem rgb(10 25 18 / 0.45);
+}
+@media (min-width: 1024px) {
+  .note {
+    inset-inline-start: -1.5rem;
+  }
+}
+.note-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
   font-weight: 600;
 }
 
-/* Das eine inszenierte Moment der Seite: der Stapel setzt sich Blatt für Blatt. */
+/* Das eine inszenierte Moment: Der Bogen öffnet sich beim Laden von unten. */
 @media (prefers-reduced-motion: no-preference) {
-  .stack-item,
-  .cover {
-    animation: sheet-settle var(--dur-slow) var(--ease-out) both;
-    animation-delay: calc(120ms + var(--i) * 90ms);
+  .arch {
+    animation: arch-rise var(--dur-slow) var(--ease-out) both;
+    animation-delay: 120ms;
+  }
+  .note {
+    animation: rise-in var(--dur-slow) var(--ease-out) both;
+    animation-delay: 360ms;
   }
 }
-
-@media (max-width: 480px) {
-  .stack {
-    --step: 3.25rem;
-    --tab-room: 14rem;
-  }
-  .stack-sheet .tab {
-    font-size: 0.875rem;
-    padding-inline: 0.9rem;
+@keyframes arch-rise {
+  from {
+    transform: translateY(3rem);
   }
 }

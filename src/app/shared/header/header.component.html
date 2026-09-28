@@ -1,4 +1,8 @@
-<header class="site-header" [class.is-raised]="scrolled() || mobileMenuOpen()">
+<header
+  class="site-header"
+  data-surface="orange"
+  [class.is-raised]="scrolled() || mobileMenuOpen()"
+>
   <div class="wrap flex items-center justify-between gap-6 py-3 md:py-4">
     <a
       routerLink="/"
@@ -7,27 +11,30 @@
       aria-label="Startseite, Wiebke Lefevre"
     >
       <span class="brand-name">{{ contact.personName }}</span>
-      <span class="brand-role">{{ contact.role }} · {{ contact.city }}</span>
+      <span class="brand-role">{{ contact.role }} in {{ contact.city }}</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-1" aria-label="Hauptnavigation">
-      @for (item of navItems; track item.path) {
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Hauptnavigation">
+      @for (item of navItems; track item.label) {
         <a
           [routerLink]="item.path"
+          [fragment]="item.fragment"
           routerLinkActive="is-active"
+          [routerLinkActiveOptions]="item.fragment ? exactWithFragment : exactPath"
           ariaCurrentWhenActive="page"
           class="nav-link"
           >{{ item.label }}</a
         >
       }
       <span class="ms-4">
-        <app-action-link href="/kontakt" label="Erstgespräch" [small]="true" />
+        <app-action-link href="/kontakt" label="Erstgespräch" [small]="true" [arrow]="false" />
       </span>
     </nav>
 
     <button
+      #menuButton
       type="button"
-      class="menu-button md:hidden"
+      class="menu-button lg:hidden"
       (click)="toggleMobileMenu()"
       [attr.aria-expanded]="mobileMenuOpen()"
       aria-controls="mobile-nav"
@@ -38,21 +45,33 @@
   </div>
 
   @if (mobileMenuOpen()) {
-    <nav id="mobile-nav" class="mobile-nav md:hidden" aria-label="Mobilnavigation">
-      <div class="wrap flex flex-col pb-6">
-        @for (item of navItems; track item.path) {
-          <a
-            [routerLink]="item.path"
-            routerLinkActive="is-active"
-            ariaCurrentWhenActive="page"
-            (click)="closeMobileMenu()"
-            class="mobile-link"
-            >{{ item.label }}</a
-          >
-        }
-        <span class="mt-5">
+    <!-- Das Menü nimmt den ganzen Bildschirm ein. Der Kopf mit dem Schließen-Button
+         bleibt obenauf, Inhalt und Fuß dahinter sind inert. -->
+    <nav id="mobile-nav" class="mobile-nav lg:hidden" aria-label="Mobilnavigation">
+      <div class="wrap mobile-inner">
+        <ul class="mobile-list" role="list">
+          @for (item of navItems; track item.label; let i = $index) {
+            <li [style.--i]="i">
+              <a
+                [routerLink]="item.path"
+                [fragment]="item.fragment"
+                routerLinkActive="is-active"
+                [routerLinkActiveOptions]="item.fragment ? exactWithFragment : exactPath"
+                ariaCurrentWhenActive="page"
+                (click)="closeMobileMenu()"
+                class="mobile-link"
+                ><span>{{ item.label }}</span
+                ><app-icon name="arrow" svgClass="mobile-arrow"
+              /></a>
+            </li>
+          }
+        </ul>
+        <div class="mobile-foot">
           <app-action-link href="/kontakt" label="Erstgespräch vereinbaren" />
-        </span>
+          <p class="t-small t-soft">
+            {{ contact.personName }} · {{ contact.role }} in {{ contact.city }}
+          </p>
+        </div>
       </div>
     </nav>
   }

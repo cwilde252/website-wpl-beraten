@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import {
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   effect,
@@ -18,6 +19,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { determineAuditRequirement, sizeClassLabel } from '../../core/domain/hgb-size-class';
 import {
   CRITERION_LABELS,
@@ -31,6 +33,18 @@ import {
   YearFigures,
 } from '../../core/models/hgb-size-class.model';
 import { ContentService } from '../../core/services/content.service';
+import { ActionLinkComponent } from '../action-link/action-link.component';
+import { IconComponent } from '../icon/icon.component';
+
+/**
+ * Der Schnell-Check der Startseite übergibt die drei Werte des laufenden Jahres
+ * als Query-Parameter (ohne JavaScript per GET-Formular, mit JavaScript per Router).
+ */
+export const QUICK_CHECK_KEYS = {
+  bilanzsumme: 'currentBalanceSheetTotal',
+  umsatz: 'currentRevenue',
+  arbeitnehmer: 'currentEmployees',
+} as const;
 
 /** Eine Zahleneingabe im deutschen Format, Pflichtfeld. */
 function deNumber(control: AbstractControl): ValidationErrors | null {
@@ -58,7 +72,7 @@ interface ThresholdRow {
 
 @Component({
   selector: 'app-audit-check',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ActionLinkComponent, IconComponent],
   templateUrl: './audit-check.component.html',
   styleUrl: './audit-check.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -67,6 +81,7 @@ export class AuditCheckComponent {
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly content = inject(ContentService);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly route = inject(ActivatedRoute);
 
   readonly headingId = input('pruefungspflicht-check');
 
@@ -107,11 +122,25 @@ export class AuditCheckComponent {
       if (this.result() !== null) this.result.set(null);
     });
 
+    // Werte aus dem Schnell-Check übernehmen und gleich auswerten — nur im Browser,
+    // damit das vorgerenderte HTML für alle Besucher gleich bleibt.
+    afterNextRender(() => this.applyQuickCheck());
+
     effect(() => {
       if (!this.result()) return;
       const heading = this.resultHeading()?.nativeElement;
       if (heading && isPlatformBrowser(this.platformId)) heading.focus();
     });
+  }
+
+  private applyQuickCheck(): void {
+    const params = this.route.snapshot.queryParamMap;
+    const entries = Object.entries(QUICK_CHECK_KEYS).map(
+      ([param, control]) => [control, params.get(param)?.trim() ?? ''] as const,
+    );
+    if (entries.some(([, value]) => value === '')) return;
+    this.form.patchValue(Object.fromEntries(entries));
+    this.submit();
   }
 
   submit(): void {
