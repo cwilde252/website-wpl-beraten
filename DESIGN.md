@@ -1,6 +1,6 @@
 ---
 name: WPL — Wiebke Lefevre, Wirtschaftsprüferin
-description: „Offene Tür“ — Logo-Orange als tragende Fläche mit dunkler Schrift, Tanne und Sonne als Gegenfarben, satte Flächen statt Pastell, Überschriften als Fragen der Mandanten, ein Porträt-Bogen als Zeichen.
+description: „Offene Tür“ — Logo-Orange als tragende Fläche mit dunkler Schrift, Tinte und Tanne als Gegenfarben, satte Flächen statt Pastell, Überschriften als Fragen der Mandanten, ein Porträt-Bogen als Zeichen.
 colors:
   white: "#FFFFFF"
   nebel: "#EDF2EE"
@@ -15,9 +15,6 @@ colors:
   pine: "#1E4636"
   pine-deep: "#16352A"
   mint: "#CFE3D6"
-  sun: "#F5C331"
-  sun-hover: "#F8D25E"
-  sun-soft: "#3F4A2E"
   pruefung: "#A64F00"
   beratung: "#1F5F92"
   steuern: "#2D7550"
@@ -131,9 +128,13 @@ Tinte. Der früher verworfene orange Auftritt hatte weiße Schrift, Karten und P
 bleiben Buttons eckig-rund (0,875rem), und Tanne steht als Gegenfarbe im Bogen. Wiebke Lefevres
 Bestätigung steht noch aus (FRAGEN-AN-WIEBKE.md, 15a).
 
+**Warum kein Sonnengelb mehr (Entscheidung 28.09.2026):** Die Sonnen-Fläche des Checks biss sich
+mit dem Orange im Kopf; zwei laute Warmtöne auf einer Seite konkurrieren. Der Check steht jetzt
+auf Tinte in weißen Tafeln. Das Logo-Gelb bleibt nur als Punkt im Logo-Zeichen.
+
 **Warum nicht Creme und Terrakotta:** Ein erster Entwurf dieses Redesigns landete bei warmem
 Cremegrund, Serif-Display und Terrakotta. Das ist laut impeccable der am häufigsten generierte
-AI-Look und wurde vom Detektor (`cream-palette`) markiert. Tanne und Sonne kommen direkt aus den
+AI-Look und wurde vom Detektor (`cream-palette`) markiert. Orange und Tanne kommen direkt aus den
 Logofarben und aus der Region.
 
 ## 2. Farbe
@@ -151,23 +152,20 @@ Fokusfarbe und Hover-Farbe für Links. Komponenten lesen nur diese Variablen
 | `ink` | `#17231D` | Weiß 16,2:1 / Minze 12,1:1 | Orange, Tinte 6,0:1 | Orange |
 | `white` (Standard) | `#FFFFFF` | Tinte 16,2:1 / Tinte weich 7,3:1 | Tanne, Weiß | Tinte |
 | `nebel` | `#EDF2EE` | Tinte 14,3:1 / Tinte weich 6,5:1 | Tanne, Weiß | Tinte |
-| `pine` | `#1E4636` | Weiß 10,6:1 / Minze 7,9:1 | Sonne, Tinte 6,4:1 | Sonne |
-| `pine-deep` | `#16352A` | Weiß 13,3:1 / Minze 10,2:1 | Sonne, Tinte | Sonne |
-| `sun` | `#F5C331` | Tinte 9,8:1 / `#3F4A2E` 5,7:1 | Tanne, Weiß | Tinte |
-| `pruefung` | `#A64F00` | Weiß 5,6:1 | Sonne, Tinte | Weiß |
-| `beratung` | `#1F5F92` | Weiß 6,8:1 | Sonne, Tinte | Weiß |
-| `steuern` | `#2D7550` | Weiß 5,6:1 | Sonne, Tinte | Weiß |
+| `pruefung` | `#A64F00` | Weiß 5,6:1 | Weiß, Tinte | Weiß |
+| `beratung` | `#1F5F92` | Weiß 6,8:1 | Weiß, Tinte | Weiß |
+| `steuern` | `#2D7550` | Weiß 5,6:1 | Weiß, Tinte | Weiß |
 
 Jede Fläche liefert außerdem `--surface-accent` (Unterstrich der aktiven Seite) und
 `--surface-line` (Trenner). Weiße Tafeln in farbigen Flächen (`.panel`) setzen die Variablen
-lokal auf Weiß zurück. `pine` und `pine-deep` bleiben definiert, tragen aber derzeit keine Seite.
+lokal auf Weiß zurück. Tanne ist keine Fläche mehr, nur Farbe für Bogen und Buttons auf Weiß.
 
 ### 2.2 Regeln
 
 - **Farbe besitzt Flächen.** Eine Farbe nimmt einen ganzen Abschnitt oder eine ganze Karte ein —
   nie als zarter Schleier, nie als Randstreifen.
-- **Rhythmus pro Seite.** Orange oben (Kopf und Einstieg), Weiß zum Lesen, höchstens eine
-  Sonnen-Fläche (der Check), Tinte zum Schluss. Nie zwei gleiche Farbflächen hintereinander.
+- **Rhythmus pro Seite.** Orange oben (Kopf und Einstieg), Weiß zum Lesen, Tinte für den Check
+  und zum Schluss. Nie zwei gleiche Farbflächen hintereinander.
 - **Auf Orange nie Weiß.** Text, Buttons und Fokus auf Orange sind Tinte; der orange Button
   steht nur auf Tinte.
 - **Bereichsfarben** gehören den drei Leistungsbereichen: Orange-tief Prüfung, Blau Beratung,
@@ -266,7 +264,7 @@ Ein echter Satz aus dem Profil als Zitat (ein Unit-Test prüft, dass er wörtlic
 darunter die vier Grundsätze mit 3-px-Linie in Tanne.
 
 ### Schnell-Check (Startseite)
-Drei Felder auf Sonne. Ohne JavaScript ein GET-Formular auf `/leistungen#pruefungspflicht`, mit
+Drei Felder in weißer Tafel auf Tinte. Ohne JavaScript ein GET-Formular auf `/leistungen#pruefungspflicht`, mit
 JavaScript eine Router-Navigation. Der Check übernimmt `bilanzsumme`, `umsatz` und `arbeitnehmer`
 aus der Adresse und wertet sofort aus — nur wenn alle drei gesetzt sind.
 
@@ -276,17 +274,17 @@ Links die Bereichskarte (ab `lg` klebend), rechts die Blöcke: Anliegen als `h3`
 fett als Einstieg, Punkte als echte Liste.
 
 ### Prüfungspflicht-Check (`app-audit-check`)
-Auf Sonne: Formular in weißer Tafel links (laufendes Jahr, Vorjahr, Sonderfälle aufklappbar),
+Auf Tinte: Formular in weißer Tafel links (laufendes Jahr, Vorjahr, Sonderfälle aufklappbar),
 rechts das Ergebnis über der Schwellenwerttabelle. Das Vorjahr bleibt sichtbar, weil die
 Rechtsfolge an zwei Stichtagen hängt (§ 267 Abs. 4 HGB) — ohne Vorjahr gibt es eine Einordnung,
-aber keine belastbare Aussage. Überschrittene Zeilen: Sonne-Tönung plus das Wort „überschritten“.
+aber keine belastbare Aussage. Überschrittene Zeilen: Orange-Tönung (30 % auf Weiß) plus das Wort „überschritten“.
 
 ### FAQ (`app-faq-accordion`)
 Natives `details`/`summary`, Frage als `h3` in `.t-title`, Auf-zu-Marke im Nebelkreis, geöffnet
 Tanne mit weißem Kreuz.
 
 ### Zeitleiste (`.timeline`)
-Linie links, Punkte in Tanne, aktuelle Station Sonne mit Tannenrand und fetter Jahreszahl.
+Linie links, Punkte in Tanne, aktuelle Station Orange mit Tannenrand und fetter Jahreszahl.
 
 ## 7. Qualität
 

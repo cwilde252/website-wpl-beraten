@@ -16,13 +16,12 @@
   --color-hairline: #dce3dd; /* rein dekorative Trenner */
   --color-control: #6f7d74; /* Ränder von Steuerelementen, 4,3:1 (SC 1.4.11) */
 
-  /* ---- Tanne und Sonne ---------------------------------------------- */
-  --color-pine: #1e4636; /* tragende Fläche, Weiß 10,6:1 */
-  --color-pine-deep: #16352a; /* Schluss und Fuß, Weiß 13,3:1 */
-  --color-mint: #cfe3d6; /* Text auf Tanne, 7,9:1 */
-  --color-sun: #f5c331; /* Aktion auf Tanne, Check-Fläche; Tinte darauf 9,8:1 */
-  --color-sun-hover: #f8d25e;
-  --color-sun-soft: #3f4a2e; /* Nebentext auf Sonne, 5,7:1 */
+  /* ---- Tanne ------------------------------------------------------------
+     Kein Sonnengelb als Fläche mehr (Entscheidung 28.09.2026): Es biss sich mit dem
+     Orange im Kopf. Der Check steht jetzt auf Tinte. */
+  --color-pine: #1e4636; /* Porträt-Bogen, Buttons auf Weiß; Weiß 10,6:1 */
+  --color-pine-deep: #16352a; /* Hover der Tanne-Buttons, Weiß 13,3:1 */
+  --color-mint: #cfe3d6; /* Nebentext auf Tinte, 12,1:1 */
 
   /* ---- Bereiche: je eine volle Fläche, Text immer Weiß --------------- */
   --color-pruefung: #a64f00; /* Weiß 5,6:1 */
@@ -42,7 +41,7 @@
   --color-orange-hover: #ea9d4b; /* Button-Hover auf Tinte, Tinte darauf > 6:1 */
   --color-ink-hover: #2e3a33; /* Button-Hover auf Orange, Weiß darauf > 11:1 */
 
-  --color-error: #8a1c12; /* 9,0:1 auf Weiß, 5,7:1 auf Sonne */
+  --color-error: #8a1c12; /* 9,0:1 auf Weiß; Fehler stehen nur in weißen Panels */
 
   /* ---- Schrift --------------------------------------------------------- */
   --font-display: 'Red Hat Display Variable', system-ui, sans-serif;
@@ -82,23 +81,6 @@
 [data-surface='nebel'] {
   --surface-bg: var(--color-nebel);
 }
-[data-surface='pine'],
-[data-surface='pine-deep'] {
-  --surface-bg: var(--color-pine);
-  --surface-ink: var(--color-white);
-  --surface-soft: var(--color-mint);
-  --action-bg: var(--color-sun);
-  --action-ink: var(--color-ink);
-  --action-hover: var(--color-sun-hover);
-  --quiet-border: var(--color-mint);
-  --focus: var(--color-sun);
-  --link-hover: var(--color-sun);
-  --surface-accent: var(--color-sun);
-  --surface-line: color-mix(in oklab, var(--color-mint) 28%, transparent);
-}
-[data-surface='pine-deep'] {
-  --surface-bg: var(--color-pine-deep);
-}
 /* Die tragende Fläche: Kopf, Einstieg jeder Seite. Dunkle Schrift, dunkle Buttons. */
 [data-surface='orange'] {
   --surface-bg: var(--color-orange);
@@ -113,7 +95,7 @@
   --surface-accent: var(--color-ink);
   --surface-line: color-mix(in oklab, var(--color-ink) 22%, transparent);
 }
-/* Schluss und Fuß: Tinte, darauf der orange Button. */
+/* Check, Schluss und Fuß: Tinte, darauf der orange Button. */
 [data-surface='ink'] {
   --surface-bg: var(--color-ink);
   --surface-ink: var(--color-white);
@@ -127,27 +109,14 @@
   --surface-accent: var(--color-orange);
   --surface-line: color-mix(in oklab, var(--color-mint) 22%, transparent);
 }
-[data-surface='sun'] {
-  --surface-bg: var(--color-sun);
-  --surface-ink: var(--color-ink);
-  --surface-soft: var(--color-sun-soft);
-  --action-bg: var(--color-pine);
-  --action-ink: var(--color-white);
-  --action-hover: var(--color-pine-deep);
-  --quiet-border: var(--color-ink);
-  --focus: var(--color-ink);
-  --link-hover: var(--color-pine);
-  --surface-accent: var(--color-ink);
-  --surface-line: color-mix(in oklab, var(--color-ink) 22%, transparent);
-}
 [data-surface='pruefung'],
 [data-surface='beratung'],
 [data-surface='steuern'] {
   --surface-ink: var(--color-white);
   --surface-soft: var(--color-white);
-  --action-bg: var(--color-sun);
+  --action-bg: var(--color-white);
   --action-ink: var(--color-ink);
-  --action-hover: var(--color-sun-hover);
+  --action-hover: var(--color-nebel);
   --quiet-border: var(--color-white);
   --focus: var(--color-white);
   --link-hover: var(--color-white);
@@ -586,7 +555,7 @@ details[open] > summary .toggle-mark {
   display: grid;
   gap: 0.2rem;
 }
-/* Der Punkt sitzt mittig auf der Linie; die aktuelle Station ist Sonne mit Tannenrand. */
+/* Der Punkt sitzt mittig auf der Linie; die aktuelle Station ist Orange mit Tannenrand. */
 .timeline > li::before {
   content: '';
   position: absolute;
@@ -603,7 +572,7 @@ details[open] > summary .toggle-mark {
   width: 1.125rem;
   height: 1.125rem;
   box-sizing: border-box;
-  background: var(--color-sun);
+  background: var(--color-orange);
   border: 3px solid var(--color-pine);
 }
 .timeline-period {
@@ -627,7 +596,7 @@ details[open] > summary .toggle-mark {
   inset-inline-start: 0.5rem;
   z-index: 100;
   transform: translateY(-160%);
-  background: var(--color-sun);
+  background: var(--color-orange);
   color: var(--color-ink);
   padding: 0.75rem 1.25rem;
   border-radius: var(--radius-control);
@@ -663,7 +632,7 @@ body.menu-offen {
 
 /* ---- Browser-Oberflächen --------------------------------------------- */
 ::selection {
-  background: var(--color-sun);
+  background: var(--color-orange);
   color: var(--color-ink);
 }
 html {

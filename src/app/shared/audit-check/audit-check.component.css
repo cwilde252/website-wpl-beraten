@@ -35,7 +35,7 @@
 /* Farbe ist hier nie alleiniger Bedeutungsträger: die Zeile trägt zusätzlich das
    Wort „überschritten", die Markierung ist nur redundant (WCAG 1.4.1). */
 .criterion-exceeded > * {
-  background: color-mix(in oklab, var(--color-sun) 35%, var(--color-white));
+  background: color-mix(in oklab, var(--color-orange) 30%, var(--color-white));
 }
 .criterion-exceeded > th {
   padding-inline-start: 0.75rem;
@@ -53,5 +53,5 @@
 }
 
 .disclaimer {
-  border-block-start: 1px solid color-mix(in oklab, var(--color-ink) 25%, transparent);
+  border-block-start: 1px solid var(--surface-line);
 }

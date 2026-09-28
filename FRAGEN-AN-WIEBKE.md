@@ -60,10 +60,10 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
     - In welchem Umkreis arbeiten Sie?
 
 13. **Porträtfoto.** Wichtigster offener Punkt für die Wärme der Seite. Der Bogen im
-    Startseiten-Kopf ist vorbereitet und bleibt bis dahin eine reine Sonnenfläche; auf
+    Startseiten-Kopf ist vorbereitet und bleibt bis dahin eine reine Tannenfläche; auf
     `/ueber-mich` erscheint das Porträt in derselben Bogenform. Gewünscht: ein freundliches, helles
     Porträt im Hochformat (mind. 1200 px breit, Seitenverhältnis etwa 4:5), am besten mit ruhigem
-    Hintergrund, der sich freistellen lässt — es steht vor Sonnengelb auf Tannengrün. Einbau:
+    Hintergrund, der sich freistellen lässt — es steht vor Tannengrün auf Orange. Einbau:
     Datei nach `public/` legen und in `ContentService.getProfile()` das Feld `portrait` setzen
     (Pfad, Alt-Text, Breite, Höhe).
 
@@ -73,7 +73,7 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
 15a. **Farbwelt und Texte des Redesigns „Offene Tür“.** Kopf und Einstieg tragen jetzt das
     Logo-Orange `#E0892A` mit dunkler Schrift — bewusst nah an dem orangen Auftritt, den du früher
     verworfen hast, aber ohne weiße Schrift und Pill-Buttons. Passt das für dich? Dazu Tinte
-    `#17231D` für den Schluss, Tannengrün `#1E4636` im Porträt-Bogen und Sonnengelb `#F5C331` für den Check;
+    `#17231D` für den Check und den Schluss, Tannengrün `#1E4636` im Porträt-Bogen;
     Orange, Blau und Grün sind für weißen Text abgedunkelt (`#A64F00`, `#1F5F92`, `#2D7550`).
     Neu formuliert sind die Überschriften als Mandantenfragen (z. B. „Müssen wir unseren
     Abschluss prüfen lassen?“), der Einstieg „Erst verstehen, dann prüfen.“ und die Zeile
