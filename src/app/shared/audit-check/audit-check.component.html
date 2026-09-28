@@ -1,142 +1,95 @@
-<div>
-  <div>
-    <p class="t-lead mb-10">{{ intro }}</p>
+<p class="t-lead mt-6">{{ intro }}</p>
 
-    <!-- Steht bewusst über dem Formular: der volle Informationswert auch ohne JavaScript. -->
-    <div class="panel overflow-x-auto mb-10">
-      <table class="table table--stack">
-        <caption>
-          Schwellenwerte nach §§ 267, 267a HGB
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Größenklasse</th>
-            <th scope="col" class="r">Bilanzsumme</th>
-            <th scope="col" class="r">Umsatzerlöse</th>
-            <th scope="col" class="r">Arbeitnehmer</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (row of thresholdRows; track row.norm) {
-            <tr>
-              <th scope="row" class="font-normal">
-                {{ row.sizeClass }}
-                <span class="block t-small t-soft">{{ row.norm }}</span>
-              </th>
-              <td class="r num" data-label="Bilanzsumme">
-                {{ formatEuro(row.balanceSheetTotal) }} &euro;
-              </td>
-              <td class="r num" data-label="Umsatzerlöse">{{ formatEuro(row.revenue) }} &euro;</td>
-              <td class="r num" data-label="Arbeitnehmer">{{ row.employees }}</td>
-            </tr>
-          }
-          <tr>
-            <th scope="row" class="font-normal">
-              groß
-              <span class="block t-small t-soft">§ 267 Abs. 3 Satz 1 HGB</span>
-            </th>
-            <td class="r" colspan="3">
-              mindestens zwei Merkmale der Klasse „mittelgroß“ überschritten
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="t-body mb-10">
-      Eine Gesellschaft gehört zu einer Klasse, wenn sie mindestens zwei der drei Merkmale
-      <strong>nicht</strong> überschreitet. Ein Wert genau auf der Schwelle überschreitet sie nicht.
-      Die Rechtsfolge tritt erst ein, wenn die Merkmale an zwei aufeinanderfolgenden
-      Abschlussstichtagen über- oder unterschritten werden (§ 267 Abs. 4 Satz 1 HGB).
-    </p>
-
-    <form
-      [formGroup]="form"
-      (ngSubmit)="submit()"
-      novalidate
-      [attr.aria-labelledby]="headingId()"
-      aria-describedby="audit-check-disclaimer"
-    >
-      <fieldset class="border-0 p-0 m-0 mb-9">
-        <legend class="t-h3 mb-4">Laufendes Geschäftsjahr</legend>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div>
-            <label class="field-label" for="current-balance">Bilanzsumme in Euro</label>
-            <input
-              id="current-balance"
-              class="field"
-              type="text"
-              inputmode="numeric"
-              autocomplete="off"
-              formControlName="currentBalanceSheetTotal"
-              [attr.aria-invalid]="showError('currentBalanceSheetTotal') ? 'true' : null"
-              [attr.aria-describedby]="
-                showError('currentBalanceSheetTotal')
-                  ? 'current-balance-error current-balance-hint'
-                  : 'current-balance-hint'
-              "
-            />
-            <p id="current-balance-hint" class="t-small t-soft mt-1.5">
-              Punkte als Tausendertrenner sind erlaubt.
+<div class="check-grid mt-10 md:mt-12">
+  <form
+    class="panel check-form"
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    novalidate
+    [attr.aria-labelledby]="headingId()"
+    aria-describedby="audit-check-disclaimer"
+  >
+    <fieldset class="border-0 p-0 m-0">
+      <legend class="t-title mb-5">Laufendes Geschäftsjahr</legend>
+      <div class="grid gap-5">
+        <div>
+          <label class="field-label" for="current-balance">Bilanzsumme in Euro</label>
+          <input
+            id="current-balance"
+            class="field"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            formControlName="currentBalanceSheetTotal"
+            [attr.aria-invalid]="showError('currentBalanceSheetTotal') ? 'true' : null"
+            [attr.aria-describedby]="
+              showError('currentBalanceSheetTotal')
+                ? 'current-balance-error current-balance-hint'
+                : 'current-balance-hint'
+            "
+          />
+          <p id="current-balance-hint" class="t-small t-soft mt-1.5">
+            Punkte als Tausendertrenner sind erlaubt.
+          </p>
+          @if (showError('currentBalanceSheetTotal')) {
+            <p id="current-balance-error" class="field-error" role="alert">
+              Bitte eine Zahl ab 0 eintragen.
             </p>
-            @if (showError('currentBalanceSheetTotal')) {
-              <p id="current-balance-error" class="field-error" role="alert">
-                Bitte eine Zahl ab 0 eintragen.
-              </p>
-            }
-          </div>
-
-          <div>
-            <label class="field-label" for="current-revenue">Umsatzerlöse in Euro</label>
-            <input
-              id="current-revenue"
-              class="field"
-              type="text"
-              inputmode="numeric"
-              autocomplete="off"
-              formControlName="currentRevenue"
-              [attr.aria-invalid]="showError('currentRevenue') ? 'true' : null"
-              [attr.aria-describedby]="showError('currentRevenue') ? 'current-revenue-error' : null"
-            />
-            @if (showError('currentRevenue')) {
-              <p id="current-revenue-error" class="field-error" role="alert">
-                Bitte eine Zahl ab 0 eintragen.
-              </p>
-            }
-          </div>
-
-          <div>
-            <label class="field-label" for="current-employees"
-              >Arbeitnehmer im Jahresdurchschnitt</label
-            >
-            <input
-              id="current-employees"
-              class="field"
-              type="text"
-              inputmode="numeric"
-              autocomplete="off"
-              formControlName="currentEmployees"
-              [attr.aria-invalid]="showError('currentEmployees') ? 'true' : null"
-              [attr.aria-describedby]="
-                showError('currentEmployees') ? 'current-employees-error' : null
-              "
-            />
-            @if (showError('currentEmployees')) {
-              <p id="current-employees-error" class="field-error" role="alert">
-                Bitte eine Zahl ab 0 eintragen.
-              </p>
-            }
-          </div>
+          }
         </div>
-      </fieldset>
 
-      <fieldset class="border-0 p-0 m-0 mb-9">
-        <legend class="t-h3 mb-2">Vorangegangenes Geschäftsjahr</legend>
+        <div>
+          <label class="field-label" for="current-revenue">Umsatzerlöse in Euro</label>
+          <input
+            id="current-revenue"
+            class="field"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            formControlName="currentRevenue"
+            [attr.aria-invalid]="showError('currentRevenue') ? 'true' : null"
+            [attr.aria-describedby]="showError('currentRevenue') ? 'current-revenue-error' : null"
+          />
+          @if (showError('currentRevenue')) {
+            <p id="current-revenue-error" class="field-error" role="alert">
+              Bitte eine Zahl ab 0 eintragen.
+            </p>
+          }
+        </div>
+
+        <div>
+          <label class="field-label" for="current-employees"
+            >Arbeitnehmer im Jahresdurchschnitt</label
+          >
+          <input
+            id="current-employees"
+            class="field"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            formControlName="currentEmployees"
+            [attr.aria-invalid]="showError('currentEmployees') ? 'true' : null"
+            [attr.aria-describedby]="
+              showError('currentEmployees') ? 'current-employees-error' : null
+            "
+          />
+          @if (showError('currentEmployees')) {
+            <p id="current-employees-error" class="field-error" role="alert">
+              Bitte eine Zahl ab 0 eintragen.
+            </p>
+          }
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="check-step">
+      <fieldset class="border-0 p-0 m-0">
+        <legend class="t-title mb-2">Vorangegangenes Geschäftsjahr</legend>
         <p class="t-small t-soft mb-5">
           Optional, aber nötig für eine belastbare Aussage — die Rechtsfolge hängt an zwei
           aufeinanderfolgenden Stichtagen. Entweder alle drei Werte oder keinen.
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid gap-5">
           <div>
             <label class="field-label" for="previous-balance">Bilanzsumme in Euro</label>
             <input
@@ -179,9 +132,18 @@
           </p>
         }
       </fieldset>
+    </div>
 
-      <fieldset class="border-0 p-0 m-0 mb-9">
-        <legend class="t-h3 mb-4">Besonderheiten</legend>
+    <!-- Sonderfälle betreffen wenige — sie stehen bereit, aber nicht im Weg. -->
+    <details class="check-step special">
+      <summary class="special-summary">
+        <span class="font-semibold">Sonderfälle: Neugründung, Kapitalmarkt</span>
+        <span class="toggle-mark" aria-hidden="true"
+          ><app-icon name="plus" svgClass="size-5"
+        /></span>
+      </summary>
+      <fieldset class="border-0 p-0 m-0 pt-4">
+        <legend class="sr-only">Besonderheiten</legend>
         <div class="flex flex-col gap-4">
           <label class="flex items-start gap-3 cursor-pointer" for="newly-formed">
             <input
@@ -203,14 +165,16 @@
           </label>
         </div>
       </fieldset>
+    </details>
 
-      <button type="submit" class="btn">Größenklasse bestimmen</button>
-    </form>
+    <button type="submit" class="btn w-full mt-8">Größenklasse bestimmen</button>
+  </form>
 
+  <div class="check-side">
     <div role="status" aria-live="polite" aria-atomic="true">
       @if (result(); as res) {
-        <div class="panel result mt-10">
-          <h3 #resultHeading tabindex="-1" class="t-h2 mb-5">{{ verdict(res) }}</h3>
+        <div class="panel result">
+          <h3 #resultHeading tabindex="-1" class="t-h3 mb-5">{{ verdict(res) }}</h3>
 
           @if (!res.indeterminate) {
             <p class="t-lead mb-6">
@@ -258,19 +222,75 @@
               </tbody>
             </table>
           </div>
+
+          <div class="mt-6">
+            <app-action-link
+              href="/kontakt"
+              label="Das Ergebnis mit mir besprechen"
+              variant="link"
+            />
+          </div>
         </div>
       }
     </div>
 
-    <noscript>
-      <p class="t-body mt-8">
-        Der Check benötigt JavaScript. Die Schwellenwerte finden Sie in der Tabelle oben.
-      </p>
-    </noscript>
+    <!-- Steht ohne Eingabe im HTML: der volle Informationswert auch ohne JavaScript. -->
+    <div class="panel overflow-x-auto">
+      <table class="table table--stack">
+        <caption>
+          Schwellenwerte nach §§ 267, 267a HGB
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Größenklasse</th>
+            <th scope="col" class="r">Bilanzsumme</th>
+            <th scope="col" class="r">Umsatzerlöse</th>
+            <th scope="col" class="r">Arbeitnehmer</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of thresholdRows; track row.norm) {
+            <tr>
+              <th scope="row" class="font-normal">
+                {{ row.sizeClass }}
+                <span class="block t-small t-soft">{{ row.norm }}</span>
+              </th>
+              <td class="r num" data-label="Bilanzsumme">
+                {{ formatEuro(row.balanceSheetTotal) }} &euro;
+              </td>
+              <td class="r num" data-label="Umsatzerlöse">{{ formatEuro(row.revenue) }} &euro;</td>
+              <td class="r num" data-label="Arbeitnehmer">{{ row.employees }}</td>
+            </tr>
+          }
+          <tr>
+            <th scope="row" class="font-normal">
+              groß
+              <span class="block t-small t-soft">§ 267 Abs. 3 Satz 1 HGB</span>
+            </th>
+            <td class="r" colspan="3">
+              mindestens zwei Merkmale der Klasse „mittelgroß“ überschritten
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    <p id="audit-check-disclaimer" class="t-small t-soft mt-10 pt-6 disclaimer">
-      {{ disclaimer }}
-      <span class="block mt-2 num">Stand der Schwellenwerte: {{ validFrom }}.</span>
-    </p>
+      <p class="t-body mt-6">
+        Eine Gesellschaft gehört zu einer Klasse, wenn sie mindestens zwei der drei Merkmale
+        <strong>nicht</strong> überschreitet. Ein Wert genau auf der Schwelle überschreitet sie
+        nicht. Die Rechtsfolge tritt erst ein, wenn die Merkmale an zwei aufeinanderfolgenden
+        Abschlussstichtagen über- oder unterschritten werden (§ 267 Abs. 4 Satz 1 HGB).
+      </p>
+    </div>
   </div>
 </div>
+
+<noscript>
+  <p class="t-body mt-8">
+    Der Check benötigt JavaScript. Die Schwellenwerte finden Sie in der Tabelle.
+  </p>
+</noscript>
+
+<p id="audit-check-disclaimer" class="t-small t-soft mt-10 pt-6 disclaimer">
+  {{ disclaimer }}
+  <span class="block mt-2 num">Stand der Schwellenwerte: {{ validFrom }}.</span>
+</p>

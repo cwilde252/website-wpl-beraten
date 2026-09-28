@@ -38,8 +38,9 @@ zwei Minuten mehr als vorher."
 
 ## Brand Personality
 
-Ruhige Fachlichkeit. Prüfung als Handwerk, nicht als Apparat. Präzise, direkt, ohne Auftritt — wie
-ein sauber geführtes Arbeitspapier: nichts Überflüssiges, alles nachvollziehbar.
+Offene Fachlichkeit. Prüfung als Handwerk, nicht als Apparat. Präzise, direkt, warm — wie ein
+erstes Gespräch in ihrem Büro: Die Tür steht offen, niemand schiebt ein Formular über den Tisch,
+und die Fachlichkeit kommt, wenn man danach fragt.
 
 Drei Worte: **persönlich, pragmatisch, auf Augenhöhe.**
 
@@ -82,18 +83,23 @@ untergräbt, um das es hier geht.
 - **AI-Slop-Templates** (Scroll-Reveal auf jeder Sektion, Blur-Blobs, dekorative Icon-Kreise, überall
   dasselbe Label-Linie-Grid-Rezept): Bewegung gibt es als Feedback und genau einen inszenierten
   Moment, nie als Einblendung jeder Sektion.
-- **Frühere Auftritte dieser Seite**: der vollflächig orange Hero mit Karten und Pill-Buttons ebenso
-  wie das dunkle Graphit-„Arbeitspapier" mit Mono-Labels. Gewünscht ist ausdrücklich: hell,
-  freundlich, einladend, clean und nicht überladen (Entscheidung der Auftraggeberin, 2026).
+- **Frühere Auftritte dieser Seite**: der vollflächig orange Hero mit Karten und Pill-Buttons, das
+  dunkle Graphit-„Arbeitspapier" mit Mono-Labels und das Registerblatt-System (weißes Papier,
+  Pastell-Reiter, blaugraue Tinte — fachlich sauber, aber als Aktenordner bürokratisch und kühl).
+  Gewünscht ist ausdrücklich: offen, warm, nicht bürokratisch (2026).
+- **Der „geschmackvolle" AI-Standard**: Cremegrund, Serif-Display, Terrakotta-Akzent. Ein erster
+  Entwurf landete genau dort; impeccable markiert ihn als meistgenerierten Look.
 
 ## Design Principles
 
 1. **Fachlichkeit zeigen, nicht behaupten.** Die Schwellenwerttabelle und der Prüfungspflicht-Check
    sind das visuelle Zentrum der Leistungsseite. Wer sie liest, hat einen Nutzen — auch ohne Anfrage.
-2. **Farbe heißt Bereich.** Die vier Logofarben tragen als zarte Flächen je einen Bereich:
-   Orange Prüfung, Blau Beratung, Grün Steuern, Gelb Check. Alles andere ist neutral.
-3. **Ohne Foto vollständig, mit Foto persönlicher.** Die Seite trägt sich über Registerblätter und
-   Typografie. Ein Porträt ist vorgesehen und erscheint, sobald eines freigegeben ist.
+2. **Satt statt blass.** Die Logofarben tragen ganze Flächen: Tanne (aus dem Logo-Grün) für Kopf,
+   Einstieg und Schluss, Sonne (aus dem Logo-Gelb) für Aktionen und den Check, Orange, Blau und
+   Grün je eine Karte für ihren Bereich. Überschriften sind Fragen der Mandanten.
+3. **Ohne Foto vollständig, mit Foto persönlicher.** Die Seite trägt sich über Farbflächen und
+   Typografie. Der Porträt-Bogen im Hero ist vorbereitet und nimmt das Foto auf, sobald eines
+   freigegeben ist.
 4. **Zahlen sind Belege.** Alles Prüfbare steht mit Tabellenziffern: Beträge, Jahreszahlen,
    Normzitate, immer mit Quelle.
 5. **Erreichbarkeit vor Konversion.** Ein Weg zum Erstgespräch pro Sektion, keine Pop-ups, keine
@@ -105,19 +111,20 @@ untergräbt, um das es hier geht.
 
 | Route | Titel | Zweck |
 |---|---|---|
-| `/` | Start | Einstieg: Hero, Haltung, die drei Bereiche, Prüfungspflicht-Teaser, Profil-Teaser, Erstgespräch. |
-| `/leistungen` | Leistungen | Die drei Bereiche als Tabs, Schwellenwerttabelle, Prüfungspflicht-Check, FAQ. |
+| `/` | Start | Hero mit Porträt-Bogen, drei Anliegen, Haltung, Schnell-Check, Profil-Teaser. |
+| `/leistungen` | Leistungen | Die drei Bereiche offen untereinander, Prüfungspflicht-Check mit Schwellenwerttabelle, FAQ. |
 | `/ueber-mich` | Über mich | Werdegang und Haltung. |
 | `/kontakt` | Kontakt | E-Mail-first, Kontaktdaten. |
 | `/impressum` | Impressum | Rechtstext. |
 | `/datenschutz` | Datenschutz | Rechtstext. |
 
-`/wirtschaftspruefung`, `/beratung` und `/steuern` bleiben als 301-Weiterleitungen auf das jeweilige
-Tab-Fragment bestehen.
+`/wirtschaftspruefung`, `/beratung` und `/steuern` bleiben als 301-Weiterleitungen auf den jeweiligen
+Abschnitt der Leistungsseite bestehen. Die Einladung zum Erstgespräch steht im Fuß jeder Seite
+außer `/kontakt`.
 
 ## Accessibility & Inclusion
 
-WCAG AA. Deutschsprachig, auch in ARIA. Tastaturbedienung vollständig, inklusive Pfeiltasten-
-Navigation im Tab-Strip und sichtbarem Fokus auf jedem interaktiven Element. `prefers-reduced-motion`
+WCAG AA. Deutschsprachig, auch in ARIA. Tastaturbedienung vollständig, mit sichtbarem Fokus auf
+jedem interaktiven Element — in der Fokusfarbe der jeweiligen Fläche. `prefers-reduced-motion`
 wird überall respektiert. Kontrastverhältnisse sind für jede Farbkombination nachgerechnet und in
 `DESIGN.md` dokumentiert; Farbe ist nie alleiniger Bedeutungsträger.

@@ -5,7 +5,7 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# Die drei alten Leistungsrouten leiten dauerhaft auf das jeweilige Tab-Fragment.
+# Die drei alten Leistungsrouten leiten dauerhaft auf den jeweiligen Abschnitt.
 # force = true greift vor der statisch vorgerenderten Datei.
 [[redirects]]
   from = "/wirtschaftspruefung"

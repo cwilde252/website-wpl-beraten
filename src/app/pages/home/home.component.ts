@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { ContentService } from '../../core/services/content.service';
 import { SeoService } from '../../core/services/seo.service';
+import { AnliegenComponent } from './sections/anliegen/anliegen.component';
+import { HaltungComponent } from './sections/haltung/haltung.component';
 import { HeroComponent } from './sections/hero/hero.component';
-import { KontaktSchlussComponent } from './sections/kontakt-schluss/kontakt-schluss.component';
-import { LeistungenTeaserComponent } from './sections/leistungen-teaser/leistungen-teaser.component';
-import { PositionenComponent } from './sections/positionen/positionen.component';
 import { ProfilTeaserComponent } from './sections/profil-teaser/profil-teaser.component';
 import { PruefungspflichtTeaserComponent } from './sections/pruefungspflicht-teaser/pruefungspflicht-teaser.component';
 
@@ -12,11 +11,10 @@ import { PruefungspflichtTeaserComponent } from './sections/pruefungspflicht-tea
   selector: 'app-home',
   imports: [
     HeroComponent,
-    PositionenComponent,
-    LeistungenTeaserComponent,
+    AnliegenComponent,
+    HaltungComponent,
     PruefungspflichtTeaserComponent,
     ProfilTeaserComponent,
-    KontaktSchlussComponent,
   ],
   templateUrl: './home.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

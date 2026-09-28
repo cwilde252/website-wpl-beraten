@@ -1,46 +1,92 @@
-<section id="leistungen-start" class="wrap page-intro" aria-labelledby="leistungen-title">
-  <h1 id="leistungen-title" class="t-display">
-    @for (line of headline.lines; track $index) {
-      <span class="line">{{ line }}</span>
-    }
-  </h1>
-  <p class="t-lead t-soft mt-6">
-    Wählen Sie den Bereich, der Sie gerade beschäftigt. Weiter unten finden Sie den
-    Prüfungspflicht-Check und Antworten auf häufige Fragen.
-  </p>
-</section>
+<div data-surface="pine">
+  <section id="leistungen-start" class="wrap page-intro" aria-labelledby="leistungen-title">
+    <h1 id="leistungen-title" class="t-h1 max-w-5xl">
+      @for (line of headline.lines; track $index) {
+        <span class="line">{{ line }}</span>
+      }
+    </h1>
+    <p class="t-lead t-soft mt-6">{{ lead }}</p>
+    <nav class="jump mt-9" aria-label="Auf dieser Seite">
+      @for (area of areas; track area.slug) {
+        <a class="jump-link" [routerLink]="[]" [fragment]="area.slug">
+          <span [class]="'area-dot area-dot--' + area.accent" aria-hidden="true"></span>
+          {{ area.title }}
+        </a>
+      }
+      <a class="jump-link" [routerLink]="[]" fragment="pruefungspflicht">
+        <span class="area-dot area-dot--check" aria-hidden="true"></span>
+        Prüfungspflicht-Check
+      </a>
+      <a class="jump-link" [routerLink]="[]" fragment="fragen">Häufige Fragen</a>
+    </nav>
+  </section>
+</div>
 
-<section id="bereiche" class="wrap scroll-anchor" aria-label="Leistungsbereiche">
-  <app-service-tabs
-    [areas]="areas"
-    [initialSlug]="initialSlug()"
-    (activated)="onAreaActivated($event)"
-  />
-</section>
+@for (area of areas; track area.slug; let odd = $odd) {
+  <section
+    [id]="area.slug"
+    class="scroll-anchor"
+    [attr.data-surface]="odd ? 'nebel' : 'white'"
+    [attr.aria-labelledby]="area.slug + '-title'"
+  >
+    <div class="wrap section grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
+      <div class="card area-card lg:col-span-4" [attr.data-surface]="area.accent">
+        <h2 [id]="area.slug + '-title'" class="area-title">{{ area.title }}</h2>
+        <p class="t-title mt-5">{{ area.claim }}</p>
+        <p class="t-body mt-4">{{ area.intro }}</p>
+        <div class="mt-7">
+          <app-action-link href="/kontakt" [label]="area.ctaLabel" [arrow]="false" />
+        </div>
+      </div>
+
+      <div class="blocks lg:col-span-7 lg:col-start-6">
+        @for (block of area.blocks; track block.title) {
+          <article class="block">
+            <h3 class="t-h3">{{ block.question }}</h3>
+            @for (paragraph of block.paragraphs; track $index; let first = $first) {
+              <p class="t-body mt-4">
+                @if (first) {
+                  <strong>{{ block.title }}.</strong>
+                }
+                {{ paragraph }}
+              </p>
+            }
+            @if (block.points?.length) {
+              <ul class="point-list mt-5">
+                @for (point of block.points; track point) {
+                  <li>{{ point }}</li>
+                }
+              </ul>
+            }
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+}
 
 <section
   id="pruefungspflicht"
-  class="wrap section scroll-anchor"
+  class="scroll-anchor"
+  data-surface="sun"
   aria-labelledby="pruefungspflicht-check"
 >
-  <app-register-sheet tone="check" [tabbed]="true">
-    <h2 sheetTab id="pruefungspflicht-check" class="flex items-center gap-2.5">
-      <span class="tone-dot" aria-hidden="true"></span>Prüfungspflicht-Check
-    </h2>
+  <div class="wrap section">
+    <h2 id="pruefungspflicht-check" class="t-h2">Der Prüfungspflicht-Check</h2>
     <app-audit-check headingId="pruefungspflicht-check" />
-  </app-register-sheet>
+  </div>
 </section>
 
-<section id="fragen" class="wrap section--tight scroll-anchor" aria-labelledby="fragen-title">
+<section id="fragen" class="wrap section scroll-anchor" aria-labelledby="fragen-title">
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">
     <div class="lg:col-span-4">
       <h2 id="fragen-title" class="t-h2">Häufige Fragen</h2>
       <p class="t-body t-soft mt-5">Ihre Frage ist nicht dabei? Fragen Sie mich direkt.</p>
-      <div class="mt-4">
+      <div class="mt-3">
         <app-action-link href="/kontakt" label="Frage stellen" variant="link" />
       </div>
     </div>
-    <div class="lg:col-span-8">
+    <div class="lg:col-span-7 lg:col-start-6">
       <app-faq-accordion [items]="faq" exclusiveGroup="wpl-faq" />
     </div>
   </div>

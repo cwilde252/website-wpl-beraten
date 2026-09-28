@@ -8,7 +8,13 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  IsActiveMatchOptions,
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { filter } from 'rxjs';
 import { ContentService } from '../../core/services/content.service';
 import { NavigationService } from '../../core/services/navigation.service';
@@ -28,6 +34,16 @@ export class HeaderComponent {
 
   readonly navItems = inject(NavigationService).getMainNavigation();
   readonly contact = inject(ContentService).getContactInfo();
+
+  /** Seiten ohne Fragment sind aktiv, egal zu welchem Abschnitt gesprungen wurde. */
+  readonly exactPath: IsActiveMatchOptions = {
+    paths: 'exact',
+    queryParams: 'ignored',
+    fragment: 'ignored',
+    matrixParams: 'ignored',
+  };
+  /** Sprungziele wie der Check sind nur aktiv, wenn genau ihr Fragment in der URL steht. */
+  readonly exactWithFragment: IsActiveMatchOptions = { ...this.exactPath, fragment: 'exact' };
 
   readonly mobileMenuOpen = signal(false);
   readonly scrolled = signal(false);

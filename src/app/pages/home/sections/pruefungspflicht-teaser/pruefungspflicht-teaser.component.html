@@ -1,44 +1,81 @@
-<section class="wrap section--tight" aria-labelledby="pflicht-title">
-  <app-register-sheet tone="check" [tabbed]="true" tabAt="calc(100% - 15rem)">
-    <h2 sheetTab id="pflicht-title" class="flex items-center gap-2.5">
-      <span class="tone-dot" aria-hidden="true"></span>Prüfungspflicht-Check
-    </h2>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-      <div class="lg:col-span-6">
-        <h3 class="t-h2">Müssen Sie Ihren Jahresabschluss prüfen lassen?</h3>
-        <p class="t-body mt-5">
-          Das hängt an drei Zahlen. Wer an zwei aufeinanderfolgenden Abschlussstichtagen mindestens
-          zwei der drei Schwellen überschreitet, ist nicht mehr klein im Sinne des § 267 Abs. 1 HGB
-          und damit prüfungspflichtig.
-        </p>
-        <div class="mt-8">
-          <app-action-link
-            href="/leistungen"
-            fragment="pruefungspflicht"
-            label="Zum Prüfungspflicht-Check"
+<section class="check-band" data-surface="sun" aria-labelledby="pflicht-title">
+  <div class="wrap section grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <div class="lg:col-span-6">
+      <h2 id="pflicht-title" class="t-h2">Muss mein Abschluss geprüft werden?</h2>
+      <p class="t-lead mt-6">{{ teaser }}</p>
+      <dl
+        class="thresholds mt-8"
+        aria-label="Schwellen für kleine Kapitalgesellschaften (§ 267 Abs. 1 HGB)"
+      >
+        <div>
+          <dt>Bilanzsumme</dt>
+          <dd class="num">{{ million(small.balanceSheetTotal) }}</dd>
+        </div>
+        <div>
+          <dt>Umsatzerlöse</dt>
+          <dd class="num">{{ million(small.revenue) }}</dd>
+        </div>
+        <div>
+          <dt>Arbeitnehmer</dt>
+          <dd class="num">{{ small.employees }}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Ohne JavaScript ein gewöhnliches GET-Formular: Der Check auf der Leistungsseite
+         übernimmt die drei Werte aus der Adresse. -->
+    <form
+      class="panel lg:col-span-5 lg:col-start-8"
+      method="get"
+      action="/leistungen#pruefungspflicht"
+      aria-labelledby="schnellcheck-title"
+      (submit)="openCheck($event)"
+    >
+      <h3 id="schnellcheck-title" class="t-title">Der Prüfungspflicht-Check</h3>
+      <div class="mt-6 grid gap-5">
+        <div>
+          <label class="field-label" for="schnell-bilanz">Bilanzsumme in Euro</label>
+          <input
+            id="schnell-bilanz"
+            class="field"
+            name="bilanzsumme"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+          />
+        </div>
+        <div>
+          <label class="field-label" for="schnell-umsatz">Umsatzerlöse in Euro</label>
+          <input
+            id="schnell-umsatz"
+            class="field"
+            name="umsatz"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+          />
+        </div>
+        <div>
+          <label class="field-label" for="schnell-arbeitnehmer"
+            >Arbeitnehmer im Jahresdurchschnitt</label
+          >
+          <input
+            id="schnell-arbeitnehmer"
+            class="field"
+            name="arbeitnehmer"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
           />
         </div>
       </div>
-
-      <div class="thresholds lg:col-span-6">
-        <p id="schwellen-caption" class="thresholds-caption">
-          Schwellen für kleine Kapitalgesellschaften (§ 267 Abs. 1 HGB)
-        </p>
-        <dl class="m-0" aria-labelledby="schwellen-caption">
-          <div>
-            <dt>Bilanzsumme</dt>
-            <dd class="num">{{ format(small.balanceSheetTotal) }}&nbsp;&euro;</dd>
-          </div>
-          <div>
-            <dt>Umsatzerlöse</dt>
-            <dd class="num">{{ format(small.revenue) }}&nbsp;&euro;</dd>
-          </div>
-          <div>
-            <dt>Arbeitnehmer im Jahresdurchschnitt</dt>
-            <dd class="num">{{ small.employees }}</dd>
-          </div>
-        </dl>
-      </div>
-    </div>
-  </app-register-sheet>
+      <button type="submit" class="btn w-full mt-7">
+        Größenklasse anzeigen
+        <app-icon name="arrow" svgClass="arrow" />
+      </button>
+      <p class="t-small t-soft mt-4">
+        Schwellen nach § 267 HGB. Vorjahr und Sonderfälle ergänzen Sie im ausführlichen Check.
+      </p>
+    </form>
+  </div>
 </section>

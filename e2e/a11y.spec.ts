@@ -13,15 +13,24 @@ for (const route of ROUTES) {
   });
 }
 
-test('jeder Tab-Zustand der Leistungsseite ist barrierefrei', async ({ page }) => {
+test('die geöffneten Sonderfälle und die FAQ sind barrierefrei', async ({ page }) => {
   await page.goto('/leistungen');
-  for (const slug of ['wirtschaftspruefung', 'beratung', 'steuern']) {
-    await page.locator(`#tab-${slug}`).click();
-    const results = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-      .analyze();
-    expect(results.violations, `Tab ${slug}`).toEqual([]);
-  }
+  await page.getByText('Sonderfälle: Neugründung, Kapitalmarkt').click();
+  await page.locator('#fragen summary').first().click();
+  const results = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+    .analyze();
+  expect(results.violations).toEqual([]);
+});
+
+test('das Mobilmenü ist barrierefrei', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Menü öffnen' }).click();
+  const results = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+    .analyze();
+  expect(results.violations).toEqual([]);
 });
 
 test('das Ergebnis des Prüfungspflicht-Checks ist barrierefrei', async ({ page }) => {

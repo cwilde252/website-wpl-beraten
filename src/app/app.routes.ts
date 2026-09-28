@@ -2,8 +2,8 @@ import { inject } from '@angular/core';
 import { Router, Routes } from '@angular/router';
 
 /**
- * Die drei alten Leistungsrouten bleiben als Weiterleitung auf das jeweilige
- * Tab-Fragment erhalten — zusätzlich zum 301 in netlify.toml, der für externe
+ * Die drei alten Leistungsrouten bleiben als Weiterleitung auf den jeweiligen
+ * Abschnitt der Leistungsseite erhalten — zusätzlich zum 301 in netlify.toml, der für externe
  * Links die maßgebliche Ebene ist.
  */
 function redirectToArea(slug: string) {

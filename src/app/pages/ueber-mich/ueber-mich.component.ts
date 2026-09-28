@@ -2,14 +2,18 @@ import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { ContentService } from '../../core/services/content.service';
 import { SeoService } from '../../core/services/seo.service';
-import { ActionLinkComponent } from '../../shared/action-link/action-link.component';
-import { RegisterSheetComponent } from '../../shared/register-sheet/register-sheet.component';
 
 @Component({
   selector: 'app-ueber-mich',
-  imports: [RegisterSheetComponent, ActionLinkComponent, NgOptimizedImage],
+  imports: [NgOptimizedImage],
   templateUrl: './ueber-mich.component.html',
-  styleUrl: './ueber-mich.component.css',
+  styles: `
+    .portrait {
+      width: 100%;
+      height: auto;
+      border-radius: 999px 999px 0 0;
+    }
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UeberMichComponent implements OnInit {

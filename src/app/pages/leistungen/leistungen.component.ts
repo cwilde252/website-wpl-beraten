@@ -1,68 +1,79 @@
-import { DOCUMENT } from '@angular/common';
-import {
-  afterNextRender,
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  OnInit,
-  signal,
-} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ContentService } from '../../core/services/content.service';
 import { SeoService } from '../../core/services/seo.service';
+import { ActionLinkComponent } from '../../shared/action-link/action-link.component';
 import { AuditCheckComponent } from '../../shared/audit-check/audit-check.component';
 import { FaqAccordionComponent } from '../../shared/faq-accordion/faq-accordion.component';
-import { ActionLinkComponent } from '../../shared/action-link/action-link.component';
-import { RegisterSheetComponent } from '../../shared/register-sheet/register-sheet.component';
-import { ServiceTabsComponent } from '../../shared/service-tabs/service-tabs.component';
 
+/**
+ * Alle drei Bereiche stehen offen untereinander — nichts ist hinter Tabs verborgen.
+ * Sprungziele (#wirtschaftspruefung, #beratung, #steuern, #pruefungspflicht, #fragen)
+ * übernimmt das Anchor-Scrolling des Routers.
+ */
 @Component({
   selector: 'app-leistungen',
-  imports: [
-    RegisterSheetComponent,
-    ServiceTabsComponent,
-    AuditCheckComponent,
-    FaqAccordionComponent,
-    ActionLinkComponent,
-  ],
+  imports: [RouterLink, AuditCheckComponent, FaqAccordionComponent, ActionLinkComponent],
   templateUrl: './leistungen.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: `
+    .jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .jump-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      min-height: 3rem;
+      padding: 0.5rem 1.1rem;
+      border: 1.5px solid var(--color-mint);
+      border-radius: var(--radius-control);
+      color: inherit;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color var(--dur-quick) var(--ease-out);
+    }
+    .jump-link:hover {
+      background: color-mix(in oklab, var(--color-white) 12%, transparent);
+    }
+    /* Die Karte ist schmal: „Wirtschaftsprüfung" muss ungetrennt hineinpassen. */
+    .area-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 1.1vw + 1.1rem, 2.25rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      hyphens: auto;
+      overflow-wrap: break-word;
+    }
+    @media (min-width: 1024px) {
+      .area-card {
+        position: sticky;
+        top: 7rem;
+      }
+    }
+    .block + .block {
+      margin-block-start: 2.5rem;
+      padding-block-start: 2.5rem;
+      border-block-start: 1px solid var(--color-hairline);
+    }
+    [data-surface='nebel'] .block + .block {
+      border-block-start-color: #c9d4cc;
+    }
+  `,
 })
 export class LeistungenComponent implements OnInit {
   private readonly seo = inject(SeoService);
   private readonly content = inject(ContentService);
-  private readonly route = inject(ActivatedRoute);
-  private readonly router = inject(Router);
-  private readonly doc = inject(DOCUMENT);
 
   readonly headline = this.content.getLeistungenHeadline();
+  readonly lead = this.content.getLeistungenLead();
   readonly areas = this.content.getServiceAreas();
   readonly faq = this.content.getFaq();
 
-  readonly initialSlug = signal<string | null>(null);
-
-  constructor() {
-    afterNextRender(() => {
-      const fragment = this.route.snapshot.fragment;
-      if (!fragment || !this.areas.some((area) => area.slug === fragment)) return;
-      this.initialSlug.set(fragment);
-      const view = this.doc.defaultView;
-      const reduced = view?.matchMedia('(prefers-reduced-motion: reduce)').matches ?? false;
-      this.doc
-        .getElementById('bereiche')
-        ?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
-    });
-  }
-
   ngOnInit(): void {
     this.seo.setMeta(this.content.getSeoMeta('leistungen'));
-  }
-
-  onAreaActivated(slug: string): void {
-    void this.router.navigate([], {
-      relativeTo: this.route,
-      fragment: slug,
-      replaceUrl: true,
-    });
   }
 }

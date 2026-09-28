@@ -1,0 +1,19 @@
+<section class="wrap section--tight" aria-labelledby="haltung-title">
+  <figure class="quote">
+    <span class="quote-mark" aria-hidden="true">„</span>
+    <blockquote>
+      <p class="quote-text">{{ quote }}</p>
+    </blockquote>
+    <figcaption class="t-body t-soft mt-6">{{ name }}</figcaption>
+  </figure>
+
+  <h2 id="haltung-title" class="t-title mt-16 md:mt-20">So arbeite ich</h2>
+  <ul class="principles mt-6" role="list">
+    @for (item of positions; track item.title) {
+      <li>
+        <h3 class="t-title">{{ item.title }}</h3>
+        <p class="t-body t-soft mt-2">{{ item.description }}</p>
+      </li>
+    }
+  </ul>
+</section>

@@ -1,6 +1,6 @@
 import { ServiceBlock } from './service-block.model';
 
-/** Die Bereichsfarbe steuert den Akzent; siehe DESIGN.md, Bereichsfarben-Regel. */
+/** Der Bereich bestimmt Fläche und Punktfarbe; siehe DESIGN.md, Farbe besitzt Flächen. */
 export type AreaAccent = 'pruefung' | 'beratung' | 'steuern';
 
 export interface ServiceArea {
@@ -8,8 +8,10 @@ export interface ServiceArea {
   slug: string;
   accent: AreaAccent;
   title: string;
-  /** Kurzform für schmale Reiter; der volle Titel bleibt der zugängliche Name. */
-  shortTitle?: string;
+  /** Die Frage, mit der Mandanten typischerweise kommen — Überschrift der Anliegen-Karte. */
+  question: string;
+  /** Die kurze Antwort darauf, in Ich-Form. */
+  answer: string;
   claim: string;
   intro: string;
   blocks: ServiceBlock[];

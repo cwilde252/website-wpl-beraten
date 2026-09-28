@@ -9,10 +9,11 @@ import { LegalSection } from '../../core/models/legal-section.model';
   styles: `
     .legal-section {
       padding-block: 1.75rem;
+    }
+    .legal-section + .legal-section {
       border-block-start: 1px solid var(--color-hairline);
     }
     .legal-list {
-      margin: 0;
       padding-inline-start: 1.25rem;
       list-style: disc;
     }

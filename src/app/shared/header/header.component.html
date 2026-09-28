@@ -1,4 +1,4 @@
-<header class="site-header" [class.is-raised]="scrolled() || mobileMenuOpen()">
+<header class="site-header" data-surface="pine" [class.is-raised]="scrolled() || mobileMenuOpen()">
   <div class="wrap flex items-center justify-between gap-6 py-3 md:py-4">
     <a
       routerLink="/"
@@ -7,27 +7,29 @@
       aria-label="Startseite, Wiebke Lefevre"
     >
       <span class="brand-name">{{ contact.personName }}</span>
-      <span class="brand-role">{{ contact.role }} · {{ contact.city }}</span>
+      <span class="brand-role">{{ contact.role }} in {{ contact.city }}</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-1" aria-label="Hauptnavigation">
-      @for (item of navItems; track item.path) {
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Hauptnavigation">
+      @for (item of navItems; track item.label) {
         <a
           [routerLink]="item.path"
+          [fragment]="item.fragment"
           routerLinkActive="is-active"
+          [routerLinkActiveOptions]="item.fragment ? exactWithFragment : exactPath"
           ariaCurrentWhenActive="page"
           class="nav-link"
           >{{ item.label }}</a
         >
       }
       <span class="ms-4">
-        <app-action-link href="/kontakt" label="Erstgespräch" [small]="true" />
+        <app-action-link href="/kontakt" label="Erstgespräch" [small]="true" [arrow]="false" />
       </span>
     </nav>
 
     <button
       type="button"
-      class="menu-button md:hidden"
+      class="menu-button lg:hidden"
       (click)="toggleMobileMenu()"
       [attr.aria-expanded]="mobileMenuOpen()"
       aria-controls="mobile-nav"
@@ -38,19 +40,21 @@
   </div>
 
   @if (mobileMenuOpen()) {
-    <nav id="mobile-nav" class="mobile-nav md:hidden" aria-label="Mobilnavigation">
+    <nav id="mobile-nav" class="mobile-nav lg:hidden" aria-label="Mobilnavigation">
       <div class="wrap flex flex-col pb-6">
-        @for (item of navItems; track item.path) {
+        @for (item of navItems; track item.label) {
           <a
             [routerLink]="item.path"
+            [fragment]="item.fragment"
             routerLinkActive="is-active"
+            [routerLinkActiveOptions]="item.fragment ? exactWithFragment : exactPath"
             ariaCurrentWhenActive="page"
             (click)="closeMobileMenu()"
             class="mobile-link"
             >{{ item.label }}</a
           >
         }
-        <span class="mt-5">
+        <span class="mt-6">
           <app-action-link href="/kontakt" label="Erstgespräch vereinbaren" />
         </span>
       </div>

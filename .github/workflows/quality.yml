@@ -1,0 +1,35 @@
+name: Qualität
+
+# Baut die vorgerenderte Seite und prüft sie so, wie sie ausgeliefert wird:
+# Formatierung, Unit-Tests, E2E mit AXE (auch ohne JavaScript) und der
+# impeccable-Detektor gegen AI-Slop auf den gerenderten Seiten.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run build
+      - run: npx ng test --watch=false
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test
+      - name: impeccable detect (gerenderte Seiten)
+        run: |
+          npx http-server dist/wpl-beraten/browser -p 4400 -s &
+          npx wait-on http://localhost:4400
+          for route in "" leistungen ueber-mich kontakt impressum datenschutz; do
+            echo "::group::/$route"
+            npx -y impeccable@4 detect --no-config "http://localhost:4400/$route"
+            echo "::endgroup::"
+          done

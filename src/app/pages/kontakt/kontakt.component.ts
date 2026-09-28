@@ -3,11 +3,10 @@ import { ContentService } from '../../core/services/content.service';
 import { SeoService } from '../../core/services/seo.service';
 import { ActionLinkComponent } from '../../shared/action-link/action-link.component';
 import { IconComponent } from '../../shared/icon/icon.component';
-import { RegisterSheetComponent } from '../../shared/register-sheet/register-sheet.component';
 
 @Component({
   selector: 'app-kontakt',
-  imports: [RegisterSheetComponent, ActionLinkComponent, IconComponent],
+  imports: [ActionLinkComponent, IconComponent],
   templateUrl: './kontakt.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -56,14 +56,24 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
     - Wie lange dauert eine Prüfung, und wann sollte man Sie ansprechen?
     - In welchem Umkreis arbeiten Sie?
 
-13. **Porträtfoto.** Der Bildplatz ist vorbereitet und bleibt unsichtbar, bis ein Foto da ist:
-    als runder Ausschnitt auf dem Deckblatt im Startseiten-Kopf, neben dem Profil auf der
-    Startseite und auf `/ueber-mich`. Gewünscht: ein freundliches, helles Porträt im Hochformat
-    (mind. 1200 px breit). Einbau: Datei nach `public/` legen und in `ContentService.getProfile()`
-    das Feld `portrait` setzen (Pfad, Alt-Text, Breite, Höhe).
+13. **Porträtfoto.** Wichtigster offener Punkt für die Wärme der Seite. Der Bogen im
+    Startseiten-Kopf ist vorbereitet und bleibt bis dahin eine reine Sonnenfläche; auf
+    `/ueber-mich` erscheint das Porträt in derselben Bogenform. Gewünscht: ein freundliches, helles
+    Porträt im Hochformat (mind. 1200 px breit, Seitenverhältnis etwa 4:5), am besten mit ruhigem
+    Hintergrund, der sich freistellen lässt — es steht vor Sonnengelb auf Tannengrün. Einbau:
+    Datei nach `public/` legen und in `ContentService.getProfile()` das Feld `portrait` setzen
+    (Pfad, Alt-Text, Breite, Höhe).
 
 14. **Vorschaubild für geteilte Links** (Open Graph, 1200 × 630). Fehlt. Kann aus Wortmarke und
     Doppelstrich erzeugt werden, sobald das Logo vorliegt.
+
+15a. **Farbwelt und Texte des Redesigns „Offene Tür“.** Aus den Logofarben abgeleitet sind
+    Tannengrün `#1E4636` (Kopf, Einstieg, Schluss) und Sonnengelb `#F5C331` (Aktionen, Check);
+    Orange, Blau und Grün sind für weißen Text abgedunkelt (`#A64F00`, `#1F5F92`, `#2D7550`).
+    Neu formuliert sind die Überschriften als Mandantenfragen (z. B. „Müssen wir unseren
+    Abschluss prüfen lassen?“), der Einstieg „Erst verstehen, dann prüfen.“ und die Zeile
+    „Zehn Jahre Mittelstand, jetzt in eigener Praxis.“ (2014–2024 bei WSS Aktiv Beraten).
+    Bitte prüfen, ob du dich darin wiederfindest.
 
 ## Technisch, ohne Rückfrage entscheidbar — nur zur Kenntnis
 
