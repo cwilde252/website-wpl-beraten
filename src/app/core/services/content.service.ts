@@ -404,13 +404,20 @@ export class ContentService {
       {
         heading: 'Keine externen Dienste',
         paragraphs: [
-          'Diese Website bindet keine externen Schriftarten, Karten, Analyse- oder Social-Media-Dienste ein. Alle Schriften werden vom eigenen Server ausgeliefert. Es werden keine Cookies zu Analyse- oder Marketingzwecken gesetzt.',
+          'Diese Website bindet keine externen Schriftarten, Karten, Analyse- oder Social-Media-Dienste ein. Alle Schriften werden mit der Website selbst ausgeliefert. Es werden keine Cookies zu Analyse- oder Marketingzwecken gesetzt.',
+        ],
+      },
+      {
+        heading: 'Hosting',
+        paragraphs: [
+          'Diese Website liegt bei Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, USA, und wird über dessen weltweites Servernetz ausgeliefert. Netlify verarbeitet die unten genannten Server-Logfiles in meinem Auftrag (Art. 28 DSGVO).',
+          'Dabei können Daten in die USA übermittelt werden. Netlify ist nach dem EU-US Data Privacy Framework zertifiziert; die Übermittlung stützt sich auf den Angemessenheitsbeschluss der Europäischen Kommission (Art. 45 DSGVO).',
         ],
       },
       {
         heading: 'Server-Logfiles',
         paragraphs: [
-          'Der Hosting-Anbieter erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt: Browsertyp und -version, verwendetes Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse.',
+          'Netlify erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt: Browsertyp und -version, verwendetes Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse.',
           'Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Es besteht ein berechtigtes Interesse an der technisch fehlerfreien Darstellung und der Sicherheit der Website. Eine Zusammenführung dieser Daten mit anderen Datenquellen findet nicht statt.',
         ],
       },
