@@ -29,12 +29,12 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
 
 7. **Umsatzsteuer-Identifikationsnummer.** Falls vorhanden, gehört sie ins Impressum.
 
-8. **Hosting bei Netlify.** Bestätigt: Die Seite liegt bei Netlify, Inc. (USA, zertifiziert nach dem
-   EU-US Data Privacy Framework), die Datenschutzerklärung nennt das. Offen ist nur noch: **Auf wessen
-   Namen läuft das Netlify-Konto?** Verantwortlich für die Daten bist du. Läuft das Konto auf dich,
-   schließt du die Auftragsverarbeitung (Data Processing Addendum) direkt mit Netlify. Läuft es auf
-   christoph wilde consulting, brauchen wir zusätzlich einen Auftragsverarbeitungsvertrag zwischen uns,
-   Netlify ist dann Unterauftragsverarbeiter.
+8. **Hosting bei Netlify.** Die Seite liegt bei Netlify, Inc. (USA, zertifiziert nach dem EU-US
+   Data Privacy Framework), im Konto von christoph wilde consulting; die Datenschutzerklärung nennt
+   Netlify. Verantwortlich für die Daten der Besucher bist du. Deshalb brauchen wir vor dem Livegang
+   einen **Auftragsverarbeitungsvertrag nach Art. 28 DSGVO zwischen dir und christoph wilde
+   consulting**, mit Netlify als Unterauftragsverarbeiter. Christoph schickt dir den Entwurf; bitte
+   prüfen und unterschreiben.
 
 9. **Freigabe des Prüfungspflicht-Checks.** Ein Rechner auf der Seite einer Wirtschaftsprüferin wird
    als fachliche Aussage gelesen. Bitte prüfen und freigeben:
