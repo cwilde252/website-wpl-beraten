@@ -97,7 +97,7 @@ untergräbt, um das es hier geht.
 1. **Fachlichkeit zeigen, nicht behaupten.** Die Schwellenwerttabelle und der Prüfungspflicht-Check
    sind das visuelle Zentrum der Leistungsseite. Wer sie liest, hat einen Nutzen — auch ohne Anfrage.
 2. **Satt statt blass.** Die Logofarben tragen ganze Flächen: Logo-Orange mit dunkler Schrift für
-   Kopf und Einstieg, Tinte für den Check und den Schluss, Tanne im
+   Kopf und Einstieg, Schiefergrau für den Check und den Schluss, Tanne im
    Porträt-Bogen, Orange-tief, Blau und Grün je eine Karte für ihren Bereich. Überschriften sind
    Fragen der Mandanten.
 3. **Ohne Foto vollständig, mit Foto persönlicher.** Die Seite trägt sich über Farbflächen und

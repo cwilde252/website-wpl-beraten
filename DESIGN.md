@@ -1,6 +1,6 @@
 ---
 name: WPL — Wiebke Lefevre, Wirtschaftsprüferin
-description: „Offene Tür“ — Logo-Orange als tragende Fläche mit dunkler Schrift, Tinte und Tanne als Gegenfarben, satte Flächen statt Pastell, Überschriften als Fragen der Mandanten, ein Porträt-Bogen als Zeichen.
+description: „Offene Tür“ — Logo-Orange als tragende Fläche mit dunkler Schrift, Schiefer und Tanne als Gegenfarben, satte Flächen statt Pastell, Überschriften als Fragen der Mandanten, ein Porträt-Bogen als Zeichen.
 colors:
   white: "#FFFFFF"
   nebel: "#EDF2EE"
@@ -12,6 +12,7 @@ colors:
   orange-soft: "#3B2A1A"
   orange-hover: "#EA9D4B"
   ink-hover: "#2E3A33"
+  slate: "#3A403D"
   pine: "#1E4636"
   pine-deep: "#16352A"
   mint: "#CFE3D6"
@@ -130,7 +131,8 @@ Bestätigung steht noch aus (FRAGEN-AN-WIEBKE.md, 15a).
 
 **Warum kein Sonnengelb mehr (Entscheidung 28.09.2026):** Die Sonnen-Fläche des Checks biss sich
 mit dem Orange im Kopf; zwei laute Warmtöne auf einer Seite konkurrieren. Der Check steht jetzt
-auf Tinte in weißen Tafeln. Das Logo-Gelb bleibt nur als Punkt im Logo-Zeichen.
+in weißen Tafeln auf Schiefer `#3A403D`, einem dunklen Grau mit leichtem Grünstich — erst
+stand er auf Fast-Schwarz (Tinte), das wirkte drückend. Das Logo-Gelb bleibt nur als Punkt im Logo-Zeichen.
 
 **Warum nicht Creme und Terrakotta:** Ein erster Entwurf dieses Redesigns landete bei warmem
 Cremegrund, Serif-Display und Terrakotta. Das ist laut impeccable der am häufigsten generierte
@@ -149,7 +151,7 @@ Fokusfarbe und Hover-Farbe für Links. Komponenten lesen nur diese Variablen
 | Fläche | Grund | Text / Nebentext | Button | Fokus |
 |---|---|---|---|---|
 | `orange` | `#E0892A` | Tinte 6,0:1 / `#3B2A1A` 5,1:1 | Tinte, Weiß | Tinte |
-| `ink` | `#17231D` | Weiß 16,2:1 / Minze 12,1:1 | Orange, Tinte 6,0:1 | Orange |
+| `slate` | `#3A403D` | Weiß 10,6:1 / Minze 7,9:1 | Orange (3,9:1 zur Fläche), Tinte 6,0:1 | Orange |
 | `white` (Standard) | `#FFFFFF` | Tinte 16,2:1 / Tinte weich 7,3:1 | Tanne, Weiß | Tinte |
 | `nebel` | `#EDF2EE` | Tinte 14,3:1 / Tinte weich 6,5:1 | Tanne, Weiß | Tinte |
 | `pruefung` | `#A64F00` | Weiß 5,6:1 | Weiß, Tinte | Weiß |
@@ -164,10 +166,10 @@ lokal auf Weiß zurück. Tanne ist keine Fläche mehr, nur Farbe für Bogen und 
 
 - **Farbe besitzt Flächen.** Eine Farbe nimmt einen ganzen Abschnitt oder eine ganze Karte ein —
   nie als zarter Schleier, nie als Randstreifen.
-- **Rhythmus pro Seite.** Orange oben (Kopf und Einstieg), Weiß zum Lesen, Tinte für den Check
+- **Rhythmus pro Seite.** Orange oben (Kopf und Einstieg), Weiß zum Lesen, Schiefer für den Check
   und zum Schluss. Nie zwei gleiche Farbflächen hintereinander.
 - **Auf Orange nie Weiß.** Text, Buttons und Fokus auf Orange sind Tinte; der orange Button
-  steht nur auf Tinte.
+  steht nur auf Schiefer.
 - **Bereichsfarben** gehören den drei Leistungsbereichen: Orange-tief Prüfung, Blau Beratung,
   Grün Steuern. Sie tragen Anliegen-Karten und Bereichskarten, sonst nichts.
 - **Logofarben sind Zeichen.** Die reinen Logofarben (`#D4780A`, `#2E7DB8`, `#2D8B57`, `#D4A917`)
@@ -264,7 +266,7 @@ Ein echter Satz aus dem Profil als Zitat (ein Unit-Test prüft, dass er wörtlic
 darunter die vier Grundsätze mit 3-px-Linie in Tanne.
 
 ### Schnell-Check (Startseite)
-Drei Felder in weißer Tafel auf Tinte. Ohne JavaScript ein GET-Formular auf `/leistungen#pruefungspflicht`, mit
+Drei Felder in weißer Tafel auf Schiefer. Ohne JavaScript ein GET-Formular auf `/leistungen#pruefungspflicht`, mit
 JavaScript eine Router-Navigation. Der Check übernimmt `bilanzsumme`, `umsatz` und `arbeitnehmer`
 aus der Adresse und wertet sofort aus — nur wenn alle drei gesetzt sind.
 
@@ -274,7 +276,7 @@ Links die Bereichskarte (ab `lg` klebend), rechts die Blöcke: Anliegen als `h3`
 fett als Einstieg, Punkte als echte Liste.
 
 ### Prüfungspflicht-Check (`app-audit-check`)
-Auf Tinte: Formular in weißer Tafel links (laufendes Jahr, Vorjahr, Sonderfälle aufklappbar),
+Auf Schiefer: Formular in weißer Tafel links (laufendes Jahr, Vorjahr, Sonderfälle aufklappbar),
 rechts das Ergebnis über der Schwellenwerttabelle. Das Vorjahr bleibt sichtbar, weil die
 Rechtsfolge an zwei Stichtagen hängt (§ 267 Abs. 4 HGB) — ohne Vorjahr gibt es eine Einordnung,
 aber keine belastbare Aussage. Überschrittene Zeilen: Orange-Tönung (30 % auf Weiß) plus das Wort „überschritten“.

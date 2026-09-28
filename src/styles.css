@@ -18,7 +18,7 @@
 
   /* ---- Tanne ------------------------------------------------------------
      Kein Sonnengelb als Fläche mehr (Entscheidung 28.09.2026): Es biss sich mit dem
-     Orange im Kopf. Der Check steht jetzt auf Tinte. */
+     Orange im Kopf. Der Check steht jetzt auf Schiefer. */
   --color-pine: #1e4636; /* Porträt-Bogen, Buttons auf Weiß; Weiß 10,6:1 */
   --color-pine-deep: #16352a; /* Hover der Tanne-Buttons, Weiß 13,3:1 */
   --color-mint: #cfe3d6; /* Nebentext auf Tinte, 12,1:1 */
@@ -38,8 +38,9 @@
      Weiß erreicht darauf nur 2,7:1 — Text und Buttons sind deshalb dunkel. */
   --color-orange: #e0892a; /* Kopf und Einstieg, Tinte darauf 6,0:1 */
   --color-orange-soft: #3b2a1a; /* Nebentext auf Orange, 5,1:1 */
-  --color-orange-hover: #ea9d4b; /* Button-Hover auf Tinte, Tinte darauf > 6:1 */
+  --color-orange-hover: #ea9d4b; /* Button-Hover auf Schiefer, Tinte darauf 7,3:1 */
   --color-ink-hover: #2e3a33; /* Button-Hover auf Orange, Weiß darauf > 11:1 */
+  --color-slate: #3a403d; /* Schiefer: Check und Fuß. Weiß 10,6:1, Minze 7,9:1, Orange 3,9:1 */
 
   --color-error: #8a1c12; /* 9,0:1 auf Weiß; Fehler stehen nur in weißen Panels */
 
@@ -95,9 +96,9 @@
   --surface-accent: var(--color-ink);
   --surface-line: color-mix(in oklab, var(--color-ink) 22%, transparent);
 }
-/* Check, Schluss und Fuß: Tinte, darauf der orange Button. */
-[data-surface='ink'] {
-  --surface-bg: var(--color-ink);
+/* Check, Schluss und Fuß: Schiefer statt Fast-Schwarz (wirkte drückend), darauf der orange Button. */
+[data-surface='slate'] {
+  --surface-bg: var(--color-slate);
   --surface-ink: var(--color-white);
   --surface-soft: var(--color-mint);
   --action-bg: var(--color-orange);
