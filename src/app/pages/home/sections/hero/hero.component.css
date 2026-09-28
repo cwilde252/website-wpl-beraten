@@ -41,7 +41,7 @@
   width: min(100%, 30rem);
   aspect-ratio: 24 / 31;
   border-radius: 999px 999px 0 0;
-  background: var(--color-sun);
+  background: var(--color-pine);
   overflow: hidden;
 }
 @media (max-width: 1023px) {

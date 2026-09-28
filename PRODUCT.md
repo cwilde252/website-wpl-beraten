@@ -83,7 +83,9 @@ untergräbt, um das es hier geht.
 - **AI-Slop-Templates** (Scroll-Reveal auf jeder Sektion, Blur-Blobs, dekorative Icon-Kreise, überall
   dasselbe Label-Linie-Grid-Rezept): Bewegung gibt es als Feedback und genau einen inszenierten
   Moment, nie als Einblendung jeder Sektion.
-- **Frühere Auftritte dieser Seite**: der vollflächig orange Hero mit Karten und Pill-Buttons, das
+- **Frühere Auftritte dieser Seite**: der vollflächig orange Hero mit weißer Schrift, Karten und
+  Pill-Buttons (das Logo-Orange selbst ist seit 28.09.2026 wieder Grundfarbe, mit dunkler Schrift
+  und ohne Pillen — Bestätigung durch Wiebke steht aus), das
   dunkle Graphit-„Arbeitspapier" mit Mono-Labels und das Registerblatt-System (weißes Papier,
   Pastell-Reiter, blaugraue Tinte — fachlich sauber, aber als Aktenordner bürokratisch und kühl).
   Gewünscht ist ausdrücklich: offen, warm, nicht bürokratisch (2026).
@@ -94,9 +96,10 @@ untergräbt, um das es hier geht.
 
 1. **Fachlichkeit zeigen, nicht behaupten.** Die Schwellenwerttabelle und der Prüfungspflicht-Check
    sind das visuelle Zentrum der Leistungsseite. Wer sie liest, hat einen Nutzen — auch ohne Anfrage.
-2. **Satt statt blass.** Die Logofarben tragen ganze Flächen: Tanne (aus dem Logo-Grün) für Kopf,
-   Einstieg und Schluss, Sonne (aus dem Logo-Gelb) für Aktionen und den Check, Orange, Blau und
-   Grün je eine Karte für ihren Bereich. Überschriften sind Fragen der Mandanten.
+2. **Satt statt blass.** Die Logofarben tragen ganze Flächen: Logo-Orange mit dunkler Schrift für
+   Kopf und Einstieg, Tinte für den Schluss, Sonne (aus dem Logo-Gelb) für den Check, Tanne im
+   Porträt-Bogen, Orange-tief, Blau und Grün je eine Karte für ihren Bereich. Überschriften sind
+   Fragen der Mandanten.
 3. **Ohne Foto vollständig, mit Foto persönlicher.** Die Seite trägt sich über Farbflächen und
    Typografie. Der Porträt-Bogen im Hero ist vorbereitet und nimmt das Foto auf, sobald eines
    freigegeben ist.

@@ -35,6 +35,13 @@
   --color-logo-green: #2d8b57;
   --color-logo-yellow: #d4a917;
 
+  /* ---- Logo-Orange als Grund (Entscheidung 28.09.2026) --------------
+     Weiß erreicht darauf nur 2,7:1 — Text und Buttons sind deshalb dunkel. */
+  --color-orange: #e0892a; /* Kopf und Einstieg, Tinte darauf 6,0:1 */
+  --color-orange-soft: #3b2a1a; /* Nebentext auf Orange, 5,1:1 */
+  --color-orange-hover: #ea9d4b; /* Button-Hover auf Tinte, Tinte darauf > 6:1 */
+  --color-ink-hover: #2e3a33; /* Button-Hover auf Orange, Weiß darauf > 11:1 */
+
   --color-error: #8a1c12; /* 9,0:1 auf Weiß, 5,7:1 auf Sonne */
 
   /* ---- Schrift --------------------------------------------------------- */
@@ -69,6 +76,8 @@
   --quiet-border: var(--color-control);
   --focus: var(--color-ink);
   --link-hover: var(--color-pruefung);
+  --surface-accent: var(--color-ink);
+  --surface-line: var(--color-hairline);
 }
 [data-surface='nebel'] {
   --surface-bg: var(--color-nebel);
@@ -84,9 +93,39 @@
   --quiet-border: var(--color-mint);
   --focus: var(--color-sun);
   --link-hover: var(--color-sun);
+  --surface-accent: var(--color-sun);
+  --surface-line: color-mix(in oklab, var(--color-mint) 28%, transparent);
 }
 [data-surface='pine-deep'] {
   --surface-bg: var(--color-pine-deep);
+}
+/* Die tragende Fläche: Kopf, Einstieg jeder Seite. Dunkle Schrift, dunkle Buttons. */
+[data-surface='orange'] {
+  --surface-bg: var(--color-orange);
+  --surface-ink: var(--color-ink);
+  --surface-soft: var(--color-orange-soft);
+  --action-bg: var(--color-ink);
+  --action-ink: var(--color-white);
+  --action-hover: var(--color-ink-hover);
+  --quiet-border: var(--color-ink);
+  --focus: var(--color-ink);
+  --link-hover: var(--color-ink);
+  --surface-accent: var(--color-ink);
+  --surface-line: color-mix(in oklab, var(--color-ink) 22%, transparent);
+}
+/* Schluss und Fuß: Tinte, darauf der orange Button. */
+[data-surface='ink'] {
+  --surface-bg: var(--color-ink);
+  --surface-ink: var(--color-white);
+  --surface-soft: var(--color-mint);
+  --action-bg: var(--color-orange);
+  --action-ink: var(--color-ink);
+  --action-hover: var(--color-orange-hover);
+  --quiet-border: var(--color-mint);
+  --focus: var(--color-orange);
+  --link-hover: var(--color-orange);
+  --surface-accent: var(--color-orange);
+  --surface-line: color-mix(in oklab, var(--color-mint) 22%, transparent);
 }
 [data-surface='sun'] {
   --surface-bg: var(--color-sun);
@@ -98,6 +137,8 @@
   --quiet-border: var(--color-ink);
   --focus: var(--color-ink);
   --link-hover: var(--color-pine);
+  --surface-accent: var(--color-ink);
+  --surface-line: color-mix(in oklab, var(--color-ink) 22%, transparent);
 }
 [data-surface='pruefung'],
 [data-surface='beratung'],
@@ -110,6 +151,8 @@
   --quiet-border: var(--color-white);
   --focus: var(--color-white);
   --link-hover: var(--color-white);
+  --surface-accent: var(--color-white);
+  --surface-line: color-mix(in oklab, var(--color-white) 30%, transparent);
 }
 [data-surface='pruefung'] {
   --surface-bg: var(--color-pruefung);
@@ -592,6 +635,21 @@ details[open] > summary .toggle-mark {
 }
 .skip-link:focus {
   transform: translateY(0);
+}
+
+/* Offenes Mobilmenü: Die Seite dahinter scrollt nicht mit. */
+body.menu-offen {
+  overflow: hidden;
+}
+/* Pfeil im Mobilmenü. Global, weil das SVG in app-icon liegt (eigene Kapselung). */
+.mobile-arrow {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.mobile-link:hover .mobile-arrow {
+  transform: translateX(4px);
 }
 
 /* ---- Bewegung ---------------------------------------------------------

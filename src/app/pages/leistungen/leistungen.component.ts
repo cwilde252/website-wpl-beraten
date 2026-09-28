@@ -28,7 +28,7 @@ import { FaqAccordionComponent } from '../../shared/faq-accordion/faq-accordion.
       gap: 0.6rem;
       min-height: 3rem;
       padding: 0.5rem 1.1rem;
-      border: 1.5px solid var(--color-mint);
+      border: 1.5px solid var(--quiet-border);
       border-radius: var(--radius-control);
       color: inherit;
       font-weight: 600;
@@ -36,7 +36,12 @@ import { FaqAccordionComponent } from '../../shared/faq-accordion/faq-accordion.
       transition: background-color var(--dur-quick) var(--ease-out);
     }
     .jump-link:hover {
-      background: color-mix(in oklab, var(--color-white) 12%, transparent);
+      background: color-mix(in oklab, var(--surface-ink) 10%, transparent);
+    }
+    /* Der orange Punkt verschwände auf Orange: ein dünner Ring hält alle vier sichtbar. */
+    .jump-link .area-dot {
+      outline: 1.5px solid var(--surface-ink);
+      outline-offset: 1px;
     }
     /* Die Karte ist schmal: „Wirtschaftsprüfung" muss ungetrennt hineinpassen. */
     .area-title {

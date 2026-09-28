@@ -6,7 +6,7 @@
   transition: border-color var(--dur-base) var(--ease-out);
 }
 .site-header.is-raised {
-  border-block-end-color: color-mix(in oklab, var(--color-mint) 30%, transparent);
+  border-block-end-color: var(--surface-line);
 }
 
 .brand {
@@ -27,7 +27,7 @@
 }
 .brand-role {
   font-size: 0.9375rem;
-  color: var(--color-mint);
+  color: var(--surface-soft);
   line-height: 1.2;
 }
 
@@ -40,12 +40,8 @@
   color: inherit;
   font-weight: 500;
   text-decoration: none;
-  transition: color var(--dur-quick) var(--ease-out);
 }
-.nav-link:hover {
-  color: var(--color-sun);
-}
-/* Aktive Seite: 3-px-Unterstrich in Sonne, fährt über scaleX ein. */
+/* Hover und aktive Seite: 3-px-Unterstrich in der Akzentfarbe der Fläche, fährt über scaleX ein. */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -53,10 +49,13 @@
   inset-block-end: 0.3rem;
   height: 3px;
   border-radius: 2px;
-  background: var(--color-sun);
+  background: var(--surface-accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--dur-base) var(--ease-out);
+}
+.nav-link:hover::after {
+  transform: scaleX(0.4);
 }
 .nav-link.is-active {
   font-weight: 600;
@@ -70,7 +69,7 @@
   place-items: center;
   width: 3rem;
   height: 3rem;
-  border: 1.5px solid var(--color-mint);
+  border: 1.5px solid var(--quiet-border);
   border-radius: var(--radius-control);
   background: transparent;
   color: inherit;
@@ -82,26 +81,78 @@
   }
 }
 .menu-button:hover {
-  background: color-mix(in oklab, var(--color-white) 12%, transparent);
+  background: color-mix(in oklab, var(--surface-ink) 10%, transparent);
 }
 
+/* ---- Mobilmenü über den ganzen Bildschirm ------------------------------
+   Fest positioniert im Stapelkontext des Kopfs, mit z-index −1: Die Fläche liegt
+   über der Seite, aber unter Name und Schließen-Button des Kopfs. */
 .mobile-nav {
-  animation: rise-in var(--dur-base) var(--ease-out) both;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  padding-block-start: 5.5rem;
+  background: var(--surface-bg);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.mobile-inner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+.mobile-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-block-start: 1px solid var(--surface-line);
+}
+.mobile-list > li {
+  border-block-end: 1px solid var(--surface-line);
 }
 .mobile-link {
   display: flex;
   align-items: center;
-  min-height: 3.5rem;
-  border-block-end: 1px solid color-mix(in oklab, var(--color-mint) 30%, transparent);
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.5rem;
   color: inherit;
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: clamp(1.75rem, 6vw + 0.5rem, 2.5rem);
   font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
   text-decoration: none;
 }
-.mobile-link.is-active {
+.mobile-link.is-active > span {
   text-decoration: underline;
-  text-decoration-color: var(--color-sun);
+  text-decoration-color: var(--surface-accent);
   text-decoration-thickness: 3px;
-  text-underline-offset: 0.3em;
+  text-underline-offset: 0.2em;
+}
+.mobile-foot {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  margin-block-start: auto;
+  padding-block: 2.5rem max(2rem, env(safe-area-inset-bottom));
+}
+
+/* Öffnen: Die Fläche fährt von oben ein, die Links folgen gestaffelt. Nur transform. */
+@media (prefers-reduced-motion: no-preference) {
+  .mobile-nav {
+    animation: menu-open var(--dur-base) var(--ease-out) both;
+  }
+  .mobile-list > li {
+    animation: rise-in var(--dur-slow) var(--ease-out) both;
+    animation-delay: calc(80ms + var(--i, 0) * 50ms);
+  }
+}
+@keyframes menu-open {
+  from {
+    transform: translateY(-1.5rem);
+  }
 }

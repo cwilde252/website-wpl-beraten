@@ -1,6 +1,6 @@
 ---
 name: WPL — Wiebke Lefevre, Wirtschaftsprüferin
-description: „Offene Tür“ — Tanne und Sonne aus den Logofarben, satte Flächen statt Pastell, Überschriften als Fragen der Mandanten, ein Porträt-Bogen als Zeichen.
+description: „Offene Tür“ — Logo-Orange als tragende Fläche mit dunkler Schrift, Tanne und Sonne als Gegenfarben, satte Flächen statt Pastell, Überschriften als Fragen der Mandanten, ein Porträt-Bogen als Zeichen.
 colors:
   white: "#FFFFFF"
   nebel: "#EDF2EE"
@@ -8,6 +8,10 @@ colors:
   ink-soft: "#4A5A51"
   hairline: "#DCE3DD"
   control: "#6F7D74"
+  orange: "#E0892A"
+  orange-soft: "#3B2A1A"
+  orange-hover: "#EA9D4B"
+  ink-hover: "#2E3A33"
   pine: "#1E4636"
   pine-deep: "#16352A"
   mint: "#CFE3D6"
@@ -120,6 +124,13 @@ draußen Schwarzwald, drinnen Sonne, man wird mit Namen begrüßt, und niemand s
 genau das Behördengefühl, das die Seite vermeiden soll. Blaugraue Tinte auf reinem Weiß machte die
 Temperatur kalt, vier Pastelltöne als Leitsystem machten sie unruhig.
 
+**Warum Logo-Orange als Grund (Entscheidung 28.09.2026):** Im Vergleich von vier Grundfarben
+(Tanne, Cognac, Logo-Orange, Sonne; Canvas, Reihe 4) wirkte das Logo-Orange am offensten und
+wärmsten. Weiß ist darauf nicht lesbar (2,7:1), deshalb tragen Text und Buttons auf Orange
+Tinte. Der früher verworfene orange Auftritt hatte weiße Schrift, Karten und Pill-Buttons; hier
+bleiben Buttons eckig-rund (0,875rem), und Tanne steht als Gegenfarbe im Bogen. Wiebke Lefevres
+Bestätigung steht noch aus (FRAGEN-AN-WIEBKE.md, 15a).
+
 **Warum nicht Creme und Terrakotta:** Ein erster Entwurf dieses Redesigns landete bei warmem
 Cremegrund, Serif-Display und Terrakotta. Das ist laut impeccable der am häufigsten generierte
 AI-Look und wurde vom Detektor (`cream-palette`) markiert. Tanne und Sonne kommen direkt aus den
@@ -136,6 +147,8 @@ Fokusfarbe und Hover-Farbe für Links. Komponenten lesen nur diese Variablen
 
 | Fläche | Grund | Text / Nebentext | Button | Fokus |
 |---|---|---|---|---|
+| `orange` | `#E0892A` | Tinte 6,0:1 / `#3B2A1A` 5,1:1 | Tinte, Weiß | Tinte |
+| `ink` | `#17231D` | Weiß 16,2:1 / Minze 12,1:1 | Orange, Tinte 6,0:1 | Orange |
 | `white` (Standard) | `#FFFFFF` | Tinte 16,2:1 / Tinte weich 7,3:1 | Tanne, Weiß | Tinte |
 | `nebel` | `#EDF2EE` | Tinte 14,3:1 / Tinte weich 6,5:1 | Tanne, Weiß | Tinte |
 | `pine` | `#1E4636` | Weiß 10,6:1 / Minze 7,9:1 | Sonne, Tinte 6,4:1 | Sonne |
@@ -145,14 +158,18 @@ Fokusfarbe und Hover-Farbe für Links. Komponenten lesen nur diese Variablen
 | `beratung` | `#1F5F92` | Weiß 6,8:1 | Sonne, Tinte | Weiß |
 | `steuern` | `#2D7550` | Weiß 5,6:1 | Sonne, Tinte | Weiß |
 
-Weiße Tafeln in farbigen Flächen (`.panel`) setzen die Variablen lokal auf Weiß zurück.
+Jede Fläche liefert außerdem `--surface-accent` (Unterstrich der aktiven Seite) und
+`--surface-line` (Trenner). Weiße Tafeln in farbigen Flächen (`.panel`) setzen die Variablen
+lokal auf Weiß zurück. `pine` und `pine-deep` bleiben definiert, tragen aber derzeit keine Seite.
 
 ### 2.2 Regeln
 
 - **Farbe besitzt Flächen.** Eine Farbe nimmt einen ganzen Abschnitt oder eine ganze Karte ein —
   nie als zarter Schleier, nie als Randstreifen.
-- **Rhythmus pro Seite.** Tanne oben (Kopf und Einstieg), Weiß zum Lesen, höchstens eine
-  Sonnen-Fläche (der Check), Tanne tief zum Schluss. Nie zwei gleiche Farbflächen hintereinander.
+- **Rhythmus pro Seite.** Orange oben (Kopf und Einstieg), Weiß zum Lesen, höchstens eine
+  Sonnen-Fläche (der Check), Tinte zum Schluss. Nie zwei gleiche Farbflächen hintereinander.
+- **Auf Orange nie Weiß.** Text, Buttons und Fokus auf Orange sind Tinte; der orange Button
+  steht nur auf Tinte.
 - **Bereichsfarben** gehören den drei Leistungsbereichen: Orange-tief Prüfung, Blau Beratung,
   Grün Steuern. Sie tragen Anliegen-Karten und Bereichskarten, sonst nichts.
 - **Logofarben sind Zeichen.** Die reinen Logofarben (`#D4780A`, `#2E7DB8`, `#2D8B57`, `#D4A917`)
@@ -197,8 +214,8 @@ Abschnittsnummern, kein Kursiv als Betonung.
 - **Raster:** 12 Spalten ab `lg` (1024 px). Wiederkehrende Teilungen: 7/5 im Hero, 7/4 für
   Überschrift und Lead, 4/7 für Bereichskarte und Blöcke, 5/7 im Check. Mobil einspaltig.
 - **Rhythmus:** Abschnitte `clamp(4.5rem, 9vw, 8rem)`, enge Abschnitte `clamp(3.5rem, 6vw, 5.5rem)`.
-- **Kopf:** klebend, Tanne, geht nahtlos in das Tanne-Einstiegsband jeder Seite über.
-- **Fuß:** Tanne tief mit der Einladung zum Erstgespräch (auf `/kontakt` ausgeblendet, dort wäre
+- **Kopf:** klebend, Orange, geht nahtlos in das Orange-Einstiegsband jeder Seite über.
+- **Fuß:** Tinte mit der Einladung zum Erstgespräch (auf `/kontakt` ausgeblendet, dort wäre
   sie doppelt), darunter Leistungen, Kontakt, Rechtliches und die vier Logopunkte.
 - **Sprungziele:** `scroll-margin-block-start: 5.5rem` (`.scroll-anchor`).
 
@@ -209,7 +226,7 @@ Deshalb setzen Komponentenklassen keine Außenabstände, wenn das Template sie �
 ## 5. Form, Tiefe und Bewegung
 
 - **Der Bogen** (`border-radius: 999px 999px 0 0`): das Zeichen des Systems, eine offene Tür in
-  Sonne. Er steht im Hero auf der Unterkante der Tanne-Fläche und nimmt das Porträt auf, sobald
+  Tanne. Er steht im Hero auf der Unterkante der Orange-Fläche und nimmt das Porträt auf, sobald
   eines freigegeben ist; bis dahin bleibt er eine reine Farbfläche. Auf „Über mich“ trägt das
   Porträt dieselbe Form. Nur für das Porträt, einmal pro Seite.
 - **Karten:** 1,75rem Radius, volle Fläche, kein Rand, kein Schatten.
@@ -228,9 +245,17 @@ Hover in `--link-hover` mit 2 px Unterstrich). `[arrow]="false"` für Buttons, d
 sind (Kopf, Bereichskarten). Mindesthöhe 2,75rem für Textlinks.
 
 ### Kopf (`app-header`)
-Name in Red Hat Display, darunter Rolle und Ort in Minze. Navigation weiß, Hover Sonne, aktive
-Seite mit 3-px-Unterstrich in Sonne. Der Prüfungspflicht-Check ist ein eigener Menüpunkt (aktiv nur
-bei exaktem Fragment). Ab `lg` volle Navigation, darunter Menü-Button mit Rand in Minze.
+Auf Orange: Name in Red Hat Display, darunter Rolle und Ort in `#3B2A1A`. Navigation in Tinte,
+Hover und aktive Seite mit 3-px-Unterstrich in `--surface-accent`. Der Prüfungspflicht-Check ist
+ein eigener Menüpunkt (aktiv nur bei exaktem Fragment). Ab `lg` volle Navigation, darunter
+Menü-Button mit Rand in Tinte.
+
+### Mobilmenü
+Nimmt den ganzen Bildschirm ein: Orange-Fläche unter dem Kopf (Name und Schließen-Button bleiben
+obenauf), große Links in Red Hat Display mit Pfeil, unten „Erstgespräch vereinbaren“. Beim Öffnen
+liegt der Fokus auf dem ersten Link, `main` und Fuß sind `inert`, die Seite scrollt nicht
+(`body.menu-offen`). Escape schließt und gibt den Fokus an den Menü-Button zurück; wird das
+Fenster breiter als `lg`, schließt es von selbst. Geprüft in `e2e/menu.spec.ts`.
 
 ### Anliegen-Karten (Startseite)
 Je Bereich eine Karte in der Bereichsfarbe: Frage des Mandanten als `h3`, Antwort in Ich-Form,
@@ -269,8 +294,8 @@ Linie links, Punkte in Tanne, aktuelle Station Sonne mit Tannenrand und fetter J
   Sonderfällen und FAQ und auf dem Check-Ergebnis.
 - **Ohne JavaScript:** Inhalte, Schwellenwerttabelle, FAQ und Schnell-Check-Formular funktionieren
   im vorgerenderten HTML (`e2e/prerender.spec.ts`).
-- **Anti-Slop:** `npx impeccable detect` gegen die gerenderten Seiten — Stand Umsetzung: keine
-  Befunde auf allen sechs Seiten. Läuft in `.github/workflows/quality.yml`.
+- **Anti-Slop:** `npx impeccable detect` gegen die gerenderten Seiten — Stand 28.09.2026 (Orange):
+  keine Befunde auf allen sechs Seiten. Läuft in `.github/workflows/quality.yml`.
 
 ## 8. Do's and Don'ts
 

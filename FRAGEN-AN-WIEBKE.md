@@ -67,8 +67,10 @@ nicht mit einem Platzhalter gefüllt (siehe `PRODUCT.md`, Voice-Regel 5).
 14. **Vorschaubild für geteilte Links** (Open Graph, 1200 × 630). Fehlt. Kann aus Wortmarke und
     Doppelstrich erzeugt werden, sobald das Logo vorliegt.
 
-15a. **Farbwelt und Texte des Redesigns „Offene Tür“.** Aus den Logofarben abgeleitet sind
-    Tannengrün `#1E4636` (Kopf, Einstieg, Schluss) und Sonnengelb `#F5C331` (Aktionen, Check);
+15a. **Farbwelt und Texte des Redesigns „Offene Tür“.** Kopf und Einstieg tragen jetzt das
+    Logo-Orange `#E0892A` mit dunkler Schrift — bewusst nah an dem orangen Auftritt, den du früher
+    verworfen hast, aber ohne weiße Schrift und Pill-Buttons. Passt das für dich? Dazu Tinte
+    `#17231D` für den Schluss, Tannengrün `#1E4636` im Porträt-Bogen und Sonnengelb `#F5C331` für den Check;
     Orange, Blau und Grün sind für weißen Text abgedunkelt (`#A64F00`, `#1F5F92`, `#2D7550`).
     Neu formuliert sind die Überschriften als Mandantenfragen (z. B. „Müssen wir unseren
     Abschluss prüfen lassen?“), der Einstieg „Erst verstehen, dann prüfen.“ und die Zeile
